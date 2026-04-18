@@ -7,63 +7,121 @@ import { useRef, useState, useEffect } from "react";
 const pricingData = {
   web: [
     {
-      title: "LEFT CHEST / CAP",
-      price: "10$ - 15$ ",
-      sub: "No limit of stitch",
-      note: "Depends on complexity",
+      title: "Basic Business Website",
+      price: "$120 - $200",
+      sub: "Static / Landing Pages",
+      note: "Best for startups & small businesses",
       features: [
-        "6 hours turnaround",
-        "3 hours if rush",
-        "EMB DST PDF Jpeg File",
-        "Other Formats (On request)",
-        "Small edit free",
-        "Discount on bulk order",
+        "Responsive Design",
+        "SEO Optimized Structure",
+        "Fast Loading Speed",
+        "Up to 5 Pages",
+        "Basic Animations",
+        "1 Revision Included",
       ],
     },
     {
-      title: "JACKET BACK",
-      price: "20$ - 25$",
-      sub: "",
-      note: "Depends on complexity",
+      title: "Advanced Web App",
+      price: "$250 - $600",
+      sub: "Dynamic / Full Stack",
+      note: "For scalable business systems",
       features: [
-        "6 hours turnaround",
-        "4 hours if rush",
-        "EMB DST PDF Jpeg File",
-        "Other Formats (On request)",
-        "Small edit free",
-        "Discount on bulk order",
+        "Next.js Development",
+        "API Integration",
+        "Authentication System",
+        "Admin Dashboard",
+        "Database Integration",
+        "Performance Optimization",
+      ],
+    },
+  ],
+
+  wordpress: [
+    {
+      title: "Starter WordPress Site",
+      price: "$100 - $180",
+      sub: "Business / Blog Website",
+      note: "Easy CMS setup for beginners",
+      features: [
+        "Custom WordPress Theme",
+        "Elementor Setup",
+        "Mobile Responsive",
+        "Basic SEO Setup",
+        "Contact Form Integration",
+      ],
+    },
+    {
+      title: "E-Commerce WordPress",
+      price: "$250 - $500",
+      sub: "WooCommerce Store",
+      note: "Full online store solution",
+      features: [
+        "WooCommerce Setup",
+        "Payment Gateway Integration",
+        "Product Management System",
+        "Cart & Checkout Flow",
+        "Speed Optimization",
+        "Security Setup",
       ],
     },
   ],
 
   figma: [
     {
-      title: "VECTOR GRAPHICS",
-      price: "15$ - 150$",
-      sub: "",
-      note: "Depends on complexity",
+      title: "UI/UX Design Basic",
+      price: "$80 - $150",
+      sub: "Wireframes & UI Screens",
+      note: "Clean modern interface design",
       features: [
-        "24 hours turnaround",
-        "12 hours if rush",
-        "All Formats (On request)",
-        "Small edit free",
-        "Discount on bulk orders",
+        "Wireframes",
+        "Figma UI Design",
+        "User Flow Design",
+        "Mobile + Desktop Screens",
+        "Prototype Preview",
+      ],
+    },
+    {
+      title: "Advanced UX System",
+      price: "$200 - $400",
+      sub: "Complete Design System",
+      note: "For apps & SaaS platforms",
+      features: [
+        "Design System Creation",
+        "High-Fidelity UI",
+        "Interactive Prototypes",
+        "UX Research",
+        "Component Library",
+        "Developer Handoff Files",
       ],
     },
   ],
 
   graphic: [
     {
-      title: "CUSTOM PATCHES",
-      price: "Vary By Quantity",
-      sub: "Min Order: 30 Pcs",
-      note: "(Negotiable)",
+      title: "Brand Identity Design",
+      price: "$50 - $120",
+      sub: "Logo + Basic Branding",
+      note: "Perfect for new brands",
       features: [
-        "8 - 10 days turnaround",
-        "Other Formats (On request)",
-        "Discount on bulk order",
+        "Logo Design",
+        "Color Palette",
+        "Typography Setup",
+        "Business Card Design",
+        "Brand Guidelines",
       ],
-      popular: true,
+    },
+    {
+      title: "Social Media Branding",
+      price: "$80 - $180",
+      sub: "Marketing Designs",
+      note: "For online presence growth",
+      features: [
+        "Instagram Posts",
+        "Facebook Banners",
+        "Ad Creatives",
+        "Post Templates",
+        "Brand Consistency Kit",
+      ],
     },
   ],
 };
@@ -203,7 +261,7 @@ export default function Pricing() {
               <ul className="space-y-3 text-sm text-gray-700 text-left mb-8">
                 {plan.features.map((item, i) => (
                   <li key={i} className="flex items-center">
-                    <span className="mr-2 text-[#1D4ED8]">✔</span>
+                    <span className="mr-2 text-[#1D4ED8]">.</span>
                     {item}
                   </li>
                 ))}
