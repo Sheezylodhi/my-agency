@@ -1,282 +1,229 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import Link from "next/link";
+import { Check, ArrowRight, Zap, Star, Layout, PenTool, Globe, Palette } from "lucide-react";
 
-/* ===== FILTER DATA ===== */
 const pricingData = {
-  web: [
-    {
-      title: "Basic Business Website",
-      price: "$120 - $200",
-      sub: "Static / Landing Pages",
-      note: "Best for startups & small businesses",
-      features: [
-        "Responsive Design",
-        "SEO Optimized Structure",
-        "Fast Loading Speed",
-        "Up to 5 Pages",
-        "Basic Animations",
-        "1 Revision Included",
-      ],
-    },
-    {
-      title: "Advanced Web App",
-      price: "$250 - $600",
-      sub: "Dynamic / Full Stack",
-      note: "For scalable business systems",
-      features: [
-        "Next.js Development",
-        "API Integration",
-        "Authentication System",
-        "Admin Dashboard",
-        "Database Integration",
-        "Performance Optimization",
-      ],
-    },
-  ],
-
-  wordpress: [
-    {
-      title: "Starter WordPress Site",
-      price: "$100 - $180",
-      sub: "Business / Blog Website",
-      note: "Easy CMS setup for beginners",
-      features: [
-        "Custom WordPress Theme",
-        "Elementor Setup",
-        "Mobile Responsive",
-        "Basic SEO Setup",
-        "Contact Form Integration",
-      ],
-    },
-    {
-      title: "E-Commerce WordPress",
-      price: "$250 - $500",
-      sub: "WooCommerce Store",
-      note: "Full online store solution",
-      features: [
-        "WooCommerce Setup",
-        "Payment Gateway Integration",
-        "Product Management System",
-        "Cart & Checkout Flow",
-        "Speed Optimization",
-        "Security Setup",
-      ],
-    },
-  ],
-
-  figma: [
-    {
-      title: "UI/UX Design Basic",
-      price: "$80 - $150",
-      sub: "Wireframes & UI Screens",
-      note: "Clean modern interface design",
-      features: [
-        "Wireframes",
-        "Figma UI Design",
-        "User Flow Design",
-        "Mobile + Desktop Screens",
-        "Prototype Preview",
-      ],
-    },
-    {
-      title: "Advanced UX System",
-      price: "$200 - $400",
-      sub: "Complete Design System",
-      note: "For apps & SaaS platforms",
-      features: [
-        "Design System Creation",
-        "High-Fidelity UI",
-        "Interactive Prototypes",
-        "UX Research",
-        "Component Library",
-        "Developer Handoff Files",
-      ],
-    },
-  ],
-
-  graphic: [
-    {
-      title: "Brand Identity Design",
-      price: "$50 - $120",
-      sub: "Logo + Basic Branding",
-      note: "Perfect for new brands",
-      features: [
-        "Logo Design",
-        "Color Palette",
-        "Typography Setup",
-        "Business Card Design",
-        "Brand Guidelines",
-      ],
-    },
-    {
-      title: "Social Media Branding",
-      price: "$80 - $180",
-      sub: "Marketing Designs",
-      note: "For online presence growth",
-      features: [
-        "Instagram Posts",
-        "Facebook Banners",
-        "Ad Creatives",
-        "Post Templates",
-        "Brand Consistency Kit",
-      ],
-    },
-  ],
+  web: {
+    icon: <Globe size={18} />,
+    color: "from-blue-600 to-cyan-500",
+    plans: [
+      {
+        title: "Starter Launch",
+        price: "$120",
+        range: "$120 - $200",
+        desc: "Best for startups & landing pages.",
+        features: ["5 Responsive Pages", "SEO Ready", "Fast Load Speed", "Basic Animations"],
+        popular: false,
+      },
+      {
+        title: "Full-Stack Scale",
+        price: "$250",
+        range: "$250 - $600",
+        desc: "Dynamic apps with full backend.",
+        features: ["Next.js & Node.js", "API Integration", "Admin Dashboard", "Auth System", "DB Integration"],
+        popular: false,
+      },
+    ],
+  },
+  wordpress: {
+    icon: <Layout size={18} />,
+    color: "from-slate-800 to-slate-900",
+    plans: [
+      {
+        title: "Standard CMS",
+        price: "$100",
+        range: "$100 - $180",
+        desc: "Professional blog or business site.",
+        features: ["Elementor Pro", "Custom Theme", "Basic SEO", "Mobile Responsive"],
+        popular: false,
+      },
+      {
+        title: "E-Com Power",
+        price: "$250",
+        range: "$250 - $500",
+        desc: "Full-fledged online store.",
+        features: ["WooCommerce Setup", "Payment Gateway", "Product Management", "Security Kit"],
+        popular: false,
+      },
+    ],
+  },
+  figma: {
+    icon: <Zap size={18} />,
+    color: "from-purple-600 to-pink-500",
+    plans: [
+      {
+        title: "UI Essence",
+        price: "$80",
+        range: "$80 - $150",
+        desc: "Clean & modern UI screens.",
+        features: ["Wireframing", "UI Design", "User Flow", "Prototype"],
+        popular: false,
+      },
+      {
+        title: "UX Ecosystem",
+        price: "$200",
+        range: "$200 - $400",
+        desc: "Complete design systems for SaaS.",
+        features: ["UX Research", "Design System", "Component Library", "Dev Handoff"],
+        popular: false,
+      },
+    ],
+  },
+  graphic: {
+    icon: <Palette size={18} />,
+    color: "from-orange-500 to-red-600",
+    plans: [
+      {
+        title: "Brand Identity",
+        price: "$150",
+        range: "$150 - $300",
+        desc: "Complete visual branding kit.",
+        features: ["Vector Logo Design", "Brand Guidelines", "Color Palette", "Stationery Mockups"],
+        popular: false,
+      },
+      {
+        title: "Marketing Assets",
+        price: "$200",
+        range: "$200 - $450",
+        desc: "Everything you need for socials.",
+        features: ["10 Social Posts", "Ad Creatives", "Banner Designs", "Vector Assets", "Print Ready Files"],
+        popular: false,
+      },
+    ],
+  },
 };
 
 export default function Pricing() {
-  const sliderRef = useRef(null);
-
   const [active, setActive] = useState("web");
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
-
-  const checkScroll = () => {
-    const el = sliderRef.current;
-    if (!el) return;
-
-    setCanScrollLeft(el.scrollLeft > 0);
-    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 5);
-  };
-
-  useEffect(() => {
-    checkScroll();
-    const el = sliderRef.current;
-
-    if (!el) return;
-
-    el.addEventListener("scroll", checkScroll);
-    window.addEventListener("resize", checkScroll);
-
-    return () => {
-      el.removeEventListener("scroll", checkScroll);
-      window.removeEventListener("resize", checkScroll);
-    };
-  }, [active]);
-
-  const scroll = (direction) => {
-    if (!sliderRef.current) return;
-
-    const amount = 320;
-
-    sliderRef.current.scrollBy({
-      left: direction === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
-  };
 
   return (
-    <section id="prices" className="py-24 bg-white relative">
-
-      <div className="max-w-7xl mx-auto px-6">
-
-        {/* ===== HEADING ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-10"
-        >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#0F172A] mb-6">
-            Pricing <span className="text-[#1D4ED8]">Plans</span>
-          </h2>
-
-          <p className="text-gray-600 text-lg">
-            Choose category based pricing packages
-          </p>
-        </motion.div>
-
-        {/* ===== FILTER BUTTONS ===== */}
-        <div className="flex justify-center gap-4 mb-10 flex-wrap">
-          {Object.keys(pricingData).map((item) => (
-            <button
-              key={item}
-              onClick={() => setActive(item)}
-              className={`px-5 py-2 rounded-full border text-sm font-medium transition ${
-                active === item
-                  ? "bg-[#0F172A] text-white border-[#0F172A]"
-                  : "bg-white text-[#0F172A] border-[#E2E8F0] hover:border-[#1D4ED8]"
-              }`}
-            >
-              {item.toUpperCase()}
-            </button>
-          ))}
-        </div>
-
-        {/* ===== ARROWS ===== */}
-        <div className="flex justify-end gap-3 mb-6">
-          {canScrollLeft && (
-            <button
-              onClick={() => scroll("left")}
-              className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-gray-100"
-            >
-              ←
-            </button>
-          )}
-
-          {canScrollRight && (
-            <button
-              onClick={() => scroll("right")}
-              className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-gray-100"
-            >
-              →
-            </button>
-          )}
-        </div>
-
-        {/* ===== SLIDER ===== */}
-        <div
-          ref={sliderRef}
-          className="flex gap-6 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory"
-        >
-          {pricingData[active].map((plan, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className={`relative min-w-[280px] snap-center bg-white border rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition
-                ${plan.popular ? "border-[#1D4ED8]" : "border-[#E2E8F0]"}`}
-            >
-              <h3 className="text-sm font-semibold text-[#0F172A] mb-4">
-                {plan.title}
-              </h3>
-
-              <div className="text-4xl font-bold text-[#1D4ED8] mb-1">
-                {plan.price}
-              </div>
-
-              {plan.sub && (
-                <p className="text-sm text-gray-600">{plan.sub}</p>
-              )}
-
-              <p className="text-xs text-gray-500 mt-2 mb-6">
-                {plan.note}
-              </p>
-
-              <ul className="space-y-3 text-sm text-gray-700 text-left mb-8">
-                {plan.features.map((item, i) => (
-                  <li key={i} className="flex items-center">
-                    <span className="mr-2 text-[#1D4ED8]">.</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="/quote"
-                className="inline-block bg-[#0F172A] text-white px-6 py-3 rounded-md text-sm font-semibold hover:bg-[#1D4ED8] transition"
-              >
-                ORDER NOW!
-              </a>
-            </motion.div>
-          ))}
-        </div>
+    <section id="prices" className="py-32 px-4 bg-[#f8fafc] relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50" />
       </div>
+
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16 px-4">
+          <motion.span className="text-blue-600 font-bold tracking-widest uppercase text-[10px] bg-blue-50 px-4 py-2 rounded-full">
+            Flexible Pricing
+          </motion.span>
+          <motion.h2 className="text-4xl md:text-6xl font-black text-slate-900 mt-6 leading-tight">
+            Investing in <span className="text-blue-600">Growth.</span>
+          </motion.h2>
+        </div>
+
+        {/* --- FIXED: Filter Tabs with Horizontal Scroll & Fade --- */}
+        <div className="relative mb-20 max-w-fit mx-auto overflow-hidden">
+          <div className="flex overflow-x-auto no-scrollbar px-6 md:px-2">
+            <div className="bg-white p-1.5 rounded-2xl shadow-xl shadow-blue-900/5 border border-slate-100 flex gap-1 whitespace-nowrap">
+              {Object.keys(pricingData).map((key) => (
+                <button
+                  key={key}
+                  onClick={() => setActive(key)}
+                  className={`relative px-5 py-3 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 flex items-center gap-2 shrink-0 ${
+                    active === key ? "text-white" : "text-slate-500 hover:text-slate-900"
+                  }`}
+                >
+                  {active === key && (
+                    <motion.div 
+                      layoutId="activeTab"
+                      className={`absolute inset-0 bg-gradient-to-r ${pricingData[key].color} rounded-xl shadow-lg`}
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">{pricingData[key].icon}</span>
+                  <span className="relative z-10 capitalize">{key === 'graphic' ? 'Graphic Design' : key}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* --- FIXED: Most Popular Badge + Horizontal Scrollable Cards --- */}
+        <div className="relative pt-6"> {/* Added pt-6 to prevent badge cutting */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 px-4 md:px-0 no-scrollbar pb-10 max-w-5xl mx-auto justify-start md:justify-center">
+            <AnimatePresence mode="wait">
+              {pricingData[active].plans.map((plan, i) => (
+                <motion.div
+                  key={`${active}-${i}`}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  className={`relative flex-shrink-0 w-[85vw] md:w-[400px] snap-center p-1 bg-white rounded-[32px] border ${
+                    plan.popular ? "border-blue-200 shadow-2xl shadow-blue-900/10" : "border-slate-100 shadow-xl"
+                  }`}
+                >
+                  {plan.popular && (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-5 py-1.5 rounded-full text-[9px] font-black tracking-[0.15em] flex items-center gap-1.5 z-[30] shadow-xl shadow-blue-600/20 whitespace-nowrap border border-blue-400">
+                      <Star size={10} fill="currentColor" /> MOST POPULAR
+                    </div>
+                  )}
+
+                  <div className="p-8 h-full flex flex-col bg-white rounded-[31px]">
+                    <div className="mb-8">
+                      <h3 className="text-xl font-black text-slate-900 mb-2">{plan.title}</h3>
+                      <p className="text-slate-500 text-[11px] font-bold leading-relaxed">{plan.desc}</p>
+                    </div>
+
+                    <div className="mb-8">
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-4xl font-black text-slate-900">{plan.price}</span>
+                        <span className="text-slate-400 font-bold text-sm">/start</span>
+                      </div>
+                      <p className="text-[10px] font-bold text-blue-600 tracking-widest mt-2 uppercase italic">Est: {plan.range}</p>
+                    </div>
+
+                    <ul className="space-y-4 mb-10 flex-grow">
+                      {plan.features.map((feat, idx) => (
+                        <li key={idx} className="flex items-center gap-3 text-[13px] font-bold text-slate-700">
+                          <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                            <Check size={12} strokeWidth={4} />
+                          </div>
+                          {feat}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Link href="/quote" className="w-full">
+  <button className={`w-full cursor-pointer py-4 rounded-2xl font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn ${
+    plan.popular 
+    ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-200" 
+    : "bg-slate-900 text-white hover:bg-slate-800"
+  }`}>
+    Start Project <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+  </button>
+</Link>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+          
+          <div className="md:hidden text-center text-slate-300 text-[10px] font-black uppercase tracking-widest mt-2 animate-pulse">
+            ← Swipe for plans →
+          </div>
+        </div>
+
+        <p className="text-center mt-12 text-slate-400 text-sm font-medium">
+          Need a custom bundle? <Link href="/contact" className="w-full"><span className="text-blue-600 cursor-pointer hover:underline font-extrabold">Let's talk.</span></Link>
+        </p>
+      </div>
+
+      <style jsx global>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,211 +1,152 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Star, StarHalf } from "lucide-react";
+import { motion } from "framer-motion";
+import { Star, Quote } from "lucide-react";
 import Image from "next/image";
-
-const ratingsPool = [4, 4.5, 5];
-const getRandomRating = () =>
-  ratingsPool[Math.floor(Math.random() * ratingsPool.length)];
 
 const testimonials = [
   {
     name: "Robert J. Smith",
     role: "Ocean Shore Store Owner",
-    feedback:
-      "The quality is top-notch! My logos look crisp on every product. Highly recommended.",
+    feedback: "The quality is top-notch! My logos look crisp on every product. Highly recommended for any serious business.",
     img: "/client1.webp",
-    flagImg: "/usaflag.webp",
+    rating: 5,
   },
   {
     name: "David Smith",
     role: "Apparel Brand Owner",
-    feedback:
-      "Working with the team was seamless. The results exceeded expectations.",
+    feedback: "Working with Zaib was seamless. The results exceeded expectations, especially the speed of the Next.js site.",
     img: "/client2.webp",
-    flagImg: "/finlandflag1.svg",
+    rating: 5,
   },
   {
     name: "Emma",
     role: "Textile CEO Texas",
-    feedback:
-      "Their innovative approach and support make them a trusted partner for any project.",
+    feedback: "Innovative approach and constant support. They are now our go-to partner for all digital design needs.",
     img: "/client3.webp",
-    flagImg: "/usaflag.webp",
+    rating: 4.5,
   },
   {
     name: "Alex Miller",
     role: "Startup Owner",
-    feedback:
-      "Impressive quality and delivery speed. Highly professional experience.",
+    feedback: "Impressive quality and delivery speed. Their conversion-focused UI design helped us double our sales.",
     img: "/client.webp",
-    flagImg: "/ukflag.webp",
+    rating: 5,
   },
   {
     name: "Jason Reed",
     role: "MotorSport Team Owner",
-    feedback:
-      "Best quality I’ve seen so far. My brand looks extremely professional now.",
+    feedback: "Best quality I’ve seen so far. My brand looks extremely professional and ready for the global market.",
     img: "/client5.webp",
-    flagImg: "/canadaflag.webp",
+    rating: 5,
+  },
+  {
+    name: "Sarah Jenkins",
+    role: "E-com Strategist",
+    feedback: "The WordPress customization was flawless. Extremely easy to manage and very fast loading times.",
+    img: "/client6.webp",
+    rating: 5,
   },
 ];
 
+// Marquee Row Component
+const TestimonialRow = ({ items, direction = -1, speed = 20 }) => {
+  return (
+    <div className="flex overflow-hidden group">
+      <motion.div
+        initial={{ x: direction === -1 ? 0 : "-50%" }}
+        animate={{ x: direction === -1 ? "-50%" : 0 }}
+        transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
+        className="flex flex-nowrap gap-6 py-4"
+      >
+        {[...items, ...items].map((item, i) => (
+          <div
+            key={i}
+            className="w-[350px] md:w-[450px] flex-shrink-0 bg-white p-8 rounded-[32px] border border-slate-100 shadow-xl shadow-blue-900/5 hover:border-blue-200 transition-all duration-300 group-hover:pause"
+          >
+            <div className="flex justify-between items-start mb-6">
+              <div className="flex gap-4 items-center">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-blue-600">
+                  <Image src={item.img} alt={item.name} fill className="object-cover" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-base">{item.name}</h4>
+                  <p className="text-blue-600 text-[10px] font-bold uppercase tracking-widest">{item.role}</p>
+                </div>
+              </div>
+              <Quote className="text-slate-100 group-hover:text-blue-50 transition-colors" size={32} />
+            </div>
+
+            <div className="flex gap-1 mb-4">
+              {[...Array(5)].map((_, i) => (
+                <Star 
+                  key={i} 
+                  size={14} 
+                  fill={i < Math.floor(item.rating) ? "#1D4ED8" : "transparent"} 
+                  className={i < Math.floor(item.rating) ? "text-blue-600" : "text-slate-200"}
+                />
+              ))}
+            </div>
+
+            <p className="text-slate-600 text-sm md:text-base leading-relaxed font-medium">
+              "{item.feedback}"
+            </p>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
 export default function Testimonials() {
-  const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const [ratings, setRatings] = useState([]);
-
-  useEffect(() => {
-    setRatings(testimonials.map(() => getRandomRating()));
-  }, []);
-
-  const nextSlide = () => {
-    setDirection(1);
-    setIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevSlide = () => {
-    setDirection(-1);
-    setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 6000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const rating = ratings[index] || 5;
-  const fullStars = Math.floor(rating);
-  const hasHalfStar = rating % 1 !== 0;
-  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-
-  const slideVariants = {
-    enter: (direction) => ({ x: direction > 0 ? 200 : -200, opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (direction) => ({ x: direction > 0 ? -200 : 200, opacity: 0 }),
-  };
+  // Hum 2 rows banayenge taake density zyada lage
+  const firstRow = testimonials.slice(0, 3);
+  const secondRow = testimonials.slice(3, 6);
 
   return (
-    <section
-      className="py-28 bg-white relative overflow-hidden"
-      id="testimonials"
-    >
-      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+    <section className="py-32 bg-[#FCFDFF] overflow-hidden" id="testimonials">
+      <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+        <motion.span 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="text-blue-600 font-bold tracking-[0.3em] uppercase text-xs"
+        >
+          Social Proof
+        </motion.span>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-4xl md:text-6xl font-black text-slate-900 mt-6"
+        >
+          Real Stories from <br />
+          <span className="text-blue-600">Global Clients.</span>
+        </motion.h2>
+      </div>
 
-        {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-16">
-          What Our <span className="text-[#1D4ED8]">Clients Say</span>
-        </h2>
+      {/* The Wall of Love (Marquee) */}
+      <div className="relative">
+        {/* Gradients to hide edges */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#FCFDFF] to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#FCFDFF] to-transparent z-10 pointer-events-none" />
 
-        <div className="relative max-w-4xl mx-auto flex items-center">
-
-          {/* Left Button */}
-          <button
-            onClick={prevSlide}
-            className="hidden md:block p-3 text-[#0F172A] hover:text-[#1D4ED8] hover:scale-110 transition"
-          >
-            <ChevronLeft size={42} strokeWidth={2.5} />
-          </button>
-
-          {/* Slider */}
-          <div className="relative w-full overflow-hidden">
-
-            <AnimatePresence custom={direction} mode="wait">
-              <motion.div
-                key={index}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.5 }}
-                className="bg-white p-10 md:p-12 rounded-3xl shadow-xl border border-[#E2E8F0]"
-              >
-
-                {/* Header */}
-                <div className="flex justify-between items-start mb-8">
-
-                  {/* Client */}
-                  <div className="flex items-center gap-4">
-
-                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#1D4ED8]">
-                      <Image
-                        src={testimonials[index].img}
-                        alt={testimonials[index].name}
-                        width={64}
-                        height={64}
-                        className="object-cover"
-                      />
-                    </div>
-
-                    <div className="text-left">
-                      <div className="flex items-center gap-2">
-                        <h4 className="font-bold text-[#0F172A] text-xl">
-                          {testimonials[index].name}
-                        </h4>
-
-                        <Image
-                          src={testimonials[index].flagImg}
-                          alt="flag"
-                          width={22}
-                          height={14}
-                        />
-                      </div>
-
-                      <p className="text-[#64748B] text-sm uppercase tracking-wider">
-                        {testimonials[index].role}
-                      </p>
-                    </div>
-
-                  </div>
-
-                  {/* Rating */}
-                  <div className="flex flex-col items-end">
-
-                    <div className="flex gap-1 text-[#1D4ED8]">
-                      {[...Array(fullStars)].map((_, i) => (
-                        <Star key={`f-${i}`} size={18} fill="currentColor" />
-                      ))}
-
-                      {hasHalfStar && (
-                        <StarHalf size={18} fill="currentColor" />
-                      )}
-
-                      {[...Array(emptyStars)].map((_, i) => (
-                        <Star key={`e-${i}`} size={18} />
-                      ))}
-                    </div>
-
-                    <span className="text-xs text-[#64748B] mt-1">
-                      {rating} / 5
-                    </span>
-
-                  </div>
-
-                </div>
-
-                {/* Feedback */}
-                <p className="text-[#475569] text-lg md:text-xl italic leading-relaxed">
-                  "{testimonials[index].feedback}"
-                </p>
-
-              </motion.div>
-            </AnimatePresence>
-
-          </div>
-
-          {/* Right Button */}
-          <button
-            onClick={nextSlide}
-            className="hidden md:block p-3 text-[#0F172A] hover:text-[#1D4ED8] hover:scale-110 transition"
-          >
-            <ChevronRight size={42} strokeWidth={2.5} />
-          </button>
-
+        <div className="space-y-4">
+          <TestimonialRow items={firstRow} direction={-1} speed={30} />
+          <TestimonialRow items={secondRow} direction={1} speed={25} />
         </div>
       </div>
+
+      {/* Trust Badges */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="mt-20 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-700"
+      >
+        <div className="text-xl font-black text-slate-900">UPWORK</div>
+        <div className="text-xl font-black text-slate-900">FIVERR</div>
+        <div className="text-xl font-black text-slate-900">FREELANCER</div>
+        <div className="text-xl font-black text-slate-900">TRUSTPILOT</div>
+      </motion.div>
     </section>
   );
 }
