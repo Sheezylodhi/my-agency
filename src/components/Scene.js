@@ -5,7 +5,8 @@ import { OrbitControls, Float, ContactShadows } from "@react-three/drei";
 import { useState, useEffect, useMemo } from "react";
 
 function Stars() {
-  const count = 500;
+  const count = 200; // 🔥 reduced from 500
+
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count * 3; i++) {
@@ -36,38 +37,19 @@ function Stars() {
 }
 
 function FloatingShapes() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const leftX = isMobile ? -1.2 : -4.8;
-  const rightX = isMobile ? 1.2 : 4.8;
-
   return (
     <>
-      <Float speed={2} rotationIntensity={1.5} floatIntensity={1.5}>
-        <mesh position={[leftX, 0.5, 0]}>
+      <Float speed={2} rotationIntensity={1.2} floatIntensity={1.2}>
+        <mesh position={[-4.5, 0.5, 0]}>
           <icosahedronGeometry args={[0.9, 1]} />
           <meshStandardMaterial color="#1D4ED8" wireframe />
         </mesh>
       </Float>
 
-      <Float speed={2.5} rotationIntensity={1.5} floatIntensity={2}>
-        <mesh position={[rightX, -0.5, 0]}>
+      <Float speed={2.2} rotationIntensity={1.2} floatIntensity={1.5}>
+        <mesh position={[4.5, -0.5, 0]}>
           <torusKnotGeometry args={[0.6, 0.2, 100, 16]} />
           <meshStandardMaterial color="#334155" wireframe />
-        </mesh>
-      </Float>
-
-      <Float speed={1.8} rotationIntensity={1} floatIntensity={1}>
-        <mesh position={[isMobile ? 0 : -2, -3, -1]}>
-          <boxGeometry args={[0.4, 0.4, 0.4]} />
-          <meshStandardMaterial color="#94A3B8" wireframe opacity={0.3} transparent />
         </mesh>
       </Float>
     </>
@@ -76,47 +58,50 @@ function FloatingShapes() {
 
 export default function Scene() {
   const [mounted, setMounted] = useState(false);
+  const [isLowEnd, setIsLowEnd] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+
+    // 🔥 low-end device detect
+    const low = navigator.hardwareConcurrency <= 4;
+    setIsLowEnd(low);
   }, []);
 
-  // Jab tak client side mounted na ho, kuch render na karein
-  if (!mounted) {
-    return <div className="w-full h-full bg-white" />;
-  }
+  if (!mounted) return null;
 
   return (
     <Canvas
       camera={{ position: [0, 0, 8], fov: 40 }}
       style={{ background: "#ffffff" }}
-      // WebGL optimization props
-      gl={{ 
-        antialias: true,
+      gl={{
+        antialias: false, // 🔥 performance boost
         powerPreference: "high-performance",
-        alpha: true 
+        alpha: true,
       }}
-      dpr={[1, 2]} // Screen resolution ke mutabiq adjust karega
+      dpr={[1, 1.5]} // 🔥 optimized
     >
       <ambientLight intensity={0.7} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
-      
-      <Stars />
+
+      {/* 🔥 Stars only on good devices */}
+      {!isLowEnd && <Stars />}
+
       <FloatingShapes />
 
       <ContactShadows
         position={[0, -3.5, 0]}
-        opacity={0.3}
-        scale={15}
+        opacity={0.25}
+        scale={12}
         blur={2}
-        far={4.5}
+        far={4}
       />
 
       <OrbitControls
         enableZoom={false}
         enablePan={false}
         autoRotate
-        autoRotateSpeed={0.5}
+        autoRotateSpeed={0.4}
       />
     </Canvas>
   );
