@@ -5,7 +5,6 @@ import { OrbitControls, Float, ContactShadows } from "@react-three/drei";
 import { useState, useEffect, useMemo } from "react";
 
 function Stars() {
-  // Manual points create karte hain taake size control ho sakay
   const count = 500;
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
@@ -21,13 +20,13 @@ function Stars() {
         <bufferAttribute
           attach="attributes-position"
           array={positions}
-          count={count}
+          count={positions.length / 3}
           itemSize={3}
         />
       </bufferGeometry>
       <pointsMaterial
-        color="#1D4ED8" // Blue color for stars
-        size={0.08}    // Size ko bada rakha hai taake waazay nazar aayein
+        color="#1D4ED8"
+        size={0.08}
         sizeAttenuation
         transparent
         opacity={0.5}
@@ -46,13 +45,11 @@ function FloatingShapes() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Desktop par shapes ko corners par rakha hai
   const leftX = isMobile ? -1.2 : -4.8;
   const rightX = isMobile ? 1.2 : 4.8;
 
   return (
     <>
-      {/* LEFT SHAPE */}
       <Float speed={2} rotationIntensity={1.5} floatIntensity={1.5}>
         <mesh position={[leftX, 0.5, 0]}>
           <icosahedronGeometry args={[0.9, 1]} />
@@ -60,7 +57,6 @@ function FloatingShapes() {
         </mesh>
       </Float>
 
-      {/* RIGHT SHAPE */}
       <Float speed={2.5} rotationIntensity={1.5} floatIntensity={2}>
         <mesh position={[rightX, -0.5, 0]}>
           <torusKnotGeometry args={[0.6, 0.2, 100, 16]} />
@@ -68,7 +64,6 @@ function FloatingShapes() {
         </mesh>
       </Float>
 
-      {/* DEPTH ELEMENT */}
       <Float speed={1.8} rotationIntensity={1} floatIntensity={1}>
         <mesh position={[isMobile ? 0 : -2, -3, -1]}>
           <boxGeometry args={[0.4, 0.4, 0.4]} />
@@ -80,20 +75,35 @@ function FloatingShapes() {
 }
 
 export default function Scene() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Jab tak client side mounted na ho, kuch render na karein
+  if (!mounted) {
+    return <div className="w-full h-full bg-white" />;
+  }
+
   return (
     <Canvas
       camera={{ position: [0, 0, 8], fov: 40 }}
       style={{ background: "#ffffff" }}
+      // WebGL optimization props
+      gl={{ 
+        antialias: true,
+        powerPreference: "high-performance",
+        alpha: true 
+      }}
+      dpr={[1, 2]} // Screen resolution ke mutabiq adjust karega
     >
       <ambientLight intensity={0.7} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
       
-      {/* Background manual stars */}
       <Stars />
-      
       <FloatingShapes />
 
-      {/* Shadow under shapes */}
       <ContactShadows
         position={[0, -3.5, 0]}
         opacity={0.3}

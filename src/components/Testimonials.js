@@ -9,42 +9,36 @@ const testimonials = [
     name: "Robert J. Smith",
     role: "Ocean Shore Store Owner",
     feedback: "The quality is top-notch! My logos look crisp on every product. Highly recommended for any serious business.",
-    img: "/client1.webp",
     rating: 5,
   },
   {
     name: "David Smith",
     role: "Apparel Brand Owner",
     feedback: "Working with Zaib was seamless. The results exceeded expectations, especially the speed of the Next.js site.",
-    img: "/client2.webp",
     rating: 5,
   },
   {
     name: "Emma",
     role: "Textile CEO Texas",
     feedback: "Innovative approach and constant support. They are now our go-to partner for all digital design needs.",
-    img: "/client3.webp",
     rating: 4.5,
   },
   {
     name: "Alex Miller",
     role: "Startup Owner",
     feedback: "Impressive quality and delivery speed. Their conversion-focused UI design helped us double our sales.",
-    img: "/client.webp",
     rating: 5,
   },
   {
     name: "Jason Reed",
     role: "MotorSport Team Owner",
     feedback: "Best quality I’ve seen so far. My brand looks extremely professional and ready for the global market.",
-    img: "/client5.webp",
     rating: 5,
   },
   {
     name: "Sarah Jenkins",
     role: "E-com Strategist",
     feedback: "The WordPress customization was flawless. Extremely easy to manage and very fast loading times.",
-    img: "/client6.webp",
     rating: 5,
   },
 ];
@@ -66,9 +60,7 @@ const TestimonialRow = ({ items, direction = -1, speed = 20 }) => {
           >
             <div className="flex justify-between items-start mb-6">
               <div className="flex gap-4 items-center">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-blue-600">
-                  <Image src={item.img} alt={item.name} fill className="object-cover" />
-                </div>
+               
                 <div>
                   <h4 className="font-bold text-slate-900 text-base">{item.name}</h4>
                   <p className="text-blue-600 text-[10px] font-bold uppercase tracking-widest">{item.role}</p>

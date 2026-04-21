@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, HelpCircle } from "lucide-react";
@@ -53,10 +53,11 @@ export default function FAQ() {
               <p className="text-slate-500 text-lg font-medium mb-10">
                 Can't find what you're looking for? Reach out to our team for a personal consultation.
               </p>
-              
-              <button className="px-8 py-4 bg-[#0F172A] text-white rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-xl shadow-slate-200">
+              <Link href="/contact" className="w-full">
+              <button className=" cursor-pointer px-8 py-4 bg-[#0F172A] text-white rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-xl shadow-slate-200">
                 Contact Support
               </button>
+              </Link>
             </motion.div>
           </div>
 
@@ -77,7 +78,7 @@ export default function FAQ() {
                 >
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : i)}
-                    className="w-full flex justify-between items-center p-6 md:p-8 text-left"
+                    className="w-full cursor-pointer flex justify-between items-center p-6 md:p-8 text-left"
                   >
                     <span className={`text-lg md:text-xl font-bold transition-colors ${
                       isOpen ? "text-blue-600" : "text-[#0F172A]"
