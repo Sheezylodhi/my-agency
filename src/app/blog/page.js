@@ -5,38 +5,62 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Calendar, User, ArrowUpRight, Search } from "lucide-react";
 
+
 const blogs = [
   {
-    slug: "modern-website-trends-2026",
-    title: "Modern Website Trends 2026: The Era of Motion",
-    desc: "Explore the latest UI/UX patterns, motion design trends and conversion-focused layouts that are dominating the industry this year.",
+    slug: "business-website-2026",
+    title: "Why Your Business Needs a Website in 2026",
+    desc: "Learn why having a business website in 2026 is essential to get more customers, build trust, and grow your online presence.",
+    tag: "Business",
+    image: "/blog1.jpg",
+    author: "WebMash Labs",
+    date: "22 Apr 2026",
+    avatar: "/author.jpg",
+    keywords: [
+      "business website 2026",
+      "small business website importance",
+      "why your business needs a website",
+      "website for business growth",
+      "get clients online"
+    ]
+  },
+  {
+    slug: "website-design-trends-2026",
+    title: "Top Website Design Trends in 2026 That Boost Conversions",
+    desc: "Discover modern website design trends in 2026 that improve user experience and increase conversions for your business.",
     tag: "Design",
-    image: "/",
-    author: "Olivia Rhye",
-    date: "20 Jan 2026",
-    avatar: "",
+    image: "/blog2.jpg",
+    author: "WebMash Labs",
+    date: "22 Apr 2026",
+    avatar: "/author.jpg",
+    keywords: [
+      "website design trends 2026",
+      "modern web design ideas",
+      "high converting website design",
+      "UI UX trends 2026",
+      "conversion focused design"
+    ]
   },
   {
-    slug: "seo-guide",
-    title: "The Ultimate SEO Guide for 2026 & Beyond",
-    desc: "Step-by-step guide to ranking your website and building long-term organic traffic using AI-driven keyword strategies.",
-    tag: "Marketing",
-    image: "/",
-    author: "Phoenix Baker",
-    date: "18 Jan 2026",
-    avatar: "",
-  },
-  {
-    slug: "performance-optimization",
-    title: "Optimizing Next.js for Core Web Vitals",
-    desc: "How modern agencies build ultra-fast websites using Next.js 15 and smart rendering patterns to hit 100/100 on Lighthouse.",
+    slug: "nextjs-vs-wordpress-2026",
+    title: "Next.js vs WordPress: Which Is Better for Your Business?",
+    desc: "Compare Next.js vs WordPress and find out which platform is best for performance, SEO, and business growth in 2026.",
     tag: "Development",
-    image: "/",
-    author: "Lana Steiner",
-    date: "15 Jan 2026",
-    avatar: "",
+    image: "/blog3.jpg",
+    author: "WebMash Labs",
+    date: "22 Apr 2026",
+    avatar: "/author.jpg",
+    keywords: [
+      "nextjs vs wordpress",
+      "wordpress or nextjs which is better",
+      "best platform for business website",
+      "nextjs performance vs wordpress",
+      "modern web development platform"
+    ]
   },
 ];
+
+
 
 export default function Blog() {
   return (
