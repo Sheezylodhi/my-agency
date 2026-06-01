@@ -1,14 +1,16 @@
-import { Globe, Mail } from "lucide-react";
-
 export default function EmailSignature() {
   return (
-    <div style={{ fontFamily: "'Segoe UI', Roboto, Helvetica, Arial, sans-serif", paddingTop: "100px" }}>
+    <div
+      style={{
+        fontFamily: "'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+        paddingTop: "100px",
+      }}
+    >
       <table cellPadding="0" cellSpacing="0" style={{ borderCollapse: "collapse" }}>
         <tbody>
           <tr>
             {/* LOGO SECTION */}
             <td style={{ verticalAlign: "middle", paddingRight: "24px" }}>
-              {/* Perfect Circle Container */}
               <div
                 style={{
                   width: "90px",
@@ -24,6 +26,7 @@ export default function EmailSignature() {
               >
                 <img
                   src="https://my-agency-omega-two.vercel.app/MashLogowithbackgorund.jpg"
+                  alt="Logo"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -31,24 +34,93 @@ export default function EmailSignature() {
                     padding: "6px",
                     boxSizing: "border-box",
                   }}
-                  alt="Logo"
                 />
               </div>
             </td>
 
-            {/* SMOOTH VERTICAL DIVIDER */}
-            <td style={{ width: "1px", backgroundColor: "#e2e8f0", padding: 0 }} />
+            {/* DIVIDER */}
+            <td
+              style={{
+                width: "1px",
+                backgroundColor: "#e2e8f0",
+                padding: 0,
+              }}
+            />
 
             {/* TEXT SECTION */}
             <td style={{ verticalAlign: "middle", paddingLeft: "24px" }}>
               {/* NAME */}
-              <h2 style={{ margin: "0 0 2px 0", fontSize: "20px", fontWeight: "700", color: "#0f172a", letterSpacing: "-0.5px" }}>
-                Evan Brooks
-              </h2>
+             {/* NAME */}
+<h2
+  style={{
+    margin: "0",
+    fontSize: "20px",
+    fontWeight: "700",
+    color: "#0f172a",
+    letterSpacing: "-0.5px",
+  }}
+>
+  Evan Brooks
+</h2>
+
+{/* POSITION */}
+<p
+  style={{
+    margin: "2px 0 0 0",
+    fontSize: "13px",
+    color: "#0a66c2",
+    fontWeight: "600",
+  }}
+>
+  Sales Representative
+</p>
+
+{/* COMPANY */}
+<p
+  style={{
+    margin: "4px 0 12px 0",
+    fontSize: "12px",
+    color: "#64748b",
+    fontWeight: "500",
+    letterSpacing: "0.5px",
+  }}
+>
+  WEBMASH LABS
+</p>
 
               {/* ROLE */}
-              <p style={{ margin: "0 0 12px 0", fontSize: "12px", color: "#0a66c2", fontWeight: "600", textTransform: "uppercase", letterSpacing: "0.8px" }}>
-                Full Stack Web Developer <span style={{ color: "#cbd5e1", margin: "0 4px", fontWeight: "normal" }}>|</span> WordPress <span style={{ color: "#cbd5e1", margin: "0 4px", fontWeight: "normal" }}>|</span> UI/UX Designer
+              <p
+                style={{
+                  margin: "0 0 12px 0",
+                  fontSize: "12px",
+                  color: "#0a66c2",
+                  fontWeight: "600",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.8px",
+                }}
+              >
+                
+                Full Stack Web Developer
+                <span
+                  style={{
+                    color: "#cbd5e1",
+                    margin: "0 4px",
+                    fontWeight: "normal",
+                  }}
+                >
+                  |
+                </span>
+                WordPress
+                <span
+                  style={{
+                    color: "#cbd5e1",
+                    margin: "0 4px",
+                    fontWeight: "normal",
+                  }}
+                >
+                  |
+                </span>
+                UI/UX Designer
               </p>
 
               {/* CONTACT DETAILS */}
@@ -56,13 +128,25 @@ export default function EmailSignature() {
                 <tbody>
                   {/* WEBSITE */}
                   <tr>
-                    <td style={{ paddingRight: "8px", paddingBottom: "4px", verticalAlign: "middle", color: "#64748b" }}>
-                      <Globe size={14} strokeWidth={2.5} style={{ display: "block" }} />
+                    <td
+                      style={{
+                        paddingRight: "8px",
+                        paddingBottom: "4px",
+                        color: "#64748b",
+                        fontSize: "13px",
+                      }}
+                    >
+                      🌐
                     </td>
-                    <td style={{ paddingBottom: "4px", verticalAlign: "middle" }}>
+                    <td style={{ paddingBottom: "4px" }}>
                       <a
                         href="https://my-agency-omega-two.vercel.app/"
-                        style={{ fontSize: "13px", color: "#334155", textDecoration: "none", fontWeight: "500" }}
+                        style={{
+                          fontSize: "13px",
+                          color: "#334155",
+                          textDecoration: "none",
+                          fontWeight: "500",
+                        }}
                       >
                         webmashlabs.com
                       </a>
@@ -71,13 +155,24 @@ export default function EmailSignature() {
 
                   {/* EMAIL */}
                   <tr>
-                    <td style={{ paddingRight: "8px", verticalAlign: "middle", color: "#64748b" }}>
-                      <Mail size={14} strokeWidth={2.5} style={{ display: "block" }} />
+                    <td
+                      style={{
+                        paddingRight: "8px",
+                        color: "#64748b",
+                        fontSize: "13px",
+                      }}
+                    >
+                      ✉️
                     </td>
-                    <td style={{ verticalAlign: "middle" }}>
+                    <td>
                       <a
-                        href="mailto:Webmashlabs21@gmail.com"
-                        style={{ fontSize: "13px", color: "#334155", textDecoration: "none", fontWeight: "500" }}
+                        href="mailto:webmashlabs21@gmail.com"
+                        style={{
+                          fontSize: "13px",
+                          color: "#334155",
+                          textDecoration: "none",
+                          fontWeight: "500",
+                        }}
                       >
                         webmashlabs21@gmail.com
                       </a>
@@ -94,7 +189,7 @@ export default function EmailSignature() {
                   fontStyle: "italic",
                   fontWeight: "500",
                   color: "#94a3b8",
-                  letterSpacing: "0.3px"
+                  letterSpacing: "0.3px",
                 }}
               >
                 Design. Develop. Dominate.
