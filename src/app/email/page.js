@@ -25,7 +25,7 @@ export default function EmailSignature() {
                 }}
               >
                 <img
-                  src="https://my-agency-omega-two.vercel.app/MashLogowithbackgorund.jpg"
+                  src="https://my-agency-omega-two.vercel.app/webmashlogo (2).png"
                   alt="Logo"
                   style={{
                     width: "100%",
