@@ -1,66 +1,100 @@
+import { Globe, Mail } from "lucide-react";
+
 export default function EmailSignature() {
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", paddingTop:"100px" }}>
-      <table cellPadding="0" cellSpacing="0">
+    <div style={{ fontFamily: "'Segoe UI', Roboto, Helvetica, Arial, sans-serif", paddingTop: "100px" }}>
+      <table cellPadding="0" cellSpacing="0" style={{ borderCollapse: "collapse" }}>
         <tbody>
           <tr>
-            {/* LOGO */}
-            <td style={{ verticalAlign: "top", paddingRight: "15px", }}>
-              <img
-                src="https://my-agency-omega-two.vercel.app/MashLogowithbackgorund.jpg"
-                width="90"
-                height="90"
+            {/* LOGO SECTION */}
+            <td style={{ verticalAlign: "middle", paddingRight: "24px" }}>
+              {/* Perfect Circle Container */}
+              <div
                 style={{
+                  width: "90px",
+                  height: "90px",
                   borderRadius: "50%",
-                  objectFit: "cover",
                   border: "2px solid #0a66c2",
+                  backgroundColor: "#060f23",
+                  overflow: "hidden",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
-              />
+              >
+                <img
+                  src="https://my-agency-omega-two.vercel.app/MashLogowithbackgorund.jpg"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    padding: "6px",
+                    boxSizing: "border-box",
+                  }}
+                  alt="Logo"
+                />
+              </div>
             </td>
 
-            {/* TEXT */}
-            <td style={{ verticalAlign: "top" }}>
+            {/* SMOOTH VERTICAL DIVIDER */}
+            <td style={{ width: "1px", backgroundColor: "#e2e8f0", padding: 0 }} />
+
+            {/* TEXT SECTION */}
+            <td style={{ verticalAlign: "middle", paddingLeft: "24px" }}>
               {/* NAME */}
-              <p style={{ margin: 0, fontSize: "18px", fontWeight: "bold" }}>
+              <h2 style={{ margin: "0 0 2px 0", fontSize: "20px", fontWeight: "700", color: "#0f172a", letterSpacing: "-0.5px" }}>
                 Evan Brooks
-              </p>
+              </h2>
 
               {/* ROLE */}
-              <p style={{ margin: "2px 0 6px", fontSize: "13px", color: "#555" }}>
-                Full Stack Web Developer | WordPress | UI/UX Designer
+              <p style={{ margin: "0 0 12px 0", fontSize: "12px", color: "#0a66c2", fontWeight: "600", textTransform: "uppercase", letterSpacing: "0.8px" }}>
+                Full Stack Web Developer <span style={{ color: "#cbd5e1", margin: "0 4px", fontWeight: "normal" }}>|</span> WordPress <span style={{ color: "#cbd5e1", margin: "0 4px", fontWeight: "normal" }}>|</span> UI/UX Designer
               </p>
 
-              {/* COMPANY */}
-              <p style={{ margin: 0, fontSize: "13px" }}>
-                🌐{" "}
-                <a
-                  href="https://my-agency-omega-two.vercel.app/"
-                  style={{  textDecoration: "none" }}
-                >
-                  WebMashLabs
-                </a>
-              </p>
+              {/* CONTACT DETAILS */}
+              <table cellPadding="0" cellSpacing="0" style={{ margin: "0 0 8px 0" }}>
+                <tbody>
+                  {/* WEBSITE */}
+                  <tr>
+                    <td style={{ paddingRight: "8px", paddingBottom: "4px", verticalAlign: "middle", color: "#64748b" }}>
+                      <Globe size={14} strokeWidth={2.5} style={{ display: "block" }} />
+                    </td>
+                    <td style={{ paddingBottom: "4px", verticalAlign: "middle" }}>
+                      <a
+                        href="https://my-agency-omega-two.vercel.app/"
+                        style={{ fontSize: "13px", color: "#334155", textDecoration: "none", fontWeight: "500" }}
+                      >
+                        webmashlabs.com
+                      </a>
+                    </td>
+                  </tr>
 
-              {/* CONTACT */}
-              <p style={{ margin: "4px 0", fontSize: "13px" }}>
-                📧{" "}
-                <a
-                  href="mailto:Webmashlabs21@gmail.com"
-                  style={{  textDecoration: "none" }}
-                >
-                  Webmashlabs21@gmail.com
-                </a>
-                
-            
-              </p>
+                  {/* EMAIL */}
+                  <tr>
+                    <td style={{ paddingRight: "8px", verticalAlign: "middle", color: "#64748b" }}>
+                      <Mail size={14} strokeWidth={2.5} style={{ display: "block" }} />
+                    </td>
+                    <td style={{ verticalAlign: "middle" }}>
+                      <a
+                        href="mailto:Webmashlabs21@gmail.com"
+                        style={{ fontSize: "13px", color: "#334155", textDecoration: "none", fontWeight: "500" }}
+                      >
+                        webmashlabs21@gmail.com
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
 
               {/* SLOGAN */}
               <p
                 style={{
-                  marginTop: "6px",
-                  fontSize: "13px",
-                  fontWeight: "bold",
-                  color: "#929090",
+                  margin: "8px 0 0 0",
+                  fontSize: "12px",
+                  fontStyle: "italic",
+                  fontWeight: "500",
+                  color: "#94a3b8",
+                  letterSpacing: "0.3px"
                 }}
               >
                 Design. Develop. Dominate.

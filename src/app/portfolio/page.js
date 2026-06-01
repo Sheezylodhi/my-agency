@@ -7,52 +7,61 @@ import Image from "next/image";
 import Link from "next/link";
 
 const projects = [
-  { 
-    id: "Real-Time", // Added ID for routing
-    title: "TeamSync - Real-Time Collaboration Platform", 
-    category: "web", 
-    desc: "A MERN stack application designed for dynamic team collaboration. It features real-time Kanban boards, instant messaging using WebSockets, and personalized dashboards for tracking project progress and team productivity.",
-    image: "/web6.png",
-    icon: <Globe size={20} />
-  },
+  {
+  id: "myshop-ecommerce", 
+  title: "MYSHOP - Modern E-Commerce Platform", 
+  category: "web", 
+  desc: "A premium full-stack e-commerce store built with Next.js and Tailwind CSS. It features dynamic category routing (Men, Women, Kids), a fully responsive design, seamless seamless Stripe/Card payment integration, and an instant checkout workflow with a sliding cart panel.",
+  image: "/webmashonlinestore.png", // Jo image maine aapko banakar di hai, uska path yahan aayega
+  icon: <Globe size={20} />
+},
+ 
    { 
-    id: "ZS Digitizing", // Added ID for routing
+    id: "zs-digitizing", // Added ID for routing
     title: "ZS Digitizing – End-to-End Enterprise Management System", 
     category: "web", 
     desc: "A comprehensive full-stack web application designed for an embroidery digitizing business. This project features a high-conversion landing page with responsive desktop and mobile views, a transparent tiered pricing system, and a dynamic portfolio with advanced filtering. Beyond the frontend, it includes a robust Admin Dashboard for operational overview (order and visitor tracking) and a dedicated Client Dashboard for seamless order monitoring and request management. Built with modern web technologies to ensure scalability, security, and a premium user experience.",
     image: "/web1.png",
     icon: <Globe size={20} />
   },
+   { 
+    id: "real-time-teamsync", // Added ID for routing
+    title: "TeamSync - Real-Time Collaboration Platform", 
+    category: "web", 
+    desc: "A MERN stack application designed for dynamic team collaboration. It features real-time Kanban boards, instant messaging using WebSockets, and personalized dashboards for tracking project progress and team productivity.",
+    image: "/webmashteamsync.png",
+    icon: <Globe size={20} />
+  },
   { 
-    id: "CraftHome",
+    id: "crafthome-ecommerce",
     title: "CraftHome - Headless E-commerce Solution", 
     category: "web", 
     desc: "A high-performance headless e-commerce storefront built using Next.js for the frontend and Shopify API for backend. Focused on core Web Vitals, it delivers lightning-fast page loads, dynamic routing, and a secure checkout flow.",
-    image: "/web5.png",
+    image: "/webmashcrafthome.png",
     icon: <Globe size={20} />
   },
   { 
-    id: "CryptoPulse", // Added ID for routing
+    id: "cryptopulse-tracker", // Added ID for routing
     title: "CryptoPulse - Real-Time Crypto Tracker", 
     category: "web", 
     desc: "A React.js application that integrates with live cryptocurrency APIs to display real-time market data, dynamic interactive price charts, and portfolio performance metrics. Built with a responsive design and optimized for fast data updates.",
-    image: "/web4.png",
+    image: "/webmashcryptopulse.png",
     icon: <Globe size={20} />
   },
   { 
-    id: "AI-Write", // Added ID for routing
+    id: "aiwrite-saas", // Added ID for routing
     title: "AI-Write - SaaS Content Generation Tool", 
     category: "web", 
     desc: "A modern SaaS application powered by Next.js and OpenAI API. This platform allows users to generate SEO-friendly blog posts, marketing copy, and social media captions using advanced AI, featuring a clean user interface and output customization.",
-    image: "/web3.png",
+    image: "/webmashaiwrites.png",
     icon: <Globe size={20} />
   },
   { 
-    id: "DevBlog", // Added ID for routing
+    id: "devblog-platform", // Added ID for routing
     title: "DevBlog - Dynamic Content Platform", 
     category: "web", 
     desc: "A full stack blog application utilizing Next.js for Server-Side Rendering (SSR) and a headless CMS (like Strapi) for content management. It features dynamic routing, SEO optimization, and a responsive reading experience.",
-    image: "/web2.png",
+    image: "/webmashdevblog.png",
     icon: <Globe size={20} />
   },
  
@@ -61,7 +70,7 @@ const projects = [
     title: "Miller & Associates – Professional Law Firm Website", 
     category: "wordpress", 
     desc: "A high-authority WordPress site built for a law firm. Features integrated consultation forms, practice area modules, and a professional layout optimized for lead generation.",
-    image: "/wordpress5.png",
+    image: "/webmashWmiller.png",
     icon: <Layout size={20} />
   },
   { 
@@ -69,7 +78,7 @@ const projects = [
     title: "The Artisan Collective – Full WooCommerce Store", 
     category: "wordpress", 
     desc: "A high-performing e-commerce store built on WordPress and WooCommerce. Includes custom product grids, secure payment gateway integration, and automated inventory management.",
-    image: "/wordpress4.png",
+    image: "/webmashWartisan.png",
     icon: <Layout size={20} />
   },
   { 
@@ -77,7 +86,7 @@ const projects = [
     title: "Wanderlust Diary – SEO-Optimized Lifestyle Blog", 
     category: "wordpress", 
     desc: "A fast-loading, content-driven blog designed for travel enthusiasts. Features include social media auto-sync, ad-optimized layouts, and a clean reading experience for high user retention.",
-    image: "/wordpress3.png",
+    image: "/webmashWwanderlust.png",
     icon: <Layout size={20} />
   },
   { 
@@ -85,7 +94,7 @@ const projects = [
     title: "Capture Moments – Minimalist Photography Portfolio", 
     category: "wordpress", 
     desc: "A visual-first WordPress portfolio designed to showcase high-resolution photography. Minimalist navigation ensures that the focus remains entirely on the artist's work.",
-    image: "/wordpress2.png",
+    image: "/webmashWcapture.png",
     icon: <Layout size={20} />
   },
   { 
@@ -93,7 +102,7 @@ const projects = [
     title: "Digital Growth – High-Conversion Landing Page", 
     category: "wordpress", 
     desc: "A conversion-focused landing page built to sell digital products. Designed with psychological triggers and clear CTA sections to maximize download rates and sales.",
-    image: "/wordpress1.png",
+    image: "/webmashWdigital.png",
     icon: <Layout size={20} />
   },
   { 
@@ -101,7 +110,7 @@ const projects = [
     title: "Sneaker Hub – E-commerce Mobile UI", 
     category: "figma", 
     desc: "A user-centric mobile app design focused on a seamless shopping experience. Features include intuitive product filtering, an interactive gallery, and a streamlined one-page checkout.",
-    image: "/Figma5.png",
+    image: "/webmashFsneakerhub.png",
     icon: <Layers size={20} />
   },
   { 
@@ -109,7 +118,7 @@ const projects = [
     title: "DataScale – SaaS Analytics Dashboard", 
     category: "figma", 
     desc: "A complex data visualization dashboard designed for SaaS platforms. Featuring a sleek dark-mode interface with interactive charts to help users track business KPIs effortlessly.",
-    image: "/Figma4.png",
+    image: "/webmashFdatascale.png",
     icon: <Layers size={20} />
   },
   { 
@@ -117,7 +126,7 @@ const projects = [
     title: "Foodie Express – Order Tracking & User Profile", 
     category: "figma", 
     desc: "A clean and functional UI for a food delivery service. Focused on user convenience, the design features easy navigation for order history, tracking, and personalized settings.",
-    image: "/Figma3.png",
+    image: "/webmashFfoodie.png",
     icon: <Layers size={20} />
   },
   { 
