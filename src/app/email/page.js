@@ -21,16 +21,17 @@ export default function EmailSignature() {
     }}
   >
     <img
-      src="https://my-agency-omega-two.vercel.app/webmashlogo (2).png"
-      alt="Logo"
-      width="70" 
-      style={{
-        display: "inline-block",
-        verticalAlign: "middle",
-        maxWidth: "100%",
-        height: "auto"
-      }}
-    />
+  src="https://my-agency-omega-two.vercel.app/webmashfinallogo.png"
+  alt="Logo"
+  width="90" // Container size ke barabar kar diya
+  height="90" // Container size ke barabar kar diya
+  style={{
+    display: "block",
+    width: "90px",
+    height: "90px",
+    border: "none"
+  }}
+/>
   </div>
 </td>
 
@@ -58,7 +59,7 @@ export default function EmailSignature() {
                   <tr>
                     <td style={{ paddingRight: "8px", fontSize: "13px" }}>🌐</td>
                     <td>
-                      <a href="https://my-agency-omega-two.vercel.app/" style={{ fontSize: "13px", color: "#334155", textDecoration: "none" }}>
+                      <a href="https://webmashlabs.vercel.app/" style={{ fontSize: "13px", color: "#334155", textDecoration: "none" }}>
                         webmashlabs.com
                       </a>
                     </td>
