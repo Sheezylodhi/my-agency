@@ -6,18 +6,18 @@ import Pricing from "@/components/Pricing";
 import FAQ from "@/components/Faq";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
-
+import NewsletterPopup from "@/components/NewsletterPopup"; // 1. Import it
 
 export default function Home() {
   return (
     <main className="bg-black text-white">
+      <NewsletterPopup /> {/* 2. Add it here */}
       <Hero />
       <Services />
       <WhyChooseUs />
       <Pricing />
       <FAQ />
       <Testimonials />
-
     </main>
   );
 }
