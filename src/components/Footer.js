@@ -33,7 +33,7 @@ export default function Footer() {
               <h2 className="text-3xl md:text-5xl font-black mb-4">Ready to build something <br/> extraordinary?</h2>
               <p className="text-blue-100 text-lg opacity-90">Let's turn your vision into a high-performance reality.</p>
             </div>
-            <Link href="/quote" className="group bg-white text-blue-700 px-10 py-5 rounded-2xl font-black text-lg flex items-center gap-3 hover:bg-blue-50 transition-all active:scale-95 whitespace-nowrap">
+            <Link href="/qoute" className="group bg-white text-blue-700 px-10 py-5 rounded-2xl font-black text-lg flex items-center gap-3 hover:bg-blue-50 transition-all active:scale-95 whitespace-nowrap">
               Start a Project <ArrowRight className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </div>

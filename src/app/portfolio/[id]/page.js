@@ -582,7 +582,7 @@ export default function ProjectDetail() {
       <section className="pb-32 px-6">
         <div className="max-w-5xl mx-auto bg-blue-600 rounded-[50px] p-12 md:p-24 text-center text-white shadow-2xl shadow-blue-200">
           <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">Ready to build something <br/> similar for your brand?</h2>
-          <Link href="/quote" className="inline-flex items-center gap-4 px-14 py-6 bg-white text-blue-600 rounded-[24px] font-black text-xl hover:bg-slate-900 hover:text-white transition-all shadow-xl">
+          <Link href="/qoute" className="inline-flex items-center gap-4 px-14 py-6 bg-white text-blue-600 rounded-[24px] font-black text-xl hover:bg-slate-900 hover:text-white transition-all shadow-xl">
             Start Your Project <ArrowRight size={24} />
           </Link>
         </div>

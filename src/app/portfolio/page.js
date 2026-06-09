@@ -302,7 +302,7 @@ export default function Portfolio() {
         {/* View More CTA */}
         <div className="mt-24 text-center">
           <Link 
-            href="/quote" 
+            href="/qoute" 
             className="group relative inline-flex items-center gap-4 px-14 py-6 bg-slate-900 text-white rounded-[24px] font-black text-xl hover:bg-blue-600 transition-all shadow-2xl"
           >
             Start Your Project <ArrowRight className="group-hover:translate-x-2 transition-transform" />

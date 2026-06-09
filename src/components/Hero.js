@@ -74,7 +74,7 @@ export default function Hero() {
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="/quote"
+              href="/qoute"
               className="px-8 py-3.5 bg-[#0F172A] hover:bg-[#1D4ED8] transition-all rounded-xl text-white font-semibold shadow-lg hover:-translate-y-0.5 active:scale-95 text-sm"
             >
               Get Free Quote

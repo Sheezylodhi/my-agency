@@ -231,7 +231,7 @@ export default function ServiceDetail() {
               <p className="text-slate-400 text-lg mb-12 max-w-xl mx-auto font-medium">
                 We are currently accepting new projects for Q2 2026. Let's discuss how we can scale your vision.
               </p>
-              <Link href="/quote" className="inline-block px-12 py-5 bg-blue-600 text-white rounded-3xl font-black text-xl hover:bg-white hover:text-slate-900 transition-all active:scale-95 shadow-2xl shadow-blue-600/30">
+              <Link href="/qoute" className="inline-block px-12 py-5 bg-blue-600 text-white rounded-3xl font-black text-xl hover:bg-white hover:text-slate-900 transition-all active:scale-95 shadow-2xl shadow-blue-600/30">
                 Book a Strategy Call
               </Link>
             </div>
