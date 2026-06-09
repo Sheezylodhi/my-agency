@@ -11,7 +11,7 @@ const servicesData = {
   "web-development": {
     title: "Web Development",
     subtitle: "Engineered for Performance",
-    image: "/services/web.jpg",
+    image: "/ServiceWdevelop.png",
     desc: "We build ultra-fast, SEO-optimized, and scalable web applications that turn visitors into loyal customers.",
     content: `In today's digital economy, your website is your hardest-working salesperson. We specialize in building high-end digital experiences using Next.js 15, React, and Node.js. 
 
@@ -29,7 +29,7 @@ const servicesData = {
   "wordpress": {
     title: "WordPress Development",
     subtitle: "Custom-Tailored CMS Solutions",
-    image: "/services/wp.jpg",
+    image: "/ServiceWordpress.png",
     desc: "Beyond templates—we create high-end, custom-coded WordPress environments that are easy to manage and impossible to ignore.",
     content: `Stop fighting with clunky builders. We deliver enterprise-grade WordPress solutions that combine the flexibility of the world's most popular CMS with the performance of a custom-coded site.
 
@@ -47,7 +47,7 @@ const servicesData = {
   "ui-ux-design": {
     title: "UI/UX Design",
     subtitle: "Human-Centric Interfaces",
-    image: "/services/uiux.jpg",
+    image: "/ServiceFigma.png",
     desc: "We design intuitive digital products that bridge the gap between user needs and your business goals.",
     content: `Design is not just how it looks; it's how it works. Our design process is rooted in user psychology and data-driven insights. 
 
@@ -65,7 +65,7 @@ const servicesData = {
   "graphic-design": {
     title: "Graphic Design",
     subtitle: "Visual Identity & Branding",
-    image: "/services/graphic.jpg",
+    image: "/ServiceGraphic.png",
     desc: "Strategic branding that defines your presence and commands attention in a crowded marketplace.",
     content: `Your brand is the gut feeling people have about your company. We help you control that narrative through sharp, cohesive, and modern visual identities.
 
@@ -149,7 +149,7 @@ export default function ServiceDetail() {
               className="relative"
             >
               <div className="rounded-[48px] overflow-hidden shadow-2xl border-8 border-white bg-slate-100 aspect-[4/3] relative">
-                <Image src={service.image} alt={service.title} fill className="object-cover" priority />
+                <Image src={service.image} alt={service.title} fill className="object-contain" priority />
               </div>
               {/* Floating Badge */}
               <div className="absolute -bottom-6 -right-6 md:right-12 p-6 bg-white rounded-3xl shadow-2xl border border-slate-100 flex items-center gap-4 max-w-[240px]">
