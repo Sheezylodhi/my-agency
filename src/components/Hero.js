@@ -19,11 +19,11 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="h-screen w-full relative bg-white text-[#0F172A] overflow-hidden">
+    <section className="h-screen w-full relative z-0 bg-white text-[#0F172A] overflow-hidden">
 
       {/* ✅ Desktop pe hi 3D */}
       {!isMobile && (
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0  pointer-events-none">
           <Scene />
         </div>
       )}

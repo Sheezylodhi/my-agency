@@ -9,9 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ai-sdk/groq": "^3.0.39",
+    "@ai-sdk/openai": "^3.0.69",
+    "@ai-sdk/react": "^3.0.201",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.0",
     "@tailwindcss/postcss": "^4.2.2",
+    "ai": "^6.0.199",
     "cloudinary": "^2.9.0",
     "dotenv": "^17.4.2",
     "framer-motion": "^12.38.0",

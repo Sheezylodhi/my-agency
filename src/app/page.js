@@ -5,8 +5,8 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/Faq";
 import Testimonials from "@/components/Testimonials";
-import Footer from "@/components/Footer";
-import NewsletterPopup from "@/components/NewsletterPopup"; // 1. Import it
+import NewsletterPopup from "@/components/NewsletterPopup"; 
+// 1. Import it
 
 export default function Home() {
   return (

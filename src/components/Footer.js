@@ -18,7 +18,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-[#020617] text-white pt-24 overflow-hidden">
+    <footer className="relative z-0 bg-[#020617] text-white pt-24 overflow-hidden">
       
       {/* 1. Floating CTA Section */}
       <div className="max-w-7xl mx-auto px-6 mb-20">
