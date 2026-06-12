@@ -92,7 +92,7 @@ export default function Footer() {
               { name: "About Us", slug: "/about" },
               { name: "Pricing Plans", slug: "/#prices" },
               { name: "Privacy Policy", slug: "/privacy" },
-              { name: "Terms of Service", slug: "/terms" },
+              { name: "Terms of Service", slug: "/Terms" },
             ].map((item) => (
               <li key={item.name}>
                 <Link href={item.slug} className="hover:text-blue-500 transition-colors">

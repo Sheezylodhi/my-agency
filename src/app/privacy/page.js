@@ -7,22 +7,22 @@ const sections = [
   {
     title: "Data Collection",
     icon: <Database className="text-blue-600" size={24} />,
-    content: "We collect essential information like your name, email address, and project requirements specifically to provide tailored digital solutions. No unnecessary data points are ever tracked."
+    content: "We collect essential information such as your name, email address, and project requirements to provide tailored digital solutions. We ensure that no unnecessary data is ever tracked or stored."
   },
   {
     title: "Security Protocols",
     icon: <Lock className="text-blue-600" size={24} />,
-    content: "Our systems use industry-standard SSL encryption and secure cloud architecture to ensure that your project files and personal details remain inaccessible to unauthorized parties."
+    content: "Our systems utilize industry-standard SSL encryption and secure cloud architecture. This ensures that your project files and personal details remain protected and inaccessible to unauthorized parties."
   },
   {
     title: "Third-Party Privacy",
     icon: <EyeOff className="text-blue-600" size={24} />,
-    content: "We have a strict 'No-Sell' policy. Your data is never shared with third-party marketers. We only use trusted tools (like Stripe for payments) that adhere to global privacy standards."
+    content: "We maintain a strict 'No-Sell' policy. Your data is never shared with third-party marketers. We only integrate with trusted, globally compliant tools, such as Stripe, to facilitate secure payments."
   },
   {
     title: "User Consent",
     icon: <UserCheck className="text-blue-600" size={24} />,
-    content: "By initiating a project or using our contact forms, you agree to our data handling practices. You have the right to request data deletion at any stage of our collaboration."
+    content: "By initiating a project or using our contact forms, you agree to our data handling practices. You retain the right to request access to your data or its complete deletion at any stage of our collaboration."
   }
 ];
 
@@ -86,10 +86,10 @@ export default function Privacy() {
             </h2>
             <div className="space-y-4 text-slate-400 leading-relaxed">
               <p>
-                Hum apni privacy policy ko waqt ke sath update karte rehte hain taake wo naye digital laws (jaise GDPR aur CCPA) ke mutabiq rahe. Agar koi bara change hota hai, toh hum apne active clients ko email ke zariye notify karte hain.
+                We periodically update our privacy policy to ensure full compliance with evolving digital laws, including GDPR and CCPA. In the event of any significant changes, we notify our active clients directly via email.
               </p>
               <p>
-                Aapka data hamare liye sirf information nahi, trust hai. Agar aapko apne data ki security ke bare mein koi sawal hai, toh aap direct humse rabta kar sakte hain.
+                We treat your data as a commitment to trust, not just information. If you have any questions regarding the security of your data or our practices, please feel free to reach out to us at any time.
               </p>
             </div>
           </div>
@@ -100,7 +100,7 @@ export default function Privacy() {
         {/* Contact Footer */}
         <div className="mt-16 text-center">
           <p className="text-slate-500 font-medium">
-            Sawalat hain? <a href="mailto:privacy@youragency.com" className="text-blue-600 font-bold hover:underline">Humse Rabta Karein</a>
+            Have questions? <a href="mailto:webmashlabs21@gmail.com" className="text-blue-600 font-bold hover:underline">Contact our support team</a>
           </p>
         </div>
 

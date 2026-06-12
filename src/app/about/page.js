@@ -171,13 +171,16 @@ export default function About() {
             ))}
           </div>
         </div>
-        <div className="lg:w-1/2 h-[500px] w-full bg-slate-100 rounded-[50px] overflow-hidden relative group">
-           <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-transparent transition-all duration-500" />
-           {/* Add a professional agency photo here */}
-           <div className="absolute inset-0 flex items-center justify-center text-slate-300 font-bold italic">
-             [Professional Team/Office Image]
-           </div>
-        </div>
+       <div className="lg:w-1/2 h-[500px] w-full bg-slate-100 rounded-[50px] overflow-hidden relative group">
+  <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-transparent transition-all duration-500 z-10" />
+  
+  {/* Professional Image */}
+  <img 
+    src="/webmashabout.png" 
+    alt="Professional Digitizing Agency" 
+    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+  />
+</div>
       </div>
 
       {/* 5. FINAL CTA */}

@@ -114,7 +114,7 @@ export default function Terms() {
         >
           <p className="text-slate-500 mb-6">Need a custom contract for your enterprise project?</p>
           <a 
-            href="mailto:legal@youragency.com" 
+            href="mailto:webmashlabs21@gmail.com" 
             className="text-[#0F172A] font-black text-xl hover:text-blue-600 transition-colors underline decoration-blue-600 decoration-4 underline-offset-8"
           >
             Get in touch with our legal team
