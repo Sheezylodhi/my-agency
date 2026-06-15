@@ -2,57 +2,20 @@
 
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Float, ContactShadows } from "@react-three/drei";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 
-function Stars() {
-  const count = 200; // 🔥 reduced from 500
-
-  const positions = useMemo(() => {
-    const pos = new Float32Array(count * 3);
-    for (let i = 0; i < count * 3; i++) {
-      pos[i] = (Math.random() - 0.5) * 25;
-    }
-    return pos;
-  }, []);
-
+function FloatingCard({ position, color, scale = 1 }) {
   return (
-    <points>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          array={positions}
-          count={positions.length / 3}
-          itemSize={3}
+    <Float speed={1.2} rotationIntensity={0.4} floatIntensity={0.8}>
+      <mesh position={position} scale={scale}>
+        <boxGeometry args={[1.4, 0.9, 0.1]} />
+        <meshStandardMaterial
+          color={color}
+          metalness={0.25}
+          roughness={0.45}
         />
-      </bufferGeometry>
-      <pointsMaterial
-        color="#1D4ED8"
-        size={0.08}
-        sizeAttenuation
-        transparent
-        opacity={0.5}
-      />
-    </points>
-  );
-}
-
-function FloatingShapes() {
-  return (
-    <>
-      <Float speed={2} rotationIntensity={1.2} floatIntensity={1.2}>
-        <mesh position={[-4.5, 0.5, 0]}>
-          <icosahedronGeometry args={[0.9, 1]} />
-          <meshStandardMaterial color="#1D4ED8" wireframe />
-        </mesh>
-      </Float>
-
-      <Float speed={2.2} rotationIntensity={1.2} floatIntensity={1.5}>
-        <mesh position={[4.5, -0.5, 0]}>
-          <torusKnotGeometry args={[0.6, 0.2, 100, 16]} />
-          <meshStandardMaterial color="#334155" wireframe />
-        </mesh>
-      </Float>
-    </>
+      </mesh>
+    </Float>
   );
 }
 
@@ -62,8 +25,6 @@ export default function Scene() {
 
   useEffect(() => {
     setMounted(true);
-
-    // 🔥 low-end device detect
     const low = navigator.hardwareConcurrency <= 4;
     setIsLowEnd(low);
   }, []);
@@ -72,37 +33,54 @@ export default function Scene() {
 
   return (
     <Canvas
-      camera={{ position: [0, 0, 8], fov: 40 }}
-      style={{ background: "#ffffff" }}
+      camera={{ position: [0, 0, 8], fov: 45 }}
+      style={{
+        background: "transparent",
+        opacity: 0.65, // 🔥 soft premium background feel
+      }}
       gl={{
-        antialias: false, // 🔥 performance boost
+        antialias: false,
         powerPreference: "high-performance",
         alpha: true,
       }}
-      dpr={[1, 1.5]} // 🔥 optimized
+      dpr={[1, 1.5]}
     >
-      <ambientLight intensity={0.7} />
-      <directionalLight position={[5, 5, 5]} intensity={1} />
+      {/* SOFT LIGHTING (premium studio look) */}
+      <ambientLight intensity={0.45} />
+      <directionalLight position={[5, 5, 5]} intensity={0.7} />
+      <directionalLight position={[-5, -3, -5]} intensity={0.25} />
 
-      {/* 🔥 Stars only on good devices */}
-      {!isLowEnd && <Stars />}
+      {/* ❌ CENTER IS KEPT EMPTY ON PURPOSE (IMPORTANT) */}
 
-      <FloatingShapes />
+      {/* LEFT SIDE OBJECTS */}
+      <FloatingCard position={[-4.2, 1.2, -1]} color="#1D4ED8" />
+      <FloatingCard position={[-3.8, -1.5, -2]} color="#64748B" scale={1.1} />
 
+      {/* RIGHT SIDE OBJECTS */}
+      <FloatingCard position={[4.2, -1, -1]} color="#0F172A" />
+      <FloatingCard position={[3.8, 1.5, -2]} color="#1D4ED8" scale={1.1} />
+
+      {/* BACK DEPTH OBJECT (very subtle) */}
+      <FloatingCard position={[0, 2.5, -4]} color="#94A3B8" scale={1.3} />
+
+      {/* GROUND SHADOW (soft premium base) */}
       <ContactShadows
-        position={[0, -3.5, 0]}
-        opacity={0.25}
-        scale={12}
-        blur={2}
-        far={4}
+        position={[0, -2.8, 0]}
+        opacity={0.18}
+        scale={14}
+        blur={3}
+        far={5}
       />
 
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        autoRotate
-        autoRotateSpeed={0.4}
-      />
+      {/* AUTO ROTATE ONLY FOR GOOD DEVICES */}
+      {!isLowEnd && (
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          autoRotate
+          autoRotateSpeed={0.25}
+        />
+      )}
     </Canvas>
   );
 }

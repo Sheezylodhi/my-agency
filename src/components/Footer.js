@@ -45,13 +45,17 @@ export default function Footer() {
         
         {/* Brand Info */}
         <div className="flex flex-col items-start space-y-4">
-          <Link href="/" className="relative w-48 h-16">
-            <Image
-              src="/webmashlogo1.png"
-              alt="Webmash Logo"
-              fill
-              className="object-contain"
-            />
+          <Link href="/" className="relative flex items-center">
+            <div className="relative w-auto h-12 flex items-center"> {/* Restrict height and center */}
+              <Image
+                src="/webmashlogo1.png"
+                alt="Webmash Logo"
+                width={200}
+                height={50}
+                className="w-auto h-full object-contain object-left scale-110 origin-left" // Scale and maintain positioning
+                priority
+              />
+            </div>
           </Link>
           <p className="text-slate-400 leading-relaxed font-medium text-sm max-w-[280px]">
             We are a boutique digital agency focused on high-end web experiences, 

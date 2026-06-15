@@ -24,16 +24,19 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
         
         {/* Logo Section - Fixed Scaling */}
-        <Link href="/" className="relative z-[110] flex items-center">
-          <Image
-            src="/webmashlogo1.png"
-            alt="Webmash Logo"
-            width={350} // Size adjust kiya hai taake navbar mein fit aaye
-            height={50}
-            className="object-contain"
-            priority
-          />
-        </Link>
+    {/* Logo Section */}
+<Link href="/" className="relative flex items-center h-full">
+  <div className="relative w-auto h-[80%] flex items-center"> 
+    <Image
+      src="/webmashlogo1.png"
+      alt="Webmash Logo"
+      width={200}
+      height={50}
+      className="w-auto h-full object-contain object-left"
+      priority
+    />
+  </div>
+</Link>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-8">

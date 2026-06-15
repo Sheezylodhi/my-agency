@@ -12,54 +12,62 @@ const blogs = [
     title: "Why Your Business Needs a Website in 2026",
     desc: "Learn why having a business website in 2026 is essential to get more customers, build trust, and grow your online presence.",
     tag: "Business",
-    image: "/blog1.jpg",
+    image: "/blog1.png",
     author: "WebMash Labs",
     date: "22 Apr 2026",
-    avatar: "/author.jpg",
-    keywords: [
-      "business website 2026",
-      "small business website importance",
-      "why your business needs a website",
-      "website for business growth",
-      "get clients online"
-    ]
+    avatar: "/author.png",
   },
   {
     slug: "website-design-trends-2026",
     title: "Top Website Design Trends in 2026 That Boost Conversions",
     desc: "Discover modern website design trends in 2026 that improve user experience and increase conversions for your business.",
     tag: "Design",
-    image: "/blog2.jpg",
+    image: "/blog2.png",
     author: "WebMash Labs",
     date: "22 Apr 2026",
-    avatar: "/author.jpg",
-    keywords: [
-      "website design trends 2026",
-      "modern web design ideas",
-      "high converting website design",
-      "UI UX trends 2026",
-      "conversion focused design"
-    ]
+    avatar: "/author.png",
   },
   {
     slug: "nextjs-vs-wordpress-2026",
     title: "Next.js vs WordPress: Which Is Better for Your Business?",
     desc: "Compare Next.js vs WordPress and find out which platform is best for performance, SEO, and business growth in 2026.",
     tag: "Development",
-    image: "/blog3.jpg",
+    image: "/blog3.png",
     author: "WebMash Labs",
     date: "22 Apr 2026",
-    avatar: "/author.jpg",
-    keywords: [
-      "nextjs vs wordpress",
-      "wordpress or nextjs which is better",
-      "best platform for business website",
-      "nextjs performance vs wordpress",
-      "modern web development platform"
-    ]
+    avatar: "/author.png",
+  },
+  {
+    slug: "seo-strategies-2026",
+    title: "Mastering SEO: Strategies to Rank Higher in 2026",
+    desc: "The search landscape is changing. Learn the latest SEO strategies to ensure your website stays at the top of Google results.",
+    tag: "SEO",
+    image: "/blog4.png",
+    author: "WebMash Labs",
+    date: "25 Apr 2026",
+    avatar: "/author.png",
+  },
+  {
+    slug: "ai-in-web-development",
+    title: "How AI is Revolutionizing Web Development Workflow",
+    desc: "From automated coding to personalized user experiences, discover how AI tools are changing the way we build websites.",
+    tag: "Technology",
+    image: "/blog5.png",
+    author: "WebMash Labs",
+    date: "28 Apr 2026",
+    avatar: "/author.png",
+  },
+  {
+    slug: "speed-optimization-tips",
+    title: "Ultimate Guide to Speed Optimization for Modern Websites",
+    desc: "A fast website is key to retention. Learn expert techniques to optimize your site performance and reduce bounce rates.",
+    tag: "Development",
+    image: "/blog5.png",
+    author: "WebMash Labs",
+    date: "30 Apr 2026",
+    avatar: "/author.png",
   },
 ];
-
 
 
 export default function Blog() {

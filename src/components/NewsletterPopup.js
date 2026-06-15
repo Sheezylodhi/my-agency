@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { X, Sparkles, CheckCircle2, Loader2 } from 'lucide-react';
 
 export default function NewsletterPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,48 +30,68 @@ export default function NewsletterPopup() {
     }
   };
 
-  return (
+ return (
     <AnimatePresence>
       {isOpen && (
         <motion.div 
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-md"
         >
           <motion.div 
-            initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 50, opacity: 0 }}
-            className="relative w-full max-w-[420px] bg-gradient-to-b from-gray-900 to-black border border-white/10 rounded-3xl p-8"
+            initial={{ scale: 0.95, opacity: 0 }} 
+            animate={{ scale: 1, opacity: 1 }} 
+            exit={{ scale: 0.95, opacity: 0 }}
+            className="relative w-full max-w-[440px] bg-[#0B101D] border border-slate-800 rounded-[2rem] p-8 shadow-2xl overflow-hidden"
           >
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-purple-500 to-blue-600 rounded-t-3xl" />
-            <button onClick={() => setIsOpen(false)} className="absolute top-4 right-4 text-white/40 hover:text-white">✕</button>
+            {/* Ambient Glow */}
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl" />
             
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-6 bg-blue-500/10 rounded-full flex items-center justify-center border border-blue-500/20">
-                <span className="text-3xl">⚡</span>
+            <button 
+              onClick={() => setIsOpen(false)} 
+              className="absolute top-6 right-6 text-slate-500 hover:text-white transition-colors"
+            >
+              <X size={20} />
+            </button>
+            
+            <div className="text-center relative">
+              <div className="w-14 h-14 mx-auto mb-6 bg-blue-600/10 rounded-2xl flex items-center justify-center border border-blue-500/20">
+                <Sparkles className="text-blue-500" size={24} />
               </div>
-              <h2 className="text-3xl font-extrabold text-white mb-2">Stay Ahead.</h2>
-              <p className="text-gray-400 mb-8 text-sm">Join 500+ professionals getting exclusive updates.</p>
+              <h2 className="text-2xl font-bold text-white mb-2 tracking-tight">Level Up Your Workflow</h2>
+              <p className="text-slate-400 mb-8 text-sm leading-relaxed">
+                Join 1,000+ engineers receiving weekly insights on high-performance web development.
+              </p>
             </div>
 
             {status === 'success' ? (
-              <div className="py-8 text-center text-emerald-400 font-bold border border-emerald-500/20 bg-emerald-500/10 rounded-xl">
-                Successfully Subscribed! 🎉
-              </div>
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+                className="py-6 text-center flex flex-col items-center text-emerald-400 font-medium"
+              >
+                <CheckCircle2 size={48} className="mb-3" />
+                <p>You're on the list! Check your inbox. 🎉</p>
+              </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-3">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <input 
                   value={email} 
                   onChange={(e) => setEmail(e.target.value)} 
                   type="email" 
                   required 
-                  placeholder="name@company.com" 
-                  className="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:border-blue-500" 
+                  placeholder="Enter your email" 
+                  className="w-full bg-slate-950 border border-slate-800 p-4 rounded-xl text-white outline-none focus:ring-2 focus:ring-blue-600/50 focus:border-blue-600 transition-all" 
                 />
                 <button 
                   disabled={status === 'loading'}
-                  className="w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl font-bold transition"
+                  className="w-full bg-white hover:bg-slate-200 text-slate-950 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2"
                 >
-                  {status === 'loading' ? 'Processing...' : 'Get Access Now'}
+                  {status === 'loading' ? (
+                    <><Loader2 className="animate-spin" size={20} /> Processing...</>
+                  ) : 'Get Weekly Updates'}
                 </button>
+                <p className="text-[11px] text-slate-600 text-center">No spam, just pure value. Unsubscribe anytime.</p>
               </form>
             )}
           </motion.div>
