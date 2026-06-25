@@ -50,6 +50,26 @@ const projectsData = {
   liveLink: "https://www.zsdigitizing.com",
   image: "/web1.png" // Aapka portfolio thumbnail image path
 },
+"the-amber-oak": {
+  title: "The Amber Oak - Full-Stack Restaurant Management System",
+  category: "Web Development",
+  longDesc: "A sophisticated, high-performance online food ordering and restaurant management platform. It offers an end-to-end digital experience, bridging the gap between customer convenience and administrative control through a seamless MERN-stack architecture.",
+  problem: "Traditional restaurant systems often lack real-time synchronization between order intake and kitchen management, often resulting in fragmented operational workflows and poor customer engagement.",
+  solution: "Developed an integrated MERN-stack ecosystem featuring a dynamic, category-filtered digital menu, a streamlined multi-step checkout with secure Stripe payment processing, and a comprehensive real-time admin dashboard for data-driven operational oversight.",
+  tools: ["MongoDB", "Express.js", "React.js", "Node.js", "Stripe API", "Tailwind CSS"],
+  features: [
+    "Comprehensive Admin Dashboard for Order Tracking, Revenue Analytics, and Inventory Management",
+    "Dynamic Menu System with Category-Based Filtering (Burgers, Drinks, Biryani, etc.)",
+    "Secure User Authentication and Personalized Customer Profiles",
+    "Integrated Multi-Step Checkout Flow with Real-time Order Summaries",
+    "Stripe Payment Gateway Integration (Supports Card & Cash-on-Delivery)",
+    "Fully Responsive Mobile-First Design with Intuitive Hamburger Navigation",
+    "Interactive Restaurant Storytelling and Reservation Scheduling UI",
+    "Real-time Inventory Control and Order Status Breakdown Metrics"
+  ],
+  liveLink: "https://food-ordering-system-blush-zeta.vercel.app", 
+  image: "/webfood.png" 
+},
 "real-time-teamsync": {
   title: "TeamSync – Real-Time Enterprise Collaboration Platform",
   category: "Web Development",

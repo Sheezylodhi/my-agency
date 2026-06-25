@@ -24,6 +24,14 @@ const projects = [
     image: "/web1.png",
     icon: <Globe size={20} />
   },
+  {
+  id: "the-amber-oak",
+  title: "The Amber Oak - Complete MERN Stack Restaurant System",
+  category: "web",
+  desc: "A high-performance, end-to-end restaurant management and online food ordering platform. Built with the MERN stack, it features a real-time admin dashboard for order tracking and inventory, a responsive customer-facing storefront with dynamic category filtering, a seamless multi-step checkout flow, and secure integrated Stripe payment processing.",
+  image: "/webfood.png", // Yeh aapka final portfolio image path hai
+  icon: <Globe size={20} />
+},
    { 
     id: "real-time-teamsync", // Added ID for routing
     title: "TeamSync - Real-Time Collaboration Platform", 
