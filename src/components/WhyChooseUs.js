@@ -1,131 +1,282 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Rocket, ShieldCheck, Search, Users, Zap, Code2 } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const data = [
+// ============================================================================
+// DATA ARCHITECTURE (PURE BUSINESS VALUE PILLARS)
+// ============================================================================
+
+const TRUST_PILLARS = [
   {
-    title: "Fast & Reliable Delivery",
-    desc: "We don't just meet deadlines; we crush them. Our agile workflow ensures high-performance delivery without cutting corners.",
-    icon: <Zap className="w-6 h-6" />,
-    color: "from-blue-600 to-cyan-500",
+    id: "business-understanding",
+    number: "01",
+    tag: "STRATEGIC ALIGNMENT",
+    headline: "We understand your business first.",
+    description:
+      "Before writing a single line or drawing a layout, we dive deep into your revenue model, target audience, and market position. Every decision we make is anchored in your unique business goals.",
+    renderVisual: () => (
+      <div className="space-y-6">
+        <div className="flex justify-between items-center border-b border-slate-100 pb-4 text-xs font-mono text-slate-400">
+          <span>STRATEGY SESSION // 01</span>
+          <span className="text-blue-600 font-semibold">Discovery &amp; Alignment</span>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
+            <span className="font-mono text-[10px] text-blue-600 uppercase tracking-wider block">OBJECTIVE</span>
+            <h4 className="font-bold text-slate-900 text-sm">Revenue Model Analysis</h4>
+            <p className="text-xs text-slate-500 font-light leading-relaxed">Mapping your client acquisition channels and conversion bottlenecks.</p>
+          </div>
+          <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
+            <span className="font-mono text-[10px] text-blue-600 uppercase tracking-wider block">ALIGNMENT</span>
+            <h4 className="font-bold text-slate-900 text-sm">Target Audience Blueprint</h4>
+            <p className="text-xs text-slate-500 font-light leading-relaxed">Understanding what motivates your high-value buyers to take action.</p>
+          </div>
+        </div>
+        <div className="p-4 rounded-2xl bg-blue-50 border border-blue-100/60 flex items-center justify-between text-xs font-mono text-blue-900">
+          <span>Status: Foundation Secured</span>
+          <span className="text-blue-600 font-bold">100% Focused on Your Goals</span>
+        </div>
+      </div>
+    ),
   },
   {
-    title: "Modern UI/UX Design",
-    desc: "Design that speaks. We create high-converting, aesthetic interfaces that align perfectly with your brand's core identity.",
-    icon: <Rocket className="w-6 h-6" />,
-    color: "from-indigo-600 to-blue-500",
+    id: "trust-credibility",
+    number: "02",
+    tag: "BRAND AUTHORITY",
+    headline: "Your website should build instant trust.",
+    description:
+      "First impressions happen in seconds. We craft high-end, premium digital spaces that position your company as the undeniable leader in your industry, eliminating client hesitation.",
+    renderVisual: () => (
+      <div className="space-y-6">
+        <div className="flex justify-between items-center border-b border-slate-100 pb-4 text-xs font-mono text-slate-400">
+          <span>BRAND PERCEPTION // 02</span>
+          <span className="text-blue-600 font-semibold">Credibility Elevation</span>
+        </div>
+        <div className="p-6 rounded-2xl bg-slate-900 text-white space-y-4 shadow-xl">
+          <div className="flex items-center justify-between">
+            <div className="space-y-1">
+              <span className="font-mono text-[10px] text-blue-400 uppercase tracking-widest block">CLIENT IMPRESSION</span>
+              <p className="text-base font-bold">Absolute Market Authority</p>
+            </div>
+            <span className="px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-300 font-mono text-xs">Verified</span>
+          </div>
+          <p className="text-xs text-slate-300 font-light leading-relaxed border-t border-slate-800 pt-3">
+            Visitors immediately recognize your professionalism, removing friction and building unshakeable confidence in your services.
+          </p>
+        </div>
+      </div>
+    ),
   },
   {
-    title: "SEO Optimized Structure",
-    desc: "Visibility is everything. Every line of code is written with SEO in mind to ensure your brand ranks where it belongs: at the top.",
-    icon: <Search className="w-6 h-6" />,
-    color: "from-blue-700 to-indigo-600",
+    id: "business-growth",
+    number: "03",
+    tag: "REVENUE ACCELERATION",
+    headline: "Designed to generate enquiries and growth.",
+    description:
+      "A gorgeous website is meaningless if it doesn't perform. Every layout, message, and user flow is strategically optimized to turn casual visitors into qualified client enquiries.",
+    renderVisual: () => (
+      <div className="space-y-6">
+        <div className="flex justify-between items-center border-b border-slate-100 pb-4 text-xs font-mono text-slate-400">
+          <span>GROWTH ENGINE // 03</span>
+          <span className="text-blue-600 font-semibold">Enquiry &amp; Conversion Focus</span>
+        </div>
+        <div className="grid grid-cols-3 gap-3">
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 text-center space-y-1">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">CLARITY</span>
+            <h4 className="font-bold text-slate-900 text-xs sm:text-sm">Clear Messaging</h4>
+          </div>
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 text-center space-y-1">
+            <span className="text-[10px] font-mono text-slate-400 uppercase block">FLOW</span>
+            <h4 className="font-bold text-slate-900 text-xs sm:text-sm">Frictionless UX</h4>
+          </div>
+          <div className="p-4 rounded-2xl bg-blue-50 border border-blue-100 text-center space-y-1">
+            <span className="text-[10px] font-mono text-blue-600 uppercase block">RESULT</span>
+            <h4 className="font-bold text-blue-900 text-xs sm:text-sm">More Enquiries</h4>
+          </div>
+        </div>
+        <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 text-xs text-slate-600 font-light text-center">
+          Transforming your online presence into your hardest-working business asset.
+        </div>
+      </div>
+    ),
   },
   {
-    title: "Full-Stack Expertise",
-    desc: "From complex database architecture to smooth frontend animations, we handle the entire tech stack with surgical precision.",
-    icon: <Code2 className="w-6 h-6" />,
-    color: "from-slate-800 to-slate-900",
+    id: "long-term-partnership",
+    number: "04",
+    tag: "ENDURING RELATIONSHIP",
+    headline: "Long-term partners, not one-time vendors.",
+    description:
+      "We don't disappear after launch. We remain in your corner through continuous support, strategic advice, and ongoing collaboration as your business expands.",
+    renderVisual: () => (
+      <div className="space-y-6">
+        <div className="flex justify-between items-center border-b border-slate-100 pb-4 text-xs font-mono text-slate-400">
+          <span>PARTNERSHIP // 04</span>
+          <span className="text-blue-600 font-semibold">Continuous Collaboration</span>
+        </div>
+        <div className="space-y-3">
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+            <div>
+              <span className="font-mono text-[10px] text-slate-400 block uppercase">LAUNCH PHASE</span>
+              <span className="font-bold text-slate-900 text-sm">Seamless Go-Live Support</span>
+            </div>
+            <span className="text-xs font-mono text-emerald-600 font-semibold">Done ✓</span>
+          </div>
+          <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-between">
+            <div>
+              <span className="font-mono text-[10px] text-blue-600 block uppercase">GROWTH PHASE</span>
+              <span className="font-bold text-blue-950 text-sm">Ongoing Guidance &amp; Updates</span>
+            </div>
+            <span className="text-xs font-mono text-blue-600 font-semibold animate-pulse">Active</span>
+          </div>
+        </div>
+      </div>
+    ),
   },
 ];
 
-export default function WhyChooseUs() {
+// ============================================================================
+// MAIN COMPONENT
+// ============================================================================
+
+export function WhyChooseUs() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activePillar = TRUST_PILLARS[activeIndex];
+
   return (
-    <section className="py-32 px-6 bg-[#FCFDFF] relative overflow-hidden">
+    <section className="relative isolate overflow-hidden bg-[#FBFBFD] text-slate-900 py-32 lg:py-44 border-t border-slate-200/80">
       
-      {/* Background Abstract Shapes */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-50/50 rounded-full blur-[120px] -z-10 -translate-x-1/2 translate-y-1/2" />
+      {/* Subtle Luxury Mesh Lighting */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-40 blur-[180px]"
+        style={{
+          background: "radial-gradient(circle at 10% 20%, rgba(37,99,235,0.06) 0%, transparent 60%), radial-gradient(circle at 90% 80%, rgba(99,102,241,0.05) 0%, transparent 60%)",
+        }}
+        aria-hidden="true"
+      />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="relative mx-auto max-w-[1300px] px-6 lg:px-16 space-y-20">
         
-        {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
-          <div className="max-w-2xl text-left">
-            <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="text-blue-600 font-bold tracking-widest uppercase text-xs mb-4 block"
-            >
-              The Agency Advantage
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
-            >
-              Why Brands Trust <br />
-              <span className="text-blue-600">Our Digital Craft.</span>
-            </motion.h2>
-          </div>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-[#64748B] text-lg max-w-sm mb-2 font-medium"
-          >
-            We combine technical excellence with business strategy to deliver results that matter.
-          </motion.p>
-        </div>
-
-        {/* Pro Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {data.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative"
-            >
-              <div className="h-full p-8 rounded-[40px] bg-white border border-gray-100 shadow-xl shadow-blue-900/5 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 overflow-hidden flex flex-col justify-between">
-                
-                {/* Floating Icon Box */}
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-white mb-8 shadow-lg group-hover:rotate-6 transition-transform duration-500`}>
-                  {item.icon}
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold mb-4 text-[#0F172A] leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-[#64748B] text-sm leading-relaxed mb-8 font-medium">
-                    {item.desc}
-                  </p>
-                </div>
-
-                {/* Progress-like decorative line */}
-                <div className="relative h-1 w-full bg-gray-50 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    whileInView={{ width: "100%" }}
-                    transition={{ duration: 1.5, delay: 0.5 }}
-                    className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-20`}
-                  />
-                  <div className={`h-full w-0 group-hover:w-full transition-all duration-700 bg-gradient-to-r ${item.color}`} />
-                </div>
-
-                {/* Card Numbering (Subtle) */}
-                <span className="absolute top-8 right-8 text-5xl font-black text-gray-50 group-hover:text-blue-50 transition-colors pointer-events-none">
-                  0{i + 1}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Bottom CTA line */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="mt-20 text-center"
-        >
-          <p className="text-sm font-bold text-slate-400 uppercase tracking-[0.3em]">
-            Precision • Quality • Results
+        {/* SECTION HEADER */}
+        <div className="max-w-3xl space-y-4">
+          <p className="font-mono text-xs tracking-[0.4em] text-blue-600 uppercase">
+            WHY WEBMASH LABS
           </p>
-        </motion.div>
+          <h2 className="text-[clamp(2.5rem,4.5vw,4.2rem)] font-extrabold tracking-tight leading-[1.08] text-slate-950">
+            Why business owners trust us with their growth.
+          </h2>
+          <p className="text-lg lg:text-xl text-slate-600 font-light leading-relaxed">
+            Hiring an agency is an investment in your company&#39;s future. Here is why partnering with us makes all the difference.
+          </p>
+        </div>
+
+        {/* MOBILE HORIZONTAL TAB SCROLLER */}
+        <div className="flex lg:hidden overflow-x-auto space-x-2 pb-2 scrollbar-none">
+          {TRUST_PILLARS.map((pillar, index) => {
+            const isActive = activeIndex === index;
+            return (
+              <button
+                key={pillar.id}
+                onClick={() => setActiveIndex(index)}
+                className={`px-5 py-3 rounded-xl font-mono text-xs font-bold whitespace-nowrap transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? "bg-slate-950 text-white shadow-md"
+                    : "bg-white text-slate-600 border border-slate-200"
+                }`}
+              >
+                {pillar.number} // {pillar.tag}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* DESKTOP SPLIT LAYOUT */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* LEFT SIDE: NAVIGATION TABS (Desktop) */}
+          <div className="hidden lg:flex lg:col-span-5 flex-col space-y-3">
+            {TRUST_PILLARS.map((pillar, index) => {
+              const isActive = activeIndex === index;
+              return (
+                <div
+                  key={pillar.id}
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onClick={() => setActiveIndex(index)}
+                  className={`relative p-7 rounded-3xl transition-all duration-500 cursor-pointer border backdrop-blur-xl ${
+                    isActive
+                      ? "bg-white border-blue-500/40 shadow-[0_20px_40px_rgba(37,99,235,0.08)] translate-x-2"
+                      : "bg-white/40 border-slate-200/80 hover:bg-white hover:border-slate-300"
+                  }`}
+                >
+                  {isActive && (
+                    <div className="absolute left-0 top-6 bottom-6 w-1.5 bg-blue-600 rounded-r-full shadow-[0_0_10px_rgba(37,99,235,0.6)]" />
+                  )}
+
+                  <div className="space-y-2 pl-3">
+                    <span className={`font-mono text-xs font-bold ${isActive ? "text-blue-600" : "text-slate-400"}`}>
+                      {pillar.number} // {pillar.tag}
+                    </span>
+                    <h3 className={`text-xl font-bold tracking-tight transition-colors duration-300 ${isActive ? "text-slate-950" : "text-slate-700"}`}>
+                      {pillar.headline}
+                    </h3>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* RIGHT SIDE: CINEMATIC VISUAL STAGE & DESCRIPTION */}
+          <div className="w-full lg:col-span-7 space-y-8">
+            
+            {/* MOBILE ACTIVE PILLAR HEADER & DESCRIPTION */}
+            <div className="block lg:hidden space-y-4 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+              <span className="font-mono text-xs font-bold text-blue-600 tracking-widest block">
+                {activePillar.number} // {activePillar.tag}
+              </span>
+              <h3 className="text-2xl font-bold text-slate-950 tracking-tight">
+                {activePillar.headline}
+              </h3>
+              <p className="text-slate-600 font-light leading-relaxed text-base">
+                {activePillar.description}
+              </p>
+            </div>
+
+            {/* ANIMATED VISUAL PANEL */}
+            <motion.div
+              key={activePillar.id}
+              initial={{ opacity: 0, y: 12, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full p-8 lg:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-[0_30px_70px_rgba(15,23,42,0.06)] overflow-hidden"
+            >
+              {activePillar.renderVisual()}
+            </motion.div>
+
+            {/* DESKTOP ACTIVE PILLAR DESCRIPTION */}
+            <div className="hidden lg:block space-y-3 pt-2">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activePillar.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="space-y-2"
+                >
+                  <h3 className="text-2xl font-bold text-slate-950 tracking-tight">
+                    {activePillar.headline}
+                  </h3>
+                  <p className="text-slate-600 font-light leading-relaxed text-base lg:text-lg max-w-2xl">
+                    {activePillar.description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
     </section>
   );

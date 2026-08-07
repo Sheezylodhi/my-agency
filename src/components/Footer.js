@@ -1,118 +1,209 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa";
-import { ArrowRight } from "lucide-react";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+const ease = [0.16, 1, 0.3, 1];
 
-  const socialLinks = [
-    { icon: <FaFacebookF />, link: "#", color: "hover:bg-blue-600" },
-    { icon: <FaInstagram />, link: "#", color: "hover:bg-pink-600" },
-    { icon: <FaTwitter />, link: "#", color: "hover:bg-sky-500" },
-    { icon: <FaLinkedinIn />, link: "#", color: "hover:bg-blue-700" },
-    { icon: <FaGithub />, link: "#", color: "hover:bg-slate-800" },
-  ];
+const navigationLinks = [
+  { name: "Home", href: "#" },
+  { name: "Services", href: "#services" },
+  { name: "Projects", href: "#work" },
+  { name: "Process", href: "#process" },
+  { name: "FAQ", href: "#faq" },
+  { name: "Contact", href: "#contact" },
+];
+
+const serviceLinks = [
+  { name: "Custom Websites", href: "#services" },
+  { name: "Web Applications", href: "#services" },
+  { name: "UI/UX Design", href: "#services" },
+  { name: "SEO & Optimization", href: "#services" },
+  { name: "Maintenance", href: "#services" },
+];
+
+const contactLinks = [
+  { name: "hello@webmashlabs.com", href: "mailto:hello@webmashlabs.com" },
+  { name: "LinkedIn", href: "https://linkedin.com", external: true },
+  { name: "Instagram", href: "https://instagram.com", external: true },
+  { name: "Behance", href: "https://behance.net", external: true },
+];
+
+export function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <footer className="relative z-0 bg-[#020617] text-white pt-24 overflow-hidden">
-      
-      {/* 1. Floating CTA Section */}
-      <div className="max-w-7xl mx-auto px-6 mb-20">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[40px] p-8 md:p-16 overflow-hidden shadow-2xl shadow-blue-900/20"
-        >
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-center md:text-left">
-              <h2 className="text-3xl md:text-5xl font-black mb-4">Ready to build something <br/> extraordinary?</h2>
-              <p className="text-blue-100 text-lg opacity-90">Let's turn your vision into a high-performance reality.</p>
-            </div>
-            <Link href="/qoute" className="group bg-white text-blue-700 px-10 py-5 rounded-2xl font-black text-lg flex items-center gap-3 hover:bg-blue-50 transition-all active:scale-95 whitespace-nowrap">
-              Start a Project <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-            </Link>
-          </div>
-        </motion.div>
-      </div>
+    <footer 
+      id="footer"
+      className="relative w-full bg-[#02040A] pt-28 pb-14 text-white overflow-hidden border-t border-white/10 selection:bg-blue-600 selection:text-white font-['Manrope',sans-serif]"
+      aria-labelledby="footer-heading"
+    >
+      {/* ULTRA SUBTLE BLURRED BLUE RADIAL GLOW BEHIND LOGO */}
+      <div 
+        className="pointer-events-none absolute top-20 left-10 h-[400px] w-[500px] rounded-full blur-[140px] opacity-[0.08] bg-blue-600" 
+        aria-hidden="true" 
+      />
 
-      {/* Main Footer Grid - Updated to 3 columns */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 pb-20 relative z-10">
+      <div className="relative mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-16">
         
-        {/* Brand Info */}
-        <div className="flex flex-col items-start space-y-4">
-          <Link href="/" className="relative flex items-center">
-            <div className="relative w-auto h-12 flex items-center"> {/* Restrict height and center */}
-              <Image
-                src="/webmashlogo1.png"
-                alt="Webmash Logo"
-                width={200}
-                height={50}
-                className="w-auto h-full object-contain object-left scale-110 origin-left" // Scale and maintain positioning
-                priority
-              />
+        <h2 id="footer-heading" className="sr-only">WebMash Labs Footer</h2>
+
+        {/* ASYMMETRIC EDITORIAL GRID (65% / 35%) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 pb-24 border-b border-white/10">
+          
+          {/* LEFT SIDE (65% -> col-span-7) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease }}
+            className="lg:col-span-7 flex flex-col justify-between items-start"
+          >
+            <div className="w-full">
+              {/* AVAILABILITY STATUS */}
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 font-mono text-[11px] tracking-[0.25em] text-slate-300 uppercase mb-8 backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Available for Select Projects — Q3 / Q4
+              </div>
+
+              {/* REAL LOGO IMAGE REPLACING TEXT HEADING */}
+              <div className="relative h-[100px] sm:h-[100px] w-auto max-w-[240px] mb-8">
+                <Image
+                  src="/WMLogo.png" 
+                  alt="WebMash Labs Logo"
+                  fill
+                  className="object-contain object-left brightness-0 invert"
+                  sizes="(max-width: 640px) 200px, 240px"
+                />
+              </div>
+
+              {/* PREMIUM EDITORIAL STATEMENT */}
+              <p className="mt-8 max-w-[38ch] text-lg sm:text-xl font-normal leading-relaxed text-slate-400 tracking-[-0.01em]">
+                We build digital experiences that help ambitious businesses become impossible to ignore.
+              </p>
             </div>
-          </Link>
-          <p className="text-slate-400 leading-relaxed font-medium text-sm max-w-[280px]">
-            We are a boutique digital agency focused on high-end web experiences, 
-            scalable UI systems, and brand-first design.
-          </p>
-          <div className="flex gap-2 pt-2">
-            {socialLinks.map((social, i) => (
-              <a 
-                key={i} 
-                href={social.link}
-                className={`w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 transition-all duration-300 ${social.color} hover:text-white hover:-translate-y-1`}
-              >
-                {social.icon}
-              </a>
-            ))}
+
+            {/* SMALL COPYRIGHT & METADATA */}
+            <div className="mt-16 font-mono text-xs text-slate-500 tracking-wider">
+              <span>© {new Date().getFullYear()} WebMash Labs. All rights reserved.</span>
+            </div>
+          </motion.div>
+
+          {/* RIGHT SIDE (35% -> col-span-5) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease, delay: 0.2 }}
+            className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-10 pt-2 lg:pt-4"
+          >
+            {/* COLUMN 1: NAVIGATION */}
+            <div>
+              <h4 className="font-mono text-[11px] tracking-[0.25em] text-slate-400 uppercase mb-6">
+                Navigation
+              </h4>
+              <ul className="space-y-3.5">
+                {navigationLinks.map((link, index) => (
+                  <li key={index}>
+                    <a
+                      href={link.href}
+                      className="group inline-flex items-center text-sm sm:text-base font-medium text-slate-400 hover:text-white transition-colors duration-300"
+                    >
+                      <span className="relative transition-transform duration-300 group-hover:translate-x-1">
+                        {link.name}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* COLUMN 2: SERVICES */}
+            <div>
+              <h4 className="font-mono text-[11px] tracking-[0.25em] text-slate-400 uppercase mb-6">
+                Services
+              </h4>
+              <ul className="space-y-3.5">
+                {serviceLinks.map((service, index) => (
+                  <li key={index}>
+                    <a
+                      href={service.href}
+                      className="group inline-flex items-center text-sm sm:text-base font-medium text-slate-400 hover:text-white transition-colors duration-300"
+                    >
+                      <span className="relative transition-transform duration-300 group-hover:translate-x-1">
+                        {service.name}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* COLUMN 3: CONTACT */}
+            <div className="col-span-2 sm:col-span-1">
+              <h4 className="font-mono text-[11px] tracking-[0.25em] text-slate-400 uppercase mb-6">
+                Connect
+              </h4>
+              <ul className="space-y-3.5">
+                {contactLinks.map((contact, index) => (
+                  <li key={index}>
+                    <a
+                      href={contact.href}
+                      target={contact.external ? "_blank" : undefined}
+                      rel={contact.external ? "noopener noreferrer" : undefined}
+                      className="group inline-flex items-center gap-1 text-sm sm:text-base font-medium text-slate-400 hover:text-white transition-colors duration-300 break-all sm:break-normal"
+                    >
+                      <span className="relative transition-transform duration-300 group-hover:translate-x-1">
+                        {contact.name}
+                      </span>
+                      {contact.external && (
+                        <ArrowUpRight className="h-3.5 w-3.5 opacity-60 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} />
+                      )}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </motion.div>
+
+        </div>
+
+        {/* BOTTOM ENDING MASTERPIECE ROW */}
+        <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          
+          <div className="space-y-1">
+            <p className="text-sm sm:text-base font-medium text-slate-300">
+              Made with precision in Pakistan. Building for businesses worldwide.
+            </p>
+            <p className="font-mono text-xs text-slate-500">
+              2026 © WebMash Labs
+            </p>
           </div>
+
+          {/* BACK TO TOP BUTTON WITH SMOOTH ANIMATION */}
+          <motion.button
+            onClick={scrollToTop}
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.2, ease }}
+            className="group inline-flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.2em] text-slate-400 hover:text-white cursor-pointer pt-2 sm:pt-0"
+            aria-label="Back to top of page"
+          >
+            <span>Back to Top</span>
+            <div className="h-8 w-8 rounded-full border border-white/20 group-hover:border-white flex items-center justify-center transition-all duration-300 group-hover:bg-white group-hover:text-[#030614]">
+              <ArrowUp className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" strokeWidth={2} />
+            </div>
+          </motion.button>
+
         </div>
 
-        {/* Navigation - Solutions */}
-        <div>
-          <h4 className="text-sm font-black mb-6 text-white uppercase tracking-widest">Solutions</h4>
-          <ul className="space-y-3 text-slate-400 font-semibold text-sm">
-            {["Custom Web Apps", "E-Commerce", "UI/UX Strategy", "Brand Identity", "SEO Mastery"].map((item) => (
-              <li key={item} className="hover:text-blue-500 transition-colors cursor-pointer flex items-center group">
-                <span className="w-0 group-hover:w-3 transition-all duration-300 h-[1.5px] bg-blue-500 mr-0 group-hover:mr-2" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Company Links */}
-        <div>
-          <h4 className="text-sm font-black mb-6 text-white uppercase tracking-widest">Quick Links</h4>
-          <ul className="space-y-3 text-slate-400 font-semibold text-sm">
-            {[
-              { name: "Our Work", slug: "/portfolio" },
-              { name: "About Us", slug: "/about" },
-              { name: "Pricing Plans", slug: "/#prices" },
-              { name: "Privacy Policy", slug: "/privacy" },
-              { name: "Terms of Service", slug: "/Terms" },
-            ].map((item) => (
-              <li key={item.name}>
-                <Link href={item.slug} className="hover:text-blue-500 transition-colors">
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {/* Bottom Copyright Bar */}
-      <div className="border-t border-slate-900/50 py-10 bg-[#01040f]">
-        <div className="max-w-7xl mx-auto px-6 text-center text-slate-500 text-xs font-bold tracking-wider">
-          <p>© {currentYear} WEBMASH LABS. All rights reserved.</p>
-        </div>
       </div>
     </footer>
   );

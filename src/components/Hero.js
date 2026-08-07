@@ -1,534 +1,521 @@
 "use client";
 
-import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
-import Typewriter from "typewriter-effect";
 import { useEffect, useRef, useState } from "react";
+import { 
+  ArrowUpRight, 
+  Rocket, 
+  BadgeCheck, 
+  Braces, 
+  Cloud, 
+  Code2, 
+  Component, 
+  Cpu, 
+  Database, 
+  GitBranch, 
+  Globe, 
+  Layers3, 
+  LayoutTemplate, 
+  Mail, 
+  MonitorSmartphone, 
+  Network, 
+  Search, 
+  Server, 
+  ShieldCheck, 
+  Workflow,
+  Code,
+  TrendingUp,
+  ChevronRight
+} from "lucide-react";
 
-/* ============================================================
-   PERFORMANCE NOTES
-   ------------------------------------------------------------
-   - No WebGL/Canvas anywhere. Everything below is CSS + SVG +
-     framer-motion transforms.
-   - The curtain intro runs ONCE on mount and then fully unmounts
-     (removed from the DOM, not just hidden) — zero ongoing cost.
-   - The marquee is a pure CSS keyframe animation — the browser
-     compositor handles it, no JS runs per-frame.
-   - Cursor-glow / magnetic button listeners are rAF-throttled,
-     passive, and skipped entirely on touch devices and when
-     prefers-reduced-motion is on.
-   ============================================================ */
+/* -------------------------------------------------------------------------- */
+/* Sub-components for EcosystemVisual                                         */
+/* -------------------------------------------------------------------------- */
 
-const easeOut = [0.22, 1, 0.36, 1];
-
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
-};
-const item = {
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
-};
-
-/* ---------------- curtain-reveal intro (signature moment, runs once) ---------------- */
-
-function CurtainIntro({ onDone, skip }) {
-  const [visible, setVisible] = useState(!skip);
-
-  useEffect(() => {
-    if (skip) return;
-    const t = setTimeout(() => {
-      setVisible(false);
-      onDone();
-    }, 1050);
-    return () => clearTimeout(t);
-  }, [skip, onDone]);
-
-  useEffect(() => {
-    if (skip) onDone();
-  }, [skip, onDone]);
-
+function WindowChrome({ label, Icon }) {
   return (
-    <AnimatePresence onExitComplete={() => {}}>
-      {visible && (
-        <div className="fixed inset-0 z-[100] pointer-events-none">
-          <motion.div
-            initial={{ y: 0 }}
-            animate={{ y: "-100%" }}
-            transition={{ duration: 0.8, delay: 0.35, ease: [0.76, 0, 0.24, 1] }}
-            className="absolute top-0 left-0 w-full h-1/2 bg-[#0F172A]"
-          />
-          <motion.div
-            initial={{ y: 0 }}
-            animate={{ y: "100%" }}
-            transition={{ duration: 0.8, delay: 0.35, ease: [0.76, 0, 0.24, 1] }}
-            className="absolute bottom-0 left-0 w-full h-1/2 bg-[#0F172A]"
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: [0, 1, 1, 0], scale: 1 }}
-            transition={{ duration: 0.9, times: [0, 0.3, 0.7, 1], ease: "easeInOut" }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <span className="flex items-center gap-2 text-white font-mono text-xs tracking-[0.3em] uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
-              Loading Studio
-            </span>
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
-  );
-}
-
-/* ---------------- cursor-follow ambient glow (desktop only) ---------------- */
-
-function CursorGlow({ enabled }) {
-  const ref = useRef(null);
-  const raf = useRef(null);
-
-  useEffect(() => {
-    if (!enabled) return;
-    const el = ref.current;
-    if (!el) return;
-
-    const handle = (e) => {
-      if (raf.current) return;
-      raf.current = requestAnimationFrame(() => {
-        el.style.transform = `translate3d(${e.clientX - 200}px, ${e.clientY - 200}px, 0)`;
-        raf.current = null;
-      });
-    };
-    window.addEventListener("mousemove", handle, { passive: true });
-    return () => {
-      window.removeEventListener("mousemove", handle);
-      if (raf.current) cancelAnimationFrame(raf.current);
-    };
-  }, [enabled]);
-
-  if (!enabled) return null;
-
-  return (
-    <div
-      ref={ref}
-      className="hidden lg:block fixed top-0 left-0 w-[400px] h-[400px] rounded-full bg-[#1D4ED8]/[0.06] blur-[80px] pointer-events-none z-0"
-      style={{ willChange: "transform" }}
-    />
-  );
-}
-
-/* ---------------- magnetic CTA wrapper ---------------- */
-
-function MagneticButton({ children, className, href, enabled }) {
-  const ref = useRef(null);
-  const raf = useRef(null);
-
-  useEffect(() => {
-    if (!enabled) return;
-    const el = ref.current;
-    if (!el) return;
-
-    const handleMove = (e) => {
-      if (raf.current) return;
-      raf.current = requestAnimationFrame(() => {
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        el.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
-        raf.current = null;
-      });
-    };
-    const reset = () => {
-      el.style.transform = "translate(0px, 0px)";
-    };
-
-    el.addEventListener("mousemove", handleMove, { passive: true });
-    el.addEventListener("mouseleave", reset);
-    return () => {
-      el.removeEventListener("mousemove", handleMove);
-      el.removeEventListener("mouseleave", reset);
-      if (raf.current) cancelAnimationFrame(raf.current);
-    };
-  }, [enabled]);
-
-  return (
-    <a ref={ref} href={href} className={className} style={{ transition: "transform 0.15s ease-out", willChange: "transform" }}>
-      {children}
-    </a>
-  );
-}
-
-/* ---------------- right-side browser mockup (unchanged concept, refined) ---------------- */
-
-function HeroVisual({ reduceMotion }) {
-  const wrapRef = useRef(null);
-  const frameRef = useRef(null);
-  const raf = useRef(null);
-
-  useEffect(() => {
-    if (reduceMotion) return;
-    const el = frameRef.current;
-    const wrap = wrapRef.current;
-    if (!el || !wrap) return;
-    const handleMove = (e) => {
-      if (raf.current) return;
-      raf.current = requestAnimationFrame(() => {
-        const rect = wrap.getBoundingClientRect();
-        const px = (e.clientX - rect.left) / rect.width - 0.5;
-        const py = (e.clientY - rect.top) / rect.height - 0.5;
-        el.style.transform = `rotateY(${px * 6}deg) rotateX(${-py * 6}deg)`;
-        raf.current = null;
-      });
-    };
-    window.addEventListener("mousemove", handleMove, { passive: true });
-    return () => {
-      window.removeEventListener("mousemove", handleMove);
-      if (raf.current) cancelAnimationFrame(raf.current);
-    };
-  }, [reduceMotion]);
-
-  const bars = [40, 70, 55, 90, 65];
-
-  return (
-    <div ref={wrapRef} className="relative w-full max-w-[480px] mx-auto" style={{ perspective: 1200 }}>
-      <div className="absolute -inset-8 bg-gradient-to-tr from-[#1D4ED8]/15 via-[#1D4ED8]/5 to-transparent blur-3xl rounded-full pointer-events-none" />
-
-      {/* 1px gradient border via padding wrapper — premium detail */}
-      <div className="rounded-2xl p-px bg-gradient-to-br from-[#1D4ED8]/30 via-slate-200 to-slate-200">
-        <div
-          ref={frameRef}
-          className="relative rounded-2xl bg-white shadow-[0_30px_60px_-15px_rgba(15,23,42,0.25)] overflow-hidden transition-transform duration-300 ease-out"
-          style={{ willChange: "transform", transformStyle: "preserve-3d" }}
-        >
-          <div className="flex items-center gap-1.5 px-4 py-3 border-b border-slate-100 bg-slate-50">
-            <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
-            <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
-            <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
-            <div className="ml-3 flex-1 h-5 rounded-md bg-white border border-slate-100" />
-          </div>
-
-          <div className="p-6 space-y-5">
-            <div className="flex items-center justify-between">
-              <div className="h-3 w-24 rounded-full bg-[#1D4ED8]/20" />
-              <div className="h-6 w-16 rounded-md bg-[#1D4ED8]" />
-            </div>
-            <div className="h-28 rounded-xl bg-gradient-to-br from-[#1D4ED8]/10 to-slate-50 border border-slate-100" />
-            <div className="flex items-end gap-2 h-20">
-              {bars.map((h, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ height: 0 }}
-                  animate={{ height: `${h}%` }}
-                  transition={{ duration: 0.8, delay: 0.4 + i * 0.08, ease: easeOut }}
-                  className="flex-1 rounded-t-md bg-gradient-to-t from-[#1D4ED8] to-[#1D4ED8]/60"
-                />
-              ))}
-            </div>
-            <div className="space-y-2">
-              <div className="h-2.5 w-full rounded-full bg-slate-100" />
-              <div className="h-2.5 w-4/5 rounded-full bg-slate-100" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <FloatCard className="-left-6 top-10 hidden sm:block" delay={0.9} reduceMotion={reduceMotion}>
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-500" />
-          <p className="text-xs font-semibold text-[#0F172A] font-mono">+47%</p>
-          <p className="text-xs text-[#64748B]">conversion</p>
-        </div>
-      </FloatCard>
-      <FloatCard className="-right-6 bottom-24 hidden sm:block" delay={1.1} reduceMotion={reduceMotion}>
-        <p className="text-xs font-semibold text-[#0F172A]">Deploy: <span className="text-[#1D4ED8] font-mono">live ✓</span></p>
-      </FloatCard>
-      <FloatCard className="right-4 -bottom-6" delay={1.3} reduceMotion={reduceMotion}>
-        <div className="flex items-center gap-2">
-          <div className="flex -space-x-1.5">
-            {["#1D4ED8", "#0F172A", "#64748B"].map((c, i) => (
-              <span key={i} className="w-5 h-5 rounded-full border-2 border-white" style={{ backgroundColor: c }} />
-            ))}
-          </div>
-          <p className="text-xs font-semibold text-[#0F172A] font-mono">120+</p>
-        </div>
-      </FloatCard>
+    <div className="flex items-center gap-2.5 border-b border-white/10 px-4 py-2.5 bg-white/[0.02]">
+      <Icon className="h-3 w-3 text-blue-400" strokeWidth={1.25} />
+      <span className="font-mono text-[9px] tracking-[0.22em] text-slate-400 uppercase">
+        {label}
+      </span>
+      <span className="ml-auto h-px w-6 bg-white/10" />
     </div>
   );
 }
 
-function FloatCard({ className, delay = 0, reduceMotion, children }) {
+function Line({ d, dur, delay = 0 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9, y: 10 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.7, delay, ease: easeOut }}
-      className={`absolute z-20 px-4 py-2.5 rounded-xl bg-white/90 backdrop-blur-md border border-slate-100 shadow-[0_10px_30px_rgba(15,23,42,0.1)] ${className}`}
-      style={{ willChange: "transform" }}
-    >
-      <motion.div
-        animate={reduceMotion ? {} : { y: [0, -7, 0] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay }}
-      >
-        {children}
-      </motion.div>
-    </motion.div>
+    <>
+      <path
+        d={d}
+        stroke="currentColor"
+        className="text-blue-500/30"
+        strokeWidth="1"
+        strokeDasharray="2 8"
+        style={{ animation: `lux-dash ${dur}s linear infinite` }}
+      />
+      <circle r="2.5" fill="currentColor" className="text-blue-400">
+        <animateMotion
+          dur={`${dur * 0.55}s`}
+          begin={`${delay}s`}
+          repeatCount="indefinite"
+          path={d}
+          keyPoints="0;1"
+          keyTimes="0;1"
+          calcMode="linear"
+        />
+      </circle>
+    </>
   );
 }
 
-/* ---------------- client marquee — pure CSS, effectively free ---------------- */
-
-function ClientMarquee() {
-  const names = ["NOVARA", "ATLAS CO.", "ORBIT LABS", "FINCH", "VELVET", "STRATA", "KIN & CO."];
+export function EcosystemVisual() {
   return (
-    <div className="relative mt-16 lg:mt-24 border-t border-slate-100 pt-8 overflow-hidden">
-      <p className="text-center text-[10px] font-mono uppercase tracking-[0.25em] text-slate-400 mb-5">
-        Trusted by teams building with us
-      </p>
-      <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        <div className="hero-marquee-track flex gap-14 w-max">
-          {[...names, ...names].map((n, i) => (
-            <span key={i} className="text-lg font-bold tracking-tight text-slate-300 whitespace-nowrap">
-              {n}
-            </span>
+    <div className="relative aspect-[4/5] w-full max-w-[640px] [perspective:1800px]">
+      {/* blueprint plane */}
+      <div
+        className="blueprint-field pointer-events-none absolute inset-[6%] rounded-2xl bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"
+        aria-hidden="true"
+        style={{ transform: "rotateX(6deg) rotateY(-8deg)" }}
+      />
+
+      {/* connection system */}
+      <svg
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        viewBox="0 0 620 775"
+        fill="none"
+        aria-hidden="true"
+      >
+        <Line d="M150 235 C 265 250, 245 420, 355 425" dur={24} />
+        <Line d="M470 190 C 470 300, 300 320, 250 465" dur={30} delay={3} />
+        <Line d="M120 545 C 245 560, 300 625, 430 610" dur={26} delay={6} />
+        <Line d="M520 430 C 560 520, 470 600, 400 655" dur={28} delay={9} />
+        <Line d="M200 120 C 320 110, 420 140, 500 120" dur={34} delay={2} />
+        {[
+          [150, 235],
+          [355, 425],
+          [470, 190],
+          [250, 465],
+          [430, 610],
+          [520, 430],
+        ].map(([x, y], i) => (
+          <circle
+            key={i}
+            cx={x}
+            cy={y}
+            r="3"
+            fill="currentColor"
+            className="text-blue-400"
+            style={{ animation: `lux-node ${7 + i}s ease-in-out infinite` }}
+          />
+        ))}
+        <g stroke="currentColor" className="text-white/10" strokeWidth="1">
+          <path d="M0 118 H620" />
+          <path d="M0 692 H620" />
+          <path d="M76 0 V775" />
+        </g>
+      </svg>
+
+      {/* hosting status */}
+      <div
+        className="absolute top-[26%] right-[20%] w-[34%] overflow-hidden rounded-xl opacity-45 blur-[2px] bg-[#0B0F19]/80 backdrop-blur-xl border border-white/10 shadow-2xl"
+        data-parallax="-14"
+        style={{ transform: "rotateY(-9deg)" }}
+      >
+        <WindowChrome label="hosting" Icon={Server} />
+        <div className="flex items-center justify-between px-4 py-4">
+          <BadgeCheck className="h-4 w-4 text-blue-400" strokeWidth={1.25} />
+          <div className="space-y-1.5">
+            <div className="h-1.5 w-14 rounded-full bg-white/20" />
+            <div className="h-1.5 w-9 rounded-full bg-white/10" />
+          </div>
+        </div>
+      </div>
+
+      {/* database */}
+      <div
+        className="absolute top-[62%] right-[6%] flex w-[30%] items-center gap-3 rounded-lg px-4 py-3 opacity-55 blur-[1.5px] bg-[#0B0F19]/80 backdrop-blur-xl border border-white/10 shadow-2xl"
+        data-parallax="-18"
+      >
+        <Database className="h-4 w-4 text-slate-400" strokeWidth={1.25} />
+        <div className="space-y-1.5">
+          <div className="h-1.5 w-12 rounded-full bg-white/20" />
+          <div className="h-1.5 w-7 rounded-full bg-white/10" />
+        </div>
+      </div>
+
+      {/* desktop website preview */}
+      <div
+        className="absolute top-[8%] left-[2%] w-[70%] overflow-hidden rounded-xl bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        data-parallax="30"
+        style={{ transform: "rotateY(7deg) rotateX(2deg)" }}
+      >
+        <WindowChrome label="webmashlabs.com" Icon={Globe} />
+        <div className="space-y-4 p-5">
+          <div className="flex items-center justify-between">
+            <LayoutTemplate className="h-4 w-4 text-blue-400" strokeWidth={1.25} />
+            <div className="flex gap-4 text-slate-500">
+              <Component className="h-3.5 w-3.5" strokeWidth={1.25} />
+              <Layers3 className="h-3.5 w-3.5" strokeWidth={1.25} />
+              <Network className="h-3.5 w-3.5" strokeWidth={1.25} />
+            </div>
+          </div>
+          <div className="h-2.5 w-4/5 rounded-full bg-white/20" />
+          <div className="h-2 w-3/5 rounded-full bg-white/10" />
+          <div className="grid grid-cols-3 gap-2.5 pt-2">
+            <div className="h-16 rounded-md border border-white/10 bg-white/[0.02]" />
+            <div className="h-16 rounded-md border border-white/10 bg-blue-600/20" />
+            <div className="h-16 rounded-md border border-white/10 bg-white/[0.02]" />
+          </div>
+        </div>
+      </div>
+
+      {/* code / build window */}
+      <div
+        className="absolute top-0 right-0 w-[40%] overflow-hidden rounded-xl bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        data-parallax="-46"
+      >
+        <WindowChrome label="build" Icon={Code2} />
+        <div className="space-y-2 p-4 font-mono text-[9px] text-slate-400">
+          <p className="text-blue-400">&lt;section class=&quot;hero&quot;&gt;</p>
+          <p className="pl-3">craft · systems</p>
+          <p className="pl-3 text-slate-500">precision: absolute</p>
+          <p>&lt;/section&gt;</p>
+          <div className="flex items-center gap-3 pt-2 text-slate-500">
+            <Braces className="h-3 w-3" strokeWidth={1.25} />
+            <GitBranch className="h-3 w-3" strokeWidth={1.25} />
+            <Rocket className="h-3 w-3" strokeWidth={1.25} />
+          </div>
+        </div>
+      </div>
+
+      {/* mobile preview */}
+      <div
+        className="absolute top-[46%] left-0 w-[25%] overflow-hidden rounded-2xl p-3 bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        data-parallax="58"
+      >
+        <div className="mx-auto mb-3 h-1 w-8 rounded-full bg-white/20" />
+        <div className="space-y-2">
+          <div className="h-14 rounded-lg bg-blue-600/20" />
+          <div className="h-1.5 w-4/5 rounded-full bg-white/20" />
+          <div className="h-1.5 w-2/3 rounded-full bg-white/10" />
+          <div className="h-1.5 w-1/2 rounded-full bg-white/10" />
+        </div>
+        <MonitorSmartphone
+          className="mt-3 h-3.5 w-3.5 text-slate-500"
+          strokeWidth={1.25}
+        />
+      </div>
+
+      {/* design system panel */}
+      <div
+        className="absolute top-[38%] left-[27%] w-[38%] overflow-hidden rounded-xl bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        data-parallax="-24"
+        style={{ transform: "rotateY(-5deg)" }}
+      >
+        <WindowChrome label="design system" Icon={Component} />
+        <div className="grid grid-cols-4 gap-2 p-4">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div
+              key={i}
+              className={`h-6 rounded-sm border border-white/10 ${
+                i === 2 ? "bg-blue-600/30" : "bg-white/[0.04]"
+              }`}
+            />
           ))}
         </div>
       </div>
-      <style>{`
-        .hero-marquee-track {
-          animation: hero-marquee 22s linear infinite;
-        }
-        @keyframes hero-marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-      `}</style>
+
+      {/* infrastructure grid */}
+      <div
+        className="absolute right-[2%] bottom-[14%] w-[56%] overflow-hidden rounded-xl bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        data-parallax="-32"
+      >
+        <WindowChrome label="infrastructure" Icon={Cloud} />
+        <div className="grid grid-cols-4 gap-px bg-white/10">
+          {[Cloud, Server, Database, ShieldCheck, Network, Workflow, Cpu, Mail].map((Icon, i) => (
+            <div key={i} className="flex h-14 items-center justify-center bg-[#0B0F19]/60">
+              <Icon
+                className={i === 5 ? "h-4 w-4 text-blue-400" : "h-4 w-4 text-slate-400"}
+                strokeWidth={1.25}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* AI automation flow chip */}
+      <div
+        className="absolute top-[33%] left-[52%] flex items-center gap-3 rounded-full px-4 py-2.5 bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        data-parallax="70"
+        style={{ animationDelay: "-4s" }}
+      >
+        <Workflow className="h-3.5 w-3.5 text-blue-400" strokeWidth={1.25} />
+        <span className="font-mono text-[9px] tracking-[0.22em] text-slate-400 uppercase">
+          AI automation
+        </span>
+      </div>
+
+      {/* SEO card */}
+      <div
+        className="absolute bottom-[2%] left-[4%] w-[36%] overflow-hidden rounded-xl bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        data-parallax="66"
+        style={{ animationDelay: "-7s" }}
+      >
+        <WindowChrome label="seo" Icon={Search} />
+        <div className="space-y-2 px-4 py-4">
+          <div className="h-1.5 w-full rounded-full bg-white/10" />
+          <div className="h-1.5 w-3/4 rounded-full bg-blue-500/50" />
+          <div className="h-1.5 w-1/2 rounded-full bg-white/10" />
+        </div>
+      </div>
+
+      {/* business email chip */}
+      <div
+        className="absolute bottom-[22%] left-[30%] flex items-center gap-3 rounded-lg px-4 py-3 bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        data-parallax="44"
+      >
+        <Mail className="h-4 w-4 text-slate-400" strokeWidth={1.25} />
+        <div className="space-y-1.5">
+          <div className="h-1.5 w-14 rounded-full bg-white/20" />
+          <div className="h-1.5 w-8 rounded-full bg-white/10" />
+        </div>
+      </div>
     </div>
   );
 }
 
-/* ---------------- 3-step process strip — real sequence, reveals once in view ---------------- */
+/* -------------------------------------------------------------------------- */
+/* Main Hero Component                                                        */
+/* -------------------------------------------------------------------------- */
 
-function ProcessStrip() {
-  const steps = [
-    { n: "01", label: "Discover", desc: "Audit your goals & market" },
-    { n: "02", label: "Design", desc: "Craft the UI & experience" },
-    { n: "03", label: "Deploy", desc: "Ship fast, iterate faster" },
-  ];
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, ease: easeOut }}
-      className="mt-10 grid grid-cols-3 gap-4 lg:gap-8 max-w-lg mx-auto lg:mx-0"
-    >
-      {steps.map((s, i) => (
-        <div key={s.n} className="relative text-left">
-          <p className="font-mono text-[11px] text-[#1D4ED8] mb-1">{s.n}</p>
-          <p className="text-sm font-semibold text-[#0F172A]">{s.label}</p>
-          <p className="text-[11px] text-[#94A3B8] mt-0.5 leading-snug">{s.desc}</p>
-          {i < steps.length - 1 && (
-            <span className="hidden lg:block absolute top-1.5 left-[110%] w-6 h-px bg-slate-200" />
-          )}
-        </div>
-      ))}
-    </motion.div>
-  );
-}
+export function Hero() {
+  const stageRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
 
-export default function Hero() {
-  const reduceMotion = useReducedMotion();
-  const [isTouch, setIsTouch] = useState(true);
-  const [introDone, setIntroDone] = useState(false);
-
+  // Scroll listener for Navbar background transition
   useEffect(() => {
-    setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
+    const handleScroll = () => {
+      if (window.scrollY > 30) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const finePointer = !isTouch && !reduceMotion;
+  // Parallax animation effect
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let raf = 0;
+    let tx = 0;
+    let ty = 0;
+    let cx = 0;
+    let cy = 0;
+
+    const layers = Array.from(
+      stage.querySelectorAll("[data-parallax]"),
+    ).map((el) => ({ el, depth: Number(el.dataset["parallax"]) / 100 }));
+
+    const onMove = (e) => {
+      const r = stage.getBoundingClientRect();
+      tx = (e.clientX - r.left - r.width / 2) / r.width;
+      ty = (e.clientY - r.top - r.height / 2) / r.height;
+    };
+
+    const tick = () => {
+      cx += (tx - cx) * 0.035;
+      cy += (ty - cy) * 0.035;
+      for (const { el, depth } of layers) {
+        el.style.translate = `${cx * depth * 100}px ${cy * depth * 70}px`;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("pointermove", onMove, { passive: true });
+    raf = requestAnimationFrame(tick);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
-    <>
-      <CurtainIntro skip={!!reduceMotion} onDone={() => setIntroDone(true)} />
-      <CursorGlow enabled={finePointer} />
+    <section
+      ref={stageRef}
+      className="relative isolate min-h-screen overflow-hidden bg-[#0B0F19] text-white"
+    >
 
-      <section className="min-h-screen w-full relative bg-white text-[#0F172A] overflow-hidden">
-        {/* faint grid — static, cheap */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:28px_28px]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute -top-1/3 left-1/2 h-[900px] w-[1300px] -translate-x-1/2 opacity-60 blur-[120px]"
+        style={{ background: "radial-gradient(circle, rgba(29,78,216,0.15) 0%, rgba(11,15,25,0) 70%)" }}
+        aria-hidden="true"
+      />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#0B0F19] to-transparent"
+        aria-hidden="true"
+      />
 
-        {/* ambient blobs — transform-only */}
-        <motion.div
-          className="absolute -top-32 -left-32 w-[26rem] h-[26rem] rounded-full bg-[#1D4ED8]/10 blur-[90px] pointer-events-none"
-          animate={reduceMotion ? {} : { x: [0, 30, 0], y: [0, 20, 0] }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-          style={{ willChange: "transform" }}
-        />
-        <motion.div
-          className="absolute bottom-0 right-0 w-[22rem] h-[22rem] rounded-full bg-[#1D4ED8]/10 blur-[90px] pointer-events-none"
-          animate={reduceMotion ? {} : { x: [0, -20, 0], y: [0, -15, 0] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-          style={{ willChange: "transform" }}
-        />
+      {/* Added pt-28 so content doesn't hide behind the fixed navbar */}
+      <div className="relative mx-auto max-w-[1400px] px-8 pt-32 pb-28 lg:px-16 lg:pt-36">
+        <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-[1.05fr_1fr]">
+          <div>
+            <p
+              className="font-mono text-[11px] tracking-[0.34em] text-slate-400 uppercase animate-fade-in"
+              style={{ animationDelay: "0.05s" }}
+            >
+              DESIGN · DEVELOPMENT · AI · GROWTH
+            </p>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-10">
+            <h1
+              className="mt-8 text-[clamp(3rem,6.6vw,6.2rem)] leading-[0.92] font-bold tracking-[-0.045em] text-white"
+              style={{ animationDelay: "0.18s" }}
+            >
+              Everything Your
+              <br />
+             Business Needs
+              <br />
+              <span className="italic font-normal text-slate-400">To Grow Online.</span>
+            </h1>
 
-          {/* status pill — top center, real agency signal */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={introDone || reduceMotion ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex justify-center lg:justify-start"
+            <p
+              className="mt-10 max-w-[46ch] text-lg leading-relaxed text-slate-400"
+              style={{ animationDelay: "0.34s" }}
+            >
+              From branding and websites to AI automation, SEO, hosting, business email, and ongoing maintenance—we build complete digital systems that help businesses launch, scale, and succeed.
+            </p>
+
+            <div
+              className="mt-12 flex flex-wrap items-center gap-4"
+              style={{ animationDelay: "0.5s" }}
+            >
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-sm font-medium text-white transition-all duration-700 hover:bg-blue-500 shadow-[0_10px_30px_rgba(29,78,216,0.4)]"
+              >
+                Start a project
+                <ArrowUpRight
+                  className="h-4 w-4 transition-transform duration-700 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  strokeWidth={1.5}
+                />
+              </a>
+              <a
+                href="#work"
+                className="inline-flex items-center gap-3 rounded-full border border-white/10 px-8 py-4 text-sm font-medium text-white transition-colors duration-700 hover:border-white/30 hover:bg-white/5 backdrop-blur-xl"
+              >
+                <Rocket className="h-4 w-4 text-slate-400" strokeWidth={1.5} />
+                View selected work
+              </a>
+            </div>
+          </div>
+
+          <div
+            className="flex justify-center lg:justify-end"
+            style={{ animationDelay: "0.42s" }}
           >
-            <span className="inline-flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#64748B] border border-slate-200 rounded-full px-3 py-1.5">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
-              </span>
-              Now accepting new projects — Q3 2026
-            </span>
-          </motion.div>
+            <EcosystemVisual />
+          </div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center px-6 py-14 lg:py-10 lg:min-h-[85vh]">
+        {/* Workflow Lifecycle Cards spanning full container width */}
+        <div
+          className="mt-24 border-t border-white/10 pt-12 relative"
+          style={{ animationDelay: "0.66s" }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 items-stretch relative">
+            {/* Subtle connector line background for desktop workflow chain */}
+            <div className="hidden lg:block absolute top-[36px] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent pointer-events-none" />
 
-          {/* ---------------- LEFT ---------------- */}
-          <motion.div
-            variants={container}
-            initial="hidden"
-            animate={introDone || reduceMotion ? "show" : "hidden"}
-            className="text-center lg:text-left"
-          >
-            <motion.p
-              variants={item}
-              className="relative inline-block text-[10px] md:text-xs text-[#1D4ED8] mb-5 tracking-[0.25em] uppercase font-bold font-mono bg-blue-50 px-4 py-1.5 rounded-full overflow-hidden"
-            >
-              <span className="relative z-10">Design • Develop • Scale</span>
-              {!reduceMotion && (
-                <motion.span
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent"
-                  initial={{ x: "-120%" }}
-                  animate={{ x: "120%" }}
-                  transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 3, ease: "easeInOut" }}
-                />
-              )}
-            </motion.p>
-
-            <motion.h1 variants={item} className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-balance">
-              We Build Websites That Don't Just Look Good —
-              <br />
-              <span
-                className="bg-gradient-to-r from-[#1D4ED8] via-[#3B6BF5] to-[#1D4ED8] bg-clip-text text-transparent bg-[length:200%_auto]"
-                style={{ animation: reduceMotion ? "none" : "hero-shine 6s linear infinite" }}
-              >
-                They Bring You Clients
-              </span>
-            </motion.h1>
-
-            <motion.div variants={item} className="mt-4 text-xl sm:text-2xl md:text-3xl font-semibold text-[#334155]">
-              <Typewriter
-                options={{
-                  strings: ["High-Converting Websites", "Modern SaaS Products", "Custom Web Apps"],
-                  autoStart: true,
-                  loop: true,
-                  delay: 60,
-                  deleteSpeed: 30,
-                }}
-              />
-            </motion.div>
-
-            <motion.p variants={item} className="mt-6 text-[#64748B] text-base md:text-lg max-w-xl mx-auto lg:mx-0">
-              We help startups and businesses turn ideas into fast, modern, and conversion-focused digital products.
-            </motion.p>
-
-            <motion.div variants={item} className="mt-4 flex items-center justify-center lg:justify-start gap-3">
-              <div className="flex -space-x-2">
-                {["#1D4ED8", "#0F172A", "#64748B", "#94A3B8"].map((c, i) => (
-                  <span key={i} className="w-6 h-6 rounded-full border-2 border-white" style={{ backgroundColor: c }} />
-                ))}
+            {/* Card 1: Launch */}
+            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-xl transition-all duration-500 hover:border-blue-500/40 hover:bg-white/[0.04] hover:-translate-y-1 shadow-xl">
+              <div>
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-blue-400 transition-colors duration-500 group-hover:border-blue-500/30 group-hover:bg-blue-500/10">
+                    <Rocket className="h-5 w-5" strokeWidth={1.5} />
+                  </div>
+                  <span className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">01 / Launch</span>
+                </div>
+                <h3 className="text-base font-semibold tracking-tight text-white flex items-center justify-between">
+                  Launch
+                  <ChevronRight className="h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 hidden lg:block" />
+                </h3>
+                <p className="mt-2 text-xs text-slate-400 leading-relaxed whitespace-nowrap">Strategy • Brand • Positioning</p>
               </div>
-              <p className="text-xs text-gray-400">Trusted by startups & small businesses</p>
-            </motion.div>
-
-            <motion.div variants={item} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
-              <MagneticButton
-                href="/quote"
-                enabled={finePointer}
-                className="group relative px-8 py-3.5 bg-[#0F172A] rounded-xl text-white font-semibold shadow-lg text-sm overflow-hidden inline-block"
-              >
-                <span className="absolute inset-0 bg-[#1D4ED8] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-                <span className="relative flex items-center gap-2">
-                  Get Free Strategy Call
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </span>
-              </MagneticButton>
-
-              <MagneticButton
-                href="/portfolio"
-                enabled={finePointer}
-                className="px-8 py-3.5 border border-[#E2E8F0] hover:border-[#1D4ED8] text-[#0F172A] hover:text-[#1D4ED8] transition-colors rounded-xl font-semibold text-sm inline-block"
-              >
-                View Case Studies
-              </MagneticButton>
-            </motion.div>
-
-            <motion.div variants={item}>
-              <ProcessStrip />
-            </motion.div>
-          </motion.div>
-
-          {/* ---------------- RIGHT ---------------- */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={introDone || reduceMotion ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.35, ease: easeOut }}
-            className="hidden lg:block"
-          >
-            <HeroVisual reduceMotion={reduceMotion} />
-          </motion.div>
-
-          {/* mobile visual — lightweight */}
-          <div className="lg:hidden -order-1 mb-4">
-            <div className="relative max-w-xs mx-auto rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden">
-              <div className="flex items-center gap-1.5 px-3 py-2 border-b border-slate-100 bg-slate-50">
-                <span className="w-2 h-2 rounded-full bg-slate-300" />
-                <span className="w-2 h-2 rounded-full bg-slate-300" />
-                <span className="w-2 h-2 rounded-full bg-slate-300" />
+              <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] text-blue-400/80 font-mono">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse mr-2" />
+                Phase initiated
               </div>
-              <div className="p-4 space-y-3">
-                <div className="h-16 rounded-lg bg-gradient-to-br from-[#1D4ED8]/10 to-slate-50 border border-slate-100" />
-                <div className="h-2 w-full rounded-full bg-slate-100" />
-                <div className="h-2 w-3/4 rounded-full bg-slate-100" />
+            </div>
+
+            {/* Card 2: Build */}
+            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-xl transition-all duration-500 hover:border-blue-500/40 hover:bg-white/[0.04] hover:-translate-y-1 shadow-xl">
+              <div>
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-blue-400 transition-colors duration-500 group-hover:border-blue-500/30 group-hover:bg-blue-500/10">
+                    <Code className="h-5 w-5" strokeWidth={1.5} />
+                  </div>
+                  <span className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">02 / Build</span>
+                </div>
+                <h3 className="text-base font-semibold tracking-tight text-white flex items-center justify-between">
+                  Build
+                  <ChevronRight className="h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 hidden lg:block" />
+                </h3>
+                <p className="mt-2 text-xs text-slate-400 leading-relaxed">Websites • Applications • Custom Experiences</p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] text-slate-500 font-mono">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-600 mr-2" />
+                Next milestone
+              </div>
+            </div>
+
+            {/* Card 3: Automate */}
+            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-xl transition-all duration-500 hover:border-blue-500/40 hover:bg-white/[0.04] hover:-translate-y-1 shadow-xl">
+              <div>
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-blue-400 transition-colors duration-500 group-hover:border-blue-500/30 group-hover:bg-blue-500/10">
+                    <Cpu className="h-5 w-5" strokeWidth={1.5} />
+                  </div>
+                  <span className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">03 / Automate</span>
+                </div>
+                <h3 className="text-base font-semibold tracking-tight text-white flex items-center justify-between">
+                  Automate
+                  <ChevronRight className="h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 hidden lg:block" />
+                </h3>
+                <p className="mt-2 text-xs text-slate-400 leading-relaxed">AI Workflows • Integrations • Business Systems</p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] text-slate-500 font-mono">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-600 mr-2" />
+                Queued sequence
+              </div>
+            </div>
+
+            {/* Card 4: Scale */}
+            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-xl transition-all duration-500 hover:border-blue-500/40 hover:bg-white/[0.04] hover:-translate-y-1 shadow-xl">
+              <div>
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-blue-400 transition-colors duration-500 group-hover:border-blue-500/30 group-hover:bg-blue-500/10">
+                    <TrendingUp className="h-5 w-5" strokeWidth={1.5} />
+                  </div>
+                  <span className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">04 / Scale</span>
+                </div>
+                <h3 className="text-base font-semibold tracking-tight text-white">Scale</h3>
+                <p className="mt-2 text-xs text-slate-400 leading-relaxed">SEO • Infrastructure • Expansion & Growth</p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] text-slate-500 font-mono">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-600 mr-2" />
+                Enterprise tier
               </div>
             </div>
           </div>
         </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-10">
-          <ClientMarquee />
-        </div>
-
-        {/* scroll cue */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={introDone || reduceMotion ? { opacity: 1 } : {}}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="hidden lg:flex absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2"
-        >
-          <span className="text-[10px] tracking-[0.2em] text-[#94A3B8] uppercase font-mono">Scroll</span>
-          <div className="w-5 h-8 rounded-full border border-[#CBD5E1] flex justify-center pt-1.5">
-            <motion.span
-              className="w-1 h-1.5 rounded-full bg-[#1D4ED8]"
-              animate={reduceMotion ? {} : { y: [0, 10, 0], opacity: [1, 0.3, 1] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </div>
-        </motion.div>
-      </section>
-
-      <style>{`
-        @keyframes hero-shine {
-          to { background-position: 200% center; }
-        }
-      `}</style>
-    </>
+      </div>
+    </section>
   );
 }
