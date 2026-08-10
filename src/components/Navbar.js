@@ -59,7 +59,7 @@ const industriesData = [
 
 const navLinks = [
   { name: "Work", href: "/work" },
-  { name: "Process", href: "/process" },
+  { name: "Process", href: "/#process" },
   { name: "About", href: "/about" },
   { name: "Blog", href: "/blog" },
 ];
