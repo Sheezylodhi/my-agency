@@ -66,7 +66,7 @@ export function CallToAction() {
         <div className="relative w-full rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.18)] flex items-center">
           
           {/* BACKGROUND IMAGE WITH INFINITE SLOW ZOOM */}
-          <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <div className="absolute inset-0 w-full h-full overflow-hidden" aria-hidden="true">
             <motion.div
               initial={{ scale: 1 }}
               animate={{ scale: 1.08 }}
@@ -80,18 +80,19 @@ export function CallToAction() {
             >
               <Image
                 src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=2000&q=85"
-                alt="Minimal luxury executive boardroom workspace"
+                alt="Minimal luxury executive boardroom workspace with panoramic view"
                 fill
                 priority
+                sizes="100vw"
                 className="object-cover object-center"
               />
             </motion.div>
           </div>
 
           {/* CINEMATIC DARK GRADIENT OVERLAY & NOISE / VIGNETTE */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#030614]/98 via-[#030614]/90 to-[#030614]/75 z-10" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.7)_100%)] z-10 pointer-events-none" />
-          <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px] z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#030614]/98 via-[#030614]/90 to-[#030614]/75 z-10" aria-hidden="true" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.7)_100%)] z-10 pointer-events-none" aria-hidden="true" />
+          <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px] z-10 pointer-events-none" aria-hidden="true" />
 
           {/* CONTENT GRID */}
           <div className="relative z-20 w-full grid lg:grid-cols-[1.1fr_0.9fr] items-center gap-10 lg:gap-14 px-6 sm:px-10 lg:px-16 py-12 sm:py-16 lg:py-20">
@@ -106,7 +107,7 @@ export function CallToAction() {
                 transition={{ duration: 1, ease }}
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 font-mono text-[11px] tracking-[0.3em] text-blue-300 uppercase w-fit backdrop-blur-md"
               >
-                <Sparkles className="h-3.5 w-3.5 text-blue-300 animate-pulse" strokeWidth={1.5} />
+                <Sparkles className="h-3.5 w-3.5 text-blue-300 animate-pulse" strokeWidth={1.5} aria-hidden="true" />
                 The Final Step
               </motion.div>
 
@@ -147,8 +148,8 @@ export function CallToAction() {
                   className="group relative flex items-center justify-center gap-3 rounded-full bg-blue-600 px-7 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-semibold tracking-[-0.01em] text-white shadow-[0_20px_40px_rgba(37,99,235,0.4)] transition-all duration-300 hover:bg-blue-500 hover:shadow-[0_25px_50px_rgba(37,99,235,0.6)] cursor-pointer"
                 >
                   <span>Schedule a Discovery Call</span>
-                  <div className="h-6 w-6 rounded-full bg-white/25 flex items-center justify-center transition-transform duration-300 group-hover:rotate-45">
-                    <ArrowUpRight className="h-3.5 w-3.5 text-white" strokeWidth={2} />
+                  <div className="h-6 w-6 rounded-full bg-white/25 flex items-center justify-center transition-transform duration-300 group-hover:rotate-45" aria-hidden="true">
+                    <ArrowUpRight className="h-3.5 w-3.5 text-white" strokeWidth={2} aria-hidden="true" />
                   </div>
                 </motion.a>
 
@@ -160,7 +161,7 @@ export function CallToAction() {
                   className="group inline-flex items-center gap-2 text-sm sm:text-base font-medium text-white transition-colors hover:text-blue-300 py-3 px-2 cursor-pointer"
                 >
                   <span>Explore Our Work</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} />
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} aria-hidden="true" />
                 </motion.a>
               </motion.div>
 
@@ -183,7 +184,7 @@ export function CallToAction() {
               className="relative rounded-[24px] sm:rounded-[28px] border border-white/15 bg-white/[0.06] p-5 sm:p-7 shadow-[0_30px_90px_rgba(0,0,0,0.4)] backdrop-blur-2xl overflow-hidden w-full"
             >
               {/* Subtle top accent light */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
 
               <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-4 mb-4 sm:mb-5">
                 <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.28em] text-blue-300 uppercase">
@@ -195,17 +196,18 @@ export function CallToAction() {
               </div>
 
               {/* ROADMAP STEPS */}
-              <div className="relative z-10 space-y-2.5">
+              <div className="relative z-10 space-y-2.5" role="list" aria-label="Project roadmap steps">
                 {roadmapSteps.map((item, index) => {
                   const IconComponent = item.icon;
                   return (
                     <div 
-                      key={index} 
+                      key={index}
+                      role="listitem"
                       className="group flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.02] px-3.5 sm:px-4 py-2.5 transition-all duration-300 hover:bg-white/[0.06] hover:border-white/15"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="h-7 w-7 rounded-lg bg-blue-500/15 border border-blue-400/30 flex items-center justify-center text-blue-300 transition-transform duration-300 group-hover:scale-110 shrink-0">
-                          <IconComponent className="h-3.5 w-3.5" strokeWidth={1.75} />
+                        <div className="h-7 w-7 rounded-lg bg-blue-500/15 border border-blue-400/30 flex items-center justify-center text-blue-300 transition-transform duration-300 group-hover:scale-110 shrink-0" aria-hidden="true">
+                          <IconComponent className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
                         </div>
                         <span className="font-mono text-xs text-slate-400 tracking-wider">
                           {item.step}
@@ -214,7 +216,7 @@ export function CallToAction() {
                           {item.title}
                         </span>
                       </div>
-                      <span className="font-mono text-[10px] text-blue-400/80 tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:inline">
+                      <span className="font-mono text-[10px] text-blue-400/80 tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:inline" aria-hidden="true">
                         VERIFIED →
                       </span>
                     </div>
@@ -225,7 +227,7 @@ export function CallToAction() {
               {/* BOTTOM AVERAGE RESPONSE TIME */}
               <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4 relative z-10">
                 <div className="flex items-center gap-2">
-                  <Clock className="h-3.5 w-3.5 text-blue-300 shrink-0" strokeWidth={1.75} />
+                  <Clock className="h-3.5 w-3.5 text-blue-300 shrink-0" strokeWidth={1.75} aria-hidden="true" />
                   <span className="font-mono text-[10px] sm:text-[11px] tracking-wider text-slate-300 uppercase">
                     Average response time
                   </span>

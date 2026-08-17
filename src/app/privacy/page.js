@@ -1,110 +1,277 @@
-"use client";
+import React from "react";
+import Link from "next/link";
+import { ArrowRight, Shield, FileText, CheckCircle2 } from "lucide-react";
 
-import { motion } from "framer-motion";
-import { ShieldCheck, Lock, EyeOff, Database, Bell, UserCheck } from "lucide-react";
+export const metadata = {
+  title: "Privacy Policy | WebMash Labs",
+  description: "Learn how WebMash Labs collects, uses, protects, retains and handles personal information when you interact with our digital platforms and services.",
+  alternates: {
+    canonical: "https://webmashlabs.com/privacy-policy",
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
-const sections = [
-  {
-    title: "Data Collection",
-    icon: <Database className="text-blue-600" size={24} />,
-    content: "We collect essential information such as your name, email address, and project requirements to provide tailored digital solutions. We ensure that no unnecessary data is ever tracked or stored."
-  },
-  {
-    title: "Security Protocols",
-    icon: <Lock className="text-blue-600" size={24} />,
-    content: "Our systems utilize industry-standard SSL encryption and secure cloud architecture. This ensures that your project files and personal details remain protected and inaccessible to unauthorized parties."
-  },
-  {
-    title: "Third-Party Privacy",
-    icon: <EyeOff className="text-blue-600" size={24} />,
-    content: "We maintain a strict 'No-Sell' policy. Your data is never shared with third-party marketers. We only integrate with trusted, globally compliant tools, such as Stripe, to facilitate secure payments."
-  },
-  {
-    title: "User Consent",
-    icon: <UserCheck className="text-blue-600" size={24} />,
-    content: "By initiating a project or using our contact forms, you agree to our data handling practices. You retain the right to request access to your data or its complete deletion at any stage of our collaboration."
-  }
+const tableOfContents = [
+  { id: "information-we-collect", title: "01. Information We Collect" },
+  { id: "how-we-use-information", title: "02. How We Use Information" },
+  { id: "cookies-tracking", title: "03. Cookies & Tracking" },
+  { id: "information-sharing", title: "04. Information Sharing" },
+  { id: "data-security", title: "05. Data Security" },
+  { id: "data-retention", title: "06. Data Retention" },
+  { id: "your-rights", title: "07. Your Rights" },
+  { id: "third-party-services", title: "08. Third-Party Services" },
+  { id: "childrens-privacy", title: "09. Children's Privacy" },
+  { id: "policy-updates", title: "10. Policy Updates" },
+  { id: "contact", title: "11. Contact" },
 ];
 
-export default function Privacy() {
+export default function PrivacyPolicyPage() {
   return (
-    <section className="py-32 bg-[#FCFDFF] text-[#0F172A] px-6">
-      <div className="max-w-4xl mx-auto">
-        
-        {/* Header Section */}
-        <div className="text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-6 border border-blue-100"
-          >
-            <ShieldCheck size={16} /> Secure & Transparent
-          </motion.div>
-          <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-6">
-            Privacy <span className="text-blue-600">Policy</span>
-          </h1>
-          <p className="text-slate-500 font-medium">
-            Last Updated: April 2026 • Version 2.1
-          </p>
-        </div>
-
-        {/* Main Content Grid */}
-        <div className="grid gap-8">
-          {sections.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="group p-8 rounded-[32px] bg-white border border-slate-100 shadow-xl shadow-blue-900/5 hover:border-blue-200 transition-all"
-            >
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="w-14 h-14 shrink-0 rounded-2xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
-                  {item.icon}
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-3 text-slate-900">{item.title}</h3>
-                  <p className="text-slate-500 leading-relaxed font-medium">
-                    {item.content}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Detailed Disclosure Section */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="mt-20 p-10 rounded-[40px] bg-slate-900 text-white relative overflow-hidden"
-        >
-          <div className="relative z-10">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <Bell className="text-blue-400" /> Important Updates
-            </h2>
-            <div className="space-y-4 text-slate-400 leading-relaxed">
-              <p>
-                We periodically update our privacy policy to ensure full compliance with evolving digital laws, including GDPR and CCPA. In the event of any significant changes, we notify our active clients directly via email.
-              </p>
-              <p>
-                We treat your data as a commitment to trust, not just information. If you have any questions regarding the security of your data or our practices, please feel free to reach out to us at any time.
-              </p>
-            </div>
+    <main className="min-h-screen bg-[#F5F3EF] text-[#0A0A0A] selection:bg-[#2563EB] selection:text-white pt-24 lg:pt-32">
+      {/* SECTION 1 — HERO */}
+      <header className="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-12 pb-16 lg:pb-24 border-b border-[#E5E2DC]">
+        <div className="max-w-4xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/20 text-[#2563EB] text-xs font-mono tracking-widest uppercase mb-6">
+            <Shield className="w-3.5 h-3.5" aria-hidden="true" />
+            <span>LEGAL / WEBMASH LABS</span>
           </div>
-          {/* Subtle Background Pattern */}
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:20px_20px]" />
-        </motion.div>
 
-        {/* Contact Footer */}
-        <div className="mt-16 text-center">
-          <p className="text-slate-500 font-medium">
-            Have questions? <a href="mailto:webmashlabs21@gmail.com" className="text-blue-600 font-bold hover:underline">Contact our support team</a>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0A0A0A] leading-[1.08] mb-6">
+            Privacy Policy
+          </h1>
+
+          <p className="text-lg sm:text-xl text-[#525252] font-light max-w-2xl leading-relaxed mb-8">
+            How we collect, use, protect and handle information when you interact with WebMash Labs.
           </p>
-        </div>
 
+          <div className="flex items-center gap-3 text-xs font-mono text-[#737373] uppercase tracking-wider">
+            <span>Last Updated</span>
+            <span className="w-1 h-1 rounded-full bg-[#737373]" aria-hidden="true" />
+            <span>August 2026</span>
+          </div>
+        </div>
+      </header>
+
+      {/* SECTION 2 — CONTENT LAYOUT */}
+      <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-16 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left Side: Sticky Table of Contents (Desktop) */}
+          <aside className="lg:col-span-4 hidden lg:block sticky top-32" aria-label="Table of Contents">
+            <div className="p-6 rounded-2xl bg-[#F8F8F6] border border-[#E5E2DC]">
+              <h2 className="font-mono text-xs uppercase tracking-widest text-[#0A0A0A] mb-4 flex items-center gap-2">
+                <FileText className="w-4 h-4 text-[#2563EB]" aria-hidden="true" />
+                <span>On this page</span>
+              </h2>
+              <nav className="space-y-2">
+                {tableOfContents.map((item) => (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className="block text-sm text-[#525252] hover:text-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#2563EB] rounded px-1 transition-colors py-1 font-light"
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </aside>
+
+          {/* Right Side: Legal Content */}
+          <div className="lg:col-span-8 space-y-16">
+            
+            {/* 01 */}
+            <section id="information-we-collect" className="scroll-mt-32 space-y-4">
+              <span className="font-mono text-xs text-[#2563EB] tracking-widest uppercase">01 / Collection</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A]">
+                Information We Collect
+              </h2>
+              <p className="text-[#525252] font-light leading-relaxed">
+                We collect information that you provide directly to us when you fill out forms, request consultations, apply for services, or communicate with us. This may include:
+              </p>
+              <ul className="space-y-3 pt-2">
+                {[
+                  "Contact details (such as name, professional email address, and phone number)",
+                  "Project requirements, specifications, and business background information",
+                  "Communications and correspondence sent through our website or direct channels",
+                  "Basic technical information and standard browser or device telemetry data when accessing our digital properties"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-sm text-[#525252] font-light">
+                    <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <hr className="border-[#E5E2DC]" />
+
+            {/* 02 */}
+            <section id="how-we-use-information" className="scroll-mt-32 space-y-4">
+              <span className="font-mono text-xs text-[#2563EB] tracking-widest uppercase">02 / Purpose</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A]">
+                How We Use Information
+              </h2>
+              <p className="text-[#525252] font-light leading-relaxed">
+                The information we gather is utilized solely to operate, maintain, and enhance our digital product engineering services. Specifically, we use information to:
+              </p>
+              <ul className="space-y-3 pt-2">
+                {[
+                  "Respond to inbound inquiries and evaluate prospective project engagements",
+                  "Provide, maintain, and scale our digital products and services",
+                  "Communicate regarding project updates, proposals, and administrative notifications",
+                  "Ensure network security, prevent fraudulent activity, and analyze aggregate website performance"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-sm text-[#525252] font-light">
+                    <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <hr className="border-[#E5E2DC]" />
+
+            {/* 03 */}
+            <section id="cookies-tracking" className="scroll-mt-32 space-y-4">
+              <span className="font-mono text-xs text-[#2563EB] tracking-widest uppercase">03 / Tracking</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A]">
+                Cookies & Tracking
+              </h2>
+              <p className="text-[#525252] font-light leading-relaxed">
+                For detailed information about cookies and similar technologies, please review our{" "}
+                <Link href="/cookie-policy" className="text-[#2563EB] hover:underline font-normal focus:outline-none focus:ring-2 focus:ring-[#2563EB] rounded">
+                  Cookie Policy
+                </Link>. You retain the ability to configure your browser settings to reject or delete cookies at your discretion.
+              </p>
+            </section>
+
+            <hr className="border-[#E5E2DC]" />
+
+            {/* 04 */}
+            <section id="information-sharing" className="scroll-mt-32 space-y-4">
+              <span className="font-mono text-xs text-[#2563EB] tracking-widest uppercase">04 / Sharing</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A]">
+                Information Sharing
+              </h2>
+              <p className="text-[#525252] font-light leading-relaxed">
+                We do not sell, trade, or rent personal information. Information may be shared with trusted third-party service providers strictly when reasonably necessary to operate our website, secure our infrastructure, or facilitate professional business operations under strict confidentiality obligations.
+              </p>
+            </section>
+
+            <hr className="border-[#E5E2DC]" />
+
+            {/* 05 */}
+            <section id="data-security" className="scroll-mt-32 space-y-4">
+              <span className="font-mono text-xs text-[#2563EB] tracking-widest uppercase">05 / Security</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A]">
+                Data Security
+              </h2>
+              <p className="text-[#525252] font-light leading-relaxed">
+                We employ reasonable technical, physical, and administrative safeguards designed to protect information against unauthorized access, loss, destruction, or alteration. However, no digital transmission or storage system can be guaranteed completely secure.
+              </p>
+            </section>
+
+            <hr className="border-[#E5E2DC]" />
+
+            {/* 06 */}
+            <section id="data-retention" className="scroll-mt-32 space-y-4">
+              <span className="font-mono text-xs text-[#2563EB] tracking-widest uppercase">06 / Retention</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A]">
+                Data Retention
+              </h2>
+              <p className="text-[#525252] font-light leading-relaxed">
+                We retain personal and project information only for as long as reasonably necessary to fulfill legitimate business, operational, or legal obligations.
+              </p>
+            </section>
+
+            <hr className="border-[#E5E2DC]" />
+
+            {/* 07 */}
+            <section id="your-rights" className="scroll-mt-32 space-y-4">
+              <span className="font-mono text-xs text-[#2563EB] tracking-widest uppercase">07 / Rights</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A]">
+                Your Rights
+              </h2>
+              <p className="text-[#525252] font-light leading-relaxed">
+                Depending on your location, you may have rights regarding access, correction, or deletion of your personal data. To exercise any applicable rights, please reach out directly through our contact channel.
+              </p>
+            </section>
+
+            <hr className="border-[#E5E2DC]" />
+
+            {/* 08 */}
+            <section id="third-party-services" className="scroll-mt-32 space-y-4">
+              <span className="font-mono text-xs text-[#2563EB] tracking-widest uppercase">08 / External Links</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A]">
+                Third-Party Services
+              </h2>
+              <p className="text-[#525252] font-light leading-relaxed">
+                Our digital platforms may link to external websites or services not operated by WebMash Labs. We assume no responsibility for the privacy practices or content of third-party entities.
+              </p>
+            </section>
+
+            <hr className="border-[#E5E2DC]" />
+
+            {/* 09 */}
+            <section id="childrens-privacy" className="scroll-mt-32 space-y-4">
+              <span className="font-mono text-xs text-[#2563EB] tracking-widest uppercase">09 / Minors</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A]">
+                Children&apos;s Privacy
+              </h2>
+              <p className="text-[#525252] font-light leading-relaxed">
+                WebMash Labs services and digital properties are designed for professional and commercial use, and are not intentionally directed toward individuals under the age of 18.
+              </p>
+            </section>
+
+            <hr className="border-[#E5E2DC]" />
+
+            {/* 10 */}
+            <section id="policy-updates" className="scroll-mt-32 space-y-4">
+              <span className="font-mono text-xs text-[#2563EB] tracking-widest uppercase">10 / Modifications</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A]">
+                Policy Updates
+              </h2>
+              <p className="text-[#525252] font-light leading-relaxed">
+                We may update this Privacy Policy periodically to reflect changes in our operational workflows or legal requirements. Updated versions will be posted directly on this page with a revised date.
+              </p>
+            </section>
+
+            <hr className="border-[#E5E2DC]" />
+
+            {/* 11 */}
+            <section id="contact" className="scroll-mt-32 space-y-6">
+              <span className="font-mono text-xs text-[#2563EB] tracking-widest uppercase">11 / Support</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0A0A0A]">
+                Contact
+              </h2>
+              <p className="text-[#525252] font-light leading-relaxed">
+                If you have any questions, concerns, or requests regarding this Privacy Policy, please get in touch with our team.
+              </p>
+
+              {/* Dark Callout Box */}
+              <div className="p-8 rounded-2xl bg-[#05070B] text-white mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Questions about your information?</h3>
+                  <p className="text-[#737373] text-sm font-light">Our engineering team is ready to address your inquiries.</p>
+                </div>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-medium text-sm rounded-lg transition-all duration-300 shrink-0 shadow-lg shadow-[#2563EB]/25 focus:outline-none focus:ring-2 focus:ring-white"
+                >
+                  <span>Contact WebMash Labs</span>
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </section>
+
+          </div>
+
+        </div>
       </div>
-    </section>
+    </main>
   );
 }

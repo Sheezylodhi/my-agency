@@ -14,7 +14,7 @@ const TRUST_PILLARS = [
     tag: "STRATEGIC ALIGNMENT",
     headline: "We understand your business first.",
     description:
-      "Before writing a single line or drawing a layout, we dive deep into your revenue model, target audience, and market position. Every decision we make is anchored in your unique business goals.",
+      "Before writing a single line of code or designing a layout, WebMash Labs dives deep into your business model, target audience, and market position. Our custom web design and website development solutions are strategically aligned with your unique business goals and customer journey.",
     renderVisual: () => (
       <div className="space-y-6">
         <div className="flex justify-between items-center border-b border-slate-100 pb-4 text-xs font-mono text-slate-400">
@@ -46,7 +46,7 @@ const TRUST_PILLARS = [
     tag: "BRAND AUTHORITY",
     headline: "Your website should build instant trust.",
     description:
-      "First impressions happen in seconds. We craft high-end, premium digital spaces that position your company as the undeniable leader in your industry, eliminating client hesitation.",
+      "First impressions happen in seconds. As a professional web design agency, we create premium digital experiences that position your company as a credible industry leader through strong branding, thoughtful UI/UX design, and polished websites.",
     renderVisual: () => (
       <div className="space-y-6">
         <div className="flex justify-between items-center border-b border-slate-100 pb-4 text-xs font-mono text-slate-400">
@@ -74,7 +74,7 @@ const TRUST_PILLARS = [
     tag: "REVENUE ACCELERATION",
     headline: "Designed to generate enquiries and growth.",
     description:
-      "A gorgeous website is meaningless if it doesn't perform. Every layout, message, and user flow is strategically optimized to turn casual visitors into qualified client enquiries.",
+      "A beautiful website is meaningless if it does not perform. Every layout, message, and user journey is strategically optimized for clear communication, better user experience, and qualified enquiries that support sustainable business growth.",
     renderVisual: () => (
       <div className="space-y-6">
         <div className="flex justify-between items-center border-b border-slate-100 pb-4 text-xs font-mono text-slate-400">
@@ -107,7 +107,7 @@ const TRUST_PILLARS = [
     tag: "ENDURING RELATIONSHIP",
     headline: "Long-term partners, not one-time vendors.",
     description:
-      "We don't disappear after launch. We remain in your corner through continuous support, strategic advice, and ongoing collaboration as your business expands.",
+      "We do not disappear after launch. WebMash Labs provides ongoing website maintenance, technical support, and performance improvements to help your website remain secure, reliable, and effective as your business grows.",
     renderVisual: () => (
       <div className="space-y-6">
         <div className="flex justify-between items-center border-b border-slate-100 pb-4 text-xs font-mono text-slate-400">
@@ -163,10 +163,10 @@ export function WhyChooseUs() {
             WHY WEBMASH LABS
           </p>
           <h2 className="text-[clamp(2.5rem,4.5vw,4.2rem)] font-extrabold tracking-tight leading-[1.08] text-slate-950">
-            Why business owners trust us with their growth.
+            Why Businesses Trust WebMash Labs for Web Design &amp; Digital Growth
           </h2>
           <p className="text-lg lg:text-xl text-slate-600 font-light leading-relaxed">
-            Hiring an agency is an investment in your company&#39;s future. Here is why partnering with us makes all the difference.
+            Hiring a digital agency is an investment in your company’s future. WebMash Labs combines professional web design, custom website development, and strategic digital solutions to create websites that support long-term business growth.
           </p>
         </div>
 

@@ -1,615 +1,662 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useCallback, useRef, useState, useId } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+
+const SERVICES = [
+  {
+    number: "01",
+    title: "Website Design",
+    href: "/services/web-design-development",
+    description: "Professional website design services focused on responsive layouts, modern user experiences, high performance, and conversion optimization.",
+    visualContent: (
+      <div className="flex flex-col h-full font-sans select-none">
+        {/* Window Chrome */}
+        <div className="flex items-center justify-between px-4 py-3.5 border-b border-white/[0.06] bg-[#0A0E17]/80 backdrop-blur-xl z-20">
+          <div className="flex items-center space-x-2" aria-hidden="true">
+            <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+            <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+            <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+          </div>
+          <div className="px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] font-mono text-[10px] text-slate-400 flex items-center space-x-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" aria-hidden="true" />
+            <span>webmashlabs.com/design</span>
+          </div>
+          <div className="text-[10px] font-mono tracking-wider text-slate-500 uppercase">Concept 01</div>
+        </div>
+
+        {/* Preview Canvas */}
+        <div className="flex-1 overflow-y-auto p-6 lg:p-8 space-y-6 relative z-10 flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-4 border-b border-white/[0.06]">
+            <div className="flex items-center space-x-2.5">
+              <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center font-mono font-bold text-white text-xs shadow-inner" aria-hidden="true">W</div>
+              <span className="font-semibold text-xs tracking-widest text-slate-200">WEBMASH LABS</span>
+            </div>
+            <div className="hidden sm:flex items-center space-x-6 text-[11px] text-slate-400 font-medium" aria-hidden="true">
+              <span className="text-white">Studio</span>
+              <span>Work</span>
+              <span>Process</span>
+            </div>
+            <div className="px-3 py-1.5 rounded-lg bg-white text-slate-950 font-semibold text-[11px] shadow-sm">
+              Initialize
+            </div>
+          </div>
+
+          <div className="py-4 space-y-4 max-w-lg">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono text-[10px] tracking-wide">
+              <span>EDITORIAL ARCHITECTURE</span>
+            </div>
+            <h4 className="text-2xl lg:text-3xl font-semibold tracking-tight text-white leading-snug">
+              Immersive digital spaces engineered for conversion.
+            </h4>
+            <p className="text-slate-400 text-xs lg:text-sm font-light leading-relaxed">
+              Meticulously crafted interfaces balancing high-end aesthetic restraint with uncompromising technical performance.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 pt-2">
+            <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1.5 backdrop-blur-md">
+              <div className="flex items-center space-x-2">
+                <div className="w-5 h-5 rounded-full bg-slate-800 text-[9px] flex items-center justify-center font-bold text-slate-300" aria-hidden="true">A</div>
+                <span className="text-[11px] font-medium text-slate-200">Typography Scale</span>
+              </div>
+              <p className="text-[10px] text-slate-400 font-mono">Fluid modular hierarchy</p>
+            </div>
+            <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1.5 backdrop-blur-md">
+              <div className="flex items-center space-x-2">
+                <div className="w-5 h-5 rounded-full bg-blue-600/30 text-[9px] flex items-center justify-center font-bold text-blue-400" aria-hidden="true">B</div>
+                <span className="text-[11px] font-medium text-slate-200">Grid Alignment</span>
+              </div>
+              <p className="text-[10px] text-slate-400 font-mono">Strict 8pt baseline rhythm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    number: "02",
+    title: "Website Development",
+    href: "/services/web-applications",
+    description: "Custom website development using modern technologies to build fast, secure, scalable, and SEO-friendly websites and web applications.",
+    visualContent: (
+      <div className="flex flex-col h-full font-mono select-none z-10">
+        {/* Window Chrome */}
+        <div className="flex items-center justify-between px-4 py-3.5 border-b border-white/[0.06] bg-[#0A0E17]/80 backdrop-blur-xl">
+          <div className="flex items-center space-x-2" aria-hidden="true">
+            <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+            <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+            <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+          </div>
+          <div className="text-[11px] text-slate-400 flex items-center space-x-2">
+            <span className="text-slate-500">workspace</span>
+            <span aria-hidden="true">/</span>
+            <span className="text-slate-200 font-semibold">core.ts</span>
+          </div>
+          <div className="text-[10px] text-emerald-400 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+            Build: Optimized
+          </div>
+        </div>
+
+        {/* IDE Layout */}
+        <div className="flex-1 grid grid-cols-12 overflow-hidden text-xs">
+          <div className="col-span-4 border-r border-white/[0.06] p-4 space-y-3 bg-white/[0.005] text-slate-500 hidden lg:block">
+            <p className="text-[10px] tracking-widest uppercase text-slate-600 font-semibold">Structure</p>
+            <div className="space-y-2 text-[11px]">
+              <p className="text-slate-300 flex items-center space-x-2"><span aria-hidden="true">📁</span> <span>src/core</span></p>
+              <p className="pl-4 text-blue-400 flex items-center space-x-2"><span aria-hidden="true">📄</span> <span>runtime.ts</span></p>
+              <p className="pl-4 text-slate-300 bg-white/[0.03] px-2 py-1 rounded-md border border-white/[0.04] flex items-center space-x-2"><span aria-hidden="true">📄</span> <span>engine.ts</span></p>
+              <p className="pl-4 text-slate-500 flex items-center space-x-2"><span aria-hidden="true">📄</span> <span>types.d.ts</span></p>
+            </div>
+          </div>
+
+          <div className="col-span-12 lg:col-span-8 p-6 flex flex-col justify-between space-y-4 overflow-y-auto">
+            <div className="space-y-2 text-[11px] text-slate-300 overflow-x-auto leading-relaxed">
+              <p><span className="text-purple-400">import</span> &#123; <span className="text-blue-300">Cluster</span> &#125; <span className="text-purple-400">from</span> <span className="text-emerald-300">&apos;@webmash/core&apos;</span>;</p>
+              <p><span className="text-purple-400">import</span> &#123; <span className="text-blue-300">EdgeCache</span> &#125; <span className="text-purple-400">from</span> <span className="text-emerald-300">&apos;@edge/runtime&apos;</span>;</p>
+              <p className="text-slate-600">// Compile high-performance node cluster</p>
+              <p><span className="text-purple-400">export async function</span> <span className="text-amber-300">initializePipeline</span>() &#123;</p>
+              <p className="pl-4"><span className="text-blue-300">const</span> node = <span className="text-purple-400">await</span> Cluster.<span className="text-amber-300">bind</span>(&#123; latency: <span className="text-emerald-300">&apos;0ms&apos;</span> &#125;);</p>
+              <p className="pl-4"><span className="text-purple-400">return</span> EdgeCache.<span className="text-amber-300">verify</span>(node);</p>
+              <p>&#125;</p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-[#04060B] border border-white/[0.06] space-y-1.5 text-[10px]">
+              <div className="flex items-center justify-between text-slate-500 border-b border-white/[0.04] pb-2 mb-2 font-mono">
+                <span>SYSTEM TELEMETRY</span>
+                <span className="text-emerald-400 flex items-center space-x-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
+                  <span>ONLINE</span>
+                </span>
+              </div>
+              <p className="text-slate-400">&gt; compiling static assets &amp; server routes...</p>
+              <p className="text-emerald-400">✓ Global edge deployment completed successfully.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    number: "03",
+    title: "UI / UX Design",
+    href: "/services/ui-ux-design",
+    description: "User-focused UI/UX design services creating intuitive, accessible, and conversion-focused digital experiences for websites and web applications.",
+    visualContent: (
+      <div className="flex flex-col justify-between h-full p-6 lg:p-8 font-sans select-none">
+        <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] z-10">
+          <div className="flex items-center space-x-3">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold text-white text-xs shadow-md" aria-hidden="true">UI</div>
+            <div>
+              <p className="text-xs font-semibold text-slate-200">Design_System_Tokens.fig</p>
+              <p className="text-[10px] text-pink-400 font-mono">Variables Synchronized</p>
+            </div>
+          </div>
+          <div className="hidden sm:flex items-center space-x-2">
+            <span className="px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-[10px] font-mono text-slate-400">1440px Grid</span>
+            <span className="px-2.5 py-1 rounded bg-pink-500/10 text-pink-400 text-[10px] font-mono border border-pink-500/20">Active Node</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4 z-10">
+          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2 backdrop-blur-md">
+            <span className="font-mono text-[10px] tracking-wider text-slate-500 block">PALETTE</span>
+            <div className="flex space-x-2" aria-hidden="true">
+              <div className="w-5 h-5 rounded-full bg-purple-500 shadow-sm ring-1 ring-white/20" />
+              <div className="w-5 h-5 rounded-full bg-pink-500 shadow-sm ring-1 ring-white/20" />
+              <div className="w-5 h-5 rounded-full bg-slate-900 shadow-sm ring-1 ring-white/20" />
+            </div>
+          </div>
+          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1 backdrop-blur-md">
+            <span className="font-mono text-[10px] tracking-wider text-slate-500 block">TYPOGRAPHY</span>
+            <p className="text-base font-semibold text-white tracking-tight">Inter Pro</p>
+            <p className="text-[10px] text-slate-400 font-mono">Modular Scale</p>
+          </div>
+          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1 backdrop-blur-md">
+            <span className="font-mono text-[10px] tracking-wider text-slate-500 block">SPACING</span>
+            <div className="flex items-center space-x-1.5 pt-1" aria-hidden="true">
+              <div className="w-2 h-4 bg-pink-500/40 rounded-sm" />
+              <div className="w-4 h-4 bg-pink-500/70 rounded-sm" />
+              <div className="w-6 h-4 bg-pink-500 rounded-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="p-3.5 rounded-xl bg-white/[0.01] border border-white/[0.06] flex items-center justify-between text-xs z-10">
+          <span className="text-slate-300 font-medium">Component: Navigation_Bar</span>
+          <span className="text-slate-500 font-mono text-[10px]">Variant: Primary</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    number: "04",
+    title: "SEO",
+    href: "/services/seo",
+    description: "Professional SEO services focused on technical SEO, on-page optimization, content strategy, and improving organic search visibility.",
+    visualContent: (
+      <div className="flex flex-col justify-between h-full p-6 lg:p-8 font-sans select-none">
+        <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] z-10">
+          <div className="flex items-center space-x-3">
+            <div className="w-7 h-7 rounded-lg bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center font-bold text-emerald-400 text-xs shadow-md" aria-hidden="true">↗</div>
+            <div>
+              <p className="text-xs font-semibold text-slate-200">Organic Growth Architecture</p>
+              <p className="text-[10px] text-emerald-400 font-mono">Search Engine Indexing Active</p>
+            </div>
+          </div>
+          <span className="hidden sm:inline px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/20">
+            Performance Optimized
+          </span>
+        </div>
+
+        <div className="grid grid-cols-3 gap-3 my-4 z-10">
+          <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
+            <span className="text-[10px] font-mono text-slate-500 block">VISIBILITY</span>
+            <p className="text-lg font-semibold text-white mt-1">Optimized</p>
+            <span className="text-[10px] text-emerald-400 font-mono">Structured Data</span>
+          </div>
+          <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
+            <span className="text-[10px] font-mono text-slate-500 block">CRAWL RATE</span>
+            <p className="text-lg font-semibold text-white mt-1">Configured</p>
+            <span className="text-[10px] text-emerald-400 font-mono">Technical SEO Ready</span>
+          </div>
+          <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
+            <span className="text-[10px] font-mono text-slate-500 block">HEALTH</span>
+            <p className="text-lg font-semibold text-emerald-400 mt-1">Standard</p>
+            <span className="text-[10px] text-slate-400 font-mono">Compliant</span>
+          </div>
+        </div>
+
+        <div className="h-28 w-full flex items-end space-x-2 pt-2 border-b border-white/[0.06] z-10" aria-hidden="true">
+          {[30, 42, 38, 55, 60, 72, 68, 82, 90, 95].map((h, i) => (
+            <div
+              key={`seo-bar-${i}`}
+              style={{ height: `${h}%` }}
+              className="flex-1 rounded-t bg-gradient-to-t from-emerald-600/30 to-emerald-400"
+            />
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
+    number: "05",
+    title: "Branding",
+    href: "/services/branding",
+    description: "Professional branding services that create cohesive visual identities, brand guidelines, and memorable digital experiences for growing businesses.",
+    visualContent: (
+      <div className="flex flex-col justify-between h-full p-6 lg:p-8 font-sans select-none">
+        <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] z-10">
+          <div className="flex items-center space-x-3">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center font-bold text-white text-xs shadow-md" aria-hidden="true">ID</div>
+            <div>
+              <p className="text-xs font-semibold text-slate-200">Brand Identity Guidelines</p>
+              <p className="text-[10px] text-orange-400 font-mono">Visual Systems & Assets</p>
+            </div>
+          </div>
+          <span className="hidden sm:inline px-3 py-1 rounded-full bg-orange-500/10 text-orange-400 font-mono text-[10px] border border-orange-500/20">
+            Systemized
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4 z-10">
+          <div className="p-5 rounded-xl bg-gradient-to-br from-orange-600/20 to-amber-600/10 border border-orange-500/20 text-white flex flex-col justify-between h-32">
+            <span className="font-mono text-[10px] tracking-wider text-orange-300">WORDMARK CONCEPT</span>
+            <div>
+              <h4 className="text-xl font-bold tracking-wider">WEBMASH LABS</h4>
+              <p className="text-[10px] text-slate-400 font-mono mt-1">Custom geometric typography</p>
+            </div>
+          </div>
+          <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] flex flex-col justify-between h-32 backdrop-blur-md">
+            <span className="font-mono text-[10px] tracking-wider text-slate-500">COLOR MATRIX</span>
+            <div className="flex space-x-2.5" aria-hidden="true">
+              <div className="w-6 h-6 rounded-full bg-slate-950 border border-white/20 shadow-sm" />
+              <div className="w-6 h-6 rounded-full bg-orange-500 shadow-sm" />
+              <div className="w-6 h-6 rounded-full bg-amber-600 shadow-sm" />
+            </div>
+            <p className="text-[10px] text-slate-400 font-mono">Curated tonal spectrum</p>
+          </div>
+        </div>
+
+        <div className="p-3.5 rounded-xl bg-white/[0.01] border border-white/[0.06] flex items-center justify-between text-xs z-10">
+          <span className="text-slate-300 font-medium">Identity System Package</span>
+          <span className="text-orange-400 font-mono text-[10px]">Production Ready</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    number: "06",
+    title: "Hosting Setup",
+    href: "/services/hosting-setup",
+    description: "Secure website hosting setup and cloud infrastructure configuration focused on performance, reliability, security, and fast global delivery.",
+    visualContent: (
+      <div className="flex flex-col justify-between h-full p-6 lg:p-8 font-mono select-none">
+        <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] text-xs z-10">
+          <div className="flex items-center space-x-3">
+            <div className="w-7 h-7 rounded-lg bg-cyan-600/20 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-400 text-xs shadow-md" aria-hidden="true">☁</div>
+            <div>
+              <p className="text-xs font-semibold text-slate-200">Edge Infrastructure & CDN</p>
+              <p className="text-[10px] text-cyan-400">Global Distribution Network</p>
+            </div>
+          </div>
+          <span className="hidden sm:inline px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-[10px] border border-cyan-500/20">
+            Global Edge Deployment
+          </span>
+        </div>
+
+        <div className="space-y-3 z-10 my-4">
+          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] flex justify-between items-center backdrop-blur-md">
+            <div className="space-y-0.5">
+              <span className="text-xs text-white font-medium block">Edge Security Proxy</span>
+              <span className="text-[10px] text-slate-400">DDoS Mitigation &amp; TLS 1.3</span>
+            </div>
+            <span className="text-cyan-400 text-xs px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">Protected</span>
+          </div>
+          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] flex justify-between items-center backdrop-blur-md">
+            <div className="space-y-0.5">
+              <span className="text-xs text-white font-medium block">Global CDN Routing</span>
+              <span className="text-[10px] text-slate-400">Anycast DNS Resolution</span>
+            </div>
+            <span className="text-emerald-400 text-xs font-semibold">High Availability</span>
+          </div>
+        </div>
+
+        <div className="p-3.5 rounded-xl bg-cyan-500/[0.03] border border-cyan-500/20 flex items-center justify-between text-xs z-10">
+          <span className="text-slate-300">Automated SSL Provisioning</span>
+          <span className="text-cyan-400 font-semibold">Configured</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    number: "07",
+    title: "Business Email Setup",
+    href: "/services/business-email-setup",
+    description: "Professional business email setup using your custom domain with secure mail configuration and domain authentication for reliable email delivery.",
+    visualContent: (
+      <div className="flex flex-col justify-between h-full p-6 lg:p-8 font-sans select-none">
+        <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] z-10">
+          <div className="flex items-center space-x-3">
+            <div className="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center font-bold text-blue-400 text-xs shadow-md" aria-hidden="true">@</div>
+            <div>
+              <p className="text-xs font-semibold text-slate-200">Mailbox Infrastructure</p>
+              <p className="text-[10px] text-blue-400 font-mono">Authenticated Domain Routing</p>
+            </div>
+          </div>
+          <span className="hidden sm:inline px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/20">
+            SPF / DKIM / DMARC
+          </span>
+        </div>
+
+        <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-3 backdrop-blur-md z-10 my-4">
+          <div className="flex justify-between text-xs font-mono text-slate-500 border-b border-white/[0.04] pb-2">
+            <span>INCOMING SECURE STREAM</span>
+            <span className="text-emerald-400">TLS 1.3 ENCRYPTED</span>
+          </div>
+          <div className="space-y-1">
+            <p className="text-xs font-semibold text-white">Executive Partnership Inquiry</p>
+            <p className="text-[11px] text-slate-400 font-light leading-relaxed">
+              &quot;Inquiring about enterprise digital architecture services for our upcoming scale phase...&quot;
+            </p>
+          </div>
+        </div>
+
+        <div className="p-3.5 rounded-xl bg-white/[0.01] border border-white/[0.06] flex items-center justify-between text-xs z-10">
+          <span className="text-slate-300 font-medium">Deliverability Status</span>
+          <span className="text-emerald-400 font-mono text-[10px]">Deliverability Configured</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    number: "08",
+    title: "Website Maintenance",
+    href: "/services/website-maintenance",
+    description: "Ongoing website maintenance services including security updates, performance optimization, monitoring, backups, and technical support.",
+    visualContent: (
+      <div className="flex flex-col justify-between h-full p-6 lg:p-8 font-sans select-none">
+        <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] z-10">
+          <div className="flex items-center space-x-3">
+            <div className="w-7 h-7 rounded-lg bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center font-bold text-emerald-400 text-xs shadow-md" aria-hidden="true">🛡</div>
+            <div>
+              <p className="text-xs font-semibold text-slate-200">Continuous Health Engine</p>
+              <p className="text-[10px] text-emerald-400 font-mono">Proactive System Oversight</p>
+            </div>
+          </div>
+          <span className="hidden sm:inline px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/20">
+            24/7 Monitoring
+          </span>
+        </div>
+
+        <div className="grid grid-cols-3 gap-3 my-4 z-10 text-center">
+          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
+            <span className="font-mono text-[10px] text-slate-500 block mb-1">AVAILABILITY</span>
+            <span className="text-sm font-semibold text-white">High Availability</span>
+          </div>
+          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
+            <span className="font-mono text-[10px] text-slate-500 block mb-1">LATENCY</span>
+            <span className="text-sm font-semibold text-emerald-400">Low Latency Architecture</span>
+          </div>
+          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
+            <span className="font-mono text-[10px] text-slate-500 block mb-1">BACKUPS</span>
+            <span className="text-sm font-semibold text-cyan-400">Automated</span>
+          </div>
+        </div>
+
+        <div className="p-3.5 rounded-xl bg-white/[0.01] border border-white/[0.06] flex items-center justify-between text-xs z-10">
+          <span className="text-slate-300 font-medium">Proactive Security Patches</span>
+          <span className="text-emerald-400 font-mono text-[10px]">Applied Live</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    number: "09",
+    title: "AI Automation",
+    href: "/services/ai-automation",
+    description: "AI automation services that connect intelligent workflows, APIs, and business processes to reduce repetitive work and improve operational efficiency.",
+    visualContent: (
+      <div className="flex flex-col justify-between h-full p-6 lg:p-8 font-mono select-none">
+        <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] text-xs z-10">
+          <div className="flex items-center space-x-3">
+            <div className="w-7 h-7 rounded-lg bg-purple-600/20 border border-purple-500/30 flex items-center justify-center font-bold text-purple-400 text-xs shadow-md" aria-hidden="true">⚡</div>
+            <div>
+              <p className="text-xs font-semibold text-slate-200">Intelligent Workflow Engine</p>
+              <p className="text-[10px] text-purple-300">Neural API Pipelines</p>
+            </div>
+          </div>
+          <span className="hidden sm:inline px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-[10px] border border-purple-500/20">
+            Automated
+          </span>
+        </div>
+
+        <div className="space-y-3 z-10 my-4 text-xs">
+          <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between backdrop-blur-md">
+            <span className="text-slate-400">[Trigger] Realtime Event Ingestion</span>
+            <span className="text-blue-400">Active</span>
+          </div>
+          <div className="text-center text-slate-600 text-xs" aria-hidden="true">↓</div>
+          <div className="p-3.5 rounded-xl bg-purple-500/[0.06] border border-purple-500/20 flex items-center justify-between text-purple-300 backdrop-blur-md">
+            <span className="text-purple-200">[AI Node] Semantic Intent Routing</span>
+            <span>Optimized</span>
+          </div>
+        </div>
+
+        <div className="p-3.5 rounded-xl bg-white/[0.01] border border-white/[0.06] flex items-center justify-between text-xs z-10">
+          <span className="text-slate-300">System API Synchronization</span>
+          <span className="text-emerald-400 text-[10px]">Connected</span>
+        </div>
+      </div>
+    ),
+  },
+];
 
 export function Services() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const containerRef = useRef(null);
+  const tabRefs = useRef([]);
+  const shouldReduceMotion = useReducedMotion();
+  const instanceId = useId();
 
-  const services = [
-    {
-      number: "01",
-      title: "Website Design",
-      category: "Website Design",
-      href: "/services/web-design-development",
-      description: "Beautiful websites crafted to convert visitors into customers while reflecting your brand perfectly.",
-      visualContent: (
-        <div className="relative w-full h-full rounded-2xl border border-blue-500/25 bg-[#080C14] shadow-[0_0_60px_rgba(37,99,235,0.18)] backdrop-blur-3xl overflow-hidden flex flex-col group font-sans">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/15 rounded-full blur-[100px] pointer-events-none" />
-          
-          <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-white/10 bg-[#0E1526]/90 z-20">
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/80" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-              <div className="w-3 h-3 rounded-full bg-green-500/80" />
-            </div>
-            <div className="px-3 sm:px-4 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-[10px] sm:text-[11px] text-blue-300 flex items-center space-x-2 truncate max-w-[180px] sm:max-w-none">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-              <span className="truncate">https://apex-architecture.com</span>
-            </div>
-            <div className="text-[10px] font-mono text-slate-400 hidden sm:block">Live Production</div>
-          </div>
+  const handleKeyDown = useCallback((e, index) => {
+    let newIndex = index;
+    const maxIndex = SERVICES.length - 1;
 
-          <div className="flex-1 overflow-y-auto p-5 sm:p-8 space-y-6 relative z-10 custom-scrollbar">
-            <div className="flex items-center justify-between pb-4 border-b border-white/10">
-              <div className="flex items-center space-x-2">
-                <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white text-xs shadow-md">AP</div>
-                <span className="font-semibold text-sm tracking-wide text-white">APEX & CO.</span>
-              </div>
-              <div className="hidden md:flex items-center space-x-6 text-xs text-slate-400 font-medium">
-                <span className="text-white">Portfolio</span>
-                <span>Services</span>
-                <span>Studio</span>
-                <span>Insights</span>
-              </div>
-              <div className="px-3 py-1.5 rounded-lg bg-blue-600 text-white font-medium text-xs shadow-lg shadow-blue-600/30">
-                Book
-              </div>
-            </div>
+    switch (e.key) {
+      case "ArrowDown":
+      case "ArrowRight":
+        e.preventDefault();
+        newIndex = index < maxIndex ? index + 1 : 0;
+        break;
+      case "ArrowUp":
+      case "ArrowLeft":
+        e.preventDefault();
+        newIndex = index > 0 ? index - 1 : maxIndex;
+        break;
+      case "Home":
+        e.preventDefault();
+        newIndex = 0;
+        break;
+      case "End":
+        e.preventDefault();
+        newIndex = maxIndex;
+        break;
+      case "Enter":
+      case " ":
+        e.preventDefault();
+        setActiveIndex(index);
+        return;
+      default:
+        return;
+    }
 
-            <div className="py-4 sm:py-8 text-center space-y-4 max-w-lg mx-auto">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-[10px]">
-                <span>GLOBAL DESIGN PRACTICE</span>
-              </div>
-              <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
-                Architectural Mastery for Digital Spaces
-              </h3>
-              <p className="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">
-                We partner with visionaries to engineer world-class brand identities and high-converting digital flagships.
-              </p>
-              <div className="pt-2 flex items-center justify-center space-x-3">
-                <button className="px-4 sm:px-5 py-2.5 rounded-xl bg-white text-slate-950 font-semibold text-xs shadow-xl">
-                  Explore Works
-                </button>
-                <button className="px-4 sm:px-5 py-2.5 rounded-xl border border-white/15 text-white font-medium text-xs hover:bg-white/5 transition-colors">
-                  Philosophy
-                </button>
-              </div>
-            </div>
+    setActiveIndex(newIndex);
+    tabRefs.current[newIndex]?.focus();
+  }, []);
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-2 backdrop-blur-md">
-                <div className="flex items-center space-x-2">
-                  <div className="w-6 h-6 rounded-full bg-slate-700 overflow-hidden text-[10px] flex items-center justify-center font-bold text-white">JD</div>
-                  <div>
-                    <p className="text-xs font-medium text-white">Jonathan Davis</p>
-                    <p className="text-[10px] text-slate-400">CEO, Vanguard Global</p>
-                  </div>
-                </div>
-                <p className="text-[11px] text-slate-300 italic">&quot;The absolute pinnacle of digital craftsmanship and execution speed.&quot;</p>
-              </div>
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-2 backdrop-blur-md">
-                <div className="flex items-center space-x-2">
-                  <div className="w-6 h-6 rounded-full bg-blue-600 overflow-hidden text-[10px] flex items-center justify-center font-bold text-white">SR</div>
-                  <div>
-                    <p className="text-xs font-medium text-white">Sophia Reynolds</p>
-                    <p className="text-[10px] text-slate-400">Founder, Atelier Studio</p>
-                  </div>
-                </div>
-                <p className="text-[11px] text-slate-300 italic">&quot;Our conversion metrics doubled within 30 days of platform launch.&quot;</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      number: "02",
-      title: "Website Development",
-      category: "Website Development",
-      href: "/services/web-applications",
-      description: "Modern engineering built for speed, scalability and long-term growth.",
-      visualContent: (
-        <div className="relative w-full h-full rounded-2xl border border-purple-500/25 bg-[#080C14] shadow-[0_0_60px_rgba(147,51,234,0.18)] backdrop-blur-3xl overflow-hidden flex flex-col font-mono z-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
-
-          <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-white/10 bg-[#0E1526]/90">
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/80" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-              <div className="w-3 h-3 rounded-full bg-green-500/80" />
-            </div>
-            <div className="text-[11px] text-purple-300 flex items-center space-x-1 sm:space-x-2 truncate max-w-[160px] sm:max-w-none">
-              <span className="text-slate-400 hidden sm:inline">~/projects/core</span>
-              <span className="hidden sm:inline">—</span>
-              <span className="text-white font-bold truncate">page.tsx</span>
-            </div>
-            <div className="text-[10px] text-emerald-400 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
-              Git: main ✓
-            </div>
-          </div>
-
-          <div className="flex-1 grid grid-cols-12 overflow-hidden text-xs">
-            <div className="col-span-4 border-r border-white/10 p-3 space-y-2 bg-white/[0.01] text-slate-400 hidden md:block">
-              <p className="text-[10px] tracking-wider uppercase text-slate-500 mb-3 font-bold">Explorer</p>
-              <div className="space-y-1.5 font-mono text-[11px]">
-                <p className="text-white font-medium flex items-center space-x-1.5"><span>📁</span> <span>app/</span></p>
-                <p className="pl-4 text-purple-400 flex items-center space-x-1.5"><span>📄</span> <span>layout.tsx</span></p>
-                <p className="pl-4 text-white font-medium flex items-center space-x-1.5 bg-white/5 p-1 rounded"><span>📄</span> <span>page.tsx</span></p>
-                <p className="pl-4 text-slate-400 flex items-center space-x-1.5"><span>📄</span> <span>api/route.ts</span></p>
-                <p className="text-slate-400 flex items-center space-x-1.5 pt-2"><span>📁</span> <span>components/</span></p>
-              </div>
-            </div>
-
-            <div className="col-span-12 md:col-span-8 p-4 flex flex-col justify-between space-y-4 overflow-y-auto">
-              <div className="space-y-1.5 text-[11px] text-slate-300">
-                <p><span className="text-purple-400">import</span> &#123; <span className="text-blue-400">DatabaseCluster</span> &#125; <span className="text-purple-400">from</span> <span className="text-emerald-400">&apos;@db/client&apos;</span>;</p>
-                <p><span className="text-purple-400">import</span> &#123; <span className="text-blue-400">NextResponse</span> &#125; <span className="text-purple-400">from</span> <span className="text-emerald-400">&apos;next/server&apos;</span>;</p>
-                <p className="text-slate-500">// Initialize high-throughput pool</p>
-                <p><span className="text-purple-400">export async function</span> <span className="text-yellow-400">GET</span>() &#123;</p>
-                <p className="pl-4"><span className="text-blue-400">const</span> metrics = <span className="text-purple-400">await</span> DatabaseCluster.<span className="text-yellow-400">query</span>(&apos;SELECT * FROM telemetry&apos;);</p>
-                <p className="pl-4"><span className="text-purple-400">return</span> NextResponse.<span className="text-yellow-400">json</span>(&#123; status: <span className="text-emerald-400">&apos;healthy&apos;</span>, metrics &#125;);</p>
-                <p>&#125;</p>
-              </div>
-
-              <div className="p-3 rounded-xl bg-[#05080E] border border-white/10 space-y-1 text-[10px]">
-                <div className="flex items-center justify-between text-slate-500 border-b border-white/5 pb-1 mb-1">
-                  <span>TERMINAL // Edge Build</span>
-                  <span className="text-emerald-400">● Live</span>
-                </div>
-                <p className="text-slate-400">&gt; next build --experimental-minify</p>
-                <p className="text-blue-400">✓ Compiled TypeScript in 840ms</p>
-                <p className="text-emerald-400">✓ Production build success (142ms deployment)</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      number: "03",
-      title: "UI / UX Design",
-      category: "UI / UX Design",
-      href: "/services/ui-ux-design",
-      description: "Interfaces designed around people, not trends.",
-      visualContent: (
-        <div className="relative w-full h-full rounded-2xl border border-pink-500/25 bg-[#080C14] shadow-[0_0_60px_rgba(236,72,153,0.18)] backdrop-blur-3xl overflow-hidden p-5 sm:p-8 flex flex-col justify-between font-sans">
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-600/15 rounded-full blur-[100px] pointer-events-none" />
-          
-          <div className="flex items-center justify-between pb-4 border-b border-white/10 z-10">
-            <div className="flex items-center space-x-3">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center font-bold text-white text-xs shadow-md">Fi</div>
-              <div>
-                <p className="text-xs font-semibold text-white truncate max-w-[140px] sm:max-w-none">Design_System_2026.fig</p>
-                <p className="text-[10px] text-pink-400 font-mono">Auto Layout & Variables active</p>
-              </div>
-            </div>
-            <div className="hidden sm:flex items-center space-x-2">
-              <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-slate-300">Frame 1440px</span>
-              <span className="px-2.5 py-1 rounded bg-pink-500/20 text-pink-300 text-[10px] font-mono">Prototype Ready</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-2 z-10">
-            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-2 backdrop-blur-md">
-              <span className="font-mono text-[10px] text-slate-400 block">COLOR TOKENS</span>
-              <div className="flex space-x-2">
-                <div className="w-6 h-6 rounded-full bg-purple-600 shadow-md ring-2 ring-white/20" />
-                <div className="w-6 h-6 rounded-full bg-pink-500 shadow-md ring-2 ring-white/20" />
-                <div className="w-6 h-6 rounded-full bg-slate-900 shadow-md ring-2 ring-white/20" />
-              </div>
-            </div>
-            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-1 backdrop-blur-md">
-              <span className="font-mono text-[10px] text-slate-400 block">TYPOGRAPHY</span>
-              <p className="text-base sm:text-lg font-bold text-white tracking-tight">Inter Pro</p>
-              <p className="text-[10px] text-slate-400 font-mono">Scale: 1.25</p>
-            </div>
-            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-1 backdrop-blur-md">
-              <span className="font-mono text-[10px] text-slate-400 block">SPACING SYSTEM</span>
-              <div className="flex items-center space-x-1 pt-1">
-                <div className="w-2 h-5 bg-pink-500/40 rounded-sm" />
-                <div className="w-4 h-5 bg-pink-500/60 rounded-sm" />
-                <div className="w-7 h-5 bg-pink-500 rounded-sm" />
-              </div>
-            </div>
-          </div>
-
-          <div className="p-3.5 rounded-xl bg-white/[0.01] border border-white/10 flex items-center justify-between text-xs z-10">
-            <span className="text-white font-medium truncate">Component: Navigation_Bar</span>
-            <span className="text-slate-400 font-mono text-[10px] shrink-0 ml-2">Variant: Scrolled</span>
-          </div>
-        </div>
-      ),
-    },
-    {
-      number: "04",
-      title: "SEO",
-      category: "SEO",
-      href: "/services/seo",
-      description: "Technical SEO and content strategies that generate sustainable organic growth.",
-      visualContent: (
-        <div className="relative w-full h-full rounded-2xl border border-emerald-500/25 bg-[#080C14] shadow-[0_0_60px_rgba(16,185,129,0.18)] backdrop-blur-3xl overflow-hidden p-5 sm:p-8 flex flex-col justify-between font-sans">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-600/15 rounded-full blur-[100px] pointer-events-none" />
-
-          <div className="flex items-center justify-between pb-4 border-b border-white/10 z-10">
-            <div className="flex items-center space-x-3">
-              <div className="w-7 h-7 rounded-lg bg-emerald-600 flex items-center justify-center font-bold text-white text-xs shadow-md">📈</div>
-              <div>
-                <p className="text-xs font-semibold text-white truncate max-w-[150px] sm:max-w-none">Google Search Console — Report</p>
-                <p className="text-[10px] text-emerald-400 font-mono">zaibdigitizing.com (28 Days)</p>
-              </div>
-            </div>
-            <div className="hidden sm:block px-3 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/20">
-              Live Indexing
-            </div>
-          </div>
-
-          <div className="grid grid-cols-3 gap-2 sm:gap-3 my-2 z-10">
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
-              <span className="text-[10px] font-mono text-slate-400 block">Clicks</span>
-              <p className="text-base sm:text-xl font-bold text-white mt-1">142.8K</p>
-              <span className="text-[9px] sm:text-[10px] text-emerald-400 font-mono">+34.8%</span>
-            </div>
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
-              <span className="text-[10px] font-mono text-slate-400 block">Impressions</span>
-              <p className="text-base sm:text-xl font-bold text-white mt-1">2.4M</p>
-              <span className="text-[9px] sm:text-[10px] text-emerald-400 font-mono">+18.2%</span>
-            </div>
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
-              <span className="text-[10px] font-mono text-slate-400 block">Avg Pos</span>
-              <p className="text-base sm:text-xl font-bold text-emerald-400 mt-1">1.4</p>
-              <span className="text-[9px] sm:text-[10px] text-slate-400 font-mono">Top Rank</span>
-            </div>
-          </div>
-
-          <div className="h-28 sm:h-32 w-full flex items-end space-x-1.5 sm:space-x-2 pt-2 border-b border-white/10 z-10">
-            {[30, 45, 52, 48, 65, 72, 80, 88, 85, 95, 110, 128].map((h, i) => (
-              <motion.div
-                key={i}
-                initial={{ height: 0 }}
-                animate={{ height: `${h}%` }}
-                transition={{ duration: 0.8, delay: i * 0.05, ease: "easeOut" }}
-                className="flex-1 rounded-t bg-gradient-to-t from-emerald-600/60 to-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
-              />
-            ))}
-          </div>
-        </div>
-      ),
-    },
-    {
-      number: "05",
-      title: "Branding",
-      category: "Branding",
-      href: "/services/branding",
-      description: "Create memorable brands that people instantly recognize.",
-      visualContent: (
-        <div className="relative w-full h-full rounded-2xl border border-orange-500/25 bg-[#080C14] shadow-[0_0_60px_rgba(249,115,22,0.18)] backdrop-blur-3xl overflow-hidden p-5 sm:p-8 flex flex-col justify-between font-sans">
-          <div className="absolute top-1/2 right-0 w-96 h-96 bg-orange-600/15 rounded-full blur-[100px] pointer-events-none" />
-
-          <div className="flex items-center justify-between pb-4 border-b border-white/10 z-10">
-            <div className="flex items-center space-x-3">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-orange-500 to-pink-600 flex items-center justify-center font-bold text-white text-xs shadow-md">ID</div>
-              <div>
-                <p className="text-xs font-semibold text-white">Brand Identity Guidelines</p>
-                <p className="text-[10px] text-orange-400 font-mono">Client: Vanguard Capital</p>
-              </div>
-            </div>
-            <span className="px-2.5 py-1 rounded bg-orange-500/10 text-orange-400 font-mono text-[10px] border border-orange-500/20">
-              Slide 04
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-2 z-10">
-            <div className="p-5 rounded-xl bg-gradient-to-br from-orange-600 to-pink-600 text-white flex flex-col justify-between h-32 sm:h-36 shadow-xl">
-              <span className="font-mono text-[10px] opacity-90">LOGOTYPE</span>
-              <div>
-                <h4 className="text-xl sm:text-2xl font-black tracking-wider">VANGUARD</h4>
-                <p className="text-[10px] opacity-80 font-mono">Custom geometric sans</p>
-              </div>
-            </div>
-            <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 flex flex-col justify-between h-32 sm:h-36 backdrop-blur-md">
-              <span className="font-mono text-[10px] text-slate-400">COLOR PALETTE</span>
-              <div className="flex space-x-2">
-                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-slate-950 border border-white/20 shadow-md" />
-                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-orange-500 shadow-md" />
-                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-pink-600 shadow-md" />
-              </div>
-              <p className="text-[10px] text-slate-400 font-mono">Pantone Certified Hex</p>
-            </div>
-          </div>
-
-          <div className="p-3 rounded-xl bg-white/[0.01] border border-white/10 flex items-center justify-between text-xs z-10">
-            <span className="text-slate-300 font-medium truncate">Stationery & Packaging Included</span>
-            <span className="text-orange-400 font-mono text-[10px] shrink-0 ml-2">PDF ✓</span>
-          </div>
-        </div>
-      ),
-    },
-    {
-      number: "06",
-      title: "Hosting Setup",
-      category: "Hosting Setup",
-      href: "/services/hosting-setup",
-      description: "Reliable cloud infrastructure engineered for security and performance.",
-      visualContent: (
-        <div className="relative w-full h-full rounded-2xl border border-cyan-500/25 bg-[#080C14] shadow-[0_0_60px_rgba(6,182,212,0.18)] backdrop-blur-3xl overflow-hidden p-5 sm:p-8 flex flex-col justify-between font-mono">
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-600/15 rounded-full blur-[100px] pointer-events-none" />
-
-          <div className="flex items-center justify-between pb-4 border-b border-white/10 text-xs z-10">
-            <div className="flex items-center space-x-3">
-              <div className="w-7 h-7 rounded-lg bg-cyan-600 flex items-center justify-center font-bold text-white text-xs shadow-md">☁️</div>
-              <div>
-                <p className="text-xs font-semibold text-white">Cloudflare & AWS Cluster</p>
-                <p className="text-[10px] text-cyan-400">280+ Active Regions</p>
-              </div>
-            </div>
-            <span className="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 text-[10px] border border-cyan-500/20">
-              99.999%
-            </span>
-          </div>
-
-          <div className="space-y-3 z-10 my-2">
-            <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/10 flex justify-between items-center backdrop-blur-md">
-              <div className="space-y-0.5">
-                <span className="text-xs text-white font-medium block">Edge Security Proxy (WAF)</span>
-                <span className="text-[10px] text-slate-400">DDoS Mitigation & TLS 1.3</span>
-              </div>
-              <span className="text-cyan-400 text-xs px-2 py-0.5 rounded bg-cyan-500/10">Protected</span>
-            </div>
-            <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/10 flex justify-between items-center backdrop-blur-md">
-              <div className="space-y-0.5">
-                <span className="text-xs text-white font-medium block">Global CDN Delivery</span>
-                <span className="text-[10px] text-slate-400">Average TTFB Response</span>
-              </div>
-              <span className="text-emerald-400 text-xs font-bold">11ms</span>
-            </div>
-          </div>
-
-          <div className="p-3 rounded-xl bg-cyan-500/5 border border-cyan-500/20 flex items-center justify-between text-xs z-10">
-            <span className="text-slate-300">Automated DNS Routing</span>
-            <span className="text-cyan-400">Synced ✓</span>
-          </div>
-        </div>
-      ),
-    },
-    {
-      number: "07",
-      title: "Business Email Setup",
-      category: "Business Email Setup",
-      href: "/services/business-email-setup",
-      description: "Professional communication powered by your own domain.",
-      visualContent: (
-        <div className="relative w-full h-full rounded-2xl border border-blue-500/25 bg-[#080C14] shadow-[0_0_60px_rgba(37,99,235,0.18)] backdrop-blur-3xl overflow-hidden p-5 sm:p-8 flex flex-col justify-between font-sans">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/15 rounded-full blur-[100px] pointer-events-none" />
-
-          <div className="flex items-center justify-between pb-4 border-b border-white/10 z-10">
-            <div className="flex items-center space-x-3">
-              <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white text-xs shadow-md">✉️</div>
-              <div>
-                <p className="text-xs font-semibold text-white">Mailbox Manager</p>
-                <p className="text-[10px] text-blue-400 font-mono truncate max-w-[140px] sm:max-w-none">executive@zaibdigitizing.com</p>
-              </div>
-            </div>
-            <span className="hidden sm:inline px-3 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/20">
-              SPF / DKIM / DMARC Valid
-            </span>
-          </div>
-
-          <div className="p-4 sm:p-5 rounded-xl bg-white/[0.02] border border-white/10 space-y-3 backdrop-blur-md z-10 my-2">
-            <div className="flex justify-between text-xs font-mono text-slate-400 border-b border-white/5 pb-2">
-              <span>Incoming Inquiry</span>
-              <span className="text-emerald-400">TLS 1.3</span>
-            </div>
-            <div className="space-y-1">
-              <p className="text-xs font-bold text-white">Enterprise Contract Inquiry</p>
-              <p className="text-[11px] text-slate-300 font-light line-clamp-2">
-                &quot;We would like to secure your agency for our upcoming full-stack platform launch...&quot;
-              </p>
-            </div>
-          </div>
-
-          <div className="p-3 rounded-xl bg-white/[0.01] border border-white/10 flex items-center justify-between text-xs z-10">
-            <span className="text-slate-300 font-medium">Delivery Placement Rate</span>
-            <span className="text-emerald-400 font-mono">100.0% Inbox</span>
-          </div>
-        </div>
-      ),
-    },
-    {
-      number: "08",
-      title: "Website Maintenance",
-      category: "Website Maintenance",
-      href: "/services/website-maintenance",
-      description: "Continuous monitoring, optimization and protection for your digital presence.",
-      visualContent: (
-        <div className="relative w-full h-full rounded-2xl border border-emerald-500/25 bg-[#080C14] shadow-[0_0_60px_rgba(16,185,129,0.18)] backdrop-blur-3xl overflow-hidden p-5 sm:p-8 flex flex-col justify-between font-sans">
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-600/15 rounded-full blur-[100px] pointer-events-none" />
-
-          <div className="flex items-center justify-between pb-4 border-b border-white/10 z-10">
-            <div className="flex items-center space-x-3">
-              <div className="w-7 h-7 rounded-lg bg-emerald-600 flex items-center justify-center font-bold text-white text-xs shadow-md">🛡️</div>
-              <div>
-                <p className="text-xs font-semibold text-white">Live Uptime Sentinel</p>
-                <p className="text-[10px] text-emerald-400 font-mono">Scanned 1m ago • Secure</p>
-              </div>
-            </div>
-            <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/20">
-              Optimal
-            </span>
-          </div>
-
-          <div className="grid grid-cols-3 gap-3 my-2 z-10 text-center">
-            <div className="p-3 sm:p-4 rounded-xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
-              <span className="font-mono text-[10px] text-slate-400 block mb-1">UPTIME</span>
-              <span className="text-base sm:text-xl font-bold text-white">99.99%</span>
-            </div>
-            <div className="p-3 sm:p-4 rounded-xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
-              <span className="font-mono text-[10px] text-slate-400 block mb-1">SPEED</span>
-              <span className="text-base sm:text-xl font-bold text-emerald-400">0.2s</span>
-            </div>
-            <div className="p-3 sm:p-4 rounded-xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
-              <span className="font-mono text-[10px] text-slate-400 block mb-1">SECURITY</span>
-              <span className="text-base sm:text-xl font-bold text-cyan-400">A+</span>
-            </div>
-          </div>
-
-          <div className="p-3 rounded-xl bg-white/[0.01] border border-white/10 flex items-center justify-between text-xs z-10">
-            <span className="text-slate-300 font-medium">Automatic Security Patches</span>
-            <span className="text-emerald-400 font-mono text-[10px]">Active</span>
-          </div>
-        </div>
-      ),
-    },
-    {
-      number: "09",
-      title: "AI Automation",
-      category: "AI Automation",
-      href: "/services/ai-automation",
-      description: "Automate repetitive work and connect your business with intelligent workflows.",
-      visualContent: (
-        <div className="relative w-full h-full rounded-2xl border border-purple-500/25 bg-[#080C14] shadow-[0_0_60px_rgba(168,85,247,0.18)] backdrop-blur-3xl overflow-hidden p-5 sm:p-8 flex flex-col justify-between font-mono">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
-
-          <div className="flex items-center justify-between pb-4 border-b border-white/10 text-xs z-10">
-            <div className="flex items-center space-x-3">
-              <div className="w-7 h-7 rounded-lg bg-purple-600 flex items-center justify-center font-bold text-white text-xs shadow-md">🤖</div>
-              <div>
-                <p className="text-xs font-semibold text-white">Neural Workflow Pipeline</p>
-                <p className="text-[10px] text-purple-300">Groq SDK / LLM Parser</p>
-              </div>
-            </div>
-            <span className="px-3 py-1 rounded bg-purple-500/20 text-purple-300 text-[10px] border border-purple-500/30">
-              Active
-            </span>
-          </div>
-
-          <div className="space-y-2.5 z-10 my-2 text-xs">
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-center justify-between backdrop-blur-md">
-              <span className="text-slate-300 truncate max-w-[180px] sm:max-w-none">[Trigger] PDF / CRM Form</span>
-              <span className="text-blue-400 font-mono shrink-0">Parsed ✓</span>
-            </div>
-            <div className="text-center text-slate-600 text-xs font-bold">↓</div>
-            <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-between text-purple-300 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.2)]">
-              <span className="truncate max-w-[180px] sm:max-w-none">[AI Node] Semantic Matching</span>
-              <span className="font-mono shrink-0">45ms</span>
-            </div>
-          </div>
-
-          <div className="p-3 rounded-xl bg-white/[0.01] border border-white/10 flex items-center justify-between text-xs z-10">
-            <span className="text-slate-300">CRM & WhatsApp Sync</span>
-            <span className="text-emerald-400 font-mono text-[10px]">Connected</span>
-          </div>
-        </div>
-      ),
-    },
-  ];
+  const animationProps = shouldReduceMotion
+    ? {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        transition: { duration: 0.15 },
+      }
+    : {
+        initial: { opacity: 0, scale: 0.98, filter: "blur(2px)" },
+        animate: { opacity: 1, scale: 1, filter: "blur(0px)" },
+        exit: { opacity: 0, scale: 0.98, filter: "blur(2px)" },
+        transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
+      };
 
   return (
-    <section 
-      ref={containerRef}
-      className="relative isolate overflow-hidden bg-[#FFFFFF] text-white py-24 lg:py-48 border-t border-white/10"
+    <section
+      id="services"
+      className="relative isolate overflow-hidden bg-white text-slate-900 py-24 sm:py-32 lg:py-40 border-t border-slate-200/50"
+      aria-labelledby="services-heading"
     >
       <div
-        className="pointer-events-none absolute top-1/3 left-1/2 h-[900px] w-[1400px] -translate-x-1/2 -translate-y-1/2 opacity-25 blur-[160px]"
-        style={{ background: "radial-gradient(circle, rgba(29,78,216,0.18) 0%, rgba(17,24,39,0) 70%)" }}
+        className="pointer-events-none absolute top-1/3 left-1/2 h-[500px] w-[1000px] -translate-x-1/2 -translate-y-1/2 opacity-10 blur-[140px]"
+        style={{ background: "radial-gradient(circle, rgba(37,99,235,0.2) 0%, rgba(255,255,255,0) 70%)" }}
         aria-hidden="true"
       />
-      <div 
-        className="pointer-events-none absolute inset-0 opacity-[0.025] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:32px_32px]" 
-        aria-hidden="true" 
-      />
 
-      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-16">
-        
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-32">
-          <p className="font-mono text-[11px] tracking-[0.34em] text-[#2563EB] uppercase">
-            OUR SERVICES
+      <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-16">
+        <header className="text-center max-w-3xl mx-auto mb-16 sm:mb-24">
+          <p className="font-mono text-[11px] tracking-[0.3em] text-blue-600 uppercase font-semibold">
+            OUR CAPABILITIES
           </p>
-          <h2 className="mt-4 text-[clamp(2.2rem,4vw,4.5rem)] leading-[1.05] font-bold tracking-[-0.03em] text-[#0F172A]">
-            Everything your business needs.<br />
-            Built under one roof.
+          <h2
+            id="services-heading"
+            className="mt-4 text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-[1.08]"
+          >
+            Web Design, Web Development & Digital Services for Growing Businesses
           </h2>
-          <p className="mt-6 text-sm lg:text-lg text-[#475569] leading-relaxed font-light">
-            From strategy and branding to development, cloud infrastructure and AI automation, we build complete digital ecosystems that help businesses launch, grow and scale.
+          <p className="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed font-light">
+            Explore WebMash Labs&apos; professional digital services, including custom website design, web development, UI/UX design, SEO, branding, hosting setup, business email, website maintenance, and AI automation designed to scale your business online.
           </p>
-        </div>
+        </header>
 
         <div className="relative flex flex-col lg:flex-row items-start gap-12 lg:gap-20">
-          
-          <div className="w-full lg:w-[40%] lg:sticky lg:top-32 space-y-3">
-            {services.map((service, index) => {
+          <div
+            role="tablist"
+            aria-label="WebMash Labs Services Navigation"
+            aria-orientation="vertical"
+            className="w-full lg:w-[42%] lg:sticky lg:top-28 space-y-1 sm:space-y-2"
+          >
+            {SERVICES.map((service, index) => {
               const isActive = activeIndex === index;
+              const tabId = `service-tab-${instanceId}-${index}`;
+              const panelId = `service-panel-${instanceId}-${index}`;
 
               return (
-                <div 
-                  key={index}
-                  onMouseEnter={() => {
-                    if (window.innerWidth >= 1024) setActiveIndex(index);
-                  }}
-                  onClick={() => {
-                    setActiveIndex(index);
-                    const rightPreview = document.getElementById("services-preview-container");
-                    if (rightPreview && window.innerWidth < 1024) {
-                      rightPreview.scrollIntoView({ behavior: "smooth", block: "nearest" });
-                    }
-                  }}
-                  className="group cursor-pointer py-3 transition-all duration-300"
-                >
+                <div key={service.href} className="group py-2 transition-all duration-300">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-baseline space-x-4 sm:space-x-6">
-                      <span className={`font-mono text-lg sm:text-xl font-bold transition-all duration-300 ${
-                        isActive ? "text-[#0F172A] scale-105" : "text-[#2563EB] group-hover:text-white/70"
-                      }`}>
+                    <div className="flex items-center space-x-6 min-w-0 pr-4">
+                      <button
+                        ref={(el) => {
+                          tabRefs.current[index] = el;
+                        }}
+                        type="button"
+                        role="tab"
+                        id={tabId}
+                        aria-selected={isActive}
+                        aria-controls={panelId}
+                        tabIndex={isActive ? 0 : -1}
+                        onPointerEnter={(e) => {
+                          if (e.pointerType === "mouse") {
+                            setActiveIndex(index);
+                          }
+                        }}
+                        onClick={() => setActiveIndex(index)}
+                        onKeyDown={(e) => handleKeyDown(e, index)}
+                        className={`font-mono text-sm sm:text-base font-semibold transition-all duration-300 shrink-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded p-1 -m-1 ${
+                          isActive ? "text-blue-600" : "text-slate-400 group-hover:text-slate-600"
+                        }`}
+                        aria-label={`Show preview for ${service.title}`}
+                      >
                         {service.number}
-                      </span>
-                      <div className="flex items-center space-x-3 sm:space-x-4">
-                        <h3 className={`text-lg sm:text-2xl font-semibold transition-all duration-300 ${
-                          isActive ? "text-[#2563EB] font-bold translate-x-1" : "text-[#0F172A] group-hover:text-white/70"
-                        }`}>
-                          {service.title}
-                        </h3>
-                        <Link 
+                      </button>
+
+                      <h3
+                        className={`text-lg sm:text-xl font-medium transition-all duration-300 truncate ${
+                          isActive ? "text-slate-900 font-semibold translate-x-1" : "text-slate-600 group-hover:text-slate-900"
+                        }`}
+                      >
+                        <Link
                           href={service.href}
-                          onClick={(e) => e.stopPropagation()}
-                          className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity text-[xs] font-mono text-blue-400 hover:underline flex items-center space-x-1"
+                          className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded"
                         >
-                          <span>Details</span>
-                          <span>→</span>
+                          {service.title}
                         </Link>
-                      </div>
+                      </h3>
                     </div>
 
-                    {isActive && (
-                      <motion.div 
-                        layoutId="activeIndicator"
-                        className="hidden lg:block w-8 h-[2px] bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.8)]"
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
+                    <div className="flex items-center space-x-4 shrink-0">
+                      {isActive && !shouldReduceMotion && (
+                        <motion.div
+                          layoutId={`activeIndicator-${instanceId}`}
+                          className="hidden lg:block w-6 h-[2px] bg-blue-600 shrink-0"
+                          transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                          aria-hidden="true"
+                        />
+                      )}
+                      <Link
+                        href={service.href}
+                        aria-label={`Explore professional ${service.title} services by WebMash Labs`}
+                        className="opacity-20 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-within:opacity-100 transition-opacity text-xs font-mono text-blue-600 hover:text-blue-800 hover:underline focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1 flex items-center space-x-1 py-1"
+                      >
+                        <span>Details</span>
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    </div>
                   </div>
 
-                  <div className={`mt-3 h-[1px] w-full transition-colors duration-300 ${
-                    isActive ? "bg-blue-500/30" : "bg-white/10 group-hover:bg-white/20"
-                  }`} />
+                  <p className="mt-1 ml-10 text-xs sm:text-sm text-slate-500 font-light leading-relaxed pr-6">
+                    {service.description}
+                  </p>
+
+                  <div
+                    className={`mt-3 h-[1px] w-full transition-colors duration-300 ${
+                      isActive ? "bg-slate-300" : "bg-slate-100 group-hover:bg-slate-200"
+                    }`}
+                    aria-hidden="true"
+                  />
                 </div>
               );
             })}
           </div>
 
-          <div 
+          <div
             id="services-preview-container"
-            className="w-full lg:w-[60%] h-[500px] sm:h-[580px] lg:h-[680px] relative flex items-center"
+            className="w-full lg:w-[58%] h-[440px] sm:h-[500px] lg:h-[620px] relative flex items-center rounded-2xl"
           >
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-emerald-600/10 blur-xl pointer-events-none opacity-60" />
+            <div
+              className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-blue-600/5 via-purple-600/5 to-emerald-600/5 blur-xl pointer-events-none"
+              aria-hidden="true"
+            />
 
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full h-full relative z-10"
+                role="tabpanel"
+                id={`service-panel-${instanceId}-${activeIndex}`}
+                aria-labelledby={`service-tab-${instanceId}-${activeIndex}`}
+                tabIndex={0}
+                {...animationProps}
+                className="w-full h-full relative z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-2xl shadow-xl"
               >
-                {services[activeIndex].visualContent}
+                <div className="w-full h-full rounded-2xl border border-white/[0.08] bg-[#070A10] overflow-hidden shadow-2xl flex flex-col">
+                  {SERVICES[activeIndex].visualContent}
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>
-
         </div>
-
       </div>
     </section>
   );

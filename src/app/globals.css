@@ -1,1 +1,48 @@
 @import "tailwindcss";
+
+
+html {
+  scrollbar-width: auto;
+  scrollbar-color: #4f46ff transparent;
+}
+
+/* Chrome / Edge / Safari */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+/* Completely invisible track */
+::-webkit-scrollbar-track {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Only visible element */
+::-webkit-scrollbar-thumb {
+  background: #4f46ff !important;
+  border-radius: 999px;
+
+  border: 3px solid transparent;
+  background-clip: padding-box;
+
+  box-shadow: none;
+}
+
+/* Hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6366f1 !important;
+  border-radius: 999px;
+}
+
+/* Remove corner */
+::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
+
+/* No horizontal scrollbar */
+html,
+body {
+  overflow-x: hidden;
+}

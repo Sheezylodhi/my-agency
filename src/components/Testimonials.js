@@ -107,6 +107,60 @@ function Stars() {
   );
 }
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Review",
+      "reviewBody": featured.quote,
+      "author": {
+        "@type": "Person",
+        "name": featured.name,
+        "jobTitle": featured.role,
+        "worksFor": {
+          "@type": "Organization",
+          "name": featured.company
+        }
+      },
+      "itemReviewed": {
+        "@type": "Organization",
+        "@id": "https://webmashlabs.com/#organization",
+        "name": "WebMash Labs",
+        "url": "https://webmashlabs.com/"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    },
+    ...stories.map((s) => ({
+      "@type": "Review",
+      "reviewBody": s.quote,
+      "author": {
+        "@type": "Person",
+        "name": s.name,
+        "jobTitle": s.role,
+        "worksFor": {
+          "@type": "Organization",
+          "name": s.company
+        }
+      },
+      "itemReviewed": {
+        "@type": "Organization",
+        "@id": "https://webmashlabs.com/#organization",
+        "name": "WebMash Labs",
+        "url": "https://webmashlabs.com/"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    }))
+  ]
+};
+
 export function Testimonials() {
   return (
     <section
@@ -114,6 +168,12 @@ export function Testimonials() {
       className="relative w-full overflow-hidden bg-[#F8FAFC] py-24 sm:py-32 lg:py-44"
       aria-labelledby="testimonials-heading"
     >
+      {/* JSON-LD Structured Data for Reviews */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       {/* Dynamic Ambient Background Glow */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
@@ -128,7 +188,7 @@ export function Testimonials() {
       <div className="relative mx-auto max-w-[1400px] px-6 sm:px-8 lg:px-16">
         
         {/* HEADING SECTION WITH STAGGERED PARALLAX FEEL */}
-        <motion.div {...reveal} transition={{ duration: 1.1, ease }} className="max-w-[900px]">
+        <motion.header {...reveal} transition={{ duration: 1.1, ease }} className="max-w-[900px]">
           <motion.p
             initial={{ opacity: 0, x: -15 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -148,17 +208,17 @@ export function Testimonials() {
             We work with companies where a website is not decoration — it is how the business is
             found, judged and chosen. These are the results and the relationships that followed.
           </p>
-        </motion.div>
+        </motion.header>
 
         {/* FEATURED TESTIMONIAL SPREAD */}
         <div className="mt-16 grid gap-10 lg:mt-24 lg:grid-cols-[1.35fr_0.65fr] lg:gap-16">
-          <motion.figure
+          <motion.article
             {...scaleReveal}
             transition={{ duration: 1.1, ease, delay: 0.15 }}
             className="relative rounded-[32px] border border-[#E2E8F0] bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] sm:p-12 lg:p-16 overflow-hidden transition-all duration-500 hover:shadow-2xl"
           >
             {/* Subtle card glow accent on hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB]/[0.03] via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB]/[0.03] via-transparent to-transparent pointer-events-none" aria-hidden="true" />
 
             <Quote
               className="h-9 w-9 text-[#2563EB]/20 relative z-10"
@@ -183,27 +243,27 @@ export function Testimonials() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
                 src={client2.src || client2}
-                alt={`${featured.name}, ${featured.role} at ${featured.company}`}
+                alt={`Dr. Amelia Hartley, Founder and Clinical Director at Northbridge Health Group`}
                 loading="lazy"
                 width={800}
                 height={1008}
                 className="h-16 w-16 shrink-0 rounded-full object-cover shadow-sm"
               />
-              <figcaption className="min-w-0">
+              <div className="min-w-0">
                 <p className="text-base font-semibold tracking-[-0.01em] text-[#0F172A]">
                   {featured.name}
                 </p>
                 <p className="text-sm text-[#64748B]">
                   {featured.role} · {featured.company}
                 </p>
-              </figcaption>
+              </div>
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 sm:ml-auto">
                 <span className="inline-flex items-center gap-2 text-sm text-[#64748B]">
-                  <BadgeCheck className="h-4 w-4 text-[#2563EB]" strokeWidth={1.5} />
+                  <BadgeCheck className="h-4 w-4 text-[#2563EB]" strokeWidth={1.5} aria-hidden="true" />
                   {featured.industry}
                 </span>
                 <span className="inline-flex items-center gap-2 text-sm text-[#64748B]">
-                  <MapPin className="h-4 w-4 text-[#2563EB]" strokeWidth={1.5} />
+                  <MapPin className="h-4 w-4 text-[#2563EB]" strokeWidth={1.5} aria-hidden="true" />
                   {featured.location}
                 </span>
               </div>
@@ -216,7 +276,7 @@ export function Testimonials() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="mt-8 flex items-start gap-3 rounded-2xl bg-[#EFF6FF] border border-[#BFDBFE] px-5 py-4 relative z-10"
             >
-              <TrendingUp className="mt-0.5 h-4 w-4 shrink-0 text-[#2563EB]" strokeWidth={1.6} />
+              <TrendingUp className="mt-0.5 h-4 w-4 shrink-0 text-[#2563EB]" strokeWidth={1.6} aria-hidden="true" />
               <p className="text-sm leading-relaxed text-[#0F172A]">{featured.result}</p>
             </motion.div>
 
@@ -235,10 +295,10 @@ export function Testimonials() {
                 </motion.li>
               ))}
             </ul>
-          </motion.figure>
+          </motion.article>
 
           {/* METRICS STACK WITH SCROLL REVEAL */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-1 lg:content-center">
+          <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-1 lg:content-center" aria-label="Key metrics">
             {metrics.map((m, i) => (
               <motion.div
                 key={m.label}
@@ -266,7 +326,7 @@ export function Testimonials() {
           {stories.map((s, i) => {
             const flip = i % 2 === 1;
             return (
-              <motion.figure
+              <motion.article
                 key={s.name}
                 initial={{ opacity: 0, y: 50, filter: "blur(12px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -322,10 +382,10 @@ export function Testimonials() {
                   </blockquote>
                   <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
                     <Stars />
-                    <figcaption className="text-sm text-[#64748B]">
+                    <div className="text-sm text-[#64748B]">
                       <span className="font-semibold text-[#0F172A]">{s.name}</span> — {s.role},{" "}
                       {s.company}
-                    </figcaption>
+                    </div>
                   </div>
                   <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-3">
                     {s.meta.map((m) => (
@@ -333,17 +393,17 @@ export function Testimonials() {
                         key={m}
                         className="inline-flex items-center gap-2 text-xs text-[#64748B]"
                       >
-                        <CalendarCheck className="h-3.5 w-3.5 text-[#2563EB]" strokeWidth={1.5} />
+                        <CalendarCheck className="h-3.5 w-3.5 text-[#2563EB]" strokeWidth={1.5} aria-hidden="true" />
                         {m}
                       </li>
                     ))}
                     <li className="inline-flex items-center gap-2 text-xs text-[#64748B]">
-                      <MapPin className="h-3.5 w-3.5 text-[#2563EB]" strokeWidth={1.5} />
+                      <MapPin className="h-3.5 w-3.5 text-[#2563EB]" strokeWidth={1.5} aria-hidden="true" />
                       {s.location}
                     </li>
                   </ul>
                 </div>
-              </motion.figure>
+              </motion.article>
             );
           })}
         </div>

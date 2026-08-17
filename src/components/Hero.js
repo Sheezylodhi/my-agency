@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { 
   ArrowUpRight, 
   Rocket, 
@@ -34,11 +35,11 @@ import {
 function WindowChrome({ label, Icon }) {
   return (
     <div className="flex items-center gap-2.5 border-b border-white/10 px-4 py-2.5 bg-white/[0.02]">
-      <Icon className="h-3 w-3 text-blue-400" strokeWidth={1.25} />
+      <Icon className="h-3 w-3 text-blue-400" strokeWidth={1.25} aria-hidden="true" />
       <span className="font-mono text-[9px] tracking-[0.22em] text-slate-400 uppercase">
         {label}
       </span>
-      <span className="ml-auto h-px w-6 bg-white/10" />
+      <span className="ml-auto h-px w-6 bg-white/10" aria-hidden="true" />
     </div>
   );
 }
@@ -71,11 +72,10 @@ function Line({ d, dur, delay = 0 }) {
 
 export function EcosystemVisual() {
   return (
-    <div className="relative aspect-[4/5] w-full max-w-[640px] [perspective:1800px]">
+    <div className="relative aspect-[4/5] w-full max-w-[640px] [perspective:1800px]" aria-hidden="true">
       {/* blueprint plane */}
       <div
         className="blueprint-field pointer-events-none absolute inset-[6%] rounded-2xl bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"
-        aria-hidden="true"
         style={{ transform: "rotateX(6deg) rotateY(-8deg)" }}
       />
 
@@ -84,7 +84,6 @@ export function EcosystemVisual() {
         className="pointer-events-none absolute inset-0 h-full w-full"
         viewBox="0 0 620 775"
         fill="none"
-        aria-hidden="true"
       >
         <Line d="M150 235 C 265 250, 245 420, 355 425" dur={24} />
         <Line d="M470 190 C 470 300, 300 320, 250 465" dur={30} delay={3} />
@@ -124,7 +123,7 @@ export function EcosystemVisual() {
       >
         <WindowChrome label="hosting" Icon={Server} />
         <div className="flex items-center justify-between px-4 py-4">
-          <BadgeCheck className="h-4 w-4 text-blue-400" strokeWidth={1.25} />
+          <BadgeCheck className="h-4 w-4 text-blue-400" strokeWidth={1.25} aria-hidden="true" />
           <div className="space-y-1.5">
             <div className="h-1.5 w-14 rounded-full bg-white/20" />
             <div className="h-1.5 w-9 rounded-full bg-white/10" />
@@ -137,7 +136,7 @@ export function EcosystemVisual() {
         className="absolute top-[62%] right-[6%] flex w-[30%] items-center gap-3 rounded-lg px-4 py-3 opacity-55 blur-[1.5px] bg-[#0B0F19]/80 backdrop-blur-xl border border-white/10 shadow-2xl"
         data-parallax="-18"
       >
-        <Database className="h-4 w-4 text-slate-400" strokeWidth={1.25} />
+        <Database className="h-4 w-4 text-slate-400" strokeWidth={1.25} aria-hidden="true" />
         <div className="space-y-1.5">
           <div className="h-1.5 w-12 rounded-full bg-white/20" />
           <div className="h-1.5 w-7 rounded-full bg-white/10" />
@@ -153,11 +152,11 @@ export function EcosystemVisual() {
         <WindowChrome label="webmashlabs.com" Icon={Globe} />
         <div className="space-y-4 p-5">
           <div className="flex items-center justify-between">
-            <LayoutTemplate className="h-4 w-4 text-blue-400" strokeWidth={1.25} />
+            <LayoutTemplate className="h-4 w-4 text-blue-400" strokeWidth={1.25} aria-hidden="true" />
             <div className="flex gap-4 text-slate-500">
-              <Component className="h-3.5 w-3.5" strokeWidth={1.25} />
-              <Layers3 className="h-3.5 w-3.5" strokeWidth={1.25} />
-              <Network className="h-3.5 w-3.5" strokeWidth={1.25} />
+              <Component className="h-3.5 w-3.5" strokeWidth={1.25} aria-hidden="true" />
+              <Layers3 className="h-3.5 w-3.5" strokeWidth={1.25} aria-hidden="true" />
+              <Network className="h-3.5 w-3.5" strokeWidth={1.25} aria-hidden="true" />
             </div>
           </div>
           <div className="h-2.5 w-4/5 rounded-full bg-white/20" />
@@ -182,9 +181,9 @@ export function EcosystemVisual() {
           <p className="pl-3 text-slate-500">precision: absolute</p>
           <p>&lt;/section&gt;</p>
           <div className="flex items-center gap-3 pt-2 text-slate-500">
-            <Braces className="h-3 w-3" strokeWidth={1.25} />
-            <GitBranch className="h-3 w-3" strokeWidth={1.25} />
-            <Rocket className="h-3 w-3" strokeWidth={1.25} />
+            <Braces className="h-3 w-3" strokeWidth={1.25} aria-hidden="true" />
+            <GitBranch className="h-3 w-3" strokeWidth={1.25} aria-hidden="true" />
+            <Rocket className="h-3 w-3" strokeWidth={1.25} aria-hidden="true" />
           </div>
         </div>
       </div>
@@ -204,6 +203,7 @@ export function EcosystemVisual() {
         <MonitorSmartphone
           className="mt-3 h-3.5 w-3.5 text-slate-500"
           strokeWidth={1.25}
+          aria-hidden="true"
         />
       </div>
 
@@ -238,6 +238,7 @@ export function EcosystemVisual() {
               <Icon
                 className={i === 5 ? "h-4 w-4 text-blue-400" : "h-4 w-4 text-slate-400"}
                 strokeWidth={1.25}
+                aria-hidden="true"
               />
             </div>
           ))}
@@ -250,7 +251,7 @@ export function EcosystemVisual() {
         data-parallax="70"
         style={{ animationDelay: "-4s" }}
       >
-        <Workflow className="h-3.5 w-3.5 text-blue-400" strokeWidth={1.25} />
+        <Workflow className="h-3.5 w-3.5 text-blue-400" strokeWidth={1.25} aria-hidden="true" />
         <span className="font-mono text-[9px] tracking-[0.22em] text-slate-400 uppercase">
           AI automation
         </span>
@@ -275,7 +276,7 @@ export function EcosystemVisual() {
         className="absolute bottom-[22%] left-[30%] flex items-center gap-3 rounded-lg px-4 py-3 bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
         data-parallax="44"
       >
-        <Mail className="h-4 w-4 text-slate-400" strokeWidth={1.25} />
+        <Mail className="h-4 w-4 text-slate-400" strokeWidth={1.25} aria-hidden="true" />
         <div className="space-y-1.5">
           <div className="h-1.5 w-14 rounded-full bg-white/20" />
           <div className="h-1.5 w-8 rounded-full bg-white/10" />
@@ -291,22 +292,8 @@ export function EcosystemVisual() {
 
 export function Hero() {
   const stageRef = useRef(null);
-  const [scrolled, setScrolled] = useState(false);
 
-  // Scroll listener for Navbar background transition
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Parallax animation effect
+  // High-performance direct DOM parallax engine with passive listeners, RAF batching, and reduced-motion compliance
   useEffect(() => {
     const stage = stageRef.current;
     if (!stage) return;
@@ -332,7 +319,7 @@ export function Hero() {
       cx += (tx - cx) * 0.035;
       cy += (ty - cy) * 0.035;
       for (const { el, depth } of layers) {
-        el.style.translate = `${cx * depth * 100}px ${cy * depth * 70}px`;
+        el.style.transform = `translate3d(${cx * depth * 100}px, ${cy * depth * 70}px, 0)`;
       }
       raf = requestAnimationFrame(tick);
     };
@@ -350,7 +337,6 @@ export function Hero() {
       ref={stageRef}
       className="relative isolate min-h-screen overflow-hidden bg-[#0B0F19] text-white"
     >
-
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]" aria-hidden="true" />
       <div
         className="pointer-events-none absolute -top-1/3 left-1/2 h-[900px] w-[1300px] -translate-x-1/2 opacity-60 blur-[120px]"
@@ -363,56 +349,60 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      {/* Added pt-28 so content doesn't hide behind the fixed navbar */}
       <div className="relative mx-auto max-w-[1400px] px-8 pt-32 pb-28 lg:px-16 lg:pt-36">
         <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-[1.05fr_1fr]">
           <div>
-            <p
-              className="font-mono text-[11px] tracking-[0.34em] text-slate-400 uppercase animate-fade-in"
-              style={{ animationDelay: "0.05s" }}
-            >
-              DESIGN · DEVELOPMENT · AI · GROWTH
-            </p>
+            <header>
+              <p
+                className="font-mono text-[11px] tracking-[0.34em] text-slate-400 uppercase"
+                style={{ animationDelay: "0.05s" }}
+              >
+                DIGITAL PRODUCT ENGINEERING · WEB APPLICATIONS · AI AUTOMATION
+              </p>
 
-            <h1
-              className="mt-8 text-[clamp(3rem,6.6vw,6.2rem)] leading-[0.92] font-bold tracking-[-0.045em] text-white"
-              style={{ animationDelay: "0.18s" }}
-            >
-              Everything Your
-              <br />
-             Business Needs
-              <br />
-              <span className="italic font-normal text-slate-400">To Grow Online.</span>
-            </h1>
+              <h1
+                className="mt-8 text-[clamp(3rem,6.6vw,6.2rem)] leading-[0.92] font-bold tracking-[-0.045em] text-white"
+                style={{ animationDelay: "0.18s" }}
+              >
+                Engineering
+                <br />
+                Digital Products
+                <br />
+                <span className="italic font-normal text-slate-400">That Scale Growth.</span>
+              </h1>
+            </header>
 
             <p
               className="mt-10 max-w-[46ch] text-lg leading-relaxed text-slate-400"
               style={{ animationDelay: "0.34s" }}
             >
-              From branding and websites to AI automation, SEO, hosting, business email, and ongoing maintenance—we build complete digital systems that help businesses launch, scale, and succeed.
+              WebMash Labs is a full-service digital product engineering agency building high-performance web applications, custom e-commerce platforms, scalable business systems, and AI automation workflows for ambitious organizations.
             </p>
 
             <div
               className="mt-12 flex flex-wrap items-center gap-4"
               style={{ animationDelay: "0.5s" }}
             >
-              <a
-                href="#contact"
-                className="group inline-flex items-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-sm font-medium text-white transition-all duration-700 hover:bg-blue-500 shadow-[0_10px_30px_rgba(29,78,216,0.4)]"
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-sm font-medium text-white transition-all duration-700 hover:bg-blue-500 shadow-[0_10px_30px_rgba(29,78,216,0.4)] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-[#0B0F19]"
+                aria-label="Start your digital product or web development project with WebMash Labs"
               >
                 Start a project
                 <ArrowUpRight
                   className="h-4 w-4 transition-transform duration-700 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   strokeWidth={1.5}
+                  aria-hidden="true"
                 />
-              </a>
-              <a
-                href="#work"
-                className="inline-flex items-center gap-3 rounded-full border border-white/10 px-8 py-4 text-sm font-medium text-white transition-colors duration-700 hover:border-white/30 hover:bg-white/5 backdrop-blur-xl"
+              </Link>
+              <Link
+                href="/work"
+                className="inline-flex items-center gap-3 rounded-full border border-white/10 px-8 py-4 text-sm font-medium text-white transition-colors duration-700 hover:border-white/30 hover:bg-white/5 backdrop-blur-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-[#0B0F19]"
+                aria-label="Explore selected digital engineering case studies and work by WebMash Labs"
               >
-                <Rocket className="h-4 w-4 text-slate-400" strokeWidth={1.5} />
+                <Rocket className="h-4 w-4 text-slate-400" strokeWidth={1.5} aria-hidden="true" />
                 View selected work
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -431,25 +421,25 @@ export function Hero() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 items-stretch relative">
             {/* Subtle connector line background for desktop workflow chain */}
-            <div className="hidden lg:block absolute top-[36px] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent pointer-events-none" />
+            <div className="hidden lg:block absolute top-[36px] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent pointer-events-none" aria-hidden="true" />
 
             {/* Card 1: Launch */}
             <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-xl transition-all duration-500 hover:border-blue-500/40 hover:bg-white/[0.04] hover:-translate-y-1 shadow-xl">
               <div>
                 <div className="mb-4 flex items-center justify-between">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-blue-400 transition-colors duration-500 group-hover:border-blue-500/30 group-hover:bg-blue-500/10">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-blue-400 transition-colors duration-500 group-hover:border-blue-500/30 group-hover:bg-blue-500/10" aria-hidden="true">
                     <Rocket className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <span className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">01 / Launch</span>
                 </div>
-                <h3 className="text-base font-semibold tracking-tight text-white flex items-center justify-between">
+                <h2 className="text-base font-semibold tracking-tight text-white flex items-center justify-between">
                   Launch
-                  <ChevronRight className="h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 hidden lg:block" />
-                </h3>
+                  <ChevronRight className="h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 hidden lg:block" aria-hidden="true" />
+                </h2>
                 <p className="mt-2 text-xs text-slate-400 leading-relaxed whitespace-nowrap">Strategy • Brand • Positioning</p>
               </div>
               <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] text-blue-400/80 font-mono">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse mr-2" />
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse mr-2" aria-hidden="true" />
                 Phase initiated
               </div>
             </div>
@@ -458,19 +448,19 @@ export function Hero() {
             <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-xl transition-all duration-500 hover:border-blue-500/40 hover:bg-white/[0.04] hover:-translate-y-1 shadow-xl">
               <div>
                 <div className="mb-4 flex items-center justify-between">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-blue-400 transition-colors duration-500 group-hover:border-blue-500/30 group-hover:bg-blue-500/10">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-blue-400 transition-colors duration-500 group-hover:border-blue-500/30 group-hover:bg-blue-500/10" aria-hidden="true">
                     <Code className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <span className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">02 / Build</span>
                 </div>
-                <h3 className="text-base font-semibold tracking-tight text-white flex items-center justify-between">
+                <h2 className="text-base font-semibold tracking-tight text-white flex items-center justify-between">
                   Build
-                  <ChevronRight className="h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 hidden lg:block" />
-                </h3>
+                  <ChevronRight className="h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 hidden lg:block" aria-hidden="true" />
+                </h2>
                 <p className="mt-2 text-xs text-slate-400 leading-relaxed">Websites • Applications • Custom Experiences</p>
               </div>
               <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] text-slate-500 font-mono">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-600 mr-2" />
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-600 mr-2" aria-hidden="true" />
                 Next milestone
               </div>
             </div>
@@ -479,19 +469,19 @@ export function Hero() {
             <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-xl transition-all duration-500 hover:border-blue-500/40 hover:bg-white/[0.04] hover:-translate-y-1 shadow-xl">
               <div>
                 <div className="mb-4 flex items-center justify-between">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-blue-400 transition-colors duration-500 group-hover:border-blue-500/30 group-hover:bg-blue-500/10">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-blue-400 transition-colors duration-500 group-hover:border-blue-500/30 group-hover:bg-blue-500/10" aria-hidden="true">
                     <Cpu className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <span className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">03 / Automate</span>
                 </div>
-                <h3 className="text-base font-semibold tracking-tight text-white flex items-center justify-between">
+                <h2 className="text-base font-semibold tracking-tight text-white flex items-center justify-between">
                   Automate
-                  <ChevronRight className="h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 hidden lg:block" />
-                </h3>
+                  <ChevronRight className="h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 hidden lg:block" aria-hidden="true" />
+                </h2>
                 <p className="mt-2 text-xs text-slate-400 leading-relaxed">AI Workflows • Integrations • Business Systems</p>
               </div>
               <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] text-slate-500 font-mono">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-600 mr-2" />
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-600 mr-2" aria-hidden="true" />
                 Queued sequence
               </div>
             </div>
@@ -500,16 +490,16 @@ export function Hero() {
             <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-xl transition-all duration-500 hover:border-blue-500/40 hover:bg-white/[0.04] hover:-translate-y-1 shadow-xl">
               <div>
                 <div className="mb-4 flex items-center justify-between">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-blue-400 transition-colors duration-500 group-hover:border-blue-500/30 group-hover:bg-blue-500/10">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-blue-400 transition-colors duration-500 group-hover:border-blue-500/30 group-hover:bg-blue-500/10" aria-hidden="true">
                     <TrendingUp className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <span className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">04 / Scale</span>
                 </div>
-                <h3 className="text-base font-semibold tracking-tight text-white">Scale</h3>
+                <h2 className="text-base font-semibold tracking-tight text-white">Scale</h2>
                 <p className="mt-2 text-xs text-slate-400 leading-relaxed">SEO • Infrastructure • Expansion & Growth</p>
               </div>
               <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] text-slate-500 font-mono">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-600 mr-2" />
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-600 mr-2" aria-hidden="true" />
                 Enterprise tier
               </div>
             </div>
