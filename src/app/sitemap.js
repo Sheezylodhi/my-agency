@@ -1,8 +1,8 @@
 import { SERVICES } from "@/data/services";
 import { INDUSTRIES } from "@/data/industries";
-import { BLOG_POSTS } from "@/data/blogs";
+import { BLOG_POSTS } from "@/data/blog";
 
-const BASE_URL = "https://webmashlabs.com";
+const BASE_URL = "https://webmashlabs.vercel.app";
 
 export default function sitemap() {
   const now = new Date();
