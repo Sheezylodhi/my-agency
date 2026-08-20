@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useRef, useState, useId } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import {
   AnimatePresence,
@@ -282,6 +282,7 @@ const SERVICES = [
               <p className="text-xs font-semibold text-slate-200">
                 Design_System_Tokens.fig
               </p>
+
               <p className="text-[10px] text-pink-400 font-mono">
                 Variables Synchronized
               </p>
@@ -393,9 +394,11 @@ const SERVICES = [
             <span className="text-[10px] font-mono text-slate-400 block">
               VISIBILITY
             </span>
+
             <p className="text-lg font-semibold text-white mt-1">
               Optimized
             </p>
+
             <span className="text-[10px] text-emerald-400 font-mono">
               Structured Data
             </span>
@@ -405,9 +408,11 @@ const SERVICES = [
             <span className="text-[10px] font-mono text-slate-400 block">
               CRAWL RATE
             </span>
+
             <p className="text-lg font-semibold text-white mt-1">
               Configured
             </p>
+
             <span className="text-[10px] text-emerald-400 font-mono">
               Technical SEO Ready
             </span>
@@ -417,9 +422,11 @@ const SERVICES = [
             <span className="text-[10px] font-mono text-slate-400 block">
               HEALTH
             </span>
+
             <p className="text-lg font-semibold text-emerald-400 mt-1">
               Standard
             </p>
+
             <span className="text-[10px] text-slate-400 font-mono">
               Compliant
             </span>
@@ -636,6 +643,7 @@ const SERVICES = [
         <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-3 backdrop-blur-md z-10 my-4">
           <div className="flex justify-between text-xs font-mono text-slate-400 border-b border-white/[0.04] pb-2">
             <span>INCOMING SECURE STREAM</span>
+
             <span className="text-emerald-400">
               TLS 1.3 ENCRYPTED
             </span>
@@ -820,7 +828,6 @@ export function Services() {
   const [activeIndex, setActiveIndex] = useState(0);
   const tabRefs = useRef([]);
   const shouldReduceMotion = useReducedMotion();
-  const instanceId = useId();
 
   const handleKeyDown = useCallback((e, index) => {
     let newIndex = index;
@@ -931,13 +938,12 @@ export function Services() {
 
         <div className="relative flex flex-col lg:flex-row items-start gap-12 lg:gap-20">
           {/* SERVICES NAVIGATION */}
-          <div
+          <nav
             className="w-full lg:w-[42%] lg:sticky lg:top-28 space-y-1 sm:space-y-2"
             aria-label="WebMash Labs Services Navigation"
           >
             {SERVICES.map((service, index) => {
               const isActive = activeIndex === index;
-              const panelId = `service-panel-${instanceId}-${index}`;
 
               return (
                 <div
@@ -953,7 +959,6 @@ export function Services() {
                         }}
                         type="button"
                         aria-pressed={isActive}
-                        aria-controls={panelId}
                         onPointerEnter={(e) => {
                           if (e.pointerType === "mouse") {
                             setActiveIndex(index);
@@ -961,7 +966,7 @@ export function Services() {
                         }}
                         onClick={() => setActiveIndex(index)}
                         onKeyDown={(e) => handleKeyDown(e, index)}
-                        className={`font-mono text-sm sm:text-base font-semibold transition-all duration-300 shrink-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded p-1 -m-1 ${
+                        className={`font-mono text-sm sm:text-base font-semibold transition-all duration-300 shrink-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded min-w-11 min-h-11 flex items-center justify-center ${
                           isActive
                             ? "text-blue-600"
                             : "text-slate-700 group-hover:text-slate-900"
@@ -990,7 +995,7 @@ export function Services() {
                     <div className="flex items-center space-x-4 shrink-0">
                       {isActive && !shouldReduceMotion && (
                         <motion.div
-                          layoutId={`activeIndicator-${instanceId}`}
+                          layoutId="active-services-indicator"
                           className="hidden lg:block w-6 h-[2px] bg-blue-600 shrink-0"
                           transition={{
                             type: "spring",
@@ -1004,7 +1009,7 @@ export function Services() {
                       <Link
                         href={service.href}
                         aria-label={`Explore professional ${service.title} services by WebMash Labs`}
-                        className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-within:opacity-100 transition-opacity text-xs font-mono text-blue-700 hover:text-blue-800 hover:underline focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1 flex items-center space-x-1 py-1"
+                       className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-within:opacity-100 transition-opacity text-xs font-mono text-blue-700 hover:text-blue-800 hover:underline focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-2 min-w-11 min-h-11 flex items-center justify-center space-x-1"
                       >
                         <span>Details</span>
                         <span aria-hidden="true">→</span>
@@ -1027,7 +1032,7 @@ export function Services() {
                 </div>
               );
             })}
-          </div>
+          </nav>
 
           {/* SERVICE PREVIEW */}
           <div
@@ -1042,7 +1047,6 @@ export function Services() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                id={`service-panel-${instanceId}-${activeIndex}`}
                 role="region"
                 aria-label={`${SERVICES[activeIndex].title} preview`}
                 tabIndex={-1}
