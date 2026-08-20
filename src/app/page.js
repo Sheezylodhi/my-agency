@@ -9,7 +9,6 @@ import Pricing from "@/components/Pricing";
 import { FAQ } from "@/components/Faq";
 import { CallToAction } from "@/components/CallToAction";
 import { Testimonials } from "@/components/Testimonials";
-import NewsletterPopup from "@/components/NewsletterPopup";
 
 export const metadata = {
   title: "WebMash Labs | Premium Web Development & Digital Agency",
@@ -66,7 +65,6 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <NewsletterPopup />
       <Hero />
       <Technology />
       <Services />

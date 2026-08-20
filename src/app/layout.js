@@ -1,6 +1,5 @@
 import "./globals.css";
 import Layout from "@/components/Layout";
-import Chat from "@/components/Chat";
 
 export const metadata = {
   metadataBase: new URL("https://webmashlabs.com"),
@@ -79,7 +78,7 @@ export default function RootLayout({ children }) {
       <body className="bg-white" suppressHydrationWarning={true}>
         <Layout>
           {children}
-          <Chat />
+         
         </Layout>
       </body>
     </html>

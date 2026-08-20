@@ -5,6 +5,5 @@ export default function robots() {
       allow: "/",
     },
     sitemap: "https://webmashlabs.com/sitemap.xml",
-    host: "https://webmashlabs.com",
   };
 }
