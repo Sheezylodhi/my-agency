@@ -72,7 +72,7 @@ function Line({ d, dur, delay = 0 }) {
 
 export function EcosystemVisual() {
   return (
-    <div className="relative aspect-[4/5] w-full max-w-[640px] [perspective:1800px]" aria-hidden="true">
+    <div className="relative aspect-[4/5] w-full max-w-[640px] [perspective:1800px] hidden lg:block" aria-hidden="true">
       {/* blueprint plane */}
       <div
         className="blueprint-field pointer-events-none absolute inset-[6%] rounded-2xl bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"
@@ -117,7 +117,7 @@ export function EcosystemVisual() {
 
       {/* hosting status */}
       <div
-        className="absolute top-[26%] right-[20%] w-[34%] overflow-hidden rounded-xl opacity-45 blur-[2px] bg-[#0B0F19]/80 backdrop-blur-xl border border-white/10 shadow-2xl"
+        className="absolute top-[26%] right-[20%] w-[34%] overflow-hidden rounded-xl opacity-60 bg-[#0B0F19]/80 backdrop-blur-xl border border-white/10 shadow-2xl"
         data-parallax="-14"
         style={{ transform: "rotateY(-9deg)" }}
       >
@@ -133,7 +133,7 @@ export function EcosystemVisual() {
 
       {/* database */}
       <div
-        className="absolute top-[62%] right-[6%] flex w-[30%] items-center gap-3 rounded-lg px-4 py-3 opacity-55 blur-[1.5px] bg-[#0B0F19]/80 backdrop-blur-xl border border-white/10 shadow-2xl"
+        className="absolute top-[62%] right-[6%] flex w-[30%] items-center gap-3 rounded-lg px-4 py-3 opacity-60 bg-[#0B0F19]/80 backdrop-blur-xl border border-white/10 shadow-2xl"
         data-parallax="-18"
       >
         <Database className="h-4 w-4 text-slate-400" strokeWidth={1.25} aria-hidden="true" />
@@ -249,7 +249,6 @@ export function EcosystemVisual() {
       <div
         className="absolute top-[33%] left-[52%] flex items-center gap-3 rounded-full px-4 py-2.5 bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
         data-parallax="70"
-        style={{ animationDelay: "-4s" }}
       >
         <Workflow className="h-3.5 w-3.5 text-blue-400" strokeWidth={1.25} aria-hidden="true" />
         <span className="font-mono text-[9px] tracking-[0.22em] text-slate-400 uppercase">
@@ -261,7 +260,6 @@ export function EcosystemVisual() {
       <div
         className="absolute bottom-[2%] left-[4%] w-[36%] overflow-hidden rounded-xl bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
         data-parallax="66"
-        style={{ animationDelay: "-7s" }}
       >
         <WindowChrome label="seo" Icon={Search} />
         <div className="space-y-2 px-4 py-4">
@@ -293,8 +291,9 @@ export function EcosystemVisual() {
 export function Hero() {
   const stageRef = useRef(null);
 
-  // High-performance direct DOM parallax engine with passive listeners, RAF batching, and reduced-motion compliance
+  // High-performance direct DOM parallax engine (disabled on mobile for peak performance)
   useEffect(() => {
+    if (window.innerWidth < 1024) return;
     const stage = stageRef.current;
     if (!stage) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -353,33 +352,24 @@ export function Hero() {
         <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-[1.05fr_1fr]">
           <div>
             <header>
-              <p
-                className="font-mono text-[11px] tracking-[0.34em] text-slate-400 uppercase"
-                style={{ animationDelay: "0.05s" }}
-              >
+              <p className="font-mono text-[11px] tracking-[0.34em] text-slate-400 uppercase">
                 DIGITAL PRODUCT ENGINEERING · WEB APPLICATIONS · AI AUTOMATION
               </p>
 
-             <h1 className="mt-8 text-[clamp(3rem,6.6vw,6.2rem)] leading-[0.92] font-bold tracking-[-0.045em] text-white">
-  Engineering
-  <br />
-  Digital Products
-  <br />
-  <span className="italic font-normal text-slate-400">That Scale Growth.</span>
-</h1>
+              <h1 className="mt-8 text-[clamp(3rem,6.6vw,6.2rem)] leading-[0.92] font-bold tracking-[-0.045em] text-white">
+                Engineering
+                <br />
+                Digital Products
+                <br />
+                <span className="italic font-normal text-slate-400">That Scale Growth.</span>
+              </h1>
             </header>
 
-            <p
-              className="mt-10 max-w-[46ch] text-lg leading-relaxed text-slate-400"
-              style={{ animationDelay: "0.34s" }}
-            >
+            <p className="mt-10 max-w-[46ch] text-lg leading-relaxed text-slate-400">
               WebMash Labs is a full-service digital product engineering agency building high-performance web applications, custom e-commerce platforms, scalable business systems, and AI automation workflows for ambitious organizations.
             </p>
 
-            <div
-              className="mt-12 flex flex-wrap items-center gap-4"
-              style={{ animationDelay: "0.5s" }}
-            >
+            <div className="mt-12 flex flex-wrap items-center gap-4">
               <Link
                 href="/contact"
                 className="group inline-flex items-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-sm font-medium text-white transition-all duration-700 hover:bg-blue-500 shadow-[0_10px_30px_rgba(29,78,216,0.4)] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-[#0B0F19]"
@@ -403,21 +393,14 @@ export function Hero() {
             </div>
           </div>
 
-          <div
-            className="flex justify-center lg:justify-end"
-            style={{ animationDelay: "0.42s" }}
-          >
+          <div className="flex justify-center lg:justify-end">
             <EcosystemVisual />
           </div>
         </div>
 
         {/* Workflow Lifecycle Cards spanning full container width */}
-        <div
-          className="mt-24 border-t border-white/10 pt-12 relative"
-          style={{ animationDelay: "0.66s" }}
-        >
+        <div className="mt-24 border-t border-white/10 pt-12 relative">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 items-stretch relative">
-            {/* Subtle connector line background for desktop workflow chain */}
             <div className="hidden lg:block absolute top-[36px] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent pointer-events-none" aria-hidden="true" />
 
             {/* Card 1: Launch */}
