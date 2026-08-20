@@ -119,9 +119,9 @@ export function Footer() {
 
             {/* NAVIGATION */}
             <div>
-              <h4 className="font-mono text-[11px] tracking-[0.25em] text-slate-300 uppercase mb-6">
+              <p className="font-mono text-[11px] tracking-[0.25em] text-slate-300 uppercase mb-6">
                 Navigation
-              </h4>
+              </p>
 
               <ul className="space-y-3.5">
                 {navigationLinks.map((link, index) => (
@@ -141,9 +141,9 @@ export function Footer() {
 
             {/* SERVICES */}
             <div>
-              <h4 className="font-mono text-[11px] tracking-[0.25em] text-slate-300 uppercase mb-6">
+              <p className="font-mono text-[11px] tracking-[0.25em] text-slate-300 uppercase mb-6">
                 Services
-              </h4>
+              </p>
 
               <ul className="space-y-3.5">
                 {serviceLinks.map((service, index) => (
@@ -163,9 +163,9 @@ export function Footer() {
 
             {/* CONTACT */}
             <div className="col-span-2 sm:col-span-1">
-              <h4 className="font-mono text-[11px] tracking-[0.25em] text-slate-300 uppercase mb-6">
+              <p className="font-mono text-[11px] tracking-[0.25em] text-slate-300 uppercase mb-6">
                 Connect
-              </h4>
+              </p>
 
               <ul className="space-y-3.5">
                 {contactLinks.map((contact, index) => (
@@ -196,6 +196,7 @@ export function Footer() {
                 ))}
               </ul>
             </div>
+
           </motion.div>
         </div>
 
