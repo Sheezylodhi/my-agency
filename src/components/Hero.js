@@ -120,20 +120,22 @@ export function EcosystemVisual() {
       />
 
       {/* Connection system */}
-      <svg
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          hidden
-          h-full
-          w-full
-          lg:block
-        "
-        viewBox="0 0 620 775"
-        fill="none"
-        focusable="false"
-      >
+     {/* Connection system */}
+<svg
+  className="
+    pointer-events-none
+    absolute
+    inset-0
+    hidden
+    h-full
+    w-full
+    lg:block
+  "
+  viewBox="0 0 620 775"
+  fill="none"
+  focusable="false"
+  aria-hidden="true"
+>
         <Line
           d="M150 235 C 265 250, 245 420, 355 425"
           dur={24}
@@ -211,7 +213,7 @@ export function EcosystemVisual() {
           opacity-45
           shadow-2xl
           blur-[2px]
-          backdrop-blur-xl
+         
           transition-transform
           duration-700
           motion-safe:hover:translate-x-1
@@ -256,7 +258,7 @@ export function EcosystemVisual() {
           opacity-55
           shadow-2xl
           blur-[1.5px]
-          backdrop-blur-xl
+         
           transition-transform
           duration-700
           motion-safe:hover:-translate-y-1
@@ -288,7 +290,7 @@ export function EcosystemVisual() {
           border-white/10
           bg-[#0B0F19]/90
           shadow-2xl
-          backdrop-blur-xl
+         
           transition-transform
           duration-700
           motion-safe:hover:-translate-y-1
@@ -356,7 +358,7 @@ export function EcosystemVisual() {
           border-white/10
           bg-[#0B0F19]/90
           shadow-2xl
-          backdrop-blur-xl
+          
           transition-transform
           duration-700
           motion-safe:hover:translate-y-1
@@ -418,7 +420,7 @@ export function EcosystemVisual() {
           bg-[#0B0F19]/90
           p-3
           shadow-2xl
-          backdrop-blur-xl
+          
           transition-transform
           duration-700
           motion-safe:hover:-translate-y-1
@@ -454,7 +456,7 @@ export function EcosystemVisual() {
           border-white/10
           bg-[#0B0F19]/90
           shadow-2xl
-          backdrop-blur-xl
+         
           transition-transform
           duration-700
           motion-safe:hover:translate-y-1
@@ -496,7 +498,7 @@ export function EcosystemVisual() {
           border-white/10
           bg-[#0B0F19]/90
           shadow-2xl
-          backdrop-blur-xl
+          
           transition-transform
           duration-700
           motion-safe:hover:-translate-y-1
@@ -553,7 +555,7 @@ export function EcosystemVisual() {
           px-4
           py-2.5
           shadow-2xl
-          backdrop-blur-xl
+          
           transition-transform
           duration-700
           motion-safe:hover:translate-y-1
@@ -584,7 +586,7 @@ export function EcosystemVisual() {
           border-white/10
           bg-[#0B0F19]/90
           shadow-2xl
-          backdrop-blur-xl
+          
           transition-transform
           duration-700
           motion-safe:hover:-translate-y-1
@@ -616,7 +618,7 @@ export function EcosystemVisual() {
           px-4
           py-3
           shadow-2xl
-          backdrop-blur-xl
+          
           transition-transform
           duration-700
           motion-safe:hover:translate-y-1
@@ -644,7 +646,7 @@ export function EcosystemVisual() {
 
 export function Hero() {
   return (
-    <section className="relative isolate min-h-screen overflow-hidden bg-[#0B0F19] text-white">
+    <section className="relative isolate  overflow-hidden bg-[#0B0F19] text-white">
       {/* Background grid */}
       <div
         className="
@@ -667,8 +669,8 @@ export function Hero() {
           h-[900px]
           w-[1300px]
           -translate-x-1/2
-          opacity-60
-          blur-[120px]
+          opacity-50
+          
         "
         style={{
           background:
@@ -714,7 +716,7 @@ export function Hero() {
                 DIGITAL PRODUCT ENGINEERING · WEB APPLICATIONS · AI AUTOMATION
               </p>
 
-              <h1 className="mt-8 text-[clamp(3rem,6.6vw,6.2rem)] font-bold leading-[0.92] tracking-[-0.045em] text-white">
+              <h1 className="mt-8 max-w-[900px] text-[clamp(3rem,6vw,5.8rem)] font-bold leading-[0.94] tracking-[-0.045em] text-white">
                 Engineering
                 <br />
                 Digital Products
@@ -782,7 +784,7 @@ export function Hero() {
                   text-sm
                   font-medium
                   text-white
-                  backdrop-blur-xl
+                  
                   transition-colors
                   duration-700
                   hover:border-white/30
@@ -835,7 +837,7 @@ export function Hero() {
             />
 
             {/* Card 1 */}
-            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 shadow-xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/[0.04]">
+            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/1backdrop-blur-xl0 bg-white/[0.02] p-7 shadow-xl  transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/[0.04]">
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <div
@@ -877,7 +879,7 @@ export function Hero() {
             </div>
 
             {/* Card 2 */}
-            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 shadow-xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/[0.04]">
+            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 shadow-xl  transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/[0.04]">
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <div
@@ -919,7 +921,7 @@ export function Hero() {
             </div>
 
             {/* Card 3 */}
-            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 shadow-xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/[0.04]">
+            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 shadow-xl  transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/[0.04]">
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <div
@@ -961,7 +963,7 @@ export function Hero() {
             </div>
 
             {/* Card 4 */}
-            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 shadow-xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/[0.04]">
+            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 shadow-xl  transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/[0.04]">
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <div
