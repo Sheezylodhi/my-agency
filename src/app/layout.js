@@ -75,10 +75,25 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Critical request latency remove karne ke liye preconnect aur dns-prefetch */}
+        <link rel="preconnect" href="https://webmashlabs.vercel.app" />
+        <link rel="dns-prefetch" href="https://webmashlabs.vercel.app" />
+
+        {/* Render-blocking CSS fix */}
+        <link 
+          rel="preload" 
+          href="/_next/static/css/chunks/11cxnwl4v8932.css" 
+          as="style" 
+          onLoad="this.onload=null;this.rel='stylesheet'" 
+        />
+        <noscript>
+          <link rel="stylesheet" href="/_next/static/css/chunks/11cxnwl4v8932.css" />
+        </noscript>
+      </head>
       <body className="bg-white" suppressHydrationWarning={true}>
         <Layout>
           {children}
-         
         </Layout>
       </body>
     </html>

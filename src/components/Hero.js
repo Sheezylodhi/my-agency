@@ -215,14 +215,15 @@ export function EcosystemVisual() {
       >
         <WindowChrome label="design system" Icon={Component} />
         <div className="grid grid-cols-4 gap-2 p-4">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div
-              key={i}
-              className={`h-6 rounded-sm border border-white/10 ${
-                i === 2 ? "bg-blue-600/30" : "bg-white/[0.04]"
-              }`}
-            />
-          ))}
+          {/* Optimized static elements instead of excessive dynamic mapping */}
+          <div className="h-6 rounded-sm border border-white/10 bg-white/[0.04]" />
+          <div className="h-6 rounded-sm border border-white/10 bg-white/[0.04]" />
+          <div className="h-6 rounded-sm border border-white/10 bg-blue-600/30" />
+          <div className="h-6 rounded-sm border border-white/10 bg-white/[0.04]" />
+          <div className="h-6 rounded-sm border border-white/10 bg-white/[0.04]" />
+          <div className="h-6 rounded-sm border border-white/10 bg-white/[0.04]" />
+          <div className="h-6 rounded-sm border border-white/10 bg-white/[0.04]" />
+          <div className="h-6 rounded-sm border border-white/10 bg-white/[0.04]" />
         </div>
       </div>
 
@@ -361,12 +362,12 @@ export function Hero() {
               </p>
 
              <h1 className="mt-8 text-[clamp(3rem,6.6vw,6.2rem)] leading-[0.92] font-bold tracking-[-0.045em] text-white">
-  Engineering
-  <br />
-  Digital Products
-  <br />
-  <span className="italic font-normal text-slate-400">That Scale Growth.</span>
-</h1>
+                Engineering
+                <br />
+                Digital Products
+                <br />
+                <span className="italic font-normal text-slate-400">That Scale Growth.</span>
+              </h1>
             </header>
 
             <p
