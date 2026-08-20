@@ -360,16 +360,13 @@ export function Hero() {
                 DIGITAL PRODUCT ENGINEERING · WEB APPLICATIONS · AI AUTOMATION
               </p>
 
-              <h1
-                className="mt-8 text-[clamp(3rem,6.6vw,6.2rem)] leading-[0.92] font-bold tracking-[-0.045em] text-white"
-                style={{ animationDelay: "0.18s" }}
-              >
-                Engineering
-                <br />
-                Digital Products
-                <br />
-                <span className="italic font-normal text-slate-400">That Scale Growth.</span>
-              </h1>
+             <h1 className="mt-8 text-[clamp(3rem,6.6vw,6.2rem)] leading-[0.92] font-bold tracking-[-0.045em] text-white">
+  Engineering
+  <br />
+  Digital Products
+  <br />
+  <span className="italic font-normal text-slate-400">That Scale Growth.</span>
+</h1>
             </header>
 
             <p
