@@ -2,10 +2,8 @@ import Navbar from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Technology } from "@/components/Technology";
 import { Services } from "@/components/Services";
-import { FeaturedWork } from "@/components/FeaturedWork";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { FromIdeaToImpact } from "@/components/FromIdeaToImpact";
-import Pricing from "@/components/Pricing";
 import { FAQ } from "@/components/Faq";
 import { CallToAction } from "@/components/CallToAction";
 import { Testimonials } from "@/components/Testimonials";
@@ -68,7 +66,7 @@ export default function Home() {
       <Hero />
       <Technology />
       <Services />
-      <FeaturedWork />
+   
       <WhyChooseUs />
       <FromIdeaToImpact />
       <FAQ />

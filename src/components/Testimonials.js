@@ -99,9 +99,13 @@ const industries = [
 
 function Stars() {
   return (
-    <span className="flex items-center gap-1" aria-label="Rated 5 out of 5">
+    <span className="flex items-center gap-1" aria-hidden="true">
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} className="h-3.5 w-3.5 fill-[#2563EB] text-[#2563EB]" strokeWidth={0} />
+        <Star
+          key={i}
+          className="h-3.5 w-3.5 fill-[#2563EB] text-[#2563EB]"
+          strokeWidth={0}
+        />
       ))}
     </span>
   );

@@ -27,7 +27,9 @@ const SERVICES = [
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500" aria-hidden="true" />
             <span>webmashlabs.com/design</span>
           </div>
-          <div className="text-[10px] font-mono tracking-wider text-slate-500 uppercase">Concept 01</div>
+          <div className="text-[10px] font-mono tracking-wider text-slate-300 uppercase">
+  Concept 01
+</div>
         </div>
 
         {/* Preview Canvas */}
@@ -94,7 +96,7 @@ const SERVICES = [
             <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
           </div>
           <div className="text-[11px] text-slate-400 flex items-center space-x-2">
-            <span className="text-slate-500">workspace</span>
+            <span className="text-slate-400">workspace</span>
             <span aria-hidden="true">/</span>
             <span className="text-slate-200 font-semibold">core.ts</span>
           </div>
@@ -105,13 +107,13 @@ const SERVICES = [
 
         {/* IDE Layout */}
         <div className="flex-1 grid grid-cols-12 overflow-hidden text-xs">
-          <div className="col-span-4 border-r border-white/[0.06] p-4 space-y-3 bg-white/[0.005] text-slate-500 hidden lg:block">
+          <div className="col-span-4 border-r border-white/[0.06] p-4 space-y-3 bg-white/[0.005] text-slate-400 hidden lg:block">
             <p className="text-[10px] tracking-widest uppercase text-slate-600 font-semibold">Structure</p>
             <div className="space-y-2 text-[11px]">
               <p className="text-slate-300 flex items-center space-x-2"><span aria-hidden="true">📁</span> <span>src/core</span></p>
               <p className="pl-4 text-blue-400 flex items-center space-x-2"><span aria-hidden="true">📄</span> <span>runtime.ts</span></p>
               <p className="pl-4 text-slate-300 bg-white/[0.03] px-2 py-1 rounded-md border border-white/[0.04] flex items-center space-x-2"><span aria-hidden="true">📄</span> <span>engine.ts</span></p>
-              <p className="pl-4 text-slate-500 flex items-center space-x-2"><span aria-hidden="true">📄</span> <span>types.d.ts</span></p>
+              <p className="pl-4 text-slate-400 flex items-center space-x-2"><span aria-hidden="true">📄</span> <span>types.d.ts</span></p>
             </div>
           </div>
 
@@ -127,7 +129,7 @@ const SERVICES = [
             </div>
 
             <div className="p-3.5 rounded-xl bg-[#04060B] border border-white/[0.06] space-y-1.5 text-[10px]">
-              <div className="flex items-center justify-between text-slate-500 border-b border-white/[0.04] pb-2 mb-2 font-mono">
+              <div className="flex items-center justify-between text-slate-400 border-b border-white/[0.04] pb-2 mb-2 font-mono">
                 <span>SYSTEM TELEMETRY</span>
                 <span className="text-emerald-400 flex items-center space-x-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
@@ -165,7 +167,7 @@ const SERVICES = [
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4 z-10">
           <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2 backdrop-blur-md">
-            <span className="font-mono text-[10px] tracking-wider text-slate-500 block">PALETTE</span>
+            <span className="font-mono text-[10px] tracking-wider text-slate-400 block">PALETTE</span>
             <div className="flex space-x-2" aria-hidden="true">
               <div className="w-5 h-5 rounded-full bg-purple-500 shadow-sm ring-1 ring-white/20" />
               <div className="w-5 h-5 rounded-full bg-pink-500 shadow-sm ring-1 ring-white/20" />
@@ -173,12 +175,12 @@ const SERVICES = [
             </div>
           </div>
           <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1 backdrop-blur-md">
-            <span className="font-mono text-[10px] tracking-wider text-slate-500 block">TYPOGRAPHY</span>
+            <span className="font-mono text-[10px] tracking-wider text-slate-400 block">TYPOGRAPHY</span>
             <p className="text-base font-semibold text-white tracking-tight">Inter Pro</p>
             <p className="text-[10px] text-slate-400 font-mono">Modular Scale</p>
           </div>
           <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1 backdrop-blur-md">
-            <span className="font-mono text-[10px] tracking-wider text-slate-500 block">SPACING</span>
+            <span className="font-mono text-[10px] tracking-wider text-slate-400 block">SPACING</span>
             <div className="flex items-center space-x-1.5 pt-1" aria-hidden="true">
               <div className="w-2 h-4 bg-pink-500/40 rounded-sm" />
               <div className="w-4 h-4 bg-pink-500/70 rounded-sm" />
@@ -189,7 +191,7 @@ const SERVICES = [
 
         <div className="p-3.5 rounded-xl bg-white/[0.01] border border-white/[0.06] flex items-center justify-between text-xs z-10">
           <span className="text-slate-300 font-medium">Component: Navigation_Bar</span>
-          <span className="text-slate-500 font-mono text-[10px]">Variant: Primary</span>
+          <span className="text-slate-400 font-mono text-[10px]">Variant: Primary</span>
         </div>
       </div>
     ),
@@ -216,17 +218,17 @@ const SERVICES = [
 
         <div className="grid grid-cols-3 gap-3 my-4 z-10">
           <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
-            <span className="text-[10px] font-mono text-slate-500 block">VISIBILITY</span>
+            <span className="text-[10px] font-mono text-slate-400 block">VISIBILITY</span>
             <p className="text-lg font-semibold text-white mt-1">Optimized</p>
             <span className="text-[10px] text-emerald-400 font-mono">Structured Data</span>
           </div>
           <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
-            <span className="text-[10px] font-mono text-slate-500 block">CRAWL RATE</span>
+            <span className="text-[10px] font-mono text-slate-400 block">CRAWL RATE</span>
             <p className="text-lg font-semibold text-white mt-1">Configured</p>
             <span className="text-[10px] text-emerald-400 font-mono">Technical SEO Ready</span>
           </div>
           <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
-            <span className="text-[10px] font-mono text-slate-500 block">HEALTH</span>
+            <span className="text-[10px] font-mono text-slate-400 block">HEALTH</span>
             <p className="text-lg font-semibold text-emerald-400 mt-1">Standard</p>
             <span className="text-[10px] text-slate-400 font-mono">Compliant</span>
           </div>
@@ -273,7 +275,7 @@ const SERVICES = [
             </div>
           </div>
           <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] flex flex-col justify-between h-32 backdrop-blur-md">
-            <span className="font-mono text-[10px] tracking-wider text-slate-500">COLOR MATRIX</span>
+            <span className="font-mono text-[10px] tracking-wider text-slate-400">COLOR MATRIX</span>
             <div className="flex space-x-2.5" aria-hidden="true">
               <div className="w-6 h-6 rounded-full bg-slate-950 border border-white/20 shadow-sm" />
               <div className="w-6 h-6 rounded-full bg-orange-500 shadow-sm" />
@@ -355,7 +357,7 @@ const SERVICES = [
         </div>
 
         <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-3 backdrop-blur-md z-10 my-4">
-          <div className="flex justify-between text-xs font-mono text-slate-500 border-b border-white/[0.04] pb-2">
+          <div className="flex justify-between text-xs font-mono text-slate-400 border-b border-white/[0.04] pb-2">
             <span>INCOMING SECURE STREAM</span>
             <span className="text-emerald-400">TLS 1.3 ENCRYPTED</span>
           </div>
@@ -396,15 +398,15 @@ const SERVICES = [
 
         <div className="grid grid-cols-3 gap-3 my-4 z-10 text-center">
           <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
-            <span className="font-mono text-[10px] text-slate-500 block mb-1">AVAILABILITY</span>
+            <span className="font-mono text-[10px] text-slate-400 block mb-1">AVAILABILITY</span>
             <span className="text-sm font-semibold text-white">High Availability</span>
           </div>
           <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
-            <span className="font-mono text-[10px] text-slate-500 block mb-1">LATENCY</span>
+            <span className="font-mono text-[10px] text-slate-400 block mb-1">LATENCY</span>
             <span className="text-sm font-semibold text-emerald-400">Low Latency Architecture</span>
           </div>
           <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
-            <span className="font-mono text-[10px] text-slate-500 block mb-1">BACKUPS</span>
+            <span className="font-mono text-[10px] text-slate-400 block mb-1">BACKUPS</span>
             <span className="text-sm font-semibold text-cyan-400">Automated</span>
           </div>
         </div>
@@ -554,7 +556,11 @@ export function Services() {
               const panelId = `service-panel-${instanceId}-${index}`;
 
               return (
-                <div key={service.href} className="group py-2 transition-all duration-300">
+                <div
+  key={service.href}
+  role="presentation"
+  className="group py-2 transition-all duration-300"
+>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-6 min-w-0 pr-4">
                       <button
@@ -575,7 +581,9 @@ export function Services() {
                         onClick={() => setActiveIndex(index)}
                         onKeyDown={(e) => handleKeyDown(e, index)}
                         className={`font-mono text-sm sm:text-base font-semibold transition-all duration-300 shrink-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded p-1 -m-1 ${
-                          isActive ? "text-blue-600" : "text-slate-400 group-hover:text-slate-600"
+                         isActive
+  ? "text-blue-600"
+  : "text-slate-700 group-hover:text-slate-900"
                         }`}
                         aria-label={`Show preview for ${service.title}`}
                       >
@@ -608,7 +616,7 @@ export function Services() {
                       <Link
                         href={service.href}
                         aria-label={`Explore professional ${service.title} services by WebMash Labs`}
-                        className="opacity-20 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-within:opacity-100 transition-opacity text-xs font-mono text-blue-600 hover:text-blue-800 hover:underline focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1 flex items-center space-x-1 py-1"
+                        className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-within:opacity-100 transition-opacity text-xs font-mono text-blue-700 hover:text-blue-800 hover:underline focus-visible:ring-2 focus-visible:ring-blue-600 rounded px-1 flex items-center space-x-1 py-1"
                       >
                         <span>Details</span>
                         <span aria-hidden="true">→</span>
@@ -616,7 +624,7 @@ export function Services() {
                     </div>
                   </div>
 
-                  <p className="mt-1 ml-10 text-xs sm:text-sm text-slate-500 font-light leading-relaxed pr-6">
+                  <p className="mt-1 ml-10 text-xs sm:text-sm text-slate-600 font-light leading-relaxed pr-6">
                     {service.description}
                   </p>
 
