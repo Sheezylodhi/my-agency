@@ -1,3 +1,56 @@
 @import "tailwindcss";
 
 
+/* =========================================================
+   PERFORMANCE-FRIENDLY SCROLL REVEAL
+   No Framer Motion / No JavaScript required
+   ========================================================= */
+
+.about-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/*
+  Only browsers that support scroll-driven animations
+  receive the reveal effect.
+
+  Unsupported browsers simply show the content normally.
+*/
+@supports (animation-timeline: view()) {
+  .about-reveal {
+    animation: aboutReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+  }
+}
+
+@keyframes aboutReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  .about-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
