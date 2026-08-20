@@ -117,7 +117,7 @@ export function EcosystemVisual() {
 
       {/* hosting status */}
       <div
-        className="absolute top-[26%] right-[20%] w-[34%] overflow-hidden rounded-xl opacity-60 bg-[#0B0F19]/80 backdrop-blur-xl border border-white/10 shadow-2xl"
+        className="absolute top-[26%] right-[20%] w-[34%] overflow-hidden rounded-xl opacity-60 bg-[#0B0F19]/90 border border-white/10 shadow-2xl"
         data-parallax="-14"
         style={{ transform: "rotateY(-9deg)" }}
       >
@@ -133,7 +133,7 @@ export function EcosystemVisual() {
 
       {/* database */}
       <div
-        className="absolute top-[62%] right-[6%] flex w-[30%] items-center gap-3 rounded-lg px-4 py-3 opacity-60 bg-[#0B0F19]/80 backdrop-blur-xl border border-white/10 shadow-2xl"
+        className="absolute top-[62%] right-[6%] flex w-[30%] items-center gap-3 rounded-lg px-4 py-3 opacity-60 bg-[#0B0F19]/90 border border-white/10 shadow-2xl"
         data-parallax="-18"
       >
         <Database className="h-4 w-4 text-slate-400" strokeWidth={1.25} aria-hidden="true" />
@@ -145,7 +145,7 @@ export function EcosystemVisual() {
 
       {/* desktop website preview */}
       <div
-        className="absolute top-[8%] left-[2%] w-[70%] overflow-hidden rounded-xl bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        className="absolute top-[8%] left-[2%] w-[70%] overflow-hidden rounded-xl bg-[#0B0F19] border border-white/10 shadow-2xl"
         data-parallax="30"
         style={{ transform: "rotateY(7deg) rotateX(2deg)" }}
       >
@@ -171,7 +171,7 @@ export function EcosystemVisual() {
 
       {/* code / build window */}
       <div
-        className="absolute top-0 right-0 w-[40%] overflow-hidden rounded-xl bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        className="absolute top-0 right-0 w-[40%] overflow-hidden rounded-xl bg-[#0B0F19] border border-white/10 shadow-2xl"
         data-parallax="-46"
       >
         <WindowChrome label="build" Icon={Code2} />
@@ -190,7 +190,7 @@ export function EcosystemVisual() {
 
       {/* mobile preview */}
       <div
-        className="absolute top-[46%] left-0 w-[25%] overflow-hidden rounded-2xl p-3 bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        className="absolute top-[46%] left-0 w-[25%] overflow-hidden rounded-2xl p-3 bg-[#0B0F19] border border-white/10 shadow-2xl"
         data-parallax="58"
       >
         <div className="mx-auto mb-3 h-1 w-8 rounded-full bg-white/20" />
@@ -209,7 +209,7 @@ export function EcosystemVisual() {
 
       {/* design system panel */}
       <div
-        className="absolute top-[38%] left-[27%] w-[38%] overflow-hidden rounded-xl bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        className="absolute top-[38%] left-[27%] w-[38%] overflow-hidden rounded-xl bg-[#0B0F19] border border-white/10 shadow-2xl"
         data-parallax="-24"
         style={{ transform: "rotateY(-5deg)" }}
       >
@@ -228,7 +228,7 @@ export function EcosystemVisual() {
 
       {/* infrastructure grid */}
       <div
-        className="absolute right-[2%] bottom-[14%] w-[56%] overflow-hidden rounded-xl bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        className="absolute right-[2%] bottom-[14%] w-[56%] overflow-hidden rounded-xl bg-[#0B0F19] border border-white/10 shadow-2xl"
         data-parallax="-32"
       >
         <WindowChrome label="infrastructure" Icon={Cloud} />
@@ -247,7 +247,7 @@ export function EcosystemVisual() {
 
       {/* AI automation flow chip */}
       <div
-        className="absolute top-[33%] left-[52%] flex items-center gap-3 rounded-full px-4 py-2.5 bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        className="absolute top-[33%] left-[52%] flex items-center gap-3 rounded-full px-4 py-2.5 bg-[#0B0F19] border border-white/10 shadow-2xl"
         data-parallax="70"
       >
         <Workflow className="h-3.5 w-3.5 text-blue-400" strokeWidth={1.25} aria-hidden="true" />
@@ -258,7 +258,7 @@ export function EcosystemVisual() {
 
       {/* SEO card */}
       <div
-        className="absolute bottom-[2%] left-[4%] w-[36%] overflow-hidden rounded-xl bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        className="absolute bottom-[2%] left-[4%] w-[36%] overflow-hidden rounded-xl bg-[#0B0F19] border border-white/10 shadow-2xl"
         data-parallax="66"
       >
         <WindowChrome label="seo" Icon={Search} />
@@ -271,7 +271,7 @@ export function EcosystemVisual() {
 
       {/* business email chip */}
       <div
-        className="absolute bottom-[22%] left-[30%] flex items-center gap-3 rounded-lg px-4 py-3 bg-[#0B0F19]/90 backdrop-blur-xl border border-white/10 shadow-2xl"
+        className="absolute bottom-[22%] left-[30%] flex items-center gap-3 rounded-lg px-4 py-3 bg-[#0B0F19] border border-white/10 shadow-2xl"
         data-parallax="44"
       >
         <Mail className="h-4 w-4 text-slate-400" strokeWidth={1.25} aria-hidden="true" />
@@ -291,7 +291,6 @@ export function EcosystemVisual() {
 export function Hero() {
   const stageRef = useRef(null);
 
-  // High-performance direct DOM parallax engine (disabled on mobile for peak performance)
   useEffect(() => {
     if (window.innerWidth < 1024) return;
     const stage = stageRef.current;
@@ -338,8 +337,8 @@ export function Hero() {
     >
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute -top-1/3 left-1/2 h-[900px] w-[1300px] -translate-x-1/2 opacity-60 blur-[120px]"
-        style={{ background: "radial-gradient(circle, rgba(29,78,216,0.15) 0%, rgba(11,15,25,0) 70%)" }}
+        className="pointer-events-none absolute -top-1/3 left-1/2 h-[900px] w-[1300px] -translate-x-1/2 opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(29,78,216,0.12) 0%, rgba(11,15,25,0) 70%)" }}
         aria-hidden="true"
       />
       <div className="pointer-events-none absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" aria-hidden="true" />
