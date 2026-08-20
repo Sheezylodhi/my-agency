@@ -92,7 +92,7 @@ const industries = [
   {
     number: "02",
     title: "Real Estate",
-    slug: "real-estate",
+    slug: "realEstate",
     description: "Property listings platforms, CRM integrations, interactive maps, and virtual tour systems.",
     icon: Building2,
     tags: ["Listing Engines", "Virtual Tours", "CRM Sync"],
@@ -109,7 +109,7 @@ const industries = [
   {
     number: "03",
     title: "E-Commerce & Retail",
-    slug: "ecommerce-retail",
+    slug: "ecommerceRetail",
     description: "High-conversion storefronts, headless architectures, inventory systems, and checkout flows.",
     icon: ShoppingBag,
     tags: ["Headless Commerce", "Payment Gateways", "Conversion Optimization"],
@@ -126,7 +126,7 @@ const industries = [
   {
     number: "04",
     title: "Finance & FinTech",
-    slug: "finance-fintech",
+    slug: "financeFintech",
     description: "Secure banking portals, transaction dashboards, cryptographic workflows, and compliance tools.",
     icon: Landmark,
     tags: ["Secure Portals", "Financial Dashboards", "Compliance"],
@@ -143,7 +143,7 @@ const industries = [
   {
     number: "05",
     title: "SaaS & Technology",
-    slug: "saas-technology",
+    slug: "saasTechnology",
     description: "Scalable web applications, high-performance marketing pages, and complex user dashboards.",
     icon: Cpu,
     tags: ["Web Apps", "Cloud Architecture", "UI Design Systems"],
@@ -177,7 +177,7 @@ const industries = [
   {
     number: "07",
     title: "Logistics & Transportation",
-    slug: "logistics-transportation",
+    slug: "logistics_transportation",
     description: "Fleet tracking dashboards, shipping portals, route optimization tools, and client trackers.",
     icon: Truck,
     tags: ["Fleet Dashboards", "Real-time Tracking", "Dispatch Tools"],
@@ -194,7 +194,7 @@ const industries = [
   {
     number: "08",
     title: "Education & EdTech",
-    slug: "education-elearning",
+    slug: "education_elearning",
     description: "Learning management systems, interactive student portals, and virtual course platforms.",
     icon: GraduationCap,
     tags: ["LMS Platforms", "Student Portals", "Interactive UI"],
@@ -211,7 +211,7 @@ const industries = [
   {
     number: "09",
     title: "Professional Services",
-    slug: "professional-services",
+    slug: "professional_services",
     description: "Client intake portals, booking engines, secure document vaults, and advisory websites.",
     icon: BriefcaseBusiness,
     tags: ["Client Portals", "Booking Systems", "Secure Vaults"],
@@ -228,7 +228,7 @@ const industries = [
   {
     number: "10",
     title: "Hospitality & Travel",
-    slug: "hospitality-travel",
+    slug: "hospitality_travel",
     description: "Booking engines, reservation management, interactive itineraries, and luxury web design.",
     icon: Hotel,
     tags: ["Booking Engines", "Reservation Sync", "Luxury Design"],
@@ -245,7 +245,7 @@ const industries = [
   {
     number: "11",
     title: "Construction & Engineering",
-    slug: "construction-architecture",
+    slug: "construction_architecture",
     description: "Project management dashboards, blueprint viewers, contractor portals, and bidding systems.",
     icon: HardHat,
     tags: ["Project Management", "Contractor Portals", "Blueprint Tools"],
@@ -279,7 +279,7 @@ const industries = [
   {
     number: "13",
     title: "Legal Services",
-    slug: "legal-services",
+    slug: "legal_services",
     description: "Secure case management, client intake workflows, document automation, and firm websites.",
     icon: Scale,
     tags: ["Case Management", "Client Intake", "Secure Docs"],
@@ -296,7 +296,7 @@ const industries = [
   {
     number: "14",
     title: "Media & Entertainment",
-    slug: "marketing-media",
+    slug: "marketing_media",
     description: "Content streaming platforms, digital asset managers, portfolio showcases, and fan portals.",
     icon: Clapperboard,
     tags: ["Streaming UIs", "Digital Assets", "Portfolio Sites"],
@@ -313,7 +313,7 @@ const industries = [
   {
     number: "15",
     title: "Nonprofit & Organizations",
-    slug: "nonprofit-organizations",
+    slug: "nonprofit_organizations",
     description: "Donation platforms, volunteer management systems, impact report sites, and community portals.",
     icon: HandHeart,
     tags: ["Donation Engines", "Volunteer Portals", "Impact Reporting"],
@@ -330,7 +330,7 @@ const industries = [
   {
     number: "16",
     title: "B2B & Wholesale",
-    slug: "b2b-wholesale",
+    slug: "b2b_wholesale",
     description: "Custom wholesale portals, tiered pricing engines, bulk ordering workflows, and ERP sync.",
     icon: Boxes,
     tags: ["Wholesale Portals", "Tiered Pricing", "ERP Integration"],
@@ -347,7 +347,7 @@ const industries = [
   {
     number: "17",
     title: "Energy & Utilities",
-    slug: "energy-utilities",
+    slug: "energy_utilities",
     description: "Grid monitoring dashboards, consumption analytics portals, and sustainability tracking tools.",
     icon: Zap,
     tags: ["Grid Monitoring", "Analytics Portals", "Sustainability"],
@@ -364,7 +364,7 @@ const industries = [
   {
     number: "18",
     title: "Fitness & Wellness",
-    slug: "fitness-wellness",
+    slug: "fitness_wellness",
     description: "Member management apps, workout scheduling systems, wellness blogs, and ecommerce hubs.",
     icon: Dumbbell,
     tags: ["Member Apps", "Scheduling Engines", "Wellness Hubs"],
@@ -381,7 +381,7 @@ const industries = [
   {
     number: "19",
     title: "Restaurant & Food Service",
-    slug: "restaurants-food",
+    slug: "restaurants_food",
     description: "Online ordering platforms, table reservation systems, digital menus, and loyalty apps.",
     icon: Utensils,
     tags: ["Online Ordering", "Table Reservations", "Digital Menus"],

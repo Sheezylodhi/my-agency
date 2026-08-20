@@ -468,7 +468,7 @@ export const INDUSTRIES = {
 realEstate: {
   number: "02",
 
-  slug: "real-estate",
+  slug: "realEstate",
   name: "Real Estate",
 
   seoTitle:
@@ -1104,7 +1104,7 @@ realEstate: {
 ecommerceRetail: {
   number: "03",
 
-  slug: "ecommerce-retail",
+  slug: "ecommerceRetail",
 
   name: "E-Commerce & Retail",
 
@@ -1860,7 +1860,7 @@ ecommerceRetail: {
   ]
 },
 financeFintech: {
-  slug: "finance-fintech",
+  slug: "financeFintech",
   name: "Finance & FinTech",
 
   seoTitle:
@@ -2654,7 +2654,7 @@ financeFintech: {
   ]
 },
 saasTechnology: {
-  slug: "saas-technology",
+  slug: "saasTechnology",
   name: "SaaS & Technology",
 
   seoTitle:
@@ -4524,7 +4524,7 @@ manufacturing: {
   ]
 },
 logistics_transportation: {
-  slug: "logistics-transportation",
+  slug: "logistics_transportation",
   name: "Logistics & Transportation",
 
   seoTitle: " Logistics Software Development USA | Transportation, Fleet & TMS Solutions | WebMash Labs",
@@ -5664,7 +5664,7 @@ logistics_transportation: {
   ]
 },
 education_elearning: {
-  slug: "education-elearning",
+  slug: "education_elearning",
   name: "Education & EdTech",
 
   seoTitle:
@@ -7853,8 +7853,8 @@ professional_services: {
     }
   ]
 },
-hospitality_travel : {
-  slug: "hospitality-travel",
+hospitality_travel: {
+  slug: "hospitality_travel",
   name: "Hospitality & Travel",
 
   seoTitle:
@@ -9008,7 +9008,7 @@ hospitality_travel : {
   ]
 },
 construction_architecture: {
-  slug: "construction-architecture",
+  slug: "construction_architecture",
   name: "Construction & Engineering",
 
   seoTitle:
@@ -11418,7 +11418,7 @@ automotive: {
   ]
 },
 legal_services: {
-  slug: "legal-services",
+  slug: "legal_services",
   name: "Legal Services",
 
   seoTitle:
@@ -12611,7 +12611,7 @@ legal_services: {
   ]
 },
 marketing_media: {
-  slug: "marketing-media",
+  slug: "marketing_media",
   name: "Media & Entertainment",
 
   seoTitle:
@@ -13916,7 +13916,7 @@ marketing_media: {
   ]
 },
 nonprofit_organizations: {
-  slug: "nonprofit-organizations",
+  slug: "nonprofit_organizations",
   name: "Nonprofit & Organizations",
 
   seoTitle:
@@ -15100,7 +15100,7 @@ nonprofit_organizations: {
   ]
 },
 b2b_wholesale: {
-  slug: "b2b-wholesale",
+  slug: "b2b_wholesale",
   name: "B2B & Wholesale",
 
   seoTitle:
@@ -16221,7 +16221,7 @@ b2b_wholesale: {
   ]
 },
 energy_utilities: {
-  slug: "energy-utilities",
+  slug: "energy_utilities",
   name: "Energy & Utilities",
 
   seoTitle:
@@ -17321,7 +17321,7 @@ energy_utilities: {
   ]
 },
 fitness_wellness: {
-  slug: "fitness-wellness",
+  slug: "fitness_wellness",
   name: "Fitness & Wellness",
 
   seoTitle:
@@ -18502,7 +18502,7 @@ fitness_wellness: {
   ]
 },
 restaurants_food: {
-  slug: "restaurants-food",
+  slug: "restaurants_food",
   name: "Restaurant & Food Service",
 
   seoTitle:
