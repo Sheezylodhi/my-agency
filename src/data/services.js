@@ -895,7 +895,7 @@ export const SERVICES = {
     "Research-driven UI/UX design services for US SaaS, B2B and digital product teams. We design intuitive user journeys, dashboards, prototypes and scalable design systems.",
 
   canonical:
-    "https://webmashlabs.com/services/ui-ux-design",
+    "https://webmashlabs.vercel.app/services/ui-ux-design",
 
   primaryKeyword: "UI/UX design services",
 

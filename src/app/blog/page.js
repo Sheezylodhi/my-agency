@@ -5,13 +5,15 @@ import { BLOG_POSTS, CATEGORIES, DISCIPLINES } from "@/data/blog";
 
 export const metadata = {
   title: "Web Development, SaaS, AI & Technology Insights | WebMash Labs",
-  description: "Explore expert insights on custom web development, SaaS architecture, AI automation, eCommerce engineering, technical SEO, and digital growth from the engineering team at WebMash Labs.",
+  description:
+    "Explore expert insights on custom web development, SaaS architecture, AI automation, eCommerce engineering, technical SEO, and digital growth from the engineering team at WebMash Labs.",
   alternates: {
     canonical: "https://webmashlabs.com/blog",
   },
   openGraph: {
     title: "Web Development, SaaS, AI & Technology Insights | WebMash Labs",
-    description: "Practical perspectives on engineering, design, AI, commerce and digital systems from WebMash Labs.",
+    description:
+      "Practical perspectives on engineering, design, AI, commerce and digital systems from WebMash Labs.",
     url: "https://webmashlabs.com/blog",
     siteName: "WebMash Labs",
     images: [
@@ -28,72 +30,124 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Web Development, SaaS, AI & Technology Insights | WebMash Labs",
-    description: "Practical perspectives on engineering, design, AI, commerce and digital systems from WebMash Labs.",
+    description:
+      "Practical perspectives on engineering, design, AI, commerce and digital systems from WebMash Labs.",
     images: ["https://webmashlabs.com/og-blog.jpg"],
   },
 };
 
 export default function BlogPage() {
+  /**
+   * IMPORTANT PERFORMANCE OPTIMIZATION
+   *
+   * The full BLOG_POSTS objects contain:
+   * - content
+   * - FAQs
+   * - keywords
+   * - related articles
+   * - SEO data
+   * - etc.
+   *
+   * The blog listing page does NOT need that data.
+   *
+   * Only send the fields actually rendered by BlogListingClient.
+   */
+  const listingPosts = BLOG_POSTS.map(
+    ({
+      id,
+      slug,
+      title,
+      excerpt,
+      category,
+      date,
+      readTime,
+      author,
+      authorRole,
+      coverImage,
+      coverImageAlt,
+      featured,
+      editorPick,
+    }) => ({
+      id,
+      slug,
+      title,
+      excerpt,
+      category,
+      date,
+      readTime,
+      author,
+      authorRole,
+      coverImage,
+      coverImageAlt,
+      featured,
+      editorPick,
+    })
+  );
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
         "@id": "https://webmashlabs.com/#organization",
-        "name": "WebMash Labs",
-        "url": "https://webmashlabs.com",
-        "logo": "https://webmashlabs.com/logo.png"
+        name: "WebMash Labs",
+        url: "https://webmashlabs.com",
+        logo: "https://webmashlabs.com/logo.png",
       },
       {
         "@type": "WebSite",
         "@id": "https://webmashlabs.com/#website",
-        "url": "https://webmashlabs.com",
-        "name": "WebMash Labs",
-        "publisher": {
-          "@id": "https://webmashlabs.com/#organization"
-        }
+        url: "https://webmashlabs.com",
+        name: "WebMash Labs",
+        publisher: {
+          "@id": "https://webmashlabs.com/#organization",
+        },
       },
       {
         "@type": "CollectionPage",
         "@id": "https://webmashlabs.com/blog#webpage",
-        "url": "https://webmashlabs.com/blog",
-        "name": "Web Development, SaaS, AI & Technology Insights",
-        "description": "Expert insights on custom web development, SaaS architecture, AI automation, eCommerce engineering, and technical SEO.",
-        "isPartOf": {
-          "@id": "https://webmashlabs.com/#website"
-        }
+        url: "https://webmashlabs.com/blog",
+        name: "Web Development, SaaS, AI & Technology Insights",
+        description:
+          "Expert insights on custom web development, SaaS architecture, AI automation, eCommerce engineering, and technical SEO.",
+        isPartOf: {
+          "@id": "https://webmashlabs.com/#website",
+        },
       },
       {
         "@type": "BreadcrumbList",
         "@id": "https://webmashlabs.com/blog#breadcrumb",
-        "itemListElement": [
+        itemListElement: [
           {
             "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://webmashlabs.com"
+            position: 1,
+            name: "Home",
+            item: "https://webmashlabs.com",
           },
           {
             "@type": "ListItem",
-            "position": 2,
-            "name": "Blog",
-            "item": "https://webmashlabs.com/blog"
-          }
-        ]
-      }
-    ]
+            position: 2,
+            name: "Blog",
+            item: "https://webmashlabs.com/blog",
+          },
+        ],
+      },
+    ],
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
       />
-      <BlogListingClient 
-        posts={BLOG_POSTS} 
-        categories={CATEGORIES} 
-        disciplines={DISCIPLINES} 
+
+      <BlogListingClient
+        posts={listingPosts}
+        categories={CATEGORIES}
+        disciplines={DISCIPLINES}
       />
     </>
   );
