@@ -39,11 +39,5 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.4"
-  },
-  "browserslist": [
-    "defaults",
-    "not IE 11",
-    "maintained node versions",
-    "supports es6-module"
-  ]
+  }
 }
