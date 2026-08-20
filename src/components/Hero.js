@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -29,19 +26,19 @@ import {
 } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
-/* Sub-components for EcosystemVisual                                         */
+/* Window Chrome                                                              */
 /* -------------------------------------------------------------------------- */
 
 function WindowChrome({ label, Icon }) {
   return (
-    <div className="flex items-center gap-2.5 border-b border-white/10 px-4 py-2.5 bg-white/[0.02]">
+    <div className="flex items-center gap-2.5 border-b border-white/10 bg-white/[0.02] px-4 py-2.5">
       <Icon
         className="h-3 w-3 text-blue-400"
         strokeWidth={1.25}
         aria-hidden="true"
       />
 
-      <span className="font-mono text-[9px] tracking-[0.22em] text-slate-400 uppercase">
+      <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-slate-400">
         {label}
       </span>
 
@@ -52,6 +49,10 @@ function WindowChrome({ label, Icon }) {
     </div>
   );
 }
+
+/* -------------------------------------------------------------------------- */
+/* SVG Connection Line                                                        */
+/* -------------------------------------------------------------------------- */
 
 function Line({ d, dur, delay = 0 }) {
   return (
@@ -64,6 +65,7 @@ function Line({ d, dur, delay = 0 }) {
         strokeDasharray="2 8"
         style={{
           animation: `lux-dash ${dur}s linear infinite`,
+          animationDelay: `${delay}s`,
         }}
       />
 
@@ -86,6 +88,10 @@ function Line({ d, dur, delay = 0 }) {
   );
 }
 
+/* -------------------------------------------------------------------------- */
+/* Ecosystem Visual                                                           */
+/* -------------------------------------------------------------------------- */
+
 export function EcosystemVisual() {
   return (
     <div
@@ -95,16 +101,12 @@ export function EcosystemVisual() {
         w-full
         max-w-[640px]
         [perspective:1800px]
-
-        lg:[&_.ecosystem-motion]:block
-        max-lg:[&_.ecosystem-motion]:hidden
       "
       aria-hidden="true"
     >
-      {/* blueprint plane */}
+      {/* Blueprint plane */}
       <div
         className="
-          blueprint-field
           pointer-events-none
           absolute
           inset-[6%]
@@ -117,20 +119,20 @@ export function EcosystemVisual() {
         }}
       />
 
-      {/* connection system */}
+      {/* Connection system */}
       <svg
         className="
-          ecosystem-motion
           pointer-events-none
           absolute
           inset-0
+          hidden
           h-full
           w-full
-          hidden
           lg:block
         "
         viewBox="0 0 620 775"
         fill="none"
+        focusable="false"
       >
         <Line
           d="M150 235 C 265 250, 245 420, 355 425"
@@ -178,6 +180,7 @@ export function EcosystemVisual() {
             className="text-blue-400"
             style={{
               animation: `lux-node ${7 + i}s ease-in-out infinite`,
+              animationDelay: `${i * 0.4}s`,
             }}
           />
         ))}
@@ -193,26 +196,27 @@ export function EcosystemVisual() {
         </g>
       </svg>
 
-      {/* hosting status */}
+      {/* Hosting status */}
       <div
         className="
           absolute
-          top-[26%]
           right-[20%]
+          top-[26%]
           w-[34%]
           overflow-hidden
           rounded-xl
-          opacity-45
-          blur-[2px]
-          bg-[#0B0F19]/80
-          backdrop-blur-xl
           border
           border-white/10
+          bg-[#0B0F19]/80
+          opacity-45
           shadow-2xl
-          lg:backdrop-blur-xl
+          blur-[2px]
+          backdrop-blur-xl
+          transition-transform
+          duration-700
+          motion-safe:hover:translate-x-1
           max-lg:backdrop-blur-none
         "
-        data-parallax="-14"
         style={{
           transform: "rotateY(-9deg)",
         }}
@@ -233,29 +237,31 @@ export function EcosystemVisual() {
         </div>
       </div>
 
-      {/* database */}
+      {/* Database */}
       <div
         className="
           absolute
-          top-[62%]
           right-[6%]
+          top-[62%]
           flex
           w-[30%]
           items-center
           gap-3
           rounded-lg
+          border
+          border-white/10
+          bg-[#0B0F19]/80
           px-4
           py-3
           opacity-55
-          blur-[1.5px]
-          bg-[#0B0F19]/80
-          backdrop-blur-xl
-          border
-          border-white/10
           shadow-2xl
+          blur-[1.5px]
+          backdrop-blur-xl
+          transition-transform
+          duration-700
+          motion-safe:hover:-translate-y-1
           max-lg:backdrop-blur-none
         "
-        data-parallax="-18"
       >
         <Database
           className="h-4 w-4 text-slate-400"
@@ -269,23 +275,25 @@ export function EcosystemVisual() {
         </div>
       </div>
 
-      {/* desktop website preview */}
+      {/* Desktop website preview */}
       <div
         className="
           absolute
-          top-[8%]
           left-[2%]
+          top-[8%]
           w-[70%]
           overflow-hidden
           rounded-xl
-          bg-[#0B0F19]/90
-          backdrop-blur-xl
           border
           border-white/10
+          bg-[#0B0F19]/90
           shadow-2xl
+          backdrop-blur-xl
+          transition-transform
+          duration-700
+          motion-safe:hover:-translate-y-1
           max-lg:backdrop-blur-none
         "
-        data-parallax="30"
         style={{
           transform: "rotateY(7deg) rotateX(2deg)",
         }}
@@ -335,23 +343,25 @@ export function EcosystemVisual() {
         </div>
       </div>
 
-      {/* code / build window */}
+      {/* Code / build window */}
       <div
         className="
           absolute
-          top-0
           right-0
+          top-0
           w-[40%]
           overflow-hidden
           rounded-xl
-          bg-[#0B0F19]/90
-          backdrop-blur-xl
           border
           border-white/10
+          bg-[#0B0F19]/90
           shadow-2xl
+          backdrop-blur-xl
+          transition-transform
+          duration-700
+          motion-safe:hover:translate-y-1
           max-lg:backdrop-blur-none
         "
-        data-parallax="-46"
       >
         <WindowChrome label="build" Icon={Code2} />
 
@@ -394,24 +404,26 @@ export function EcosystemVisual() {
         </div>
       </div>
 
-      {/* mobile preview */}
+      {/* Mobile preview */}
       <div
         className="
           absolute
-          top-[46%]
           left-0
+          top-[46%]
           w-[25%]
           overflow-hidden
           rounded-2xl
-          p-3
-          bg-[#0B0F19]/90
-          backdrop-blur-xl
           border
           border-white/10
+          bg-[#0B0F19]/90
+          p-3
           shadow-2xl
+          backdrop-blur-xl
+          transition-transform
+          duration-700
+          motion-safe:hover:-translate-y-1
           max-lg:backdrop-blur-none
         "
-        data-parallax="58"
       >
         <div className="mx-auto mb-3 h-1 w-8 rounded-full bg-white/20" />
 
@@ -429,23 +441,25 @@ export function EcosystemVisual() {
         />
       </div>
 
-      {/* design system panel */}
+      {/* Design system panel */}
       <div
         className="
           absolute
-          top-[38%]
           left-[27%]
+          top-[38%]
           w-[38%]
           overflow-hidden
           rounded-xl
-          bg-[#0B0F19]/90
-          backdrop-blur-xl
           border
           border-white/10
+          bg-[#0B0F19]/90
           shadow-2xl
+          backdrop-blur-xl
+          transition-transform
+          duration-700
+          motion-safe:hover:translate-y-1
           max-lg:backdrop-blur-none
         "
-        data-parallax="-24"
         style={{
           transform: "rotateY(-5deg)",
         }}
@@ -469,23 +483,25 @@ export function EcosystemVisual() {
         </div>
       </div>
 
-      {/* infrastructure grid */}
+      {/* Infrastructure grid */}
       <div
         className="
           absolute
-          right-[2%]
           bottom-[14%]
+          right-[2%]
           w-[56%]
           overflow-hidden
           rounded-xl
-          bg-[#0B0F19]/90
-          backdrop-blur-xl
           border
           border-white/10
+          bg-[#0B0F19]/90
           shadow-2xl
+          backdrop-blur-xl
+          transition-transform
+          duration-700
+          motion-safe:hover:-translate-y-1
           max-lg:backdrop-blur-none
         "
-        data-parallax="-32"
       >
         <WindowChrome
           label="infrastructure"
@@ -525,22 +541,24 @@ export function EcosystemVisual() {
       <div
         className="
           absolute
-          top-[33%]
           left-[52%]
+          top-[33%]
           flex
           items-center
           gap-3
           rounded-full
-          px-4
-          py-2.5
-          bg-[#0B0F19]/90
-          backdrop-blur-xl
           border
           border-white/10
+          bg-[#0B0F19]/90
+          px-4
+          py-2.5
           shadow-2xl
+          backdrop-blur-xl
+          transition-transform
+          duration-700
+          motion-safe:hover:translate-y-1
           max-lg:backdrop-blur-none
         "
-        data-parallax="70"
       >
         <Workflow
           className="h-3.5 w-3.5 text-blue-400"
@@ -548,7 +566,7 @@ export function EcosystemVisual() {
           aria-hidden="true"
         />
 
-        <span className="font-mono text-[9px] tracking-[0.22em] text-slate-400 uppercase">
+        <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-slate-400">
           AI automation
         </span>
       </div>
@@ -562,14 +580,16 @@ export function EcosystemVisual() {
           w-[36%]
           overflow-hidden
           rounded-xl
-          bg-[#0B0F19]/90
-          backdrop-blur-xl
           border
           border-white/10
+          bg-[#0B0F19]/90
           shadow-2xl
+          backdrop-blur-xl
+          transition-transform
+          duration-700
+          motion-safe:hover:-translate-y-1
           max-lg:backdrop-blur-none
         "
-        data-parallax="66"
       >
         <WindowChrome label="seo" Icon={Search} />
 
@@ -580,7 +600,7 @@ export function EcosystemVisual() {
         </div>
       </div>
 
-      {/* business email chip */}
+      {/* Business email chip */}
       <div
         className="
           absolute
@@ -590,16 +610,18 @@ export function EcosystemVisual() {
           items-center
           gap-3
           rounded-lg
-          px-4
-          py-3
-          bg-[#0B0F19]/90
-          backdrop-blur-xl
           border
           border-white/10
+          bg-[#0B0F19]/90
+          px-4
+          py-3
           shadow-2xl
+          backdrop-blur-xl
+          transition-transform
+          duration-700
+          motion-safe:hover:translate-y-1
           max-lg:backdrop-blur-none
         "
-        data-parallax="44"
       >
         <Mail
           className="h-4 w-4 text-slate-400"
@@ -617,109 +639,37 @@ export function EcosystemVisual() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Main Hero Component                                                        */
+/* Main Hero                                                                  */
 /* -------------------------------------------------------------------------- */
 
 export function Hero() {
-  const stageRef = useRef(null);
-
-  useEffect(() => {
-    const stage = stageRef.current;
-
-    if (!stage) return;
-
-    /*
-     * Mobile performance:
-     * The visual parallax engine is intentionally desktop-only.
-     * This prevents continuous RAF + pointermove work on mobile.
-     */
-    if (window.innerWidth < 1024) return;
-
-    if (
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      return;
-    }
-
-    let raf = 0;
-    let tx = 0;
-    let ty = 0;
-    let cx = 0;
-    let cy = 0;
-
-    const layers = Array.from(
-      stage.querySelectorAll("[data-parallax]")
-    ).map((el) => ({
-      el,
-      depth: Number(el.dataset.parallax) / 100,
-    }));
-
-    if (!layers.length) return;
-
-    let rect = stage.getBoundingClientRect();
-
-    const updateRect = () => {
-      rect = stage.getBoundingClientRect();
-    };
-
-    const onMove = (e) => {
-      tx =
-        (e.clientX - rect.left - rect.width / 2) /
-        rect.width;
-
-      ty =
-        (e.clientY - rect.top - rect.height / 2) /
-        rect.height;
-    };
-
-    const tick = () => {
-      cx += (tx - cx) * 0.035;
-      cy += (ty - cy) * 0.035;
-
-      for (const { el, depth } of layers) {
-        el.style.transform = `translate3d(
-          ${cx * depth * 100}px,
-          ${cy * depth * 70}px,
-          0
-        )`;
-      }
-
-      raf = requestAnimationFrame(tick);
-    };
-
-    window.addEventListener(
-      "pointermove",
-      onMove,
-      { passive: true }
-    );
-
-    window.addEventListener(
-      "resize",
-      updateRect,
-      { passive: true }
-    );
-
-    raf = requestAnimationFrame(tick);
-
-    return () => {
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("resize", updateRect);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-
   return (
-    <section
-      ref={stageRef}
-      className="relative isolate min-h-screen overflow-hidden bg-[#0B0F19] text-white"
-    >
+    <section className="relative isolate min-h-screen overflow-hidden bg-[#0B0F19] text-white">
+      {/* Background grid */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)]
+          bg-[size:80px_80px]
+        "
         aria-hidden="true"
       />
 
+      {/* Blue glow */}
       <div
-        className="pointer-events-none absolute -top-1/3 left-1/2 h-[900px] w-[1300px] -translate-x-1/2 opacity-60 blur-[120px]"
+        className="
+          pointer-events-none
+          absolute
+          -top-1/3
+          left-1/2
+          h-[900px]
+          w-[1300px]
+          -translate-x-1/2
+          opacity-60
+          blur-[120px]
+        "
         style={{
           background:
             "radial-gradient(circle, rgba(29,78,216,0.15) 0%, rgba(11,15,25,0) 70%)",
@@ -727,61 +677,92 @@ export function Hero() {
         aria-hidden="true"
       />
 
+      {/* Dot texture */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-[radial-gradient(#fff_1px,transparent_1px)]
+          opacity-[0.03]
+          [background-size:16px_16px]
+        "
         aria-hidden="true"
       />
 
+      {/* Bottom fade */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#0B0F19] to-transparent"
+        className="
+          pointer-events-none
+          absolute
+          inset-x-0
+          bottom-0
+          h-64
+          bg-gradient-to-t
+          from-[#0B0F19]
+          to-transparent
+        "
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto max-w-[1400px] px-8 pt-32 pb-28 lg:px-16 lg:pt-36">
+      <div className="relative mx-auto max-w-[1400px] px-8 pb-28 pt-32 lg:px-16 lg:pb-28 lg:pt-36">
         <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-[1.05fr_1fr]">
+          {/* Hero copy */}
           <div>
             <header>
-              <p
-                className="font-mono text-[11px] tracking-[0.34em] text-slate-400 uppercase"
-                style={{ animationDelay: "0.05s" }}
-              >
+              <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-slate-400">
                 DIGITAL PRODUCT ENGINEERING · WEB APPLICATIONS · AI AUTOMATION
               </p>
 
-              <h1 className="mt-8 text-[clamp(3rem,6.6vw,6.2rem)] leading-[0.92] font-bold tracking-[-0.045em] text-white">
+              <h1 className="mt-8 text-[clamp(3rem,6.6vw,6.2rem)] font-bold leading-[0.92] tracking-[-0.045em] text-white">
                 Engineering
                 <br />
                 Digital Products
                 <br />
-                <span className="italic font-normal text-slate-400">
+                <span className="font-normal italic text-slate-400">
                   That Scale Growth.
                 </span>
               </h1>
             </header>
 
-            <p
-              className="mt-10 max-w-[46ch] text-lg leading-relaxed text-slate-400"
-              style={{ animationDelay: "0.34s" }}
-            >
+            <p className="mt-10 max-w-[46ch] text-lg leading-relaxed text-slate-400">
               WebMash Labs is a full-service digital product engineering
               agency building high-performance web applications, custom
               e-commerce platforms, scalable business systems, and AI
               automation workflows for ambitious organizations.
             </p>
 
-            <div
-              className="mt-12 flex flex-wrap items-center gap-4"
-              style={{ animationDelay: "0.5s" }}
-            >
+            <div className="mt-12 flex flex-wrap items-center gap-4">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-sm font-medium text-white transition-all duration-700 hover:bg-blue-500 shadow-[0_10px_30px_rgba(29,78,216,0.4)] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-[#0B0F19]"
+                className="
+                  group
+                  inline-flex
+                  items-center
+                  gap-3
+                  rounded-full
+                  bg-blue-600
+                  px-8
+                  py-4
+                  text-sm
+                  font-medium
+                  text-white
+                  shadow-[0_10px_30px_rgba(29,78,216,0.4)]
+                  transition-all
+                  duration-700
+                  hover:bg-blue-500
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-blue-400
+                  focus:ring-offset-2
+                  focus:ring-offset-[#0B0F19]
+                "
                 aria-label="Start your digital product or web development project with WebMash Labs"
               >
                 Start a project
 
                 <ArrowUpRight
-                  className="h-4 w-4 transition-transform duration-700 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  className="h-4 w-4 transition-transform duration-700 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                   strokeWidth={1.5}
                   aria-hidden="true"
                 />
@@ -789,7 +770,29 @@ export function Hero() {
 
               <Link
                 href="/work"
-                className="inline-flex items-center gap-3 rounded-full border border-white/10 px-8 py-4 text-sm font-medium text-white transition-colors duration-700 hover:border-white/30 hover:bg-white/5 backdrop-blur-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-[#0B0F19]"
+                className="
+                  inline-flex
+                  items-center
+                  gap-3
+                  rounded-full
+                  border
+                  border-white/10
+                  px-8
+                  py-4
+                  text-sm
+                  font-medium
+                  text-white
+                  backdrop-blur-xl
+                  transition-colors
+                  duration-700
+                  hover:border-white/30
+                  hover:bg-white/5
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-blue-400
+                  focus:ring-offset-2
+                  focus:ring-offset-[#0B0F19]
+                "
                 aria-label="Explore selected digital engineering case studies and work by WebMash Labs"
               >
                 <Rocket
@@ -803,27 +806,36 @@ export function Hero() {
             </div>
           </div>
 
-          <div
-            className="flex justify-center lg:justify-end"
-            style={{ animationDelay: "0.42s" }}
-          >
+          {/* Visual */}
+          <div className="flex justify-center lg:justify-end">
             <EcosystemVisual />
           </div>
         </div>
 
         {/* Workflow Lifecycle Cards */}
-        <div
-          className="mt-24 border-t border-white/10 pt-12 relative"
-          style={{ animationDelay: "0.66s" }}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 items-stretch relative">
+        <div className="relative mt-24 border-t border-white/10 pt-12">
+          <div className="relative grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-4 xl:gap-8">
+            {/* Connecting line */}
             <div
-              className="hidden lg:block absolute top-[36px] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent pointer-events-none"
+              className="
+                pointer-events-none
+                absolute
+                left-[10%]
+                right-[10%]
+                top-[36px]
+                hidden
+                h-px
+                bg-gradient-to-r
+                from-transparent
+                via-blue-500/30
+                to-transparent
+                lg:block
+              "
               aria-hidden="true"
             />
 
             {/* Card 1 */}
-            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-xl transition-all duration-500 hover:border-blue-500/40 hover:bg-white/[0.04] hover:-translate-y-1 shadow-xl">
+            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 shadow-xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/[0.04]">
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <div
@@ -836,28 +848,28 @@ export function Hero() {
                     />
                   </div>
 
-                  <span className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-slate-500">
                     01 / Launch
                   </span>
                 </div>
 
-                <h2 className="text-base font-semibold tracking-tight text-white flex items-center justify-between">
+                <h2 className="flex items-center justify-between text-base font-semibold tracking-tight text-white">
                   Launch
 
                   <ChevronRight
-                    className="h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 hidden lg:block"
+                    className="hidden h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 lg:block"
                     aria-hidden="true"
                   />
                 </h2>
 
-                <p className="mt-2 text-xs text-slate-400 leading-relaxed whitespace-nowrap">
+                <p className="mt-2 whitespace-nowrap text-xs leading-relaxed text-slate-400">
                   Strategy • Brand • Positioning
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] text-blue-400/80 font-mono">
+              <div className="mt-6 flex items-center border-t border-white/5 pt-4 font-mono text-[11px] text-blue-400/80">
                 <span
-                  className="inline-block h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse mr-2"
+                  className="mr-2 inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-blue-400"
                   aria-hidden="true"
                 />
                 Phase initiated
@@ -865,7 +877,7 @@ export function Hero() {
             </div>
 
             {/* Card 2 */}
-            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-xl transition-all duration-500 hover:border-blue-500/40 hover:bg-white/[0.04] hover:-translate-y-1 shadow-xl">
+            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 shadow-xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/[0.04]">
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <div
@@ -878,28 +890,28 @@ export function Hero() {
                     />
                   </div>
 
-                  <span className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-slate-500">
                     02 / Build
                   </span>
                 </div>
 
-                <h2 className="text-base font-semibold tracking-tight text-white flex items-center justify-between">
+                <h2 className="flex items-center justify-between text-base font-semibold tracking-tight text-white">
                   Build
 
                   <ChevronRight
-                    className="h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 hidden lg:block"
+                    className="hidden h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 lg:block"
                     aria-hidden="true"
                   />
                 </h2>
 
-                <p className="mt-2 text-xs text-slate-400 leading-relaxed">
+                <p className="mt-2 text-xs leading-relaxed text-slate-400">
                   Websites • Applications • Custom Experiences
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] text-slate-500 font-mono">
+              <div className="mt-6 flex items-center border-t border-white/5 pt-4 font-mono text-[11px] text-slate-500">
                 <span
-                  className="inline-block h-1.5 w-1.5 rounded-full bg-slate-600 mr-2"
+                  className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-slate-600"
                   aria-hidden="true"
                 />
                 Next milestone
@@ -907,7 +919,7 @@ export function Hero() {
             </div>
 
             {/* Card 3 */}
-            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-xl transition-all duration-500 hover:border-blue-500/40 hover:bg-white/[0.04] hover:-translate-y-1 shadow-xl">
+            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 shadow-xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/[0.04]">
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <div
@@ -920,28 +932,28 @@ export function Hero() {
                     />
                   </div>
 
-                  <span className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-slate-500">
                     03 / Automate
                   </span>
                 </div>
 
-                <h2 className="text-base font-semibold tracking-tight text-white flex items-center justify-between">
+                <h2 className="flex items-center justify-between text-base font-semibold tracking-tight text-white">
                   Automate
 
                   <ChevronRight
-                    className="h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 hidden lg:block"
+                    className="hidden h-3.5 w-3.5 text-slate-600 transition-transform duration-500 group-hover:translate-x-1 group-hover:text-blue-400 lg:block"
                     aria-hidden="true"
                   />
                 </h2>
 
-                <p className="mt-2 text-xs text-slate-400 leading-relaxed">
+                <p className="mt-2 text-xs leading-relaxed text-slate-400">
                   AI Workflows • Integrations • Business Systems
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] text-slate-500 font-mono">
+              <div className="mt-6 flex items-center border-t border-white/5 pt-4 font-mono text-[11px] text-slate-500">
                 <span
-                  className="inline-block h-1.5 w-1.5 rounded-full bg-slate-600 mr-2"
+                  className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-slate-600"
                   aria-hidden="true"
                 />
                 Queued sequence
@@ -949,7 +961,7 @@ export function Hero() {
             </div>
 
             {/* Card 4 */}
-            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-xl transition-all duration-500 hover:border-blue-500/40 hover:bg-white/[0.04] hover:-translate-y-1 shadow-xl">
+            <div className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 shadow-xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-white/[0.04]">
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <div
@@ -962,7 +974,7 @@ export function Hero() {
                     />
                   </div>
 
-                  <span className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-slate-500">
                     04 / Scale
                   </span>
                 </div>
@@ -971,14 +983,14 @@ export function Hero() {
                   Scale
                 </h2>
 
-                <p className="mt-2 text-xs text-slate-400 leading-relaxed">
+                <p className="mt-2 text-xs leading-relaxed text-slate-400">
                   SEO • Infrastructure • Expansion & Growth
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-[11px] text-slate-500 font-mono">
+              <div className="mt-6 flex items-center border-t border-white/5 pt-4 font-mono text-[11px] text-slate-500">
                 <span
-                  className="inline-block h-1.5 w-1.5 rounded-full bg-slate-600 mr-2"
+                  className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-slate-600"
                   aria-hidden="true"
                 />
                 Enterprise tier
