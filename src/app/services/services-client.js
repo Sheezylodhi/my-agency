@@ -212,15 +212,15 @@ const BUSINESS_NEEDS = [
 
 const INDUSTRIES = [
   { name: "Healthcare", icon: Building2, slug: "healthcare", desc: "Patient portals & compliant records." },
-  { name: "Real Estate", icon: Home, slug: "real-estate", desc: "Property listings & CRM systems." },
-  { name: "E-commerce & Retail", icon: Store, slug: "ecommerce-retail", desc: "High-conversion online storefronts." },
-  { name: "Education", icon: GraduationCap, slug: "education", desc: "LMS platforms & student portals." },
+  { name: "Real Estate", icon: Home, slug: "realEstate", desc: "Property listings & CRM systems." },
+  { name: "E-commerce & Retail", icon: Store, slug: "ecommerceRetail", desc: "High-conversion online storefronts." },
+  { name: "Education", icon: GraduationCap, slug: "education_elearning", desc: "LMS platforms & student portals." },
   { name: "Manufacturing", icon: Factory, slug: "manufacturing", desc: "Supply chain & ERP automation." },
-  { name: "Logistics", icon: Truck, slug: "logistics", desc: "Fleet tracking & routing software." },
-  { name: "Finance", icon: Briefcase, slug: "finance", desc: "Secure transaction dashboards." },
-  { name: "Hospitality", icon: Utensils, slug: "hospitality", desc: "Booking systems & menus." },
-  { name: "Travel", icon: Plane, slug: "travel", desc: "Itinerary management engines." },
-  { name: "Legal", icon: Scale, slug: "legal", desc: "Client portals & secure document handling." }
+  { name: "Logistics", icon: Truck, slug: "logistics_transportation", desc: "Fleet tracking & routing software." },
+  { name: "Finance", icon: Briefcase, slug: "financeFintech", desc: "Secure transaction dashboards." },
+  { name: "Hospitality", icon: Utensils, slug: "hospitality_travel", desc: "Booking systems & menus." },
+  { name: "Travel", icon: Plane, slug: "hospitality_travel", desc: "Itinerary management engines." },
+  { name: "Legal", icon: Scale, slug: "legal_services", desc: "Client portals & secure document handling." }
 ];
 
 const TECH_GROUPS = [

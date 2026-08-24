@@ -45,22 +45,22 @@ const servicesData = [
 ];
 
 const industriesData = [
-  { label: "Restaurants", href: "/industries/restaurants-food", description: "Increase reservations & order flow", icon: UtensilsCrossed },
+  { label: "Restaurants", href: "/industries/restaurants_food", description: "Increase reservations & order flow", icon: UtensilsCrossed },
   { label: "Healthcare", href: "/industries/healthcare", description: "Secure patient-focused platforms", icon: HeartPulse },
-  { label: "Real Estate", href: "/industries/real-estate", description: "Immersive property showcases", icon: Home },
-  { label: "Legal Services", href: "/industries/legal-services", description: "Build elite authority & trust", icon: Scale },
-  { label: "Construction", href: "/industries/construction-architecture", description: "Generate qualified enterprise leads", icon: HardHat },
-  { label: "Education", href: "/industries/education-elearning", description: "Engaging digital learning portals", icon: GraduationCap },
-  { label: "E-commerce", href: "/industries/ecommerce-retail", description: "High-converting storefronts", icon: ShoppingBag },
-  { label: "Finance", href: "/industries/finance-fintech", description: "Secure, compliant web apps", icon: LineChart },
-  { label: "Travel & Hospitality", href: "/industries/hospitality-travel", description: "Breathtaking booking experiences", icon: Plane },
+  { label: "Real Estate", href: "/industries/realEstate", description: "Immersive property showcases", icon: Home },
+  { label: "Legal Services", href: "/industries/legal_services", description: "Build elite authority & trust", icon: Scale },
+  { label: "Construction", href: "/industries/construction_architecture", description: "Generate qualified enterprise leads", icon: HardHat },
+  { label: "Education", href: "/industries/education_elearning", description: "Engaging digital learning portals", icon: GraduationCap },
+  { label: "E-commerce", href: "/industries/ecommerceRetail", description: "High-converting storefronts", icon: ShoppingBag },
+  { label: "Finance", href: "/industries/financeFintech", description: "Secure, compliant web apps", icon: LineChart },
+  { label: "Travel & Hospitality", href: "/industries/hospitality_travel", description: "Breathtaking booking experiences", icon: Plane },
   { label: "Startups", href: "/industries/startups", description: "Scale fast with MVP velocity", icon: Rocket },
 ];
 
 const navLinks = [
   { name: "Work", href: "/work" },
   { name: "Process", href: "/#process" },
-  { name: "About", href: "/about" },
+  { name: "About", href: "/about-us" },
   { name: "Blog", href: "/blog" },
 ];
 
@@ -373,7 +373,7 @@ export default function Navbar() {
             </div>
 
             <Link
-              href="/qoute"
+              href="/contact"
               className="group relative inline-flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white rounded-full h-[44px] px-[24px] text-[14px] font-semibold transition-all duration-300 shadow-[0_4px_20px_rgba(37,99,235,0.35)] overflow-hidden"
             >
               <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -590,7 +590,7 @@ export default function Navbar() {
 
               <div className="mt-6 pt-4">
                 <Link
-                  href="/qoute"
+                  href="/contact"
                   onClick={() => setOpen(false)}
                   className="group relative w-full bg-blue-600 text-white h-[56px] rounded-2xl font-semibold flex items-center justify-between px-6 shadow-xl overflow-hidden"
                 >

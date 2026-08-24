@@ -352,15 +352,15 @@ export const INDUSTRIES = {
   services: [
     {
       name: "Healthcare Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-design-development"
     },
     {
       name: "Custom Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-applications"
     },
     {
       name: "Cloud Architecture",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "API Integration",
@@ -374,11 +374,11 @@ export const INDUSTRIES = {
 
   relatedIndustries: [
     {
-      slug: "fintech",
+      slug: "financeFintech",
       name: "FinTech"
     },
     {
-      slug: "saas",
+      slug: "saasTechnology",
       name: "SaaS"
     }
   ],
@@ -943,7 +943,7 @@ realEstate: {
   services: [
     {
       name: "Real Estate Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-applications"
     },
     {
       name: "Custom Web Development",
@@ -959,7 +959,7 @@ realEstate: {
     },
     {
       name: "Cloud Architecture",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "Technical SEO",
@@ -969,15 +969,15 @@ realEstate: {
 
   relatedIndustries: [
     {
-      slug: "fintech",
+      slug: "financeFintech",
       name: "FinTech"
     },
     {
-      slug: "saas",
+      slug: "saasTechnology",
       name: "SaaS"
     },
     {
-      slug: "construction",
+      slug: "construction_architecture",
       name: "Construction"
     }
   ],
@@ -1672,7 +1672,7 @@ ecommerceRetail: {
   services: [
     {
       name: "E-Commerce Development",
-      href: "/services/ecommerce"
+      href: "/services/ecommerce-development"
     },
     {
       name: "Custom Web Development",
@@ -1680,7 +1680,7 @@ ecommerceRetail: {
     },
     {
       name: "Headless Commerce Development",
-      href: "/services/ecommerce"
+      href: "/services/ecommerce-development"
     },
     {
       name: "API & Systems Integration",
@@ -1696,17 +1696,17 @@ ecommerceRetail: {
     },
     {
       name: "Cloud Architecture",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     }
   ],
 
   relatedIndustries: [
     {
-      slug: "saas",
+      slug: "saasTechnology",
       name: "SaaS"
     },
     {
-      slug: "fintech",
+      slug: "financeFintech",
       name: "FinTech"
     },
     {
@@ -2463,11 +2463,11 @@ financeFintech: {
   services: [
     {
       name: "FinTech Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-design-development"
     },
     {
       name: "Custom Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-applications"
     },
     {
       name: "API & Systems Integration",
@@ -2479,7 +2479,7 @@ financeFintech: {
     },
     {
       name: "Cloud Architecture",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "Technical SEO",
@@ -2493,11 +2493,11 @@ financeFintech: {
       name: "Healthcare"
     },
     {
-      slug: "ecommerce-retail",
+      slug: "ecommerceRetail",
       name: "E-Commerce & Retail"
     },
     {
-      slug: "saas",
+      slug: "saasTechnology",
       name: "SaaS"
     }
   ],
@@ -3327,11 +3327,11 @@ saasTechnology: {
   services: [
     {
       name: "Custom SaaS Development",
-      href: "/services/saas-development"
+      href: "/services/web-applications"
     },
     {
       name: "Web Application Development",
-      href: "/services/web-development"
+      href: "/services/web-applications"
     },
     {
       name: "UI/UX Design Systems",
@@ -3343,7 +3343,7 @@ saasTechnology: {
     },
     {
       name: "Cloud Architecture",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "Technical SEO",
@@ -3353,7 +3353,7 @@ saasTechnology: {
 
   relatedIndustries: [
     {
-      slug: "finance-fintech",
+      slug: "financeFintech",
       name: "Finance & FinTech"
     },
     {
@@ -3361,11 +3361,11 @@ saasTechnology: {
       name: "Healthcare"
     },
     {
-      slug: "ecommerce-retail",
+      slug: "ecommerceRetail",
       name: "E-Commerce & Retail"
     },
     {
-      slug: "real-estate",
+      slug: "realEstate",
       name: "Real Estate"
     }
   ],
@@ -4304,19 +4304,19 @@ manufacturing: {
   services: [
     {
       name: "Custom Manufacturing Software",
-      href: "/services/custom-software-development"
+      href: "/services/web-applications"
     },
     {
       name: "ERP & Enterprise Software",
-      href: "/services/enterprise-software"
+      href: "/services/erp-crm"
     },
     {
       name: "Web Application Development",
-      href: "/services/web-development"
+      href: "/services/web-design-development"
     },
     {
       name: "Cloud Architecture & DevOps",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "AI & Workflow Automation",
@@ -4330,19 +4330,19 @@ manufacturing: {
 
   relatedIndustries: [
     {
-      slug: "ecommerce-retail",
+      slug: "ecommerceRetail",
       name: "E-Commerce & Retail"
     },
     {
-      slug: "saas-technology",
+      slug: "saasTechnology",
       name: "SaaS & Technology"
     },
     {
-      slug: "finance-fintech",
+      slug: "financeFintech",
       name: "Finance & FinTech"
     },
     {
-      slug: "real-estate",
+      slug: "realEstate",
       name: "Real Estate"
     }
   ],
@@ -4523,7 +4523,7 @@ manufacturing: {
     }
   ]
 },
-logistics_transportation: {
+logistics_transportation: { 
   slug: "logistics_transportation",
   name: "Logistics & Transportation",
 
@@ -5402,19 +5402,15 @@ logistics_transportation: {
   services: [
     {
       name: "Custom Logistics Software",
-      href: "/services/custom-software-development"
-    },
-    {
-      name: "Transportation Management Systems",
-      href: "/services/enterprise-software"
+      href: "/services/web-applications"
     },
     {
       name: "Web Application Development",
-      href: "/services/web-development"
+      href: "/services/web-design-development"
     },
     {
       name: "Cloud Architecture & DevOps",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "AI & Workflow Automation",
@@ -5436,15 +5432,15 @@ logistics_transportation: {
       name: "Manufacturing & Industrial"
     },
     {
-      slug: "ecommerce-retail",
+      slug: "ecommerceRetail",
       name: "E-Commerce & Retail"
     },
     {
-      slug: "saas-technology",
+      slug: "saasTechnology",
       name: "SaaS & Technology"
     },
     {
-      slug: "finance-fintech",
+      slug: "financeFintech",
       name: "Finance & FinTech"
     }
   ],
@@ -6540,11 +6536,11 @@ education_elearning: {
   services: [
     {
       name: "Custom Education Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-applications"
     },
     {
       name: "Web Application Development",
-      href: "/services/web-development"
+      href: "/services/web-design-development"
     },
     {
       name: "UI/UX Design",
@@ -6556,7 +6552,7 @@ education_elearning: {
     },
     {
       name: "Cloud Architecture & DevOps",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "API Integration",
@@ -6570,7 +6566,7 @@ education_elearning: {
 
   relatedIndustries: [
     {
-      slug: "saas-technology",
+      slug: "saasTechnology",
       name: "SaaS & Technology"
     },
     {
@@ -6578,11 +6574,11 @@ education_elearning: {
       name: "Healthcare"
     },
     {
-      slug: "finance-fintech",
+      slug: "financeFintech",
       name: "Finance & FinTech"
     },
     {
-      slug: "professional-services",
+      slug: "professional_services",
       name: "Professional Services"
     }
   ],
@@ -7595,11 +7591,7 @@ professional_services: {
   services: [
     {
       name: "Custom Web Development",
-      href: "/services/web-development"
-    },
-    {
-      name: "Custom Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-design-development"
     },
     {
       name: "UI/UX Design",
@@ -7615,7 +7607,7 @@ professional_services: {
     },
     {
       name: "Cloud Architecture & DevOps",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "Technical SEO",
@@ -7625,11 +7617,11 @@ professional_services: {
 
   relatedIndustries: [
     {
-      slug: "saas-technology",
+      slug: "saasTechnology",
       name: "SaaS & Technology"
     },
     {
-      slug: "finance-fintech",
+      slug: "financeFintech",
       name: "Finance & FinTech"
     },
     {
@@ -7637,7 +7629,7 @@ professional_services: {
       name: "Healthcare"
     },
     {
-      slug: "real-estate",
+      slug: "realEstate",
       name: "Real Estate"
     }
   ],
@@ -8752,11 +8744,7 @@ hospitality_travel: {
   services: [
     {
       name: "Hospitality Web Development",
-      href: "/services/web-development"
-    },
-    {
-      name: "Custom Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-design-development"
     },
     {
       name: "UI/UX Design",
@@ -8764,7 +8752,7 @@ hospitality_travel: {
     },
     {
       name: "eCommerce & Booking Development",
-      href: "/services/ecommerce"
+      href: "/services/ecommerce-development"
     },
     {
       name: "AI & Workflow Automation",
@@ -8776,7 +8764,7 @@ hospitality_travel: {
     },
     {
       name: "Cloud Architecture & DevOps",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "Technical SEO",
@@ -8786,19 +8774,19 @@ hospitality_travel: {
 
   relatedIndustries: [
     {
-      slug: "ecommerce-retail",
+      slug: "ecommerceRetail",
       name: "E-Commerce & Retail"
     },
     {
-      slug: "professional-services",
+      slug: "professional_services",
       name: "Professional Services"
     },
     {
-      slug: "real-estate",
+      slug: "realEstate",
       name: "Real Estate"
     },
     {
-      slug: "finance-fintech",
+      slug: "financeFintech",
       name: "Finance & FinTech"
     }
   ],
@@ -9937,12 +9925,8 @@ construction_architecture: {
 
   services: [
     {
-      name: "Custom Construction Software Development",
-      href: "/services/custom-software-development"
-    },
-    {
       name: "Web Application Development",
-      href: "/services/web-development"
+      href: "/services/web-design-development"
     },
     {
       name: "UI/UX Design",
@@ -9950,7 +9934,7 @@ construction_architecture: {
     },
     {
       name: "ERP & Business Software",
-      href: "/services/enterprise-software"
+      href: "/services/erp-crm"
     },
     {
       name: "API & Systems Integration",
@@ -9962,7 +9946,7 @@ construction_architecture: {
     },
     {
       name: "Cloud Architecture & DevOps",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "Technical SEO",
@@ -9972,7 +9956,7 @@ construction_architecture: {
 
   relatedIndustries: [
     {
-      slug: "real-estate",
+      slug: "realEstate",
       name: "Real Estate"
     },
     {
@@ -9980,11 +9964,11 @@ construction_architecture: {
       name: "Manufacturing & Industrial"
     },
     {
-      slug: "logistics-transportation",
+      slug: "logistics_transportation",
       name: "Logistics & Transportation"
     },
     {
-      slug: "professional-services",
+      slug: "professional_services",
       name: "Professional Services"
     }
   ],
@@ -11162,11 +11146,11 @@ automotive: {
   services: [
     {
       name: "Custom Automotive Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-design-development"
     },
     {
       name: "Automotive Web Development",
-      href: "/services/web-development"
+      href: "/services/web-applications"
     },
     {
       name: "UI/UX Design",
@@ -11174,11 +11158,11 @@ automotive: {
     },
     {
       name: "Ecommerce Development",
-      href: "/services/ecommerce"
+      href: "/services/ecommerce-development"
     },
     {
       name: "ERP & Business Software",
-      href: "/services/enterprise-software"
+      href: "/services/erp-crm"
     },
     {
       name: "API & Systems Integration",
@@ -11190,7 +11174,7 @@ automotive: {
     },
     {
       name: "Cloud Architecture & DevOps",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "Technical SEO",
@@ -11204,15 +11188,15 @@ automotive: {
       name: "Manufacturing & Industrial"
     },
     {
-      slug: "logistics-transportation",
+      slug: "logistics_transportation",
       name: "Logistics & Transportation"
     },
     {
-      slug: "ecommerce-retail",
+      slug: "ecommerceRetail",
       name: "E-Commerce & Retail"
     },
     {
-      slug: "saas-technology",
+      slug: "saasTechnology",
       name: "SaaS & Technology"
     }
   ],
@@ -12377,11 +12361,11 @@ legal_services: {
   services: [
     {
       name: "Custom Legal Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-design-development"
     },
     {
       name: "Law Firm Web Development",
-      href: "/services/web-development"
+      href: "/services/web-applications"
     },
     {
       name: "UI/UX Design",
@@ -12397,7 +12381,7 @@ legal_services: {
     },
     {
       name: "Cloud Architecture & DevOps",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "Technical SEO",
@@ -12407,11 +12391,11 @@ legal_services: {
 
   relatedIndustries: [
     {
-      slug: "professional-services",
+      slug: "professional_services",
       name: "Professional Services"
     },
     {
-      slug: "finance-fintech",
+      slug: "financeFintech",
       name: "Finance & FinTech"
     },
     {
@@ -12419,7 +12403,7 @@ legal_services: {
       name: "Healthcare"
     },
     {
-      slug: "saas-technology",
+      slug: "saasTechnology",
       name: "SaaS & Technology"
     }
   ],
@@ -13682,11 +13666,11 @@ marketing_media: {
   services: [
     {
       name: "Custom Media Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-design-development"
     },
     {
       name: "Web Development",
-      href: "/services/web-development"
+      href: "/services/web-applications"
     },
     {
       name: "UI/UX Design",
@@ -13702,7 +13686,7 @@ marketing_media: {
     },
     {
       name: "Cloud Architecture & DevOps",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "Technical SEO",
@@ -13712,19 +13696,19 @@ marketing_media: {
 
   relatedIndustries: [
     {
-      slug: "ecommerce-retail",
+      slug: "ecommerceRetail",
       name: "E-Commerce & Retail"
     },
     {
-      slug: "saas-technology",
+      slug: "saasTechnology",
       name: "SaaS & Technology"
     },
     {
-      slug: "professional-services",
+      slug: "professional_services",
       name: "Professional Services"
     },
     {
-      slug: "hospitality-travel",
+      slug: "hospitality_travel",
       name: "Hospitality & Travel"
     }
   ],
@@ -14891,11 +14875,11 @@ nonprofit_organizations: {
   services: [
     {
       name: "Custom Nonprofit Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-design-development"
     },
     {
       name: "Web Development",
-      href: "/services/web-development"
+      href: "/services/web-applications"
     },
     {
       name: "UI/UX Design",
@@ -14911,7 +14895,7 @@ nonprofit_organizations: {
     },
     {
       name: "Cloud Architecture & DevOps",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "Technical SEO",
@@ -14925,15 +14909,15 @@ nonprofit_organizations: {
       name: "Healthcare"
     },
     {
-      slug: "education-elearning",
+      slug: "education_elearning",
       name: "Education & EdTech"
     },
     {
-      slug: "professional-services",
+      slug: "professional_services",
       name: "Professional Services"
     },
     {
-      slug: "media-entertainment",
+      slug: "marketing_media",
       name: "Media & Entertainment"
     }
   ],
@@ -16012,11 +15996,11 @@ b2b_wholesale: {
   services: [
     {
       name: "Custom B2B Ecommerce Development",
-      href: "/services/b2b-ecommerce-development"
+      href: "/services/web-design-development"
     },
     {
       name: "Custom Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-applications"
     },
     {
       name: "ERP & Systems Integration",
@@ -16024,7 +16008,7 @@ b2b_wholesale: {
     },
     {
       name: "Ecommerce Development",
-      href: "/services/ecommerce"
+      href: "/services/ecommerce-development"
     },
     {
       name: "UI/UX Design",
@@ -16032,7 +16016,7 @@ b2b_wholesale: {
     },
     {
       name: "Cloud Architecture & DevOps",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "Technical SEO",
@@ -16046,11 +16030,11 @@ b2b_wholesale: {
       name: "Manufacturing & Industrial"
     },
     {
-      slug: "logistics-transportation",
+      slug: "logistics_transportation",
       name: "Logistics & Transportation"
     },
     {
-      slug: "ecommerce-retail",
+      slug: "ecommerceRetail",
       name: "E-Commerce & Retail"
     },
     {
@@ -17091,15 +17075,11 @@ energy_utilities: {
   services: [
     {
       name: "Energy Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-design-development"
     },
     {
       name: "Custom Software Development",
-      href: "/services/custom-software-development"
-    },
-    {
-      name: "Data & Analytics Engineering",
-      href: "/services/data-engineering"
+      href: "/services/web-applications"
     },
     {
       name: "API & Systems Integration",
@@ -17107,7 +17087,7 @@ energy_utilities: {
     },
     {
       name: "Cloud Architecture",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "AI & Automation",
@@ -17125,15 +17105,15 @@ energy_utilities: {
       name: "Manufacturing & Industrial"
     },
     {
-      slug: "logistics-transportation",
+      slug: "logistics_transportation",
       name: "Logistics & Transportation"
     },
     {
-      slug: "finance-fintech",
+      slug: "financeFintech",
       name: "Finance & FinTech"
     },
     {
-      slug: "saas-technology",
+      slug: "saasTechnology",
       name: "SaaS & Technology"
     }
   ],
@@ -18254,15 +18234,15 @@ fitness_wellness: {
   services: [
     {
       name: "Fitness Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-design-development"
     },
     {
       name: "Custom Web & Application Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-applications"
     },
     {
       name: "SaaS Development",
-      href: "/services/saas-development"
+      href: "/services/erp-crm"
     },
     {
       name: "UI/UX Design",
@@ -18274,7 +18254,7 @@ fitness_wellness: {
     },
     {
       name: "Cloud Architecture",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "AI & Automation",
@@ -18292,15 +18272,15 @@ fitness_wellness: {
       name: "Healthcare"
     },
     {
-      slug: "saas-technology",
+      slug: "saasTechnology",
       name: "SaaS & Technology"
     },
     {
-      slug: "ecommerce-retail",
+      slug: "ecommerceRetail",
       name: "E-Commerce & Retail"
     },
     {
-      slug: "professional-services",
+      slug: "professional_services",
       name: "Professional Services"
     }
   ],
@@ -19416,31 +19396,23 @@ restaurants_food: {
   services: [
     {
       name: "Restaurant Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-applications"
     },
     {
       name: "Custom Web & Application Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-applications"
     },
     {
       name: "eCommerce Development",
-      href: "/services/ecommerce"
+      href: "/services/ecommerce-development"
     },
     {
       name: "SaaS Development",
-      href: "/services/saas-development"
-    },
-    {
-      name: "API & Systems Integration",
-      href: "/services/api-integration"
+      href: "/services/erp-crm"
     },
     {
       name: "UI/UX Design",
       href: "/services/ui-ux-design"
-    },
-    {
-      name: "Cloud Architecture",
-      href: "/services/cloud-architecture"
     },
     {
       name: "AI & Automation",
@@ -19454,19 +19426,19 @@ restaurants_food: {
 
   relatedIndustries: [
     {
-      slug: "hospitality-travel",
+      slug: "hospitality_travel",
       name: "Hospitality & Travel"
     },
     {
-      slug: "ecommerce-retail",
+      slug: "ecommerceRetail",
       name: "E-Commerce & Retail"
     },
     {
-      slug: "b2b-wholesale",
+      slug: "b2b_wholesale",
       name: "B2B & Wholesale"
     },
     {
-      slug: "saas-technology",
+      slug: "saasTechnology",
       name: "SaaS & Technology"
     }
   ],
@@ -20588,15 +20560,15 @@ startups: {
   services: [
     {
       name: "Startup MVP Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-design-development"
     },
     {
       name: "SaaS Development",
-      href: "/services/saas-development"
+      href: "/services/erp-crm"
     },
     {
       name: "Custom Software Development",
-      href: "/services/custom-software-development"
+      href: "/services/web-applications"
     },
     {
       name: "UI/UX Design",
@@ -20612,7 +20584,7 @@ startups: {
     },
     {
       name: "Cloud Architecture",
-      href: "/services/cloud-architecture"
+      href: "/services/cloud-devops"
     },
     {
       name: "Technical SEO",
@@ -20622,11 +20594,11 @@ startups: {
 
   relatedIndustries: [
     {
-      slug: "saas-technology",
+      slug: "saasTechnology",
       name: "SaaS & Technology"
     },
     {
-      slug: "fintech",
+      slug: "financeFintech",
       name: "Finance & FinTech"
     },
     {
@@ -20634,11 +20606,11 @@ startups: {
       name: "Healthcare"
     },
     {
-      slug: "b2b-wholesale",
+      slug: "b2b_wholesale",
       name: "B2B & Wholesale"
     },
     {
-      slug: "ecommerce-retail",
+      slug: "ecommerceRetail",
       name: "E-Commerce & Retail"
     }
   ],
