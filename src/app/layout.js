@@ -1,5 +1,6 @@
 import "./globals.css";
 import Layout from "@/components/Layout";
+import Script from "next/script";
 
 export const metadata = {
   metadataBase: new URL("https://webmashlabs.com"),
@@ -62,7 +63,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "WebMash Labs | Custom Software, Web & Digital Engineering",
     description:
-      "Custom software, web development, SaaS, AI automation, ERP/CRM, eCommerce and cloud engineering.",
+      "Custom software, web development, SaaS, AI automation, ERP/CRM and eCommerce engineering.",
     images: ["https://webmashlabs.com/og-image.jpg"],
   },
 
@@ -76,10 +77,23 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-white" suppressHydrationWarning={true}>
-        <Layout>
-          {children}
-         
-        </Layout>
+        <Layout>{children}</Layout>
+
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-E5XKR1BZB9"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-E5XKR1BZB9');
+          `}
+        </Script>
       </body>
     </html>
   );
