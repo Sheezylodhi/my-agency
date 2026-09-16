@@ -1,0 +1,102 @@
+
+# WebMash Labs
+
+> WebMash Labs is a custom software and digital engineering agency that builds modern websites, web applications, SaaS platforms, AI-powered solutions, business systems, eCommerce platforms, and digital experiences for growing businesses.
+
+## About
+
+WebMash Labs helps businesses design, develop, improve, and scale modern digital products. The agency focuses on custom engineering rather than one-size-fits-all solutions.
+
+Website: https://webmashlabs.com/
+
+## Services
+
+- Custom Website Development
+- Web Application Development
+- SaaS Development
+- AI Development & Automation
+- ERP & CRM Development
+- eCommerce Development
+- UI/UX Design
+- Figma to Website Development
+- Website Redesign & Improvements
+- WordPress & WooCommerce Development
+- SEO & Technical SEO
+- Cloud & Deployment Solutions
+- Business Process Automation
+- Custom Software Development
+
+## Technology
+
+WebMash Labs works with modern web and software technologies including:
+
+- React
+- Next.js
+- Node.js
+- Express.js
+- JavaScript
+- MongoDB
+- SQL
+- Tailwind CSS
+- REST APIs
+- WordPress
+- WooCommerce
+- Cloud platforms and deployment infrastructure
+
+## Website Pages
+
+- Homepage: https://webmashlabs.com/
+- Services: https://webmashlabs.com/services
+- Industries: https://webmashlabs.com/industries
+- Work / Portfolio: https://webmashlabs.com/work
+- About: https://webmashlabs.com/about-us
+- Blog: https://webmashlabs.com/blog
+- Contact: https://webmashlabs.com/contact
+
+## Services Overview
+
+### Custom Web Development
+
+WebMash Labs develops custom business websites and web applications designed around specific business requirements, workflows, and goals.
+
+### SaaS Development
+
+WebMash Labs builds scalable SaaS products, dashboards, user systems, subscription-based platforms, and custom software products.
+
+### AI Automation
+
+WebMash Labs develops AI-powered assistants, workflow automation, intelligent business tools, and integrations designed to reduce repetitive manual work.
+
+### ERP & CRM
+
+WebMash Labs develops custom ERP and CRM systems for businesses that need tailored workflows, dashboards, reporting, customer management, and operational tools.
+
+### eCommerce
+
+WebMash Labs builds custom eCommerce experiences and online stores with product catalogs, checkout systems, payment integrations, order management, and administrative dashboards.
+
+### UI/UX Design
+
+WebMash Labs creates modern user interfaces and digital experiences, including website concepts, responsive interfaces, dashboards, and Figma-based designs.
+
+### Website Redesign
+
+WebMash Labs improves existing websites through redesigns, performance improvements, responsive fixes, UX improvements, technical fixes, and modern frontend development.
+
+## SEO
+
+WebMash Labs works on technical SEO, website structure, metadata, indexing, performance, structured data, internal linking, and search-friendly website architecture.
+
+## Contact
+
+For project inquiries and business opportunities, visit:
+
+https://webmashlabs.com/contact
+
+## Sitemap
+
+https://webmashlabs.com/sitemap.xml
+
+## Robots
+
+https://webmashlabs.com/robots.txt

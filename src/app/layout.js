@@ -1,6 +1,17 @@
+
 import "./globals.css";
 import Layout from "@/components/Layout";
 import Script from "next/script";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://webmashlabs.com/#organization",
+  name: "WebMash Labs",
+  url: "https://webmashlabs.com/",
+  description:
+    "WebMash Labs engineers custom websites, web applications, SaaS platforms, AI automation, ERP/CRM systems, eCommerce solutions and cloud infrastructure for growing businesses.",
+};
 
 export const metadata = {
   metadataBase: new URL("https://webmashlabs.com"),
@@ -79,6 +90,14 @@ export default function RootLayout({ children }) {
       <body className="bg-white" suppressHydrationWarning={true}>
         <Layout>{children}</Layout>
 
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-E5XKR1BZB9"
@@ -98,3 +117,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
