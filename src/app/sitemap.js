@@ -39,6 +39,18 @@ export default function sitemap() {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+     {
+      url: `${BASE_URL}/work`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/about-us`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ];
 
   // Service detail slug pages
