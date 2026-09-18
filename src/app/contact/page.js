@@ -188,8 +188,8 @@ export default function ContactPage() {
               <div className="bg-white p-8 rounded-2xl border border-[#E5E2DC] shadow-sm space-y-6">
                 <div className="border-b border-[#E5E2DC] pb-5">
                   <span className="text-xs font-mono uppercase tracking-widest text-[#737373] block mb-1">Email Direct</span>
-                  <a href="mailto:hello@webmashlabs.com" className="text-lg font-semibold text-[#0A0A0A] hover:text-blue-600 transition-colors flex items-center justify-between">
-                    hello@webmashlabs.com
+                  <a href="mailto:info@webmashlabs.com" className="text-lg font-semibold text-[#0A0A0A] hover:text-blue-600 transition-colors flex items-center justify-between">
+                    info@webmashlabs.com
                     <ArrowRight className="w-4 h-4 text-[#737373]"/>
                   </a>
                 </div>
@@ -523,10 +523,10 @@ export default function ContactPage() {
 
           <div className="mb-6">
             <a 
-              href="mailto:hello@webmashlabs.com" 
+              href="mailto:info@webmashlabs.com" 
               className="text-2xl sm:text-3xl font-extrabold text-[#2563EB] hover:underline"
             >
-              hello@webmashlabs.com
+              info@webmashlabs.com
             </a>
           </div>
 

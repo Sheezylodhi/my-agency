@@ -24,7 +24,7 @@ const serviceLinks = [
 ];
 
 const contactLinks = [
-  { name: "hello@webmashlabs.com", href: "mailto:hello@webmashlabs.com" },
+  { name: "info@webmashlabs.com", href: "mailto:info@webmashlabs.com" },
   { name: "LinkedIn", href: "https://linkedin.com", external: true },
   { name: "Instagram", href: "https://instagram.com", external: true },
   { name: "Behance", href: "https://behance.net", external: true },
