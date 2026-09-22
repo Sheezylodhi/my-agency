@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
 
   const title = post.seoTitle || post.title;
   const description = post.metaDescription || post.excerpt;
-  const canonicalUrl = `https://webmashlabs.com/blog/${post.slug}`;
+  const canonicalUrl = `https://www.webmashlabs.com/blog/${post.slug}`;
   const keywordsList = [post.primaryKeyword, ...(post.secondaryKeywords || [])].filter(Boolean);
 
   return {
@@ -68,7 +68,7 @@ export default async function BlogPostPage({ params }) {
   }
 
   // Generate connected JSON-LD Structured Data graphs
-  const siteUrl = 'https://webmashlabs.com';
+  const siteUrl = 'https://www.webmashlabs.com';
   const articleUrl = `${siteUrl}/blog/${post.slug}`;
 
   const organizationSchema = {

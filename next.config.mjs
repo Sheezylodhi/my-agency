@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   reactCompiler: true,
 
@@ -9,6 +10,22 @@ const nextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+  },
+
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "webmashlabs.com",
+          },
+        ],
+        destination: "https://www.webmashlabs.com/:path*",
+        permanent: true,
+      },
+    ];
   },
 
   async headers() {

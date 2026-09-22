@@ -38,12 +38,12 @@ export async function generateMetadata({ params }) {
     title: industry.seoTitle,
     description: industry.metaDescription,
     alternates: {
-      canonical: `https://webmashlabs.com/industries/${industry.slug}`,
+      canonical: `https://www.webmashlabs.com/industries/${industry.slug}`,
     },
     openGraph: {
       title: industry.seoTitle,
       description: industry.metaDescription,
-      url: `https://webmashlabs.com/industries/${industry.slug}`,
+      url: `https://www.webmashlabs.com/industries/${industry.slug}`,
       siteName: "WebMash Labs",
       type: "website",
     },
@@ -60,7 +60,7 @@ export function generateStaticParams() {
 }
 
 function generateJsonLd(industry) {
-  const baseUrl = "https://webmashlabs.com";
+  const baseUrl = "https://www.webmashlabs.com";
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",

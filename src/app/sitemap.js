@@ -2,7 +2,7 @@ import { SERVICES } from "@/data/services";
 import { INDUSTRIES } from "@/data/industries";
 import { BLOG_POSTS } from "@/data/blog";
 
-const BASE_URL = "https://webmashlabs.com";
+const BASE_URL = "https://www.webmashlabs.com";
 
 export default function sitemap() {
   const now = new Date();

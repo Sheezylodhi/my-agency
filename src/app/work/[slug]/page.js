@@ -26,317 +26,1433 @@ import {
 // CENTRALIZED CASE STUDY & PROJECT DATA
 // ==========================================
 const CASE_STUDIES = {
-  "zs-digitizing": {
-    id: 1,
-    number: "01",
-    slug: "zs-digitizing",
-    title: "ZS Digitizing",
-    category: "E-Commerce / Digital Platform",
-    industry: "Manufacturing",
-    summary: "A custom digital platform designed to simplify product discovery, customer workflows and internal operations through a unified e-commerce experience.",
-    statement: "Building digital products around the way high-volume manufacturing businesses actually operate and scale.",
-    challenge: "The client operated within a traditional manufacturing space characterized by fragmented client requests, manual catalog handling, and a complete lack of centralized digital discovery. Customers struggled with finding precise product variations, leading to extended sales cycles, communication bottlenecks, and administrative overhead.",
-    approach: [
-      { num: "01", title: "Strategy", desc: "Mapped out customer purchasing journeys and catalog architecture to streamline high-volume ordering." },
-      { num: "02", title: "UX / Architecture", desc: "Designed intuitive catalog hierarchies and instant-search patterns to minimize discovery friction." },
-      { num: "03", title: "Design", desc: "Crafted a clean, conversion-focused digital flagship experience tailored to industrial clientele." },
-      { num: "04", title: "Engineering", desc: "Implemented a high-performance Next.js full-stack system with rapid database query resolutions." },
-      { num: "05", title: "Optimization", desc: "Tuned asset delivery, caching layers, and mobile responsiveness for flawless performance." }
-    ],
-    features: [
-      "Advanced product discovery and filtering system",
-      "Dynamic pricing and catalog synchronization",
-      "Streamlined customer dashboard for order tracking",
-      "Unified e-commerce checkout workflows",
-      "Manufacturing-oriented operational views",
-      "Secure role-based account management"
-    ],
-    designDirection: "The visual language combines industrial credibility with modern e-commerce clarity. Generous whitespace, razor-sharp typography, and structured grid compositions establish an authoritative brand presence.",
-    engineering: {
-      overview: "Built for lightning-fast performance and reliable inventory handling under load.",
-      frontend: "Developed with Next.js App Router for optimal server-side rendering, SEO readiness, and smooth client transitions.",
-      backend: "Node.js service layer handling secure API endpoints, transactional emails, and order data serialization.",
-      database: "MongoDB schema optimized for flexible product attribute variations and rapid document retrieval.",
-      apis: "Custom RESTful routing with integrated validation middleware and error handling."
+"zs-digitizing": {
+
+  id: 1,
+  number: "01",
+  slug: "zs-digitizing",
+
+  title: "ZS Digitizing",
+
+  category: "Embroidery Digitizing / Client Platform",
+
+  industry: "Embroidery & Apparel",
+
+  summary:
+    "A custom embroidery digitizing platform built to showcase professional digitizing services, manage client orders, streamline artwork submissions, and connect customers with a centralized digital workflow.",
+
+  statement:
+    "Transforming a traditional embroidery digitizing business into a streamlined digital platform built around faster client communication, organized order management, and a more professional customer experience.",
+
+  challenge:
+    "The client needed more than a traditional business website. Managing embroidery digitizing requests, artwork files, revisions, customer communication, and order information through fragmented manual processes made it difficult to maintain an organized workflow as demand increased. Customers also needed a clearer way to explore services, submit their embroidery requirements, track requests, and communicate with the business. The challenge was to create a professional digital experience that could serve both customers and the internal team without sacrificing simplicity or performance.",
+
+  approach: [
+
+    {
+      num: "01",
+      title: "Strategy",
+      desc:
+        "Defined a digital workflow around embroidery digitizing services, customer inquiries, artwork submissions, order management, and long-term client relationships."
     },
-    outcome: "The result is a unified digital experience that transforms traditional manual manufacturing catalog workflows into an automated, high-performance e-commerce platform.",
-    technologies: ["Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
-    services: ["Strategy", "UI/UX Design", "Web Development", "E-Commerce"],
-    image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1600&auto=format&fit=crop",
-    liveUrl: null,
-    nextProject: { slug: "atlas-operations", title: "Atlas Operations", number: "02", category: "ERP / Business System" }
+
+    {
+      num: "02",
+      title: "UX / Architecture",
+      desc:
+        "Structured the website, client portal, and admin experience into clear journeys so customers can discover services, submit requirements, and manage their requests with minimal friction."
+    },
+
+    {
+      num: "03",
+      title: "Design",
+      desc:
+        "Created a refined, service-focused interface that combines professional visual presentation with the clarity required by embroidery businesses, apparel brands, and custom garment clients."
+    },
+
+    {
+      num: "04",
+      title: "Engineering",
+      desc:
+        "Built a full-stack Next.js platform with secure authentication, database-driven workflows, customer accounts, order handling, file management, and dedicated administrative functionality."
+    },
+
+    {
+      num: "05",
+      title: "Optimization",
+      desc:
+        "Optimized responsive layouts, image delivery, client-side interactions, and application performance to provide a fast and reliable experience across desktop, tablet, and mobile devices."
+    }
+
+  ],
+
+  features: [
+
+    "Professional embroidery digitizing service showcase",
+
+    "Custom logo and artwork digitizing workflow",
+
+    "Vector artwork and embroidery patch service presentation",
+
+    "Customer registration and secure account management",
+
+    "Dedicated client dashboard for managing requests and orders",
+
+    "Order status and request tracking",
+
+    "Artwork and design file submission",
+
+    "Customer order history and account information",
+
+    "Centralized admin dashboard for business management",
+
+    "Admin-side customer and order management",
+
+    "Secure role-based access for clients and administrators",
+
+    "Cloud-based media and artwork file handling",
+
+    "Responsive experience across desktop, tablet, and mobile",
+
+    "SEO-focused service and content architecture"
+
+  ],
+
+  designDirection:
+    "The visual direction was built around precision, trust, and professional craftsmanship. Instead of relying on the generic look of a typical embroidery service website, the interface uses structured layouts, confident typography, refined spacing, and carefully presented service information to communicate the quality expected from professional embroidery digitizing. The customer-facing experience remains approachable while the client and admin interfaces prioritize clarity, efficiency, and operational control.",
+
+  engineering: {
+
+    overview:
+      "ZS Digitizing was engineered as a full-stack digital platform rather than a static marketing website, connecting the public website, client portal, and administrative system through a unified application architecture.",
+
+    frontend:
+      "Built with Next.js and a responsive component architecture to deliver fast page rendering, SEO-friendly service pages, smooth navigation, and optimized experiences across modern devices.",
+
+    backend:
+      "Node.js-powered application logic handles authentication, customer workflows, order operations, file-related processes, API communication, and administrative functionality through structured server-side routes.",
+
+    database:
+      "MongoDB provides a flexible data layer for customer accounts, orders, service information, request records, and platform data while supporting scalable document-based workflows.",
+
+    clientPanel:
+      "A dedicated client portal gives customers a centralized place to access their account, manage requests, review order information, submit artwork requirements, and stay connected with the digitizing workflow.",
+
+    adminPanel:
+      "The administrative dashboard provides internal control over customers, orders, requests, services, and operational data, reducing dependency on scattered manual processes and creating a more organized business workflow.",
+
+    fileManagement:
+      "Cloud-based media handling supports the management of embroidery artwork and related visual assets while keeping the platform prepared for file-heavy digitizing workflows.",
+
+    apis:
+      "Custom RESTful API routes connect the customer-facing application, client portal, and administrative system with structured validation, authentication, error handling, and database operations."
+
   },
-  "atlas-operations": {
-    id: 2,
+
+  outcome:
+    "The result is a complete digital ecosystem for an embroidery digitizing business — combining a professional service website with a dedicated client portal and powerful administrative dashboard. ZS Digitizing provides customers with a clearer way to discover embroidery digitizing services, submit their requirements, and manage their requests while giving the business a centralized system for handling customers, orders, artwork, and day-to-day operations.",
+
+  technologies: [
+    "Next.js",
+    "Node.js",
+    "MongoDB",
+    "Tailwind CSS",
+    "Cloudinary"
+  ],
+
+  services: [
+    "Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Client Portal",
+    "Admin Dashboard",
+    "E-Commerce",
+    "SEO"
+  ],
+
+  image: "/zs-digitizing.png",
+
+  imageAlt:
+    "ZS Digitizing embroidery digitizing services website, client portal and admin dashboard",
+
+  liveUrl: "https://zsdigitizing.com",
+
+  nextProject: {
+    slug: "seedra-store",
+    title: "Seedra",
     number: "02",
+    category: "E-Commerce / Wellness Store"
+  }
+
+},
+ "seedra-store": {
+  id: 5,
+  number: "05",
+  slug: "seedra-store",
+  title: "Seedra",
+  category: "E-Commerce / Wellness Store",
+  industry: "Health & Wellness",
+
+  summary:
+    "A premium wellness e-commerce platform designed to help customers discover seed-based products, build daily wellness routines, place orders seamlessly, and manage the entire store through a centralized administration system.",
+
+  statement:
+    "Turning a traditional seed business into a refined digital commerce experience with seamless shopping, structured product management, and centralized business operations.",
+
+  challenge:
+    "The business needed more than a simple online catalog. Customers required a clear and trustworthy way to discover wellness products, understand product benefits, choose suitable pack sizes, and complete purchases through convenient payment methods. At the same time, the business needed a centralized system for managing products, variants, pricing, inventory, orders, customers, reviews, coupons, and day-to-day store operations. The challenge was to bring the customer experience and internal business management into one scalable e-commerce platform while maintaining a premium wellness-focused visual identity.",
+
+  approach: [
+
+    {
+      num: "01",
+      title: "Strategy",
+      desc:
+        "Defined a commerce structure around product discovery, wellness education, product variants, customer trust, streamlined checkout, and scalable store management."
+    },
+
+    {
+      num: "02",
+      title: "UX / Architecture",
+      desc:
+        "Designed a clear shopping journey connecting product discovery, search and filtering, product details, variants, cart, checkout, order tracking, and customer account experiences."
+    },
+
+    {
+      num: "03",
+      title: "Design",
+      desc:
+        "Created a premium wellness aesthetic using refined typography, natural visual language, structured layouts, and subtle interactions to establish trust without making the store feel like a generic seed marketplace."
+    },
+
+    {
+      num: "04",
+      title: "Engineering",
+      desc:
+        "Built a full-stack Next.js commerce platform with database-driven products, product variants, customer accounts, orders, payments, reviews, coupons, inventory workflows, and a dedicated administrative system."
+    },
+
+    {
+      num: "05",
+      title: "Optimization",
+      desc:
+        "Optimized the storefront for responsive shopping, efficient product browsing, image delivery, cart interactions, checkout reliability, and a consistent experience across desktop and mobile devices."
+    }
+
+  ],
+
+  features: [
+
+    "Premium wellness-focused online storefront",
+
+    "Structured product catalog with category and product-type organization",
+
+    "Multiple product variants with pack sizes, pricing, comparison pricing, stock, and SKU management",
+
+    "Product search, filtering, and sorting experience",
+
+    "Detailed product pages with benefits, information, and purchasing options",
+
+    "Persistent shopping cart and cart drawer experience",
+
+    "Streamlined checkout workflow",
+
+    "Multiple payment methods including Cash on Delivery and online payment options",
+
+    "Bank transfer, JazzCash, and Easypaisa payment workflows",
+
+    "Payment proof and transaction information handling",
+
+    "Customer accounts and order history",
+
+    "Order status and fulfillment management",
+
+    "Delivery charge and free-delivery threshold logic",
+
+    "Customer review and rating system",
+
+    "Coupon and promotional discount management",
+
+    "Percentage and fixed-value coupon support",
+
+    "Inventory and stock-aware purchasing workflows",
+
+    "Secure administrative authentication",
+
+    "Centralized admin dashboard",
+
+    "Product and variant management from the admin panel",
+
+    "Order and customer management",
+
+    "Review moderation and management",
+
+    "Coupon management and usage tracking",
+
+    "Store analytics and business performance views",
+
+    "Responsive customer and administrative interfaces",
+
+    "SEO-ready product and storefront architecture"
+
+  ],
+
+  designDirection:
+    "The visual direction was intentionally positioned closer to a premium wellness brand than a conventional seed store. Natural tones, generous whitespace, refined typography, structured product presentation, and subtle motion create a calm and trustworthy shopping environment. The storefront focuses on helping customers understand the products before purchasing, while the administrative experience prioritizes clarity, efficiency, and operational control.",
+
+  engineering: {
+
+    overview:
+      "Seedra was engineered as a complete full-stack commerce ecosystem, combining a customer-facing storefront with authenticated customer functionality and a centralized administrative management platform.",
+
+    frontend:
+      "Built with Next.js using a responsive component architecture for fast storefront rendering, dynamic product experiences, optimized navigation, and mobile-first shopping interactions.",
+
+    backend:
+      "Server-side application logic handles products, product variants, customers, carts, orders, payment information, reviews, coupons, authentication, inventory-related operations, and administrative workflows.",
+
+    database:
+      "MongoDB provides the primary data layer for products, variants, customers, orders, reviews, coupons, inventory information, and other commerce records with flexible schemas suitable for evolving product structures.",
+
+    productManagement:
+      "The platform supports structured product management including product types, variants, pack sizes, prices, comparison prices, stock quantities, SKUs, product imagery, descriptions, and related commerce information.",
+
+    cartAndCheckout:
+      "A persistent cart experience allows customers to manage products and variants before moving through a streamlined checkout process with delivery calculations, customer information, and multiple payment options.",
+
+    payments:
+      "The checkout architecture supports Cash on Delivery alongside online and manual payment workflows, including bank transfer, JazzCash, and Easypaisa payment handling with transaction and payment-proof information where required.",
+
+    orderManagement:
+      "Orders are stored and managed centrally, allowing the business to review customer information, purchased products, payment details, delivery information, and order status through the administrative interface.",
+
+    customerExperience:
+      "Authenticated customers can access their account information, review previous purchases, monitor order progress, and interact with the store through a more personalized shopping experience.",
+
+    reviewSystem:
+      "A customer review system provides a structured way to collect product feedback and ratings while giving administrators control over review management and moderation.",
+
+    couponSystem:
+      "The platform includes centralized coupon management supporting percentage-based and fixed-value discounts, active and inactive states, expiration handling, and usage tracking.",
+
+    adminPanel:
+      "A dedicated administrative dashboard gives the business centralized control over products, variants, inventory, orders, customers, reviews, coupons, payments, and store operations without requiring direct database access.",
+
+    analytics:
+      "The administration system provides business-level analytics around revenue, orders, average order value, customer activity, and other operational metrics to help the store monitor performance.",
+
+    mediaManagement:
+      "Product and store imagery can be managed through cloud-based media handling, providing optimized asset delivery for a visually rich commerce experience.",
+
+    apis:
+      "Custom API routes connect the storefront, customer workflows, checkout system, and administrative dashboard with structured validation, authentication, error handling, and database operations."
+
+  },
+
+  outcome:
+    "The result is a complete digital commerce ecosystem that brings the Seedra brand, product discovery, customer shopping, payments, order management, and internal operations into one unified platform. Customers receive a polished and trustworthy wellness shopping experience, while the business gains a centralized admin system for managing products, variants, inventory, orders, customers, reviews, coupons, payments, and day-to-day e-commerce operations.",
+
+  technologies: [
+    "Next.js",
+    "Node.js",
+    "MongoDB",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Cloudinary"
+  ],
+
+  services: [
+    "E-Commerce Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Customer Portal",
+    "Admin Dashboard",
+    "Payment Integration",
+    "Order Management",
+    "SEO"
+  ],
+
+  image: "/seedra-store.png",
+
+  imageAlt:
+    "Seedra premium wellness e-commerce store with customer shopping experience and admin management dashboard",
+
+  liveUrl: null,
+
+  nextProject: {
     slug: "atlas-operations",
     title: "Atlas Operations",
-    category: "ERP / Business System",
-    industry: "Logistics",
-    summary: "A unified operations platform for inventory, orders, teams and business workflows.",
-    statement: "Eliminating operational drag by replacing disconnected spreadsheets with centralized, real-time enterprise visibility.",
-    challenge: "Logistics coordinators and warehouse supervisors relied on fragile, disconnected spreadsheets and legacy desktop tools. This created severe data silos, delayed status updates, and high vulnerability to human error during critical inventory transfers.",
-    approach: [
-      { num: "01", title: "Strategy", desc: "Audited existing supply chain data structures and mapped out unified data entities." },
-      { num: "02", title: "UX / Architecture", desc: "Designed high-density dashboard layouts optimized for rapid data ingestion and status scanning." },
-      { num: "03", title: "Design", desc: "Engineered a purposeful, distraction-free enterprise UI with high data legibility." },
-      { num: "04", title: "Engineering", desc: "Constructed a real-time reactive frontend paired with a robust relational database core." }
-    ],
-    features: [
-      "Real-time inventory tracking and ledger synchronization",
-      "Centralized order management and status pipelines",
-      "Role-based team workflows and permission boundaries",
-      "High-density operational analytics dashboards",
-      "Automated event logging and audit trails",
-      "Optimized query performance for large datasets"
-    ],
-    designDirection: "Functional minimalism. Every pixel serves to communicate operational status instantly, using clear visual hierarchies, crisp typography, and deliberate color coding for system alerts.",
-    engineering: {
-      overview: "Engineered for uncompromising data integrity, low latency, and high concurrent read/write capacity.",
-      frontend: "React-based single-page dashboard architecture with state management optimized for frequent live updates.",
-      backend: "Node.js core handling complex transaction logic and background synchronization workers.",
-      database: "PostgreSQL relational schema ensuring strict consistency constraints across inventory and orders.",
-      apis: "Secure authenticated endpoints supported by Redis caching layers for instant data retrieval."
-    },
-    outcome: "Atlas Operations successfully consolidated multi-department workflows into a single cohesive system, drastically reducing operational friction and improving inventory tracking accuracy.",
-    technologies: ["React", "Node.js", "PostgreSQL", "Redis"],
-    services: ["System Architecture", "Dashboard Design", "Full-Stack Engineering"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop",
-    liveUrl: null,
-    nextProject: { slug: "medora-health", title: "Medora Health", number: "03", category: "Healthcare / Web Application" }
-  },
-  "medora-health": {
-    id: 3,
-    number: "03",
-    slug: "medora-health",
-    title: "Medora Health",
-    category: "Healthcare / Web Application",
-    industry: "Healthcare",
-    summary: "A modern digital healthcare experience connecting patient services, appointments and secure workflows.",
-    statement: "Bridging clinical care coordination with human-centered digital experiences for patients and providers.",
-    challenge: "Patient engagement touchpoints were fragmented across outdated portals, phone bookings, and paper forms. Clinicians struggled with administrative overhead while patients experienced disjointed navigation when booking appointments and accessing care summaries.",
-    approach: [
-      { num: "01", title: "Strategy", desc: "Conducted UX research focused on reducing patient anxiety and streamlining appointment flows." },
-      { num: "02", title: "UX / Architecture", desc: "Created empathetic user journeys balancing clinical rigor with accessible digital interactions." },
-      { num: "03", title: "Design", desc: "Designed a calm, trustworthy visual identity utilizing reassuring tones and clear typography." },
-      { num: "04", title: "Engineering", desc: "Built a secure, type-safe Next.js web application with strict data handling practices." }
-    ],
-    features: [
-      "Intuitive patient appointment scheduling workflows",
-      "Secure patient-provider communication portals",
-      "Clean clinical dashboard views for care coordinators",
-      "Responsive patient intake and medical history forms",
-      "Role-segregated access control for staff and patients",
-      "Fast, accessible mobile and desktop interfaces"
-    ],
-    designDirection: "Calm, clean, and trustworthy. The aesthetic avoids clinical coldness in favor of warm neutrals, approachable typography, and uncluttered whitespace.",
-    engineering: {
-      overview: "Designed with an emphasis on type safety, input validation, and responsive rendering across all devices.",
-      frontend: "Next.js with TypeScript ensuring rigorous component typing and predictable state propagation.",
-      backend: "Secure API routes implementing stringent sanitization and validation standards.",
-      database: "Optimized data models supporting structured patient records and schedule matrices.",
-      apis: "RESTful architecture with encrypted payload transmission."
-    },
-    outcome: "Medora Health delivered a streamlined, human-centric web portal that bridges the gap between administrative healthcare workflows and patient accessibility.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-    services: ["UX Research", "UI Design", "Secure Web App"],
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1600&auto=format&fit=crop",
-    liveUrl: null,
-    nextProject: { slug: "haven-properties", title: "Haven Properties", number: "04", category: "Real Estate / Digital Experience" }
-  },
-  "haven-properties": {
-    id: 4,
-    number: "04",
-    slug: "haven-properties",
-    title: "Haven Properties",
-    category: "Real Estate / Digital Experience",
-    industry: "Real Estate",
-    summary: "A premium property discovery experience designed around high-intent buyers and modern real estate workflows.",
-    statement: "Elevating luxury real estate discovery through cinematic visual storytelling and lightning-fast spatial search.",
-    challenge: "High-end real estate properties require presentation standards that match their physical value. Existing platforms relied on cluttered layouts, slow map renderings, and generic listing cards that failed to communicate architectural prestige.",
-    approach: [
-      { num: "01", title: "Strategy", desc: "Defined an editorial brand positioning suited for high-net-worth property buyers." },
-      { num: "02", title: "UX / Architecture", desc: "Integrated immersive media layouts with instantaneous geographic filtering." },
-      { num: "03", title: "Design", desc: "Created a magazine-style visual rhythm pairing large architectural photography with minimal UI." },
-      { num: "04", title: "Engineering", desc: "Developed fluid map integrations and buttery-smooth property gallery transitions." }
-    ],
-    features: [
-      "Cinematic full-width architectural photo galleries",
-      "Interactive Mapbox integration for geographic filtering",
-      "Frictionless virtual tour scheduling workflows",
-      "Curated high-intent buyer inquiry funnels",
-      "Responsive property detail presentations",
-      "Optimized asset delivery for high-resolution imagery"
-    ],
-    designDirection: "Editorial luxury. Inspired by high-end architectural publications, the layout emphasizes generous negative space, sophisticated serif/sans-serif pairing, and immersive imagery.",
-    engineering: {
-      overview: "Optimized for heavy image assets and fluid client-side mapping interactions without performance degradation.",
-      frontend: "React and Next.js frontend with dynamic image optimization and lazy-loading pipelines.",
-      backend: "Lightweight API layer serving structured property metadata and geolocation coordinates.",
-      apis: "Mapbox GL JS integration for responsive spatial querying and custom map styling."
-    },
-    outcome: "Haven Properties repositioned the agency's digital catalog into an immersive, editorial showcase that elevates property discovery into a refined digital experience.",
-    technologies: ["React", "Next.js", "Mapbox API"],
-    services: ["Brand Experience", "Web Design", "Frontend Development"],
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop",
-    liveUrl: null,
-    nextProject: { slug: "nova-commerce", title: "Nova Commerce", number: "05", category: "E-Commerce" }
-  },
-  "nova-commerce": {
-    id: 5,
-    number: "05",
-    slug: "nova-commerce",
-    title: "Nova Commerce",
-    category: "E-Commerce",
-    industry: "Retail",
-    summary: "A conversion-focused commerce experience built for modern product discovery and seamless checkout.",
-    statement: "Crafting minimalist luxury storefronts designed to maximize product desire and checkout completion.",
-    challenge: "Modern retail shoppers demand instantaneous page loads, tactile product visuals, and zero friction during checkout. Standard template storefronts suffer from clumsy cart mechanics, slow transitions, and generic layouts that fail to build brand loyalty.",
-    approach: [
-      { num: "01", title: "Strategy", desc: "Analyzed checkout drop-off points and restructured product discovery funnels." },
-      { num: "02", title: "UX / Architecture", desc: "Streamlined cart drawer mechanics and multi-step payment flows into single-page clarity." },
-      { num: "03", title: "Design", desc: "Built a minimalist luxury aesthetic putting high-end product photography front and center." },
-      { num: "04", title: "Engineering", desc: "Integrated robust payment gateways with reactive cart state synchronization." }
-    ],
-    features: [
-      "Immersive product discovery grids and galleries",
-      "Predictive product recommendations engine",
-      "Frictionless slide-over cart experience",
-      "Custom Stripe checkout integration",
-      "Optimized mobile shopping interactions",
-      "Lightning-fast page transitions"
-    ],
-    designDirection: "Understated elegance. Clean grid systems, subtle borders, monochromatic color grading, and crisp typography allow product imagery to drive the visual narrative.",
-    engineering: {
-      overview: "Built for speed, reliability, and secure transaction processing under high traffic spikes.",
-      frontend: "Next.js application with optimized client-side state for instantaneous cart updates.",
-      backend: "Secure serverless API routes interfacing directly with payment infrastructure.",
-      apis: "Stripe API integration ensuring encrypted, compliant transaction flows."
-    },
-    outcome: "Nova Commerce delivered a high-performance, conversion-optimized retail storefront that marries aesthetic minimalism with bulletproof e-commerce engineering.",
-    technologies: ["Next.js", "Stripe API", "Tailwind CSS"],
-    services: ["E-Commerce Strategy", "UI/UX", "Custom Checkout Integration"],
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1600&auto=format&fit=crop",
-    liveUrl: null,
-    nextProject: { slug: "fleetflow", title: "FleetFlow", number: "06", category: "Logistics / Web Application" }
-  },
-  "fleetflow": {
-    id: 6,
     number: "06",
-    slug: "fleetflow",
-    title: "FleetFlow",
-    category: "Logistics / Web Application",
-    industry: "Logistics",
-    summary: "A centralized logistics platform for fleet visibility, delivery tracking and operational coordination.",
-    statement: "Synchronizing real-time telemetry and dispatch logistics into a responsive, high-visibility control center.",
-    challenge: "Fleet operators manage dynamic moving assets across vast geographic areas. Without real-time telemetry and unified dispatch interfaces, communication delays led to routing inefficiencies, idle carrier time, and delayed status reporting.",
-    approach: [
-      { num: "01", title: "Strategy", desc: "Mapped out telemetry ingestion requirements and dispatcher workflow bottlenecks." },
-      { num: "02", title: "UX / Architecture", desc: "Designed dual-pane interfaces combining interactive maps with live event logs." },
-      { num: "03", title: "Design", desc: "Crafted a dark-mode optimized operational dashboard for around-the-clock monitoring." },
-      { num: "04", title: "Engineering", desc: "Implemented WebSocket event streams for real-time tracking updates without polling lag." }
-    ],
-    features: [
-      "Real-time fleet visibility and telemetry monitoring",
-      "Live delivery tracking and status progression",
-      "Centralized dispatch management interface",
-      "WebSocket-powered instant event streaming",
-      "Optimized routing schedules and alert triggers",
-      "High-performance PostgreSQL data persistence"
-    ],
-    designDirection: "Tactical precision. Deep slate and dark neutral foundations paired with high-contrast accent indicators provide optimal readability for continuous monitoring environments.",
-    engineering: {
-      overview: "Architected for real-time bidirectional communication and high-frequency state synchronization.",
-      frontend: "React dashboard utilizing efficient canvas/SVG map layers and reactive state bindings.",
-      backend: "Node.js server maintaining persistent WebSocket connections for live telemetry broadcast.",
-      database: "PostgreSQL optimized for time-series location logs and dispatch event histories.",
-      apis: "Socket.io integration paired with RESTful dispatch control endpoints."
-    },
-    outcome: "FleetFlow provided logistics providers with an enterprise-grade control center that unifies live tracking, dispatch coordination, and route management into one resilient platform.",
-    technologies: ["Node.js", "React", "Socket.io", "PostgreSQL"],
-    services: ["Dashboard UI", "WebSockets Integration", "Performance Tuning"],
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600&auto=format&fit=crop",
-    liveUrl: null,
-    nextProject: { slug: "educore", title: "EduCore", number: "07", category: "Education / SaaS" }
-  },
-  "educore": {
-    id: 7,
-    number: "07",
-    slug: "educore",
-    title: "EduCore",
-    category: "Education / SaaS",
-    industry: "Education",
-    summary: "A digital learning platform connecting students, instructors, courses and progress in one experience.",
-    statement: "Designing modular educational ecosystems that empower students and simplify course management for instructors.",
-    challenge: "Educational institutions and course creators often struggle with clunky legacy Learning Management Systems (LMS) that frustrate students and create administrative burdens for instructors grading assignments and tracking engagement.",
-    approach: [
-      { num: "01", title: "Strategy", desc: "Defined learner engagement loops and instructor content management workflows." },
-      { num: "02", title: "UX / Architecture", desc: "Created distinct, role-tailored dashboards for students and educators." },
-      { num: "03", title: "Design", desc: "Developed a vibrant, approachable interface design promoting focus and content retention." },
-      { num: "04", title: "Engineering", desc: "Constructed a scalable Next.js SaaS architecture with robust database schemas." }
-    ],
-    features: [
-      "Intuitive course management and modular delivery",
-      "Student performance analytics and progress tracking",
-      "Interactive assignment submission and grading workflows",
-      "Clean, distraction-free student learning views",
-      "Role-based access for instructors and administrators",
-      "Scalable database architecture for growing student bodies"
-    ],
-    designDirection: "Clean, engaging, and structured. Balanced typography, clear module milestones, and accessible color palettes ensure students stay focused on learning materials.",
-    engineering: {
-      overview: "Built for scalability, fast course asset loading, and reliable progress persistence.",
-      frontend: "Next.js application with modular component architecture for reusable course widgets.",
-      backend: "Node.js service layer handling authentication, role authorization, and submission logs.",
-      database: "MongoDB document structures ideal for nested course chapters, quizzes, and user progress.",
-      apis: "RESTful endpoints supporting secure media streaming and grade calculations."
-    },
-    outcome: "EduCore delivered a modern, dependable SaaS platform that simplifies course delivery for educators while offering students an engaging, frictionless learning environment.",
-    technologies: ["Next.js", "MongoDB", "Tailwind CSS"],
-    services: ["Product Design", "SaaS Development", "Database Architecture"],
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1600&auto=format&fit=crop",
-    liveUrl: null,
-    nextProject: { slug: "axiom-ai", title: "Axiom AI", number: "08", category: "AI / Automation" }
-  },
-  "axiom-ai": {
-    id: 8,
-    number: "08",
-    slug: "axiom-ai",
-    title: "Axiom AI",
-    category: "AI / Automation",
-    industry: "Finance",
-    summary: "An AI-powered workflow environment designed to connect intelligent assistants with repeatable business processes.",
-    statement: "Orchestrating intelligent LLM workflows and secure corporate document parsing into a cohesive automation workspace.",
-    challenge: "Organizations looking to harness artificial intelligence face complex integration hurdles. Isolated chat wrappers fail to connect AI reasoning with core enterprise documents, secure data pipelines, and repeatable operational workflows.",
-    approach: [
-      { num: "01", title: "Strategy", desc: "Mapped out node-based workflow architectures and secure document parsing pipelines." },
-      { num: "02", title: "UX / Architecture", desc: "Designed intuitive visual workspace builders for constructing automated AI chains." },
-      { num: "03", title: "Design", desc: "Created a sophisticated, technical dark-themed interface suited for advanced automation engineers." },
-      { num: "04", title: "Engineering", desc: "Integrated Python processing microservices with a responsive Next.js frontend." }
-    ],
-    features: [
-      "Modular node-based workflow orchestration",
-      "Secure corporate document parsing and embedding",
-      "Custom LLM integration and prompt chain management",
-      "Real-time execution logs and debugging monitors",
-      "Secure API key management and access controls",
-      "High-performance asynchronous background workers"
-    ],
-    designDirection: "Sophisticated technical dark mode. Deep carbon tones paired with electric blue accents and precise monospace metadata communicate high-end artificial intelligence engineering.",
-    engineering: {
-      overview: "Engineered to handle asynchronous LLM requests, document parsing streams, and complex state graphs.",
-      frontend: "Next.js interface featuring interactive drag-and-drop workspace nodes and live status feeds.",
-      backend: "Python-powered orchestration backend utilizing LangChain and asynchronous API handlers.",
-      database: "PostgreSQL and vector storage for efficient document retrieval and metadata indexing.",
-      apis: "OpenAI API integration alongside custom webhook dispatchers."
-    },
-    outcome: "Axiom AI provided enterprises with a powerful, flexible automation workspace that bridges the gap between advanced artificial intelligence and practical business workflows.",
-    technologies: ["Python", "LangChain", "Next.js", "OpenAI API"],
-    services: ["AI Integration", "Workflow Engineering", "Interface Design"],
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop",
-    liveUrl: null,
-    nextProject: { slug: "zs-digitizing", title: "ZS Digitizing", number: "01", category: "E-Commerce / Digital Platform" }
+    category: "ERP / Business System"
   }
+},
+
+
+"fashion-commerce": {
+  id: 3,
+  number: "03",
+  slug: "fashion-commerce",
+  title: "Fashion Commerce",
+
+  category: "E-Commerce / Fashion Store",
+
+  industry: "Fashion & Apparel",
+
+  summary:
+    "A modern fashion e-commerce platform combining a premium online shopping experience with secure payments, customer accounts, order management, inventory control, and a centralized admin dashboard.",
+
+  statement:
+    "Creating a complete digital retail experience where customers can discover, purchase, and manage their fashion orders while the business controls its entire store from one centralized platform.",
+
+  challenge:
+    "The business needed a complete online retail system rather than a simple product showcase. Customers needed an intuitive way to browse clothing, explore product details, select available options, manage their shopping cart, create accounts, and complete purchases securely. Behind the storefront, the business also required centralized control over products, inventory, customers, payments, and orders. The challenge was to connect these customer-facing and operational workflows into one reliable e-commerce platform while maintaining the polished visual standards expected from a modern fashion brand.",
+
+  approach: [
+
+    {
+      num: "01",
+      title: "Strategy",
+      desc:
+        "Mapped the complete customer journey from product discovery through checkout and post-purchase account management while defining the operational requirements for the store."
+    },
+
+    {
+      num: "02",
+      title: "UX / Architecture",
+      desc:
+        "Structured the storefront around intuitive product discovery, detailed product pages, cart interactions, secure checkout, customer accounts, and streamlined order management."
+    },
+
+    {
+      num: "03",
+      title: "Design",
+      desc:
+        "Created a modern fashion-focused interface with strong visual hierarchy, premium product presentation, refined typography, and responsive layouts designed to keep the shopping experience clear and conversion-focused."
+    },
+
+    {
+      num: "04",
+      title: "Engineering",
+      desc:
+        "Developed a full-stack Next.js commerce application connecting the storefront, customer account system, Stripe payments, database, and administrative dashboard through a unified architecture."
+    },
+
+    {
+      num: "05",
+      title: "Optimization",
+      desc:
+        "Optimized product imagery, page rendering, responsive interactions, checkout flows, and database operations to provide a fast and dependable shopping experience across devices."
+    }
+
+  ],
+
+  features: [
+
+    "Premium fashion e-commerce storefront",
+
+    "Product catalog and category browsing",
+
+    "Detailed product pages with purchasing information",
+
+    "Product search and discovery experience",
+
+    "Shopping cart and persistent cart management",
+
+    "Streamlined checkout experience",
+
+    "Secure Stripe payment integration",
+
+    "Stripe payment processing and transaction handling",
+
+    "Customer registration and authentication",
+
+    "Dedicated customer account area",
+
+    "Customer order history and order information",
+
+    "Order status and fulfillment management",
+
+    "Centralized product management",
+
+    "Product pricing and inventory management",
+
+    "Customer management through the admin panel",
+
+    "Centralized order management dashboard",
+
+    "Administrative store controls",
+
+    "Secure role-based administrative access",
+
+    "Responsive mobile-first shopping experience",
+
+    "Optimized product image delivery",
+
+    "Database-driven e-commerce workflows",
+
+    "SEO-ready storefront architecture"
+
+  ],
+
+  designDirection:
+    "The visual direction was built around modern fashion commerce: clean, editorial-inspired layouts, strong product imagery, refined typography, and generous spacing. The interface keeps attention on the products while removing unnecessary friction from browsing and purchasing. Behind the customer experience, the administrative interface follows a more functional visual language focused on information clarity, efficient management, and fast access to important store operations.",
+
+  engineering: {
+
+    overview:
+      "The platform was engineered as a complete full-stack e-commerce system, connecting the customer storefront, authentication, payment infrastructure, order processing, database, and administrative management into one application.",
+
+    frontend:
+      "Built with Next.js using a reusable responsive component architecture for fast storefront rendering, dynamic product pages, smooth navigation, and optimized experiences across desktop, tablet, and mobile.",
+
+    backend:
+      "Node.js-powered server-side functionality handles authentication, product operations, customer workflows, order creation, payment-related processes, API communication, and administrative operations.",
+
+    database:
+      "MongoDB provides the core data layer for products, customers, orders, inventory information, account data, and other commerce records using flexible document-based structures.",
+
+    authentication:
+      "A secure customer authentication system allows shoppers to create accounts, sign in, access their account information, and review their previous orders through a personalized customer experience.",
+
+    payments:
+      "Stripe is integrated into the checkout workflow to provide secure online payment processing, transaction handling, and reliable communication between the store and payment infrastructure.",
+
+    checkout:
+      "The checkout experience connects customer information, cart contents, pricing, payment processing, and order creation into a streamlined purchasing workflow designed to minimize unnecessary steps.",
+
+    orderManagement:
+      "Orders are stored centrally and made available to the administrative system, allowing the business to review customer purchases, order details, payment information, and fulfillment status from one place.",
+
+    inventoryManagement:
+      "The commerce architecture supports centralized product and inventory management, giving administrators control over product availability, pricing, and stock-related information.",
+
+    adminPanel:
+      "A dedicated admin dashboard gives the business centralized control over products, customers, orders, inventory, and other core store operations without requiring direct database access.",
+
+    customerPanel:
+      "The customer account area provides shoppers with a personalized space to manage their account information and access their order history after completing purchases.",
+
+    mediaManagement:
+      "Product imagery is handled through optimized media workflows to support high-quality fashion photography while maintaining efficient page performance and responsive delivery.",
+
+    apis:
+      "Custom API routes connect storefront interactions, authentication, product data, customer accounts, orders, and administrative workflows with structured validation and error handling."
+
+  },
+
+  outcome:
+    "The result is a complete fashion commerce ecosystem that brings product discovery, customer accounts, secure Stripe payments, checkout, orders, inventory, and business administration together in one unified platform. Customers receive a polished and frictionless online shopping experience, while the business gains a centralized system for managing the core operations behind its digital storefront.",
+
+  technologies: [
+    "Next.js",
+    "Node.js",
+    "MongoDB",
+    "Stripe",
+    "Tailwind CSS",
+    "Cloudinary"
+  ],
+
+  services: [
+    "E-Commerce Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Customer Account System",
+    "Stripe Integration",
+    "Admin Dashboard",
+    "Order Management",
+    "Inventory Management",
+    "SEO"
+  ],
+
+  image:
+    "/eccomerce.png",
+
+  imageAlt:
+    "Modern fashion e-commerce storefront with clothing products and online shopping experience",
+
+  liveUrl: null,
+
+  nextProject: {
+    slug: "food-ordering-platform",
+    title: "Food Ordering Platform",
+    number: "04",
+    category: "E-Commerce / Food Ordering"
+  }
+},
+"food-ordering-platform": {
+  id: 4,
+  number: "04",
+  slug: "food-ordering-platform",
+  title: "Food Ordering Platform",
+
+  category: "E-Commerce / Food Ordering",
+
+  industry: "Food & Restaurant",
+
+  summary:
+    "An advanced food ordering platform combining a modern digital menu and online ordering experience with customer accounts, order management, and a centralized restaurant administration system.",
+
+  statement:
+    "Transforming restaurant ordering into a streamlined digital experience while giving restaurant teams centralized control over menus, orders, customers, and daily operations.",
+
+  challenge:
+    "The restaurant needed a complete digital ordering solution rather than a static website or simple menu page. Customers needed an intuitive way to discover menu items, explore food details, customize their selections where applicable, manage their cart, and place orders through a smooth online experience. At the same time, the restaurant required an administrative system for managing menu items, pricing, availability, customer information, incoming orders, and operational workflows. The challenge was to connect the customer ordering journey with the restaurant's internal management process through one reliable and scalable platform.",
+
+  approach: [
+
+    {
+      num: "01",
+      title: "Strategy",
+      desc:
+        "Mapped the complete digital ordering journey from menu discovery and item selection through cart, checkout, order confirmation, and post-order management."
+    },
+
+    {
+      num: "02",
+      title: "UX / Architecture",
+      desc:
+        "Designed a structured food discovery experience with clear menu categories, detailed item presentations, streamlined cart interactions, and a frictionless ordering flow."
+    },
+
+    {
+      num: "03",
+      title: "Design",
+      desc:
+        "Created a visually engaging restaurant interface focused on appetizing food presentation, clear pricing, strong hierarchy, and intuitive interactions across desktop and mobile."
+    },
+
+    {
+      num: "04",
+      title: "Engineering",
+      desc:
+        "Built a full-stack ordering platform connecting the customer storefront, authentication, cart, checkout, order processing, database, and administrative dashboard."
+    },
+
+    {
+      num: "05",
+      title: "Optimization",
+      desc:
+        "Optimized image delivery, menu browsing, responsive layouts, cart interactions, API performance, and order workflows for a fast and dependable online ordering experience."
+    }
+
+  ],
+
+  features: [
+
+    "Modern digital restaurant storefront",
+
+    "Structured online food menu",
+
+    "Menu categories and food discovery",
+
+    "Detailed food item pages",
+
+    "Food item pricing and availability management",
+
+    "Shopping cart and cart management",
+
+    "Streamlined online ordering workflow",
+
+    "Customer registration and authentication",
+
+    "Dedicated customer account experience",
+
+    "Customer order history",
+
+    "Order confirmation and status tracking",
+
+    "Centralized restaurant order management",
+
+    "Menu item and category management",
+
+    "Pricing and availability controls",
+
+    "Customer management through admin panel",
+
+    "Restaurant administration dashboard",
+
+    "Secure role-based administrative access",
+
+    "Centralized operational data management",
+
+    "Responsive mobile ordering experience",
+
+    "Optimized food imagery and media delivery",
+
+    "Database-driven ordering workflows",
+
+    "SEO-ready restaurant and menu architecture"
+
+  ],
+
+  designDirection:
+    "The visual direction was designed around modern food commerce, combining strong food photography with a clean and approachable interface. The customer experience prioritizes appetite, clarity, and speed, allowing users to move naturally from discovering a dish to placing an order. The administrative interface follows a more functional design language focused on operational clarity, order visibility, menu management, and efficient restaurant workflows.",
+
+  engineering: {
+
+    overview:
+      "The platform was engineered as a complete full-stack food ordering ecosystem, connecting the customer-facing restaurant experience with authenticated customer functionality and a centralized administration system.",
+
+    frontend:
+      "Built with Next.js using a reusable responsive component architecture for fast page rendering, dynamic menu experiences, smooth navigation, and optimized mobile ordering interactions.",
+
+    backend:
+      "Node.js-powered server-side functionality handles authentication, menu operations, customer workflows, cart processing, order creation, API communication, and administrative operations.",
+
+    database:
+      "MongoDB provides the core data layer for menu items, categories, customers, orders, pricing, availability, account information, and other restaurant records.",
+
+    authentication:
+      "A secure customer authentication system allows users to create accounts, sign in, manage their information, and access their previous orders through a personalized account experience.",
+
+    menuManagement:
+      "The admin system provides centralized management of food categories and menu items, including product information, pricing, imagery, and availability.",
+
+    cartAndOrdering:
+      "A persistent cart experience allows customers to review selected food items, update quantities, verify pricing, and proceed through a streamlined online ordering workflow.",
+
+    orderManagement:
+      "Orders are stored centrally and surfaced through the administration system, allowing restaurant staff to review incoming orders, customer information, selected items, order totals, and order status.",
+
+    customerManagement:
+      "The administrative dashboard provides visibility into registered customers and their order activity, helping the business maintain a centralized view of its customer base.",
+
+    adminPanel:
+      "A dedicated restaurant admin dashboard gives the business centralized control over menu items, categories, pricing, availability, customers, orders, and other operational workflows without requiring direct database access.",
+
+    availability:
+      "Menu availability can be managed from the administrative side so restaurant teams can keep the digital menu aligned with current offerings and operational conditions.",
+
+    mediaManagement:
+      "Food imagery and other visual assets are managed through optimized media workflows to maintain high-quality presentation while keeping page performance efficient.",
+
+    apis:
+      "Custom API routes connect the storefront, authentication system, menu data, customer accounts, cart, orders, and administrative dashboard with structured validation and error handling."
+
+  },
+
+  outcome:
+    "The result is a complete digital ordering ecosystem that brings restaurant discovery, menu browsing, customer accounts, online ordering, order tracking, and internal restaurant management into one unified platform. Customers receive a convenient and visually engaging way to browse food and place orders, while the restaurant gains centralized control over menus, customers, orders, pricing, availability, and day-to-day digital operations.",
+
+  technologies: [
+    "Next.js",
+    "Node.js",
+    "MongoDB",
+    "Tailwind CSS",
+    "Cloudinary"
+  ],
+
+  services: [
+    "E-Commerce Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Online Ordering System",
+    "Customer Account System",
+    "Admin Dashboard",
+    "Order Management",
+    "Restaurant Management",
+    "SEO"
+  ],
+
+  image:
+    "/food.png",
+
+  imageAlt:
+    "Advanced food ordering platform with digital restaurant menu, online ordering and admin management dashboard",
+
+  liveUrl: null,
+
+  nextProject: {
+    slug: "gym-landing-page",
+    title: "Gym Landing Page",
+    number: "05",
+    category: "Fitness / Landing Page"
+  }
+},
+ "gym-landing-page": {
+  id: 5,
+  number: "05",
+  slug: "gym-landing-page",
+  title: "Gym Landing Page",
+
+  category: "Fitness / Landing Page",
+
+  industry: "Fitness & Wellness",
+
+  summary:
+    "A high-impact fitness landing page designed to showcase a modern gym, communicate its training experience, and turn website visitors into membership and inquiry leads.",
+
+  statement:
+    "Creating a bold digital first impression for a fitness brand through focused storytelling, strong visual hierarchy, and conversion-driven landing page design.",
+
+  challenge:
+    "The gym needed a stronger digital presence that could communicate its atmosphere, training environment, programs, and value clearly within a single focused experience. The existing approach needed a more engaging visual presentation and a clearer path for visitors to understand the gym, explore its offerings, and take the next step toward joining or making an inquiry. The challenge was to create a landing page that felt energetic and premium without overwhelming visitors with unnecessary information.",
+
+  approach: [
+
+    {
+      num: "01",
+      title: "Strategy",
+      desc:
+        "Defined a focused landing page structure around the gym's brand, training experience, key offerings, social proof, and clear membership-oriented calls to action."
+    },
+
+    {
+      num: "02",
+      title: "UX / Architecture",
+      desc:
+        "Created a streamlined visitor journey that moves naturally from the initial brand introduction through gym benefits, programs, facilities, and conversion-focused contact sections."
+    },
+
+    {
+      num: "03",
+      title: "Design",
+      desc:
+        "Developed a bold fitness-focused visual language using strong typography, impactful imagery, confident spacing, and high-contrast sections to communicate energy and strength."
+    },
+
+    {
+      num: "04",
+      title: "Engineering",
+      desc:
+        "Built a responsive, performance-focused landing page with reusable components, optimized media, smooth interactions, and layouts designed for consistent presentation across modern devices."
+    }
+
+  ],
+
+  features: [
+
+    "Premium gym landing page experience",
+
+    "Strong fitness-focused hero section",
+
+    "Clear membership and inquiry call-to-actions",
+
+    "Gym programs and training service presentation",
+
+    "Fitness facility and environment showcase",
+
+    "Benefits and value proposition sections",
+
+    "Trainer or coaching presentation areas",
+
+    "Social proof and testimonial sections",
+
+    "Responsive mobile and desktop layouts",
+
+    "Optimized fitness imagery and media",
+
+    "Smooth page interactions and transitions",
+
+    "Clear contact and conversion sections",
+
+    "SEO-friendly landing page structure",
+
+    "Performance-focused frontend implementation"
+
+  ],
+
+  designDirection:
+    "The design direction focuses on energy, strength, and confidence while maintaining a polished premium feel. Large visual moments, bold typography, structured sections, and carefully controlled spacing create a strong fitness identity without making the interface feel cluttered. The page is intentionally focused, allowing the gym's atmosphere and training experience to remain the primary visual narrative.",
+
+  engineering: {
+
+    overview:
+      "The landing page was engineered for fast loading, responsive presentation, and a smooth browsing experience across desktop, tablet, and mobile devices.",
+
+    frontend:
+      "Built with a modern component-based frontend architecture, creating reusable sections and responsive layouts that adapt naturally across screen sizes.",
+
+    responsiveDesign:
+      "The interface was carefully structured for mobile, tablet, and desktop breakpoints so important messaging, imagery, and calls to action remain accessible on every device.",
+
+    performance:
+      "Optimized page assets, image delivery, component structure, and frontend rendering to maintain a lightweight and responsive experience.",
+
+    interactions:
+      "Subtle transitions and interactive elements were introduced to add movement and polish without distracting visitors from the primary conversion journey.",
+
+    seo:
+      "Structured the landing page around clear content hierarchy, descriptive sections, semantic markup, responsive performance, and search-friendly fitness-related content."
+
+  },
+
+  outcome:
+    "The result is a focused digital experience that gives the gym a stronger online presence and communicates its brand, training environment, services, and value proposition through a polished single-page journey. The landing page combines strong visual storytelling with clear calls to action, giving prospective members a straightforward path from discovering the gym to taking the next step.",
+
+  technologies: [
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "Framer Motion"
+  ],
+
+  services: [
+    "Landing Page Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Responsive Design",
+    "Performance Optimization",
+    "SEO"
+  ],
+
+  image:
+    "/gym.png",
+
+  imageAlt:
+    "Modern gym and fitness landing page website design",
+
+  liveUrl: null,
+
+  nextProject: {
+    slug: "health-blog",
+    title: "Health Blog",
+    number: "06",
+    category: "Health & Wellness / AI Platform"
+  }
+},
+"health-blog": {
+  id: 6,
+  number: "06",
+  slug: "health-blog",
+  title: "Health Blog",
+  category: "Health & Wellness / AI Platform",
+  industry: "Health & Wellness",
+  summary:
+    "A modern health and wellness publishing platform combining a content-rich blog experience with a centralized admin panel and AI-powered content capabilities.",
+  statement:
+    "Building a smarter health publishing experience where high-quality content, streamlined administration, and AI-powered workflows come together in one scalable platform.",
+  challenge:
+    "The project required more than a traditional health blog. The platform needed a polished public-facing experience for discovering and reading health and wellness content while giving administrators complete control over articles, categories, content, and publishing workflows. AI capabilities were also integrated to support content-related workflows and make the platform more efficient to manage. The challenge was to bring content discovery, administration, and AI-powered functionality together without compromising readability, performance, or the trust expected from a health-focused digital platform.",
+  approach: [
+    {
+      num: "01",
+      title: "Strategy",
+      desc:
+        "Defined a content-first structure around health education, article discovery, categories, publishing workflows, and scalable content management."
+    },
+    {
+      num: "02",
+      title: "UX / Architecture",
+      desc:
+        "Designed clear journeys for browsing articles, exploring health topics, reading long-form content, and managing the publishing workflow through a centralized administration system."
+    },
+    {
+      num: "03",
+      title: "Design",
+      desc:
+        "Created a clean and trustworthy editorial interface with strong typography, structured content sections, readable layouts, and responsive presentation across modern devices."
+    },
+    {
+      num: "04",
+      title: "Engineering",
+      desc:
+        "Built a full-stack publishing platform with a dynamic blog, database-driven content, authentication, admin management, and integrated AI-powered functionality."
+    },
+    {
+      num: "05",
+      title: "Optimization",
+      desc:
+        "Optimized article rendering, media delivery, responsive layouts, content structure, and application performance to provide a fast and accessible reading experience."
+    }
+  ],
+  features: [
+    "Modern health and wellness blog",
+    "Dynamic article publishing system",
+    "Health-focused categories and content organization",
+    "Detailed long-form article pages",
+    "Article discovery and browsing experience",
+    "Featured and recent content presentation",
+    "Database-driven blog content",
+    "Centralized admin dashboard",
+    "Admin authentication and protected management area",
+    "Article creation and editing",
+    "Article publishing and content management",
+    "Category and content organization",
+    "Media and featured image management",
+    "AI-powered content functionality",
+    "AI-assisted content workflow integration",
+    "Responsive reading experience",
+    "Mobile-friendly editorial layouts",
+    "SEO-friendly article architecture",
+    "Structured content hierarchy",
+    "Performance-focused frontend implementation"
+  ],
+  designDirection:
+    "The visual direction was built around trust, clarity, and modern health publishing. Clean layouts, generous whitespace, readable typography, and carefully structured article content create an experience that feels closer to a professional wellness publication than a generic blog. The administration interface uses a more functional design language focused on efficient content management, while the AI functionality remains integrated naturally into the overall publishing workflow.",
+  engineering: {
+    overview:
+      "The platform was engineered as a complete full-stack health publishing ecosystem, connecting the public blog, database-driven content system, administrative dashboard, authentication, and AI-powered functionality.",
+    frontend:
+      "Built with a modern component-based frontend architecture for responsive article pages, dynamic content rendering, smooth navigation, and optimized experiences across desktop, tablet, and mobile.",
+    backend:
+      "Server-side application logic handles article data, categories, authentication, administrative workflows, API communication, and AI-related functionality through structured application routes.",
+    database:
+      "A database-driven content architecture stores articles, categories, metadata, publishing information, and other platform records in a structure designed to support ongoing content growth.",
+    authentication:
+      "Protected authentication allows authorized administrators to access the content management system while keeping administrative functionality separate from the public reading experience.",
+    contentManagement:
+      "The admin panel provides centralized control over articles and content organization, allowing administrators to create, update, manage, and publish health-related content from one interface.",
+    adminPanel:
+      "A dedicated administration dashboard gives the publishing team centralized control over blog content, categories, media, and other core platform operations without requiring direct database access.",
+    aiIntegration:
+      "AI functionality was integrated into the platform to support content-related workflows and improve publishing efficiency, creating a more intelligent editorial management experience.",
+    mediaManagement:
+      "Article imagery and other visual assets are handled through structured media workflows to maintain consistent presentation across the publishing platform.",
+    seo:
+      "The content architecture was structured with search-friendly URLs, descriptive metadata, semantic content hierarchy, and optimized article presentation to provide a strong technical foundation for health and wellness content discovery.",
+    apis:
+      "Custom API routes connect the public blog, administration system, content data, authentication, and AI-powered functionality with structured validation and error handling."
+  },
+  outcome:
+    "The result is a complete health and wellness publishing platform that combines a polished public blog with centralized content administration and AI-powered functionality. Readers receive a clean and accessible experience for discovering health content, while administrators gain a dedicated system for managing articles, categories, media, and publishing workflows more efficiently.",
+  technologies: [
+    "Next.js",
+    "React",
+    "Node.js",
+    "MongoDB",
+    "Tailwind CSS",
+    "AI Integration"
+  ],
+  services: [
+    "Content Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Blog Development",
+    "Admin Dashboard",
+    "AI Integration",
+    "Content Management",
+    "SEO"
+  ],
+  image:
+    "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1600&auto=format&fit=crop",
+  imageAlt:
+    "Modern health and wellness blog platform with articles and content management system",
+  liveUrl: null,
+  nextProject: {
+    slug: "hostel-management-system",
+    title: "Hostel Management System",
+    number: "07",
+    category: "Management System / Role-Based Application"
+  }
+},
+"hostel-management-system": {
+  id: 7,
+  number: "07",
+  slug: "hostel-management-system",
+  title: "Hostel Management System",
+  category: "Management System / Role-Based Application",
+  industry: "Education & Student Housing",
+
+  summary:
+    "A frontend-focused hostel management application featuring seven distinct user roles, tailored dashboards, and structured role-based access across hostel management workflows.",
+
+  statement:
+    "Designing a structured management experience where every user sees the tools, information, and workflows relevant to their specific role.",
+
+  challenge:
+    "The project required a management interface capable of supporting multiple types of hostel users without giving every user access to the same information or functionality. Seven different roles needed separate access levels and tailored experiences, making information architecture and permission-based navigation an important part of the system design. As a university project, the focus was placed on demonstrating the frontend architecture, user experience, role-based interfaces, and management workflows without a connected backend.",
+
+  approach: [
+    {
+      num: "01",
+      title: "Requirements",
+      desc:
+        "Mapped the responsibilities and interface requirements for seven different user roles, identifying the information and actions relevant to each user type."
+    },
+    {
+      num: "02",
+      title: "UX / Architecture",
+      desc:
+        "Structured the application around role-specific dashboards, navigation, pages, and management workflows so each user receives a focused experience."
+    },
+    {
+      num: "03",
+      title: "Design",
+      desc:
+        "Created a professional management interface with clear information hierarchy, structured dashboards, responsive layouts, and consistent visual patterns."
+    },
+    {
+      num: "04",
+      title: "Frontend Engineering",
+      desc:
+        "Developed the complete frontend experience with role-based navigation and access logic, reusable components, dashboard interfaces, forms, tables, and management views."
+    },
+    {
+      num: "05",
+      title: "Responsive Experience",
+      desc:
+        "Adapted the management interfaces for different screen sizes while keeping important navigation, data, and actions accessible across devices."
+    }
+  ],
+
+  features: [
+    "Seven distinct user roles",
+    "Role-based access control interface",
+    "Role-specific dashboards",
+    "Permission-aware navigation",
+    "Separate functionality based on user role",
+    "Hostel management dashboard",
+    "Student and resident management interfaces",
+    "Room and accommodation management views",
+    "Structured data tables",
+    "Management forms and input workflows",
+    "Role-specific navigation menus",
+    "Responsive dashboard layouts",
+    "Reusable frontend components",
+    "Consistent management UI patterns",
+    "Responsive desktop and mobile experience"
+  ],
+
+  designDirection:
+    "The interface was designed with a professional management-system aesthetic, prioritizing clarity, structure, and efficient access to information. Each role receives a focused dashboard and navigation experience rather than being presented with unnecessary functionality. Consistent cards, tables, forms, navigation patterns, and responsive layouts create a unified system while maintaining clear separation between different user responsibilities.",
+
+  engineering: {
+    overview:
+      "The project was developed as a frontend-focused management application demonstrating complex role-based interfaces and workflows without a connected backend.",
+
+    frontend:
+      "Built with React and JavaScript using reusable components, structured layouts, dashboard interfaces, forms, tables, and role-aware navigation.",
+
+    roleBasedAccess:
+      "Implemented frontend role-based access logic for seven distinct user types, allowing the interface and available navigation options to change according to the selected user role.",
+
+    dashboards:
+      "Created dedicated dashboard experiences tailored to the information and actions relevant to each role.",
+
+    components:
+      "Reusable UI components were used across dashboards, navigation, cards, tables, forms, and management views to maintain consistency and reduce duplication.",
+
+    responsiveDesign:
+      "The application was structured for responsive use across desktop, tablet, and mobile screen sizes.",
+
+    backend:
+      "The project was intentionally developed as a frontend university project and does not include a connected production backend or persistent database layer."
+  },
+
+  outcome:
+    "The result is a professional frontend management system demonstrating how a complex hostel operation can be organized around seven different user roles. The project showcases role-based interface architecture, dashboard design, structured management workflows, reusable frontend components, and responsive application design while clearly remaining a frontend-focused implementation.",
+
+  technologies: [
+    "React",
+    "JavaScript",
+    "Tailwind CSS",
+    "Framer Motion"
+  ],
+
+  services: [
+    "System Architecture",
+    "UI/UX Design",
+    "Frontend Development",
+    "Role-Based Access Control",
+    "Dashboard Design",
+    "Responsive Design"
+  ],
+
+  image:
+    "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=1600&auto=format&fit=crop",
+
+  imageAlt:
+    "Hostel management system frontend with role-based dashboards and management interfaces",
+
+  liveUrl: null,
+
+  nextProject: {
+    slug: "spotgo-parking",
+    title: "SpotGo",
+    number: "08",
+    category: "Smart Parking / Web Application"
+  }
+},
+"spotgo-parking": {
+  id: 8,
+  number: "08",
+  slug: "spotgo-parking",
+  title: "SpotGo",
+  category: "Smart Parking / Web Application",
+  industry: "Smart Mobility & Transportation",
+
+  summary:
+    "A high-end digital parking platform designed to help drivers discover available parking, explore locations, select exact parking spots, and manage reservations through an intuitive real-time interface.",
+
+  statement:
+    "Reimagining urban parking through a location-driven digital experience that connects parking discovery, live availability, exact spot selection, and reservation workflows in one interface.",
+
+  challenge:
+    "The project was designed to solve a common urban parking problem: drivers often spend unnecessary time searching for available spaces without knowing availability, location, pricing, or the exact parking area before arriving. The goal was to create a polished digital experience that could bring parking locations, availability, maps, spot selection, pricing, and reservations into one clear workflow. As a university project, the primary focus was on building an advanced frontend experience and demonstrating how a smart parking product could work through an interactive web application.",
+
+  approach: [
+    {
+      num: "01",
+      title: "Strategy",
+      desc:
+        "Mapped the complete parking journey from discovering nearby locations and checking availability to selecting an exact parking bay and reviewing reservation details."
+    },
+    {
+      num: "02",
+      title: "UX / Architecture",
+      desc:
+        "Designed the application around location discovery, parking availability, interactive maps, parking layouts, spot selection, and reservation flows."
+    },
+    {
+      num: "03",
+      title: "Design",
+      desc:
+        "Created a sophisticated smart-mobility interface combining clean modern layouts, map-driven experiences, high-visibility status indicators, and structured parking information."
+    },
+    {
+      num: "04",
+      title: "Frontend Engineering",
+      desc:
+        "Developed an interactive frontend application with dynamic parking locations, availability states, parking floors, individual bays, reservation controls, and responsive user interfaces."
+    },
+    {
+      num: "05",
+      title: "Experience Optimization",
+      desc:
+        "Focused on making a complex parking workflow feel simple by organizing location discovery, spot selection, pricing, and reservation information into clear progressive steps."
+    }
+  ],
+
+  features: [
+    "Smart parking discovery experience",
+    "Location-based parking exploration",
+    "Interactive parking map experience",
+    "Parking location search",
+    "Multiple parking locations across Karachi",
+    "Live-style parking availability interface",
+    "Parking occupancy indicators",
+    "Exact parking spot selection",
+    "Multi-floor parking layouts",
+    "Individual parking bay visualization",
+    "Available, reserved, and booked spot states",
+    "Selected parking spot state",
+    "VIP parking spot indication",
+    "Parking duration selection",
+    "Parking rate and estimated total calculation",
+    "Reservation workflow interface",
+    "Parking location details",
+    "Distance and availability information",
+    "Parking operator management concept",
+    "Responsive desktop and mobile experience",
+    "Modern smart-city product interface"
+  ],
+
+  designDirection:
+    "The visual direction was designed around smart mobility, precision, and confidence. The interface combines a clean modern foundation with strong status indicators, interactive parking layouts, map-based discovery, and carefully structured information. Complex parking data is presented in a way that feels intuitive for everyday drivers while maintaining the polished visual language expected from a modern smart-city technology product.",
+
+  engineering: {
+    overview:
+      "SpotGo was developed as a frontend-focused smart parking application demonstrating how a complex location and reservation workflow can be transformed into an intuitive digital experience.",
+
+    frontend:
+      "Built with a modern React/Next.js-style component architecture for dynamic parking interfaces, responsive layouts, interactive location experiences, and reusable UI components.",
+
+    parkingDiscovery:
+      "The application provides a structured parking discovery experience where users can search locations, explore available parking areas, review distance and pricing information, and select a destination.",
+
+    mapExperience:
+      "An interactive map-driven experience connects parking locations with their geographic context, allowing users to explore destinations and understand where parking facilities are located.",
+
+    parkingLayout:
+      "Detailed parking layouts allow users to explore floors and individual parking bays while visually distinguishing available, reserved, booked, selected, and other parking states.",
+
+    reservation:
+      "The reservation interface allows users to select a parking location, choose an available spot, select a parking duration, and review the estimated parking cost before proceeding.",
+
+    responsiveDesign:
+      "The application was carefully structured for desktop, tablet, and mobile layouts so location discovery, parking information, and reservation controls remain accessible across screen sizes.",
+
+    architecture:
+      "Reusable components and structured frontend state were used to keep the parking discovery, location selection, spot selection, and reservation interfaces organized and scalable.",
+
+    backend:
+      "The university project was primarily focused on the frontend experience and interactive UI architecture rather than a connected production backend or live parking infrastructure."
+  },
+
+  outcome:
+    "The result is a polished digital parking experience that demonstrates how urban parking can be transformed into a simple, location-driven digital journey. SpotGo brings parking discovery, map exploration, availability visualization, exact spot selection, pricing, and reservation workflows together into one sophisticated frontend application.",
+
+  technologies: [
+    "Next.js",
+    "React",
+    "JavaScript",
+    "Tailwind CSS",
+    "Framer Motion"
+  ],
+
+  services: [
+    "Product Strategy",
+    "UI/UX Design",
+    "Frontend Development",
+    "Interactive Map Experience",
+    "Dashboard & Application UI",
+    "Responsive Design",
+    "Interaction Design"
+  ],
+
+  image:
+    "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1600&auto=format&fit=crop",
+
+  imageAlt:
+    "SpotGo smart parking web application with interactive parking discovery and reservation interface",
+
+  liveUrl:
+    "https://spotgoparking.vercel.app/",
+
+  nextProject: {
+    slug: "unitpay",
+    title: "UnitPay",
+    number: "09",
+    category: "Smart Energy / Web Application"
+  }
+},
+"unitpay": {
+  id: 9,
+  number: "09",
+  slug: "unitpay",
+  title: "UnitPay",
+  category: "Smart Energy / Web Application",
+  industry: "Energy & Utilities",
+
+  summary:
+    "A sophisticated smart energy management platform combining electricity unit purchasing, live smart-meter monitoring, customer account management, and a dedicated administrative interface.",
+
+  statement:
+    "Turning electricity management into a digital experience where customers can purchase units, monitor live energy data, and manage their account through one centralized platform.",
+
+  challenge:
+    "Traditional electricity management can make it difficult for users to understand their remaining balance, monitor consumption, and manage their energy usage from one place. UnitPay was designed to create a modern digital alternative where customers could access their electricity account, purchase additional units, monitor smart-meter information, and understand their current energy status through a clear and interactive dashboard. The platform also required a separate administrative experience for managing the broader system.",
+
+  approach: [
+    {
+      num: "01",
+      title: "Strategy",
+      desc:
+        "Mapped the customer journey around account access, electricity balance, unit purchasing, meter monitoring, consumption visibility, and energy management."
+    },
+    {
+      num: "02",
+      title: "UX / Architecture",
+      desc:
+        "Structured the platform around separate customer and administrative experiences, keeping important energy information and actions accessible through dedicated dashboards."
+    },
+    {
+      num: "03",
+      title: "Design",
+      desc:
+        "Created a sophisticated smart-energy interface using strong visual hierarchy, live status indicators, data visualization, modern dashboard patterns, and a high-tech visual language."
+    },
+    {
+      num: "04",
+      title: "Engineering",
+      desc:
+        "Developed the customer-facing application with account authentication, energy dashboards, unit purchasing flows, smart-meter interfaces, and dedicated administrative functionality."
+    },
+    {
+      num: "05",
+      title: "Optimization",
+      desc:
+        "Focused on making complex energy information easy to understand through clear metrics, visual status indicators, responsive layouts, and structured dashboard components."
+    }
+  ],
+
+  features: [
+    "Customer electricity account portal",
+    "Separate customer and admin login experiences",
+    "Electricity unit purchasing workflow",
+    "Instant unit recharge interface",
+    "Current electricity balance display",
+    "Live smart-meter dashboard",
+    "Energy consumption monitoring",
+    "Daily usage tracking",
+    "Voltage monitoring",
+    "Current load monitoring",
+    "Smart-meter signal status",
+    "Live meter connection status",
+    "Energy usage visualization",
+    "Electricity balance progress indicator",
+    "Secure customer access interface",
+    "Customer account management",
+    "Dedicated administration panel",
+    "Administrative management interface",
+    "Responsive dashboard experience",
+    "Modern smart-energy data visualization"
+  ],
+
+  designDirection:
+    "The visual direction was intentionally designed to feel like a modern energy technology platform rather than a traditional utility portal. Dark foundations, high-visibility status indicators, live data presentation, structured metrics, and dashboard-focused layouts create a sophisticated control-center experience. The customer interface keeps complex energy information understandable while the administrative side prioritizes operational clarity and system management.",
+
+  engineering: {
+    overview:
+      "UnitPay was engineered as a multi-interface smart energy platform connecting the customer experience with a dedicated administrative management environment.",
+
+    frontend:
+      "Built with a modern React/Next.js frontend architecture using reusable dashboard components, responsive layouts, interactive data displays, account interfaces, and energy monitoring views.",
+
+    authentication:
+      "The platform provides separate access paths for customers and administrators, allowing the two experiences to remain clearly separated within the product architecture.",
+
+    customerPortal:
+      "The customer portal provides access to electricity account information, current unit balance, energy usage, smart-meter data, and unit purchasing functionality.",
+
+    smartMeter:
+      "The smart-meter interface presents live-style energy information including current balance, usage, voltage, load, signal strength, and connection status in a centralized dashboard.",
+
+    unitPurchasing:
+      "A dedicated recharge experience allows customers to purchase additional electricity units and manage their available energy balance through the platform.",
+
+    dashboard:
+      "The dashboard architecture uses structured cards, metrics, status indicators, and visual data presentation to make energy information easy to understand at a glance.",
+
+    adminPanel:
+      "A separate administrative interface was developed for system-level management, providing administrators with a dedicated environment distinct from the customer portal.",
+
+    responsiveDesign:
+      "The platform was designed responsively so important energy metrics, account actions, and dashboard information remain accessible across desktop, tablet, and mobile devices.",
+
+    architecture:
+      "Reusable components and structured application state were used to keep customer dashboards, energy monitoring interfaces, purchasing flows, authentication screens, and administrative views organized and scalable."
+  },
+
+  outcome:
+    "The result is a polished smart energy management experience that brings electricity unit purchasing, live meter monitoring, energy consumption visibility, customer accounts, and administrative management into one digital platform. UnitPay demonstrates how traditionally complex utility workflows can be presented through a modern, intuitive, and data-driven web application.",
+
+  technologies: [
+    "Next.js",
+    "React",
+    "JavaScript",
+    "Tailwind CSS",
+    "Framer Motion"
+  ],
+
+  services: [
+    "Product Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Customer Portal",
+    "Admin Dashboard",
+    "Smart Meter Interface",
+    "Energy Management System",
+    "Responsive Design"
+  ],
+
+  image:
+    "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1600&auto=format&fit=crop",
+
+  imageAlt:
+    "UnitPay smart energy platform with electricity balance, live meter monitoring and energy dashboard",
+
+  liveUrl:
+    "https://my-unitpay.vercel.app/login",
+
+  nextProject: {
+    slug: "zs-digitizing",
+    title: "ZS Digitizing",
+    number: "01",
+    category: "Embroidery Digitizing / Client Platform"
+  }
+},
 };
 
 // ==========================================

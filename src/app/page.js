@@ -11,14 +11,14 @@ import { Testimonials } from "@/components/Testimonials";
 export const metadata = {
   title: "WebMash Labs | Premium Web Development & Digital Agency",
   description: "WebMash Labs is a premium digital agency offering custom web development, web applications, e-commerce, business systems, AI automation, and growth solutions.",
-  metadataBase: new URL("https://webmashlabs.com"),
+  metadataBase: new URL("https://www.webmashlabs.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "WebMash Labs | Premium Web Development & Digital Agency",
     description: "WebMash Labs is a premium digital agency offering custom web development, web applications, e-commerce, business systems, AI automation, and growth solutions.",
-    url: "https://webmashlabs.com",
+    url: "https://www.webmashlabs.com",
     siteName: "WebMash Labs",
     locale: "en_US",
     type: "website",
@@ -40,18 +40,18 @@ export default function Home() {
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://webmashlabs.com/#organization",
+        "@id": "https://www.webmashlabs.com/#organization",
         "name": "WebMash Labs",
         "url": "https://webmashlabs.com",
         "description": "Premium digital product engineering and web development agency."
       },
       {
         "@type": "WebSite",
-        "@id": "https://webmashlabs.com/#website",
-        "url": "https://webmashlabs.com",
+        "@id": "https://www.webmashlabs.com/#website",
+        "url": "https://www.webmashlabs.com",
         "name": "WebMash Labs",
         "publisher": {
-          "@id": "https://webmashlabs.com/#organization"
+          "@id": "https://www.webmashlabs.com/#organization"
         }
       }
     ]

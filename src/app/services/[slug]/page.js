@@ -69,7 +69,7 @@ export async function generateMetadata({ params }) {
       type: "website",
       images: [
         {
-          url: "https://webmashlabs.com/og-services.jpg",
+          url: "https://www.webmashlabs.com/og-services.jpg",
           width: 1200,
           height: 630,
           alt: `${service.name} - WebMash Labs`,
@@ -81,7 +81,7 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: pageTitle,
       description: pageDescription,
-      images: ["https://webmashlabs.com/og-services.jpg"],
+      images: ["https://www.webmashlabs.com/og-services.jpg"],
     },
   };
 }
@@ -123,22 +123,22 @@ export default async function ServiceSlugPage({ params }) {
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://webmashlabs.com/#organization",
+        "@id": "https://www.webmashlabs.com/#organization",
         name: "WebMash Labs",
-        url: "https://webmashlabs.com/",
+        url: "https://www.webmashlabs.com/",
         logo: {
           "@type": "ImageObject",
-          url: "https://webmashlabs.com/WMLogo.png",
+          url: "https://www.webmashlabs.com/WMLogo.png",
         },
       },
 
       {
         "@type": "WebSite",
-        "@id": "https://webmashlabs.com/#website",
-        url: "https://webmashlabs.com/",
+        "@id": "https://www.webmashlabs.com/#website",
+        url: "https://www.webmashlabs.com/",
         name: "WebMash Labs",
         publisher: {
-          "@id": "https://webmashlabs.com/#organization",
+          "@id": "https://www.webmashlabs.com/#organization",
         },
       },
 
@@ -150,10 +150,10 @@ export default async function ServiceSlugPage({ params }) {
         headline: pageTitle,
         description: service.metaDescription || service.overview,
         isPartOf: {
-          "@id": "https://webmashlabs.com/#website",
+          "@id": "https://www.webmashlabs.com/#website",
         },
         publisher: {
-          "@id": "https://webmashlabs.com/#organization",
+          "@id": "https://www.webmashlabs.com/#organization",
         },
         breadcrumb: {
           "@id": `${service.canonical}#breadcrumb`,
@@ -171,13 +171,13 @@ export default async function ServiceSlugPage({ params }) {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://webmashlabs.com/",
+            item: "https://www.webmashlabs.com/",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Services",
-            item: "https://webmashlabs.com/services",
+            item: "https://www.webmashlabs.com/services",
           },
           {
             "@type": "ListItem",
@@ -197,7 +197,7 @@ export default async function ServiceSlugPage({ params }) {
           service.serviceCategory ||
           service.name,
         provider: {
-          "@id": "https://webmashlabs.com/#organization",
+          "@id": "https://www.webmashlabs.com/#organization",
         },
         description: service.overview,
         url: service.canonical,

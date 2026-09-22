@@ -6,7 +6,7 @@ export const metadata = {
   title: "Terms & Conditions | WebMash Labs",
   description: "Terms governing use of the WebMash Labs website and general terms applicable to digital services, subject to individual agreements.",
   alternates: {
-    canonical: "https://webmashlabs.com/terms",
+    canonical: "https://www.webmashlabs.com/terms",
   },
   robots: {
     index: false,

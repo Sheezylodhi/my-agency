@@ -6,15 +6,15 @@ import Script from "next/script";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://webmashlabs.com/#organization",
+  "@id": "https://www.webmashlabs.com/#organization",
   name: "WebMash Labs",
-  url: "https://webmashlabs.com/",
+  url: "https://www.webmashlabs.com/",
   description:
     "WebMash Labs engineers custom websites, web applications, SaaS platforms, AI automation, ERP/CRM systems, eCommerce solutions and cloud infrastructure for growing businesses.",
 };
 
 export const metadata = {
-  metadataBase: new URL("https://webmashlabs.com"),
+  metadataBase: new URL("https://www.webmashlabs.com"),
 
   title: {
     default: "WebMash Labs | Custom Software, Web & Digital Engineering",
@@ -29,7 +29,7 @@ export const metadata = {
   authors: [
     {
       name: "WebMash Labs",
-      url: "https://webmashlabs.com",
+      url: "https://www.webmashlabs.com",
     },
   ],
 
@@ -37,7 +37,7 @@ export const metadata = {
   publisher: "WebMash Labs",
 
   alternates: {
-    canonical: "https://webmashlabs.com/",
+    canonical: "https://www.webmashlabs.com/",
   },
 
   robots: {
@@ -55,14 +55,14 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://webmashlabs.com/",
+    url: "https://www.webmashlabs.com/",
     siteName: "WebMash Labs",
     title: "WebMash Labs | Custom Software, Web & Digital Engineering",
     description:
       "Custom software, web development, SaaS, AI automation, ERP/CRM, eCommerce and cloud engineering for growing businesses.",
     images: [
       {
-        url: "https://webmashlabs.com/og-image.jpg",
+        url: "https://www.webmashlabs.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "WebMash Labs - Custom Software & Digital Engineering",
@@ -75,7 +75,7 @@ export const metadata = {
     title: "WebMash Labs | Custom Software, Web & Digital Engineering",
     description:
       "Custom software, web development, SaaS, AI automation, ERP/CRM and eCommerce engineering.",
-    images: ["https://webmashlabs.com/og-image.jpg"],
+    images: ["https://www.webmashlabs.com/og-image.jpg"],
   },
 
   icons: {

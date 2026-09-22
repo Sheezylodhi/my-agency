@@ -422,70 +422,70 @@ export default function IndustriesPage() {
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://webmashlabs.com/#organization",
+        "@id": "https://www.webmashlabs.com/#organization",
         "name": "WebMash Labs",
-        "url": "https://webmashlabs.com/",
+        "url": "https://www.webmashlabs.com/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://webmashlabs.com/logo.png"
+          "url": "https://www.webmashlabs.com/logo.png"
         }
       },
       {
         "@type": "WebSite",
-        "@id": "https://webmashlabs.com/#website",
-        "url": "https://webmashlabs.com/",
+        "@id": "https://www.webmashlabs.com/#website",
+        "url": "https://www.webmashlabs.com/",
         "name": "WebMash Labs",
         "publisher": {
-          "@id": "https://webmashlabs.com/#organization"
+          "@id": "https://www.webmashlabs.com/#organization"
         }
       },
       {
         "@type": "CollectionPage",
-        "@id": "https://webmashlabs.com/industries#webpage",
-        "url": "https://webmashlabs.com/industries",
+        "@id": "https://www.webmashlabs.com/industries#webpage",
+        "url": "https://www.webmashlabs.com/industries",
         "name": "Industry-Specific Web Development & Digital Solutions | WebMash Labs",
         "description": "Discover bespoke web development, custom software, portals, and UI/UX design tailored to the unique operational workflows of industries worldwide.",
         "isPartOf": {
-          "@id": "https://webmashlabs.com/#website"
+          "@id": "https://www.webmashlabs.com/#website"
         },
         "publisher": {
-          "@id": "https://webmashlabs.com/#organization"
+          "@id": "https://www.webmashlabs.com/#organization"
         },
         "breadcrumb": {
-          "@id": "https://webmashlabs.com/industries#breadcrumb"
+          "@id": "https://www.webmashlabs.com/industries#breadcrumb"
         },
         "mainEntity": {
-          "@id": "https://webmashlabs.com/industries#industry-list"
+          "@id": "https://www.webmashlabs.com/industries#industry-list"
         }
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://webmashlabs.com/industries#breadcrumb",
+        "@id": "https://www.webmashlabs.com/industries#breadcrumb",
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://webmashlabs.com/"
+            "item": "https://www.webmashlabs.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Industries",
-            "item": "https://webmashlabs.com/industries"
+            "item": "https://www.webmashlabs.com/industries"
           }
         ]
       },
       {
         "@type": "ItemList",
-        "@id": "https://webmashlabs.com/industries#industry-list",
+        "@id": "https://www.webmashlabs.com/industries#industry-list",
         "name": "Industries Served by WebMash Labs",
         "numberOfItems": industries.length,
         "itemListElement": industries.map((ind, index) => ({
           "@type": "ListItem",
           "position": index + 1,
           "name": ind.title,
-          "url": `https://webmashlabs.com/industries/${ind.slug}`
+          "url": `https://www.webmashlabs.com/industries/${ind.slug}`
         }))
       }
     ]

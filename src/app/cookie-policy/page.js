@@ -6,7 +6,7 @@ export const metadata = {
   title: "Cookie Policy | WebMash Labs",
   description: "Learn how WebMash Labs uses cookies and similar technologies on our website and how you can manage your preferences.",
   alternates: {
-    canonical: "https://webmashlabs.com/cookie-policy",
+    canonical: "https://www.webmashlabs.com/cookie-policy",
   },
   robots: {
     index: false,

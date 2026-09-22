@@ -6,7 +6,7 @@ export const metadata = {
   title: "Privacy Policy | WebMash Labs",
   description: "Learn how WebMash Labs collects, uses, protects, retains and handles personal information when you interact with our digital platforms and services.",
   alternates: {
-    canonical: "https://webmashlabs.com/privacy-policy",
+    canonical: "https://www.webmashlabs.com/privacy-policy",
   },
   robots: {
     index: false,

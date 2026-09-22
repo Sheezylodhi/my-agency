@@ -16,166 +16,383 @@ import {
 // PROJECTS DATA STRUCTURE
 // ==========================================
 const PROJECTS = [
+ {
+  id: 1,
+  number: "01",
+  slug: "zs-digitizing",
+  title: "ZS Digitizing",
+  category: "Embroidery Digitizing / Digital Platform",
+  filterCategory: "Services",
+  industry: "Embroidery & Apparel",
+  
+  description:
+    "A premium embroidery digitizing platform built to showcase professional digitizing services, streamline customer inquiries, and create a seamless digital experience for apparel brands, embroidery businesses, and custom garment professionals.",
+  
+  longDescription:
+    "Designed and engineered for a professional embroidery digitizing business, ZS Digitizing combines a refined service-focused website with a streamlined customer experience. The platform helps customers explore embroidery digitizing, logo digitizing, vector artwork, patches, and related services while making it easier to submit requirements and connect with the team. Built with a performance-focused Next.js architecture, the experience emphasizes visual quality, clear service presentation, responsive design, and a strong foundation for scalable digital operations.",
+  
+  services: [
+    "Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "SEO",
+    "Custom Embroidery Digitizing Platform"
+  ],
+  
+  technologies: [
+    "Next.js",
+    "Node.js",
+    "MongoDB",
+    "Tailwind CSS",
+    "Cloudinary"
+  ],
+  
+  featured: true,
+  theme: "dark",
+  layout: "featured-large",
+  
+  image: "/zs-digitizing.png",
+  imageAlt:
+    "ZS Digitizing professional embroidery digitizing services website and digital platform showcase",
+  
+  caseStudyHref: "/work/zs-digitizing",
+  liveUrl: "https://zsdigitizing.com"
+},
+ {
+  id: 2,
+  number: "02",
+  slug: "seedra-store",
+  title: "Seedra",
+  category: "E-Commerce / Wellness Store",
+  filterCategory: "Commerce",
+  industry: "Health & Wellness",
+
+  description:
+    "A premium wellness e-commerce platform built to deliver a seamless shopping experience while giving the business complete control over products, orders, customers, inventory, payments, reviews, and promotions.",
+
+  longDescription:
+    "A full-stack online store designed for Seedra, combining a refined wellness-focused storefront with a powerful administrative management system. The platform enables customers to discover products, explore variants, manage their cart, complete orders through multiple payment methods, and track their purchases, while the admin panel provides centralized management of products, pricing, inventory, customers, orders, reviews, coupons, payments, and store analytics.",
+
+  services: [
+    "E-Commerce Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Admin Dashboard",
+    "Payment Integration",
+    "Order Management",
+    "SEO"
+  ],
+
+  technologies: [
+    "Next.js",
+    "Node.js",
+    "MongoDB",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Cloudinary"
+  ],
+
+  featured: false,
+  theme: "light",
+  layout: "split-left",
+
+  image: "/seedra-store.png",
+
+  imageAlt:
+    "Seedra premium wellness e-commerce store and admin management platform",
+
+  caseStudyHref: "/work/seedra-store",
+
+  liveUrl: null
+},
+{
+  id: 3,
+  number: "03",
+  slug: "fashion-commerce",
+  title: "Fashion Commerce",
+  category: "E-Commerce / Fashion Store",
+  filterCategory: "Commerce",
+  industry: "Fashion & Apparel",
+
+  description:
+    "A modern fashion e-commerce platform built to deliver a seamless online shopping experience with secure payments, customer accounts, product management, and centralized store operations.",
+
+  longDescription:
+    "A full-stack clothing e-commerce platform designed to bring the complete retail journey online. The experience combines a polished fashion storefront with product discovery, detailed product pages, shopping cart and checkout flows, customer accounts, Stripe-powered payments, order management, inventory control, and a dedicated admin dashboard. The platform was engineered to give customers a smooth and trustworthy purchasing experience while providing the business with centralized control over its day-to-day e-commerce operations.",
+
+  services: [
+    "E-Commerce Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Customer Account System",
+    "Stripe Payment Integration",
+    "Admin Dashboard",
+    "Order Management",
+    "Inventory Management",
+    "SEO"
+  ],
+
+  technologies: [
+    "Next.js",
+    "Node.js",
+    "MongoDB",
+    "Stripe",
+    "Tailwind CSS",
+    "Cloudinary"
+  ],
+
+  featured: false,
+  theme: "white",
+  layout: "split-right",
+
+  image:
+    "/eccomerce.png",
+
+  imageAlt:
+    "Modern fashion e-commerce website with online clothing store and shopping experience",
+
+  caseStudyHref: "/work/fashion-commerce",
+
+  liveUrl: null
+},
+ {
+  id: 4,
+  number: "04",
+  slug: "food-ordering-platform",
+  title: "Food Ordering Platform",
+  category: "E-Commerce / Food Ordering",
+  filterCategory: "Commerce",
+  industry: "Food & Restaurant",
+
+  description:
+    "An advanced food ordering platform built to deliver a seamless online ordering experience while giving restaurant teams centralized control over menus, orders, customers, and day-to-day operations.",
+
+  longDescription:
+    "A full-stack food ordering platform designed to connect customers with a streamlined digital ordering experience and provide restaurant administrators with a centralized management system. The platform combines a modern food catalog, detailed menu items, cart and checkout workflows, customer accounts, order processing, and a powerful admin dashboard for managing menu content, pricing, orders, customers, and restaurant operations.",
+
+  services: [
+    "E-Commerce Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Online Ordering System",
+    "Customer Account System",
+    "Admin Dashboard",
+    "Order Management",
+    "Restaurant Management",
+    "SEO"
+  ],
+
+  technologies: [
+    "Next.js",
+    "Node.js",
+    "MongoDB",
+    "Tailwind CSS",
+    "Cloudinary"
+  ],
+
+  featured: false,
+  theme: "light",
+  layout: "split-left",
+
+  image:
+    "/food.png",
+
+  imageAlt:
+    "Advanced food ordering website with online restaurant ordering and admin management system",
+
+  caseStudyHref: "/work/food-ordering-platform",
+
+  liveUrl: null
+},
   {
-    id: 1,
-    number: "01",
-    slug: "zs-digitizing",
-    title: "ZS Digitizing",
-    category: "E-Commerce / Digital Platform",
-    filterCategory: "Commerce",
-    industry: "Manufacturing",
-    description: "A custom digital platform designed to simplify product discovery, customer workflows and internal operations through a unified e-commerce experience.",
-    longDescription: "Engineered for high-volume manufacturing workflows, bringing seamless catalog synchronization, dynamic pricing, and an intuitive customer dashboard together under a high-performance Next.js architecture.",
-    services: ["Strategy", "UI/UX Design", "Web Development", "E-Commerce"],
-    technologies: ["Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
-    featured: true,
-    theme: "dark",
-    layout: "featured-large",
-    image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1600&auto=format&fit=crop",
-    imageAlt: "ZS Digitizing E-Commerce Platform Showcase",
-    caseStudyHref: "/work/zs-digitizing",
-    liveUrl: null
-  },
-  {
-    id: 2,
-    number: "02",
-    slug: "atlas-operations",
-    title: "Atlas Operations",
-    category: "ERP / Business System",
-    filterCategory: "Business Systems",
-    industry: "Logistics",
-    description: "A unified operations platform for inventory, orders, teams and business workflows.",
-    longDescription: "A centralized enterprise resource platform designed to replace fragmented legacy spreadsheets with real-time operational visibility and automated data synchronization.",
-    services: ["System Architecture", "Dashboard Design", "Full-Stack Engineering"],
-    technologies: ["React", "Node.js", "PostgreSQL", "Redis"],
-    featured: false,
-    theme: "light",
-    layout: "split-left",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
-    imageAlt: "Atlas Operations Dashboard Interface",
-    caseStudyHref: "/work/atlas-operations",
-    liveUrl: null
-  },
-  {
-    id: 3,
-    number: "03",
-    slug: "medora-health",
-    title: "Medora Health",
-    category: "Healthcare / Web Application",
-    filterCategory: "Applications",
-    industry: "Healthcare",
-    description: "A modern digital healthcare experience connecting patient services, appointments and secure workflows.",
-    longDescription: "Built with zero-knowledge encryption standards and a human-centric interface to bridge patient care coordination with clinical record management.",
-    services: ["UX Research", "UI Design", "Secure Web App"],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-    featured: false,
-    theme: "white",
-    layout: "split-right",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop",
-    imageAlt: "Medora Health Patient Portal",
-    caseStudyHref: "/work/medora-health",
-    liveUrl: null
-  },
-  {
-    id: 4,
-    number: "04",
-    slug: "haven-properties",
-    title: "Haven Properties",
-    category: "Real Estate / Digital Experience",
-    filterCategory: "Websites",
-    industry: "Real Estate",
-    description: "A premium property discovery experience designed around high-intent buyers and modern real estate workflows.",
-    longDescription: "An art-directed digital showcase pairing high-end architectural photography with lightning-fast interactive property search and virtual tour scheduling.",
-    services: ["Brand Experience", "Web Design", "Frontend Development"],
-    technologies: ["React", "Next.js", "Mapbox API"],
-    featured: false,
-    theme: "light",
-    layout: "split-left",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-    imageAlt: "Haven Properties Luxury Real Estate Portal",
-    caseStudyHref: "/work/haven-properties",
-    liveUrl: null
-  },
-  {
-    id: 5,
-    number: "05",
-    slug: "nova-commerce",
-    title: "Nova Commerce",
-    category: "E-Commerce",
-    filterCategory: "Commerce",
-    industry: "Retail",
-    description: "A conversion-focused commerce experience built for modern product discovery and seamless checkout.",
-    longDescription: "A minimalist luxury storefront utilizing predictive product recommendations and streamlined checkout flows to maximize average order value.",
-    services: ["E-Commerce Strategy", "UI/UX", "Custom Checkout Integration"],
-    technologies: ["Next.js", "Stripe API", "Tailwind CSS"],
-    featured: false,
-    theme: "white",
-    layout: "split-right",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop",
-    imageAlt: "Nova Commerce Luxury Storefront",
-    caseStudyHref: "/work/nova-commerce",
-    liveUrl: null
-  },
-  {
-    id: 6,
-    number: "06",
-    slug: "fleetflow",
-    title: "FleetFlow",
-    category: "Logistics / Web Application",
-    filterCategory: "Applications",
-    industry: "Logistics",
-    description: "A centralized logistics platform for fleet visibility, delivery tracking and operational coordination.",
-    longDescription: "Real-time telemetry and dispatch dashboard designed to optimize routing schedules and minimize carrier downtime.",
-    services: ["Dashboard UI", "WebSockets Integration", "Performance Tuning"],
-    technologies: ["Node.js", "React", "Socket.io", "PostgreSQL"],
-    featured: false,
-    theme: "dark",
-    layout: "full-width",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1400&auto=format&fit=crop",
-    imageAlt: "FleetFlow Logistics Control Hub",
-    caseStudyHref: "/work/fleetflow",
-    liveUrl: null
-  },
-  {
-    id: 7,
-    number: "07",
-    slug: "educore",
-    title: "EduCore",
-    category: "Education / SaaS",
-    filterCategory: "Applications",
-    industry: "Education",
-    description: "A digital learning platform connecting students, instructors, courses and progress in one experience.",
-    longDescription: "An interactive learning management ecosystem offering robust student performance analytics and modular course delivery.",
-    services: ["Product Design", "SaaS Development", "Database Architecture"],
-    technologies: ["Next.js", "MongoDB", "Tailwind CSS"],
-    featured: false,
-    theme: "light",
-    layout: "split-left",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop",
-    imageAlt: "EduCore Learning Management Interface",
-    caseStudyHref: "/work/educore",
-    liveUrl: null
-  },
-  {
-    id: 8,
-    number: "08",
-    slug: "axiom-ai",
-    title: "Axiom AI",
-    category: "AI / Automation",
-    filterCategory: "AI",
-    industry: "Finance",
-    description: "An AI-powered workflow environment designed to connect intelligent assistants with repeatable business processes.",
-    longDescription: "Modular node-based automation workspace that pairs LLM intelligence with secure corporate document parsers.",
-    services: ["AI Integration", "Workflow Engineering", "Interface Design"],
-    technologies: ["Python", "LangChain", "Next.js", "OpenAI API"],
-    featured: false,
-    theme: "dark",
-    layout: "full-width",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1400&auto=format&fit=crop",
-    imageAlt: "Axiom AI Workflow Orchestration",
-    caseStudyHref: "/work/axiom-ai",
-    liveUrl: null
-  }
+  id: 5,
+  number: "05",
+  slug: "gym-landing-page",
+  title: "Gym Landing Page",
+  category: "Fitness / Landing Page",
+  filterCategory: "Websites",
+  industry: "Fitness & Wellness",
+  description:
+    "A high-impact fitness landing page designed to showcase a modern gym, communicate its training experience, and turn website visitors into membership and inquiry leads.",
+  longDescription:
+    "A focused gym landing page designed to communicate the brand, training environment, programs, and value proposition through a polished single-page experience. The page combines bold fitness visuals, clear content hierarchy, responsive layouts, and conversion-focused calls to action to create a stronger digital first impression for prospective members.",
+  services: [
+    "Landing Page Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Responsive Design",
+    "Performance Optimization",
+    "SEO"
+  ],
+  technologies: [
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "Framer Motion"
+  ],
+  featured: false,
+  theme: "light",
+  layout: "split-right",
+  image:
+    "/gym.png",
+  imageAlt:
+    "Modern gym and fitness landing page website design",
+  caseStudyHref: "/work/gym-landing-page",
+  liveUrl: null
+},
+{
+  id: 6,
+  number: "06",
+  slug: "health-blog",
+  title: "Health Blog",
+  category: "Health & Wellness / AI Platform",
+  filterCategory: "Applications",
+  industry: "Health & Wellness",
+  description:
+    "A modern health and wellness publishing platform combining an engaging blog experience with a centralized admin panel and AI-powered content capabilities.",
+  longDescription:
+    "A full-stack health publishing platform designed to make health and wellness content easier to discover, manage, and publish. The platform combines a clean editorial blog experience with dynamic articles, content organization, a centralized admin dashboard, and integrated AI functionality to support more efficient content workflows.",
+  services: [
+    "Content Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Blog Development",
+    "Admin Dashboard",
+    "AI Integration",
+    "Content Management",
+    "SEO"
+  ],
+  technologies: [
+    "Next.js",
+    "React",
+    "Node.js",
+    "MongoDB",
+    "Tailwind CSS",
+    "AI Integration"
+  ],
+  featured: false,
+  theme: "dark",
+  layout: "full-width",
+  image:
+    "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1600&auto=format&fit=crop",
+  imageAlt:
+    "Modern health and wellness blog platform with AI-powered content and admin dashboard",
+  caseStudyHref: "/work/health-blog",
+  liveUrl: null
+},
+{
+  id: 7,
+  number: "07",
+  slug: "hostel-management-system",
+  title: "Hostel Management System",
+  category: "Management System / Role-Based Application",
+  filterCategory: "Applications",
+  industry: "Education & Student Housing",
+  description:
+    "A professional hostel management interface designed around role-based access, structured workflows, and tailored dashboards for seven distinct user types.",
+  longDescription:
+    "A frontend-focused hostel management system developed as a university project to demonstrate how complex management workflows can be organized through role-based access control. The platform includes seven distinct user roles, each with its own access level, dashboard experience, and relevant management functionality, creating a structured interface for different hostel operations and responsibilities.",
+  services: [
+    "System Architecture",
+    "UI/UX Design",
+    "Frontend Development",
+    "Role-Based Access Control",
+    "Dashboard Design",
+    "Responsive Design"
+  ],
+  technologies: [
+    "React",
+    "JavaScript",
+    "Tailwind CSS",
+    "Framer Motion"
+  ],
+  featured: false,
+  theme: "light",
+  layout: "split-left",
+  image:
+    "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=1600&auto=format&fit=crop",
+  imageAlt:
+    "Hostel management system dashboard with role-based access interface",
+  caseStudyHref: "/work/hostel-management-system",
+  liveUrl: null
+},
+ {
+  id: 8,
+  number: "08",
+  slug: "spotgo-parking",
+  title: "SpotGo",
+  category: "Smart Parking / Web Application",
+  filterCategory: "Applications",
+  industry: "Smart Mobility & Transportation",
+  description:
+    "A sophisticated digital parking platform designed to help drivers discover parking locations, explore availability, select exact spots, and manage reservations through an interactive web experience.",
+  longDescription:
+    "A high-end smart parking web application developed as a university project, combining location discovery, interactive maps, parking availability, multi-floor parking layouts, exact spot selection, pricing, and reservation workflows into one polished digital experience. The frontend was designed to demonstrate how a complex urban parking journey can be simplified through intuitive product architecture and interactive interfaces.",
+  services: [
+    "Product Strategy",
+    "UI/UX Design",
+    "Frontend Development",
+    "Interactive Map Experience",
+    "Dashboard & Application UI",
+    "Responsive Design",
+    "Interaction Design"
+  ],
+  technologies: [
+    "Next.js",
+    "React",
+    "JavaScript",
+    "Tailwind CSS",
+    "Framer Motion"
+  ],
+  featured: false,
+  theme: "dark",
+  layout: "full-width",
+  image:
+    "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1600&auto=format&fit=crop",
+  imageAlt:
+    "SpotGo smart parking web application with interactive map, parking availability and reservation interface",
+  caseStudyHref: "/work/spotgo-parking",
+  liveUrl: "https://spotgoparking.vercel.app/"
+},
+{
+  id: 9,
+  number: "09",
+  slug: "unitpay",
+  title: "UnitPay",
+  category: "Smart Energy / Web Application",
+  filterCategory: "Applications",
+  industry: "Energy & Utilities",
+  description:
+    "A smart energy management platform designed to let customers purchase electricity units, monitor live meter data, and manage their energy account through a modern digital experience.",
+  longDescription:
+    "A sophisticated smart energy platform combining customer account management, unit purchasing, live smart-meter monitoring, and a dedicated administrative interface. UnitPay was designed to turn electricity management into a clear digital experience where users can monitor their available units, track consumption, view live meter information, and recharge their balance through an intuitive customer portal.",
+  services: [
+    "Product Strategy",
+    "UI/UX Design",
+    "Web Development",
+    "Customer Portal",
+    "Admin Dashboard",
+    "Smart Meter Interface",
+    "Energy Management System",
+    "Responsive Design"
+  ],
+  technologies: [
+    "Next.js",
+    "React",
+    "JavaScript",
+    "Tailwind CSS",
+    "Framer Motion"
+  ],
+  featured: false,
+  theme: "dark",
+  layout: "full-width",
+  image:
+    "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1600&auto=format&fit=crop",
+  imageAlt:
+    "UnitPay smart energy management platform with live electricity meter dashboard",
+  caseStudyHref: "/work/unitpay",
+  liveUrl: "https://my-unitpay.vercel.app/login"
+},
 ];
 
 const FILTER_TABS = ["ALL", "WEBSITES", "APPLICATIONS", "COMMERCE", "BUSINESS SYSTEMS", "AI"];
@@ -625,11 +842,11 @@ export default function WorkPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
-              { title: "ZS Digitizing", category: "E-Commerce Platform", slug: "zs-digitizing", image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop" },
-              { title: "Atlas Operations", category: "Business Operations Platform", slug: "atlas-operations", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" }
+              { title: "ZS Digitizing", category: "E-Commerce Platform", slug: "zs-digitizing", image: "/zs-digitizing.png" },
+              { title: "Seed", category: "E-Commerce / Wellness Store", slug: "seedra-store", image: "/seedra-store.png" }
             ].map((cs, idx) => (
               <div key={idx} className="group bg-[#F8F8F6] border border-[#E5E2DC] rounded-2xl overflow-hidden flex flex-col justify-between">
-                <div className="h-64 overflow-hidden relative">
+                <div className="h-100 w-170  overflow-hidden relative">
                   <img
                     src={cs.image}
                     alt={cs.title}

@@ -29,13 +29,13 @@ export const metadata = {
   creator: "WebMash Labs",
   publisher: "WebMash Labs",
   alternates: {
-    canonical: "https://webmashlabs.com/about-us",
+    canonical: "https://www.webmashlabs.com/about-us",
   },
   openGraph: {
     title: "About WebMash Labs | Digital Engineering & Design Studio",
     description:
       "WebMash Labs builds high-performance digital experiences, web applications, and scalable digital infrastructure for ambitious businesses.",
-    url: "https://webmashlabs.com/about-us",
+    url: "https://www.webmashlabs.com/about-us",
     siteName: "WebMash Labs",
     type: "website",
     locale: "en_US",
@@ -170,7 +170,7 @@ export default function AboutPage() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "WebMash Labs",
-    url: "https://webmashlabs.com",
+    url: "https://www.webmashlabs.com",
     description:
       "WebMash Labs is a digital engineering and design studio specializing in high-performance websites, full-stack applications, and scalable digital infrastructure.",
   };
