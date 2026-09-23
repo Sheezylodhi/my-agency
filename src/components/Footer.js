@@ -8,11 +8,11 @@ const ease = [0.16, 1, 0.3, 1];
 
 const navigationLinks = [
   { name: "Home", href: "#" },
-  { name: "Services", href: "#services" },
-  { name: "Projects", href: "#work" },
+  { name: "Services", href: "/services" },
+  { name: "Projects", href: "/work" },
   { name: "Process", href: "#process" },
   { name: "FAQ", href: "#faq" },
-  { name: "Contact", href: "#contact" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const serviceLinks = [
@@ -25,9 +25,9 @@ const serviceLinks = [
 
 const contactLinks = [
   { name: "info@webmashlabs.com", href: "mailto:info@webmashlabs.com" },
-  { name: "LinkedIn", href: "https://linkedin.com", external: true },
-  { name: "Instagram", href: "https://instagram.com", external: true },
-  { name: "Behance", href: "https://behance.net", external: true },
+  { name: "Instagram", href: "https://www.instagram.com/webmash_labs/", external: true },
+  { name: "Facebook", href: "https://web.facebook.com/profile.php?id=61594395102609", external: true },
+
 ];
 
 export function Footer() {

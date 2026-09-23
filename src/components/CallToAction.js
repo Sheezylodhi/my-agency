@@ -141,7 +141,7 @@ export function CallToAction() {
               >
                 {/* PRIMARY BUTTON */}
                 <motion.a
-                  href="#book-call"
+                  href="/contact"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.2, ease }}
@@ -155,7 +155,7 @@ export function CallToAction() {
 
                 {/* SECONDARY LINK */}
                 <motion.a
-                  href="#work"
+                  href="/work"
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2, ease }}
                   className="group inline-flex items-center gap-2 text-sm sm:text-base font-medium text-white transition-colors hover:text-blue-300 py-3 px-2 cursor-pointer"
